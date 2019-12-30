@@ -1,0 +1,59 @@
+{
+  "name": "@south-paw/spicy-ui",
+  "version": "0.0.1",
+  "description": "A React component library to spice up your UI",
+  "keywords": [],
+  "homepage": "https://github.com/South-Paw/spicy-ui",
+  "bugs": "https://github.com/South-Paw/spicy-ui/issues",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Alex Gabites",
+      "email": "hello@southpaw.co.nz",
+      "url": "http://southpaw.co.nz/"
+    }
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "module": "dist/spicy-ui.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/South-Paw/spicy-ui.git"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.25",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "husky": "^3.1.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "tsdx": "^0.12.1",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.4"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "endOfLine": "lf",
+    "printWidth": 120,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "parser": "typescript"
+  }
+}
