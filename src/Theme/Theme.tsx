@@ -1,15 +1,14 @@
 import deepmerge from 'deepmerge';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-
-const defaultTheme = {};
+import { system } from './system';
 
 export type ThemeProps = {
-  theme?: Partial<typeof defaultTheme>;
+  theme?: Partial<typeof system>;
 };
 
 const Theme: React.FC<ThemeProps> = ({ children, theme = {} }) => (
-  <ThemeProvider theme={deepmerge(theme, defaultTheme)}>
+  <ThemeProvider theme={deepmerge(theme, system)}>
     <>{children}</>
   </ThemeProvider>
 );
@@ -17,3 +16,5 @@ const Theme: React.FC<ThemeProps> = ({ children, theme = {} }) => (
 Theme.displayName = 'Theme';
 
 export default Theme;
+
+export type TypeScale = keyof typeof system.typeScale;

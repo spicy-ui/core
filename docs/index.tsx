@@ -6,7 +6,9 @@ import { Box, Button, Theme } from '../.';
 const App = () => {
   return (
     <Theme>
-      <Box>I am a box primitive</Box>
+      <Box bg="gray.500" m={1}>
+        I am a box primitive
+      </Box>
 
       {/*
       <Heading as="h1" fontSize="h1">

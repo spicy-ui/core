@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "deepmerge": "^4.2.2",
+    "polished": "^3.4.2",
     "styled-system": "^5.1.4"
   },
   "devDependencies": {
