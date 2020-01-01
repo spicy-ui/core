@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Thing } from '../src';
+import { Box } from '../';
 
-describe('it', () => {
-  it('renders without crashing', () => {
+describe('button', () => {
+  it('renders', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Thing />, div);
+    ReactDOM.render(<Box />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });
