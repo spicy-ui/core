@@ -1,7 +1,7 @@
 import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Box, Button, Theme } from '../.';
+import { Box, Button, Text, Theme } from '../.';
 
 const App = () => {
   return (
@@ -29,8 +29,13 @@ const App = () => {
       <Heading as="h6" fontSize="h6">
         Heading 6.
       </Heading>
+      */}
+
+      <Text scale="lead">Lead paragraph: the quick red chili pepper jumps over the lazy developer.</Text>
 
       <Text>Paragraph: the quick red chili pepper jumps over the lazy developer.</Text>
+
+      <Text scale="small">Small paragraph: the quick red chili pepper jumps over the lazy developer.</Text>
 
       <Text>
         <small>Small: the quick red chili pepper jumps over the lazy developer.</small>
@@ -75,7 +80,6 @@ const App = () => {
       <Text>
         <sup>sup</sup>
       </Text>
-      */}
 
       <Button>I am a button primitive</Button>
     </Theme>
