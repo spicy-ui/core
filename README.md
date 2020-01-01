@@ -1,4 +1,4 @@
-# @south-paw/spicy-ui
+# spicy-ui
 
 🌶️ A React component library to spice up your UI
 
@@ -8,9 +8,11 @@
 
 ## Basic usage
 
+Install the library with `yarn add @spicy-ui/core`
+
 ```js
 import React from 'react';
-import { Button } from '@south-paw/spciy-ui';
+import { Button } from '@spciy-ui/core';
 
 export const App = () => <Button>Hey hot stuff 🌶️</Button>;
 ```
