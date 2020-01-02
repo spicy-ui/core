@@ -5733,6 +5733,11 @@ styled-components@^4.4.1:
     stylis-rule-sheet "^0.0.10"
     supports-color "^5.5.0"
 
+styled-normalize@^8.0.6:
+  version "8.0.6"
+  resolved "https://registry.yarnpkg.com/styled-normalize/-/styled-normalize-8.0.6.tgz#f27f87292f46aa79ad6db6339aff5db529df3c91"
+  integrity sha512-tOnAD1+wV04aiVy6chaQA4u/EtkGiGZPlIBYvEfWlZQBrDqRhu9EdPyXlFzLWxpOmANoQelJqSOMlV3QNCDKkw==
+
 styled-system@^5.1.4:
   version "5.1.4"
   resolved "https://registry.yarnpkg.com/styled-system/-/styled-system-5.1.4.tgz#953003bbda659092e5630e23da2ab7e855c65879"

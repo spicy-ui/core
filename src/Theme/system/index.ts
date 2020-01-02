@@ -6,7 +6,6 @@ import { fonts, fontSizes, fontWeights, letterSpacings, lineHeights, typeScale }
 import { zIndices } from './zIndices';
 
 export const system = {
-  baseSize: 8,
   space,
   fontSizes,
   colors,

@@ -36,8 +36,10 @@
     "docs:build": "cd docs && yarn build"
   },
   "dependencies": {
+    "@styled-system/core": "^5.1.2",
     "deepmerge": "^4.2.2",
     "polished": "^3.4.2",
+    "styled-normalize": "^8.0.6",
     "styled-system": "^5.1.4"
   },
   "devDependencies": {

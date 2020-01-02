@@ -1,4 +1,3 @@
-import * as React from 'react';
 import styled from 'styled-components';
 import {
   background,
@@ -15,11 +14,10 @@ import {
   LayoutProps,
   position,
   PositionProps,
-  space,
-  SpaceProps,
   typography,
   TypographyProps,
 } from 'styled-system';
+import { space, SpaceProps } from '../util/space';
 
 export interface BoxProps
   extends LayoutProps,
