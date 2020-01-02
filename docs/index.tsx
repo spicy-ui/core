@@ -1,7 +1,7 @@
 import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Box, Button, Text, Theme } from '../.';
+import { Box, Button, Heading, Text, Theme } from '../.';
 
 const App = () => {
   return (
@@ -10,26 +10,22 @@ const App = () => {
         Box primitive
       </Box>
 
-      {/*
-      <Heading as="h1" fontSize="h1">
-        Heading 1.
+      <Heading as="h1" variant="h1">
+        h1. Heading
       </Heading>
-      <Heading as="h2" fontSize="h2">
-        Heading 2.
+      <Heading>h2. Heading</Heading>
+      <Heading as="h3" variant="h3">
+        h3. Heading
       </Heading>
-      <Heading as="h3" fontSize="h3">
-        Heading 3.
+      <Heading as="h4" variant="h4">
+        h4. Heading
       </Heading>
-      <Heading as="h4" fontSize="h4">
-        Heading 4.
+      <Heading as="h5" variant="h5">
+        h5. Heading
       </Heading>
-      <Heading as="h5" fontSize="h5">
-        Heading 5.
+      <Heading as="h6" variant="h6">
+        h6. Heading
       </Heading>
-      <Heading as="h6" fontSize="h6">
-        Heading 6.
-      </Heading>
-      */}
 
       <Text>
         This is a normal paragraph of text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus
