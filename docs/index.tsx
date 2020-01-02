@@ -2,7 +2,7 @@ import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Box, Button, Heading, Text, Theme } from '../.';
-import { ColourSwatch } from 'components/demo';
+import { ColourSwatch } from './components/demo';
 
 const App = () => {
   return (
