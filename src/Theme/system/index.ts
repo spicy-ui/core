@@ -1,3 +1,4 @@
+import { breakpoints } from './breakpoints';
 import { radii } from './borders';
 import { colors } from './colors';
 import { shadows } from './shadows';
@@ -6,6 +7,7 @@ import { fonts, fontSizes, fontWeights, letterSpacings, lineHeights, typeScale }
 import { zIndices } from './zIndices';
 
 export const system = {
+  breakpoints,
   space,
   fontSizes,
   colors,
