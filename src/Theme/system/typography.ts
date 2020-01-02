@@ -1,5 +1,3 @@
-import { math } from 'polished';
-
 export const fontSizes = {
   h1: '64px',
   h2: '48px',
@@ -7,8 +5,8 @@ export const fontSizes = {
   h4: '24px',
   h5: '18px',
   h6: '16px',
-  lead: '20px',
-  body: '16px',
+  body1: '16px',
+  body2: '14px',
   small: '12px',
 };
 
@@ -30,10 +28,15 @@ export const fontWeights = {
 };
 
 export const lineHeights = {
-  normal: 'normal',
-  none: '1',
-  smaller: '1.25',
-  base: '1.5',
+  h1: '72px',
+  h2: '56px',
+  h3: '48px',
+  h4: '32px',
+  h5: '24px',
+  h6: '24px',
+  body1: '24px',
+  body2: '16px',
+  small: '16px',
 };
 
 export const letterSpacings = {
@@ -48,38 +51,47 @@ export const letterSpacings = {
 export const typeScale = {
   h1: {
     fontSize: fontSizes.h1,
-    lineHeight: math(`${fontSizes.h1} + 8px`),
+    fontWeight: fontWeights.bold,
+    lineHeight: lineHeights.h1,
   },
   h2: {
     fontSize: fontSizes.h2,
-    lineHeight: math(`${fontSizes.h2} + 8px`),
+    fontWeight: fontWeights.bold,
+    lineHeight: lineHeights.h2,
   },
   h3: {
     fontSize: fontSizes.h3,
-    lineHeight: math(`${fontSizes.h3} + 8px`),
+    fontWeight: fontWeights.bold,
+    lineHeight: lineHeights.h3,
   },
   h4: {
     fontSize: fontSizes.h4,
-    lineHeight: math(`${fontSizes.h4} + 8px`),
+    fontWeight: fontWeights.medium,
+    lineHeight: lineHeights.h4,
   },
   h5: {
     fontSize: fontSizes.h5,
-    lineHeight: math(`${fontSizes.h5} + 8px`),
+    fontWeight: fontWeights.medium,
+    lineHeight: lineHeights.h5,
   },
   h6: {
     fontSize: fontSizes.h6,
-    lineHeight: math(`${fontSizes.h6} + 8px`),
+    fontWeight: fontWeights.medium,
+    lineHeight: lineHeights.h6,
   },
-  lead: {
-    fontSize: fontSizes.lead,
-    lineHeight: math(`${fontSizes.lead} + 4px`),
+  body1: {
+    fontSize: fontSizes.body1,
+    fontWeight: fontWeights.normal,
+    lineHeight: lineHeights.body1,
   },
-  body: {
-    fontSize: fontSizes.body,
-    lineHeight: math(`${fontSizes.body} + 8px`),
+  body2: {
+    fontSize: fontSizes.body2,
+    fontWeight: fontWeights.normal,
+    lineHeight: lineHeights.body2,
   },
   small: {
     fontSize: fontSizes.small,
-    lineHeight: math(`${fontSizes.small} + 12px`),
+    fontWeight: fontWeights.normal,
+    lineHeight: lineHeights.small,
   },
 };

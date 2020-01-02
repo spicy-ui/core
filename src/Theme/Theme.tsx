@@ -16,5 +16,3 @@ const Theme: React.FC<ThemeProps> = ({ children, theme = {} }) => (
 Theme.displayName = 'Theme';
 
 export default Theme;
-
-export type TypeScale = keyof typeof system.typeScale;

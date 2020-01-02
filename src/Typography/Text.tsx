@@ -1,18 +1,26 @@
-import * as React from 'react';
-import { ThemeContext } from 'styled-components';
-import { TypeScale } from '../Theme';
-import Typography, { TypographyProps } from './Typography';
-import { getTypeScale } from './util';
+import styled from 'styled-components';
+import {
+  color,
+  ColorProps,
+  layout,
+  LayoutProps,
+  typography,
+  TypographyProps as SystemTypographyProps,
+  variant,
+} from 'styled-system';
+import { system } from '../Theme/system';
+import { space, SpaceProps } from '../util/space';
 
-export interface TextProps extends TypographyProps {
-  /** Font size and line height as a token. */
-  scale?: TypeScale;
+export interface TextProps extends LayoutProps, SpaceProps, ColorProps, SystemTypographyProps {
+  variant?: keyof typeof system.typeScale;
 }
 
-const Text: React.FC<TextProps> = ({ scale, ...rest }) => {
-  const typeScale = React.useContext(ThemeContext).typeScale;
+const Text = styled('p')<TextProps>(variant({ scale: 'typeScale' }), layout, space, color, typography);
 
-  return <Typography {...getTypeScale(scale, typeScale)} {...rest} />;
+Text.defaultProps = {
+  variant: 'body1',
 };
+
+Text.displayName = 'Text';
 
 export default Text;

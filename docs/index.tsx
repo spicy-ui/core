@@ -6,8 +6,8 @@ import { Box, Button, Text, Theme } from '../.';
 const App = () => {
   return (
     <Theme>
-      <Box bg="gray.500" m={1}>
-        I am a box primitive
+      <Box bg="gray.500" p={3}>
+        Box primitive
       </Box>
 
       {/*
@@ -31,54 +31,19 @@ const App = () => {
       </Heading>
       */}
 
-      <Text scale="lead">Lead paragraph: the quick red chili pepper jumps over the lazy developer.</Text>
-
-      <Text>Paragraph: the quick red chili pepper jumps over the lazy developer.</Text>
-
-      <Text scale="small">Small paragraph: the quick red chili pepper jumps over the lazy developer.</Text>
-
       <Text>
-        <small>Small: the quick red chili pepper jumps over the lazy developer.</small>
+        This is a normal paragraph of text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus
+        velit, hendrerit consequat lectus. Pellentesque egestas mauris mollis.
       </Text>
 
       <Text>
-        <i>Italic</i>
+        <strong>This text is strong</strong>
       </Text>
       <Text>
-        <u>Underline</u>
+        <em>This text has emphasis</em>
       </Text>
       <Text>
-        <abbr>I18N</abbr>
-      </Text>
-      <Text>
-        <cite>Citation</cite>
-      </Text>
-      <Text>
-        <del>Deleted</del>
-      </Text>
-      <Text>
-        <em>Emphasis</em>
-      </Text>
-      <Text>
-        <ins>Inserted</ins>
-      </Text>
-      <Text>
-        <kbd>Ctrl + C</kbd>
-      </Text>
-      <Text>
-        <mark>Highlighted</mark>
-      </Text>
-      <Text>
-        <s>Strikethrough</s>
-      </Text>
-      <Text>
-        <samp>Sample</samp>
-      </Text>
-      <Text>
-        <sub>sub</sub>
-      </Text>
-      <Text>
-        <sup>sup</sup>
+        <small>This text is small</small>
       </Text>
 
       <Button>I am a button primitive</Button>
