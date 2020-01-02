@@ -4,7 +4,7 @@ export interface ButtonProps {
   variant?: 'default' | 'outlined';
 }
 
-const Button = styled.button<ButtonProps>``;
+const Button = styled('button')<ButtonProps>``;
 
 Button.defaultProps = {
   type: 'button',
