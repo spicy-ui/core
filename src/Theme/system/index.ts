@@ -17,6 +17,6 @@ export const system = {
   letterSpacings,
   radii,
   shadows,
-  typeScale,
   zIndices,
+  typeScale,
 };

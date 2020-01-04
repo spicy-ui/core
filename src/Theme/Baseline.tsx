@@ -10,7 +10,7 @@ export const Baseline = createGlobalStyle`
   }
 
   html {
-    color: ${p => p.theme.colors.gray[700]};
+    color: ${p => p.theme.colors.gray[800]};
     font-family: ${p => p.theme.fonts.body};
     font-size: ${p => p.theme.fontSizes.body1};
     line-height: ${p => p.theme.lineHeights.body1};
@@ -22,7 +22,7 @@ export const Baseline = createGlobalStyle`
   }
 
   body {
-    background-color: ${p => p.theme.colors.gray[50]};
+    background-color: ${p => p.theme.colors.white};
   }
 
   h1, h2, h3, h4, h5, h6, p {
