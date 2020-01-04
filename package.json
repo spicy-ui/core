@@ -38,7 +38,8 @@
     "deepmerge": "^4.2.2",
     "polished": "^3.4.2",
     "styled-normalize": "^8.0.6",
-    "styled-system": "^5.1.4"
+    "styled-system": "^5.1.4",
+    "utility-types": "^3.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",

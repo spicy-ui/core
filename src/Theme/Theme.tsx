@@ -5,7 +5,8 @@ import { Baseline } from './Baseline';
 import { system } from './system';
 
 export type ThemeProps = {
-  theme?: Partial<typeof system>;
+  // TODO: fix types as Partial<typeof system> doesn't allow for parial inner keys
+  theme?: any;
 };
 
 const Theme: React.FC<ThemeProps> = ({ children, theme = {} }) => {
