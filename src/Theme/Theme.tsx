@@ -1,22 +1,24 @@
 import deepmerge from 'deepmerge';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import { DeepPartial } from 'utility-types';
 import { Baseline } from './Baseline';
 import { system } from './system';
 
 export type ThemeProps = {
-  // TODO: fix types as Partial<typeof system> doesn't allow for parial inner keys
-  theme?: any;
+  theme?: DeepPartial<typeof system>;
 };
 
 const Theme: React.FC<ThemeProps> = ({ children, theme = {} }) => {
+  const mergedTheme = deepmerge(system, theme as Partial<typeof system>);
+
   if (process.env.NODE_ENV !== 'production') {
     // @ts-ignore
-    window.theme = deepmerge(system, theme);
+    window.theme = mergedTheme;
   }
 
   return (
-    <ThemeProvider theme={deepmerge(system, theme)}>
+    <ThemeProvider theme={mergedTheme}>
       <Baseline />
       <>{children}</>
     </ThemeProvider>
