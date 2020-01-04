@@ -30,10 +30,6 @@
     "lint": "tsdx lint",
     "test": "tsdx test --passWithNoTests",
     "prepare": "tsdx build",
-    "docs:install": "cd docs && yarn",
-    "docs:clean": "cd docs && yarn clean",
-    "docs:start": "cd docs && yarn start",
-    "docs:build": "cd docs && yarn build"
   },
   "dependencies": {
     "@styled-system/core": "^5.1.2",

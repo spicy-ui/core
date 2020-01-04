@@ -27,9 +27,6 @@ If you manage to find any, please report them [here](https://github.com/South-Pa
 
 Pull the repo and then install dependencies with `yarn`.
 
-In the root directory, use `yarn start` to begin a watch task on the library.
-
-Then, in another CLI window use `yarn docs:start` to begin a watch on the docs.
 
 See `the package.json` for other scripts such as `clean`, `test` and `lint`.
 
