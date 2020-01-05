@@ -27,7 +27,7 @@ If you manage to find any, please report them [here](https://github.com/South-Pa
 
 Pull the repo and then install dependencies with `yarn`.
 
-In the root directory, use `yarn storybook:start` to run Storybook on `localhost:9000`
+In the root directory, use `yarn start:storybook` to run Storybook on `localhost:9000`
 
 See `the package.json` for other scripts such as `clean`, `test` and `lint`.
 

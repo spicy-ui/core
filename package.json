@@ -24,14 +24,14 @@
     "url": "https://github.com/South-Paw/spicy-ui.git"
   },
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf dist storybook-static",
     "start": "tsdx watch",
+    "start:storybook": "start-storybook -p 9000",
     "build": "tsdx build",
+    "build:storybook": "build-storybook",
     "lint": "tsdx lint",
     "test": "tsdx test --passWithNoTests",
-    "prepare": "tsdx build",
-    "storybook:start": "start-storybook -p 9000",
-    "storybook:build": "build-storybook"
+    "prepare": "tsdx build"
   },
   "dependencies": {
     "@styled-system/core": "^5.1.2",

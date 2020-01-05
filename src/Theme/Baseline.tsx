@@ -10,7 +10,7 @@ export const Baseline = createGlobalStyle`
   }
 
   html {
-    color: ${p => p.theme.colors.gray[800]};
+    color: ${p => p.theme.colors.gray[900]};
     font-family: ${p => p.theme.fonts.body};
     font-size: ${p => p.theme.fontSizes.body1};
     line-height: ${p => p.theme.lineHeights.body1};
@@ -39,7 +39,6 @@ export const Baseline = createGlobalStyle`
   }
 
   strong {
-    color: ${p => p.theme.colors.gray[900]};
     font-style: normal;
     font-weight: ${p => p.theme.fontWeights.medium};
   }
