@@ -5,9 +5,9 @@ import { DeepPartial } from 'utility-types';
 import { Baseline } from './Baseline';
 import { system } from './system';
 
-export type ThemeProps = {
+export interface ThemeProps {
   theme?: DeepPartial<typeof system>;
-};
+}
 
 const Theme: React.FC<ThemeProps> = ({ children, theme = {} }) => {
   const mergedTheme = deepmerge(system, theme as Partial<typeof system>);
