@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Button from './Button';
+import Button, { ButtonVariant, ButtonVariantColor } from './Button';
+import { uid } from 'react-uid';
 
 export default {
   title: 'Button',
@@ -7,3 +8,37 @@ export default {
 };
 
 export const Simple = () => <Button>Button</Button>;
+
+export const Variants = () => (
+  <>
+    {['solid', 'outline', 'ghost', 'link'].map((variant, index) => (
+      <div key={uid(variant, index)}>
+        <Button variant={variant as ButtonVariant}>{variant}</Button>
+      </div>
+    ))}
+  </>
+);
+
+export const VariantColors = () => (
+  <>
+    {[
+      'transparent',
+      'black',
+      'white',
+      'gray',
+      'red',
+      'orange',
+      'yellow',
+      'green',
+      'teal',
+      'blue',
+      'cyan',
+      'purple',
+      'pink',
+    ].map((color, index) => (
+      <div key={uid(color, index)}>
+        <Button variantColor={color as ButtonVariantColor}>{color}</Button>
+      </div>
+    ))}
+  </>
+);

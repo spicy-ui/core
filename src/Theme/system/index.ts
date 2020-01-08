@@ -1,5 +1,6 @@
-import { breakpoints } from './breakpoints';
 import { radii } from './borders';
+import { breakpoints } from './breakpoints';
+import { buttons } from './buttons';
 import { colors } from './colors';
 import { shadows } from './shadows';
 import { space } from './space';
@@ -18,5 +19,6 @@ export const system = {
   radii,
   shadows,
   zIndices,
+  buttons,
   typeScale,
 };
