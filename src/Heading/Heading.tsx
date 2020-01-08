@@ -15,7 +15,13 @@ export interface HeadingProps extends LayoutProps, SpaceProps, ColorProps, Syste
   variant?: keyof typeof system.typeScale;
 }
 
-const Heading = styled('h2')<HeadingProps>(variant({ scale: 'typeScale' }), layout, space, color, typography);
+const Heading = styled('h2')<HeadingProps>`
+  ${variant({ scale: 'typeScale' })}
+  ${layout}
+  ${space}
+  ${color}
+  ${typography}
+`;
 
 Heading.defaultProps = {
   variant: 'h2',
