@@ -1,5 +1,5 @@
 import styled, { DefaultTheme } from 'styled-components';
-import { variant } from 'styled-system';
+import variant from '../util/variant';
 
 export type ButtonSize = keyof DefaultTheme['buttons']['sizes'];
 
