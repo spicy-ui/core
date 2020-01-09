@@ -6,9 +6,9 @@ import {
   LayoutProps,
   typography,
   TypographyProps as SystemTypographyProps,
-  variant,
 } from 'styled-system';
 import { space, SpaceProps } from '../util/space';
+import variant from '../util/variant';
 
 export interface TextProps extends LayoutProps, SpaceProps, ColorProps, SystemTypographyProps {
   variant?: keyof DefaultTheme['typeScale'];
