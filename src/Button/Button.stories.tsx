@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { uid } from 'react-uid';
-import Button, { ButtonVariant, ButtonVariantColor } from './Button';
+import Button, { ButtonSize, ButtonVariant, ButtonColor } from './Button';
 
 export default {
   title: 'Button',
@@ -9,36 +9,51 @@ export default {
 
 export const Simple = () => <Button>Button</Button>;
 
+export const Sizes = () => (
+  <>
+    {['sm', 'md', 'lg'].map((size, index) => (
+      <div key={uid(size, index)}>
+        <Button size={size as ButtonSize}>Button ({size})</Button>
+      </div>
+    ))}
+  </>
+);
+
 export const Variants = () => (
   <>
-    {['solid', 'outline', 'ghost', 'link'].map((variant, index) => (
+    {['fill', 'outline', 'ghost', 'link'].map((variant, index) => (
       <div key={uid(variant, index)}>
-        <Button variant={variant as ButtonVariant}>{variant}</Button>
+        <Button variant={variant as ButtonVariant}>Button ({variant})</Button>
       </div>
     ))}
   </>
 );
 
 export const VariantColors = () => (
-  <>
-    {[
-      'transparent',
-      'black',
-      'white',
-      'gray',
-      'red',
-      'orange',
-      'yellow',
-      'green',
-      'teal',
-      'blue',
-      'cyan',
-      'purple',
-      'pink',
-    ].map((color, index) => (
-      <div key={uid(color, index)}>
-        <Button variantColor={color as ButtonVariantColor}>{color}</Button>
-      </div>
-    ))}
-  </>
+  <table>
+    <tbody>
+      {['gray', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'cyan', 'purple', 'pink'].map((color, index) => (
+        <tr key={uid(color, index)}>
+          <td>
+            <Button color={color as ButtonColor}>Button ({color})</Button>
+          </td>
+          <td>
+            <Button color={color as ButtonColor} variant="outline">
+              Button ({color})
+            </Button>
+          </td>
+          <td>
+            <Button color={color as ButtonColor} variant="ghost">
+              Button ({color})
+            </Button>
+          </td>
+          <td>
+            <Button color={color as ButtonColor} variant="link">
+              Button ({color})
+            </Button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
 );
