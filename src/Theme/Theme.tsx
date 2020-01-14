@@ -10,7 +10,7 @@ export interface ThemeProps {
 }
 
 const Theme: React.FC<ThemeProps> = ({ children, theme = {} }) => {
-  const mergedTheme = deepmerge(system, theme as Partial<typeof system>);
+  const mergedTheme = React.useMemo(() => deepmerge(system, theme as Partial<typeof system>), [theme]);
 
   if (process.env.NODE_ENV !== 'production') {
     // @ts-ignore
