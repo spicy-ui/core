@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
 import {
   color,
   ColorProps,
@@ -6,16 +6,21 @@ import {
   LayoutProps,
   typography,
   TypographyProps as SystemTypographyProps,
-  variant,
 } from 'styled-system';
-import { system } from '../Theme/system';
 import { space, SpaceProps } from '../util/space';
+import variant from '../util/variant';
 
 export interface TextProps extends LayoutProps, SpaceProps, ColorProps, SystemTypographyProps {
-  variant?: keyof typeof system.typeScale;
+  variant?: keyof DefaultTheme['typeScale'];
 }
 
-const Text = styled('p')<TextProps>(variant({ scale: 'typeScale' }), layout, space, color, typography);
+const Text = styled('p')<TextProps>`
+  ${variant({ scale: 'typeScale' })}
+  ${layout}
+  ${space}
+  ${color}
+  ${typography}
+`;
 
 Text.defaultProps = {
   variant: 'body1',

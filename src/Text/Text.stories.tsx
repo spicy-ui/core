@@ -13,6 +13,23 @@ export const Simple = () => (
   </Text>
 );
 
+export const Variants = () => (
+  <>
+    <Text variant="body1">
+      body1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit, hendrerit consequat lectus.
+      Pellentesque egestas mauris mollis.
+    </Text>
+    <Text variant="body2">
+      body2: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit, hendrerit consequat lectus.
+      Pellentesque egestas mauris mollis.
+    </Text>
+    <Text variant="small">
+      small: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit, hendrerit consequat lectus.
+      Pellentesque egestas mauris mollis.
+    </Text>
+  </>
+);
+
 export const SemanticText = () => (
   <>
     <Text>

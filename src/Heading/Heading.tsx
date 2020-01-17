@@ -6,16 +6,22 @@ import {
   LayoutProps,
   typography,
   TypographyProps as SystemTypographyProps,
-  variant,
 } from 'styled-system';
 import { system } from '../Theme/system';
 import { space, SpaceProps } from '../util/space';
+import variant from '../util/variant';
 
 export interface HeadingProps extends LayoutProps, SpaceProps, ColorProps, SystemTypographyProps {
   variant?: keyof typeof system.typeScale;
 }
 
-const Heading = styled('h2')<HeadingProps>(variant({ scale: 'typeScale' }), layout, space, color, typography);
+const Heading = styled('h2')<HeadingProps>`
+  ${variant({ scale: 'typeScale' })}
+  ${layout}
+  ${space}
+  ${color}
+  ${typography}
+`;
 
 Heading.defaultProps = {
   variant: 'h2',
