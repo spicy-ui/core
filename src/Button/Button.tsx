@@ -1,7 +1,6 @@
 import { get } from '@styled-system/core';
 import styled, { DefaultTheme } from 'styled-components';
-import { width, WidthProps } from 'styled-system';
-import { space, SpaceProps } from '../util/space';
+import { space, SpaceProps, width, WidthProps } from 'styled-system';
 import variant from '../util/variant';
 import { applyVariants, getTextColor } from './utils';
 

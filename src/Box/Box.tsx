@@ -14,10 +14,11 @@ import {
   LayoutProps,
   position,
   PositionProps,
+  space,
+  SpaceProps,
   typography,
   TypographyProps,
 } from 'styled-system';
-import { space, SpaceProps } from '../util/space';
 
 export interface BoxProps
   extends LayoutProps,
