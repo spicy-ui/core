@@ -1,11 +1,12 @@
+import { addDecorator, addParameters, configure } from '@storybook/react';
+import { create } from '@storybook/theming';
 import React from 'react';
-import { configure, addDecorator, addParameters } from '@storybook/react';
-
-import { spicyui } from './theme';
 import { Theme } from '../src/Theme';
 
-addParameters({ options: { theme: spicyui } });
+const theme = create({ brandTitle: '🌶️ Spicy UI' });
+
+addParameters({ options: { theme } });
 
 addDecorator(storyFn => <Theme>{storyFn()}</Theme>);
 
-configure(require.context('../src', true, /\.stories\.tsx$/), module);
+configure(require.context('../src', true, /\.stories\.(tsx|mdx)$/), module);
