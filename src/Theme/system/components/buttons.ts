@@ -1,24 +1,24 @@
 const sizes = {
   sm: {
     borderRadius: 'sm',
-    fontSize: 'h6',
-    fontWeight: 'medium',
-    lineHeight: 'h4',
-    px: 'sm',
+    fontSize: 'sm',
+    fontWeight: 'normal',
+    lineHeight: '32px',
+    px: 8,
   },
-  md: {
+  base: {
     borderRadius: 'sm',
-    fontSize: 'h5',
+    fontSize: 'base',
     fontWeight: 'medium',
-    lineHeight: 'h3',
-    px: 'md',
+    lineHeight: '40px',
+    px: 12,
   },
   lg: {
     borderRadius: 'sm',
-    fontSize: 'h4',
+    fontSize: 'lg',
     fontWeight: 'medium',
-    lineHeight: 'h2',
-    px: 'lg',
+    lineHeight: '48px',
+    px: 16,
   },
 };
 
@@ -63,7 +63,7 @@ const colors = {
     light: 'teal.400',
     base: 'teal.500',
     dark: 'teal.600',
-    text: 'base',
+    text: 'inverse',
   },
   blue: {
     ghost: 'blue.50',

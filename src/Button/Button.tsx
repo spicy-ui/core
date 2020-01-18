@@ -96,7 +96,7 @@ const Button = styled('button')<ButtonProps>`
 Button.defaultProps = {
   fullWidth: false,
   isDisabled: false,
-  size: 'md',
+  size: 'base',
   type: 'button',
   color: 'gray',
   variant: 'fill',
