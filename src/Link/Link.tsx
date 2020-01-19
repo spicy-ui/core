@@ -15,7 +15,7 @@ import {
 export interface LinkProps extends LayoutProps, SpaceProps, ColorProps, TypographyProps {}
 
 const Link = styled('a')<LinkProps>`
-  ${p => css(get(p.theme.textStyle, 'a'))(p)}
+  ${p => css(get(p.theme.componentStyles.text, 'a'))(p)}
   ${layout}
   ${space}
   ${color}

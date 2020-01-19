@@ -16,7 +16,7 @@ export interface TextProps extends LayoutProps, SpaceProps, ColorProps, SystemTy
 }
 
 const Text = styled('p')<TextProps>`
-  ${variant({ scale: 'textStyle' })}
+  ${variant({ scale: 'componentStyles.text' })}
   ${layout}
   ${space}
   ${color}

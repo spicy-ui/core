@@ -1,20 +1,20 @@
-export const getTextColor = (key: string, reverse = false) => {
-  if (key === 'base' || key === 'inverse') {
-    if (reverse) {
-      return key === 'base' ? 'text.inverse' : 'text.base';
-    }
+import { css as systemCss } from '@styled-system/css';
+import { css as styledCss } from 'styled-components';
 
-    return `text.${key}`;
+export const applyButtonVariations = (variants: any) => (props: any) => {
+  const themeVariant = props.theme.componentStyles.buttons;
+  const localVariant = variants[props.variant];
+  const customVariant = themeVariant.variants[props.variant];
+  const colors = themeVariant.colors[props.color];
+
+  if (customVariant) {
+    return styledCss`
+      ${systemCss(localVariant(colors, props))(props)}
+      ${systemCss(customVariant(colors, props))(props)}
+    `;
   }
 
-  return key;
-};
-
-export const applyVariants = (variants: any) => (props: any) => {
-  const colors = props.theme.buttonStyle.colors[props.color];
-
-  // We can also extend this to add additional variants from the user's theme if we'd like too.
-  return `
-    ${variants[props.variant](colors, props)}
+  return styledCss`
+    ${systemCss(localVariant(colors, props))(props)}
   `;
 };

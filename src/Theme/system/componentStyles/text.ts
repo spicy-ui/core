@@ -1,4 +1,4 @@
-export const textStyle = {
+export const text = {
   h1: {
     fontFamily: 'heading',
     fontSize: '6xl',
@@ -53,11 +53,23 @@ export const textStyle = {
     fontWeight: 'normal',
     lineHeight: 'body',
   },
+  a: {
+    color: 'blue.500',
+    cursor: 'pointer',
+    outline: 'none',
+    textDecoration: 'none',
+    ':hover': {
+      textDecoration: 'underline',
+    },
+  },
+  em: {
+    fontStyle: 'italic',
+  },
+  strong: {
+    fontWeight: 'medium',
+  },
   small: {
-    fontFamily: 'body',
     fontSize: 'xs',
-    fontWeight: 'normal',
-    lineHeight: 'body',
   },
   code: {
     fontFamily: 'mono',
@@ -65,13 +77,11 @@ export const textStyle = {
     fontWeight: 'normal',
     lineHeight: 'body',
   },
-  a: {
-    color: 'blue.500',
-    cursor: 'pointer',
-    outline: 'none',
-    textDecoration: 'none',
-    _hover: {
-      textDecoration: 'underline',
+  pre: {
+    fontFamily: 'monospace',
+    overflowX: 'auto',
+    code: {
+      color: 'inherit',
     },
   },
 };
