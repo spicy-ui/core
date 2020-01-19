@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { uid } from 'react-uid';
-import Button, { ButtonSize, ButtonVariant, ButtonColor } from './Button';
+import Button, { ButtonColor, ButtonSize, ButtonVariant } from './Button';
 
 export default {
   title: 'Button',
