@@ -1,3 +1,4 @@
+// TODO: Rename to textStyles
 export const typeScale = {
   h1: {
     fontFamily: 'heading',
@@ -64,5 +65,14 @@ export const typeScale = {
     fontSize: 'base',
     fontWeight: 'normal',
     lineHeight: 'body',
+  },
+  a: {
+    color: 'blue.500',
+    cursor: 'pointer',
+    outline: 'none',
+    textDecoration: 'none',
+    _hover: {
+      textDecoration: 'underline',
+    },
   },
 };
