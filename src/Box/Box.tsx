@@ -14,6 +14,8 @@ import {
   LayoutProps,
   position,
   PositionProps,
+  shadow,
+  ShadowProps,
   space,
   SpaceProps,
   typography,
@@ -29,7 +31,8 @@ export interface BoxProps
     BackgroundProps,
     ColorProps,
     TypographyProps,
-    BorderProps {}
+    BorderProps,
+    ShadowProps {}
 
 const Box = styled('div')<BoxProps>`
   ${layout}
@@ -41,6 +44,7 @@ const Box = styled('div')<BoxProps>`
   ${color}
   ${typography}
   ${border}
+  ${shadow}
 `;
 
 Box.displayName = 'Box';

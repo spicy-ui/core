@@ -9,15 +9,14 @@ import {
   typography,
   TypographyProps as SystemTypographyProps,
 } from 'styled-system';
-import { system } from '../Theme/system';
-import variant from '../util/variant';
+import { variant } from '../util';
 
 export interface HeadingProps extends LayoutProps, SpaceProps, ColorProps, SystemTypographyProps {
-  variant?: keyof typeof system.typeScale;
+  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 
 const Heading = styled('h2')<HeadingProps>`
-  ${variant({ scale: 'typeScale' })}
+  ${variant({ scale: 'componentStyles.text' })}
   ${layout}
   ${space}
   ${color}

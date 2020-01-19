@@ -1,5 +1,7 @@
+import css from '@styled-system/css';
 import { createGlobalStyle } from 'styled-components';
 import styledNormalize from 'styled-normalize';
+import { get } from 'styled-system';
 
 export const Baseline = createGlobalStyle`
   ${styledNormalize}
@@ -12,9 +14,7 @@ export const Baseline = createGlobalStyle`
 
   html {
     color: ${p => p.theme.colors.gray[900]};
-    font-family: ${p => p.theme.fonts.body};
-    font-size: ${p => p.theme.fontSizes.base};
-    line-height: ${p => p.theme.lineHeights.body};
+    ${p => css(get(p.theme.componentStyles.text, 'body1'))(p)}
     box-sizing: border-box;
   }
 
@@ -29,19 +29,29 @@ export const Baseline = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
-
-    &:hover, &:focus {
-      text-decoration: underline;
-    }
+  }
+  
+  em {
+    ${p => css(get(p.theme.componentStyles.text, 'em'))(p)}
   }
 
   strong {
-    font-style: normal;
-    font-weight: ${p => p.theme.fontWeights.medium};
+    ${p => css(get(p.theme.componentStyles.text, 'strong'))(p)}
   }
 
   small {
-    font-size: ${p => p.theme.fontSizes.xs};
-    font-weight: ${p => p.theme.fontWeights.normal};
+    ${p => css(get(p.theme.componentStyles.text, 'small'))(p)}
+  }
+
+  code {
+    ${p => css(get(p.theme.componentStyles.text, 'code'))(p)}
+  }
+
+  pre {
+    overflow-x: auto;
+
+    code {
+      color: inherit;
+    }
   }
 `;

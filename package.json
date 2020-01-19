@@ -31,7 +31,7 @@
     "build:storybook": "build-storybook",
     "lint": "tsdx lint",
     "test": "tsdx test --passWithNoTests",
-    "prepare": "tsdx build"
+    "prepublishOnly": "yarn build"
   },
   "dependencies": {
     "@styled-system/css": "^5.1.4",

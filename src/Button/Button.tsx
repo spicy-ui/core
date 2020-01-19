@@ -1,76 +1,57 @@
 import { darken, rgba } from 'polished';
 import styled, { DefaultTheme } from 'styled-components';
 import { get, space, SpaceProps, width, WidthProps } from 'styled-system';
-import variant from '../util/variant';
-import { applyVariants, getTextColor } from './util';
-
-interface VariantColor {
-  base: string;
-  text: string;
-}
-
-interface VariantProps extends ButtonProps {
-  theme: DefaultTheme;
-}
-
-interface VariantFunctions {
-  [key: string]: (color: VariantColor, props: VariantProps) => string;
-}
+import { VariantFunctions } from '../Theme/system/componentStyles/buttons';
+import { variant } from '../util';
+import { applyButtonVariations } from './util';
 
 const variants: VariantFunctions = {
-  fill: ({ base, text }, { theme }) => `
-    background-color: ${get(theme.colors, base)};
-    color: ${get(theme.colors, getTextColor(text))};
-
-    &:hover {
-      background-color: ${darken(0.075, get(theme.colors, base))};
-    }
-
-    &:active {
-      background-color: ${darken(0.15, get(theme.colors, base))};
-    }
-  `,
-  outline: ({ base }, { theme }) => `
-    background-color: transparent;
-    color: ${get(theme.colors, getTextColor(base))};
-    border: 2px solid currentcolor;
-
-    &:hover {
-      background-color: ${rgba(get(theme.colors, base), 0.075)};
-    }
-
-    &:active {
-      background-color: ${rgba(get(theme.colors, base), 0.15)};
-    }
-  `,
-  ghost: ({ base }, { theme }) => `
-    background-color: transparent;
-    color: ${get(theme.colors, getTextColor(base))};
-
-    &:hover {
-      background-color: ${rgba(get(theme.colors, base), 0.075)};
-    }
-
-    &:active {
-      background-color: ${rgba(get(theme.colors, base), 0.15)};
-    }
-  `,
-  link: ({ base }, { theme }) => `
-    background-color: transparent;
-    color: ${get(theme.colors, getTextColor(base))};
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  `,
+  fill: ({ base, text }, { theme }) => ({
+    backgroundColor: get(theme.colors, base),
+    color: get(theme.colors, text),
+    ':hover': {
+      backgroundColor: darken(0.075, get(theme.colors, base)),
+    },
+    ':active': {
+      backgroundColor: darken(0.15, get(theme.colors, base)),
+    },
+  }),
+  outline: ({ base }, { theme }) => ({
+    backgroundColor: 'transparent',
+    color: get(theme.colors, base),
+    border: '2px solid currentColor',
+    ':hover': {
+      backgroundColor: rgba(get(theme.colors, base), 0.075),
+    },
+    ':active': {
+      backgroundColor: rgba(get(theme.colors, base), 0.15),
+    },
+  }),
+  ghost: ({ base }, { theme }) => ({
+    backgroundColor: 'transparent',
+    color: get(theme.colors, base),
+    ':hover': {
+      backgroundColor: rgba(get(theme.colors, base), 0.075),
+    },
+    ':active': {
+      backgroundColor: rgba(get(theme.colors, base), 0.15),
+    },
+  }),
+  link: ({ base }, { theme }) => ({
+    backgroundColor: 'transparent',
+    color: get(theme.colors, base),
+    textDecoration: 'none',
+    ':hover': {
+      textDecoration: 'underline',
+    },
+  }),
 };
 
-export type ButtonSize = keyof DefaultTheme['buttons']['sizes'];
+export type ButtonSize = keyof DefaultTheme['componentStyles']['buttons']['sizes'];
 
-export type ButtonColor = keyof DefaultTheme['buttons']['colors'];
+export type ButtonColor = keyof DefaultTheme['componentStyles']['buttons']['colors'];
 
-export type ButtonVariant = keyof typeof variants;
+export type ButtonVariant = keyof DefaultTheme['componentStyles']['buttons']['variants'];
 
 export interface ButtonProps extends SpaceProps, WidthProps {
   fullWidth?: boolean;
@@ -81,7 +62,7 @@ export interface ButtonProps extends SpaceProps, WidthProps {
 }
 
 const Button = styled('button')<ButtonProps>`
-  ${variant({ prop: 'size', scale: 'buttons.sizes' })}
+  ${variant({ prop: 'size', scale: 'componentStyles.buttons.sizes' })}
   ${p => (p.fullWidth ? 'width: 100%;' : '')}
   ${width}
   ${space}
@@ -90,7 +71,7 @@ const Button = styled('button')<ButtonProps>`
   justify-content: center;
   background: none;
   border: none;
-  ${applyVariants(variants)}
+  ${applyButtonVariations(variants)}
   cursor: pointer;
   outline: none;
   text-align: center;

@@ -1,4 +1,4 @@
-import styled, { DefaultTheme } from 'styled-components';
+import styled from 'styled-components';
 import {
   color,
   ColorProps,
@@ -9,14 +9,14 @@ import {
   typography,
   TypographyProps as SystemTypographyProps,
 } from 'styled-system';
-import variant from '../util/variant';
+import { variant } from '../util';
 
 export interface TextProps extends LayoutProps, SpaceProps, ColorProps, SystemTypographyProps {
-  variant?: keyof DefaultTheme['typeScale'];
+  variant?: 'body1' | 'body2' | 'lead';
 }
 
 const Text = styled('p')<TextProps>`
-  ${variant({ scale: 'typeScale' })}
+  ${variant({ scale: 'componentStyles.text' })}
   ${layout}
   ${space}
   ${color}
