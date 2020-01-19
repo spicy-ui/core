@@ -21,7 +21,7 @@ import {
   typography,
   TypographyProps,
 } from 'styled-system';
-import { variant } from '../util/variant';
+import { variant } from '../util';
 
 const variants = {
   vertical: {

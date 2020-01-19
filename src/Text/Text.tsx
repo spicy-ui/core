@@ -9,7 +9,7 @@ import {
   typography,
   TypographyProps as SystemTypographyProps,
 } from 'styled-system';
-import variant from '../util/variant';
+import { variant } from '../util';
 
 export interface TextProps extends LayoutProps, SpaceProps, ColorProps, SystemTypographyProps {
   variant?: keyof DefaultTheme['textStyle'];
