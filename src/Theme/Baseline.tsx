@@ -15,6 +15,7 @@ export const Baseline = createGlobalStyle`
     font-family: ${p => p.theme.fonts.body};
     font-size: ${p => p.theme.fontSizes.base};
     line-height: ${p => p.theme.lineHeights.body};
+    box-sizing: border-box;
   }
 
   body {
