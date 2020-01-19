@@ -66,9 +66,9 @@ const variants: VariantFunctions = {
   `,
 };
 
-export type ButtonSize = keyof DefaultTheme['buttons']['sizes'];
+export type ButtonSize = keyof DefaultTheme['buttonStyle']['sizes'];
 
-export type ButtonColor = keyof DefaultTheme['buttons']['colors'];
+export type ButtonColor = keyof DefaultTheme['buttonStyle']['colors'];
 
 export type ButtonVariant = keyof typeof variants;
 
@@ -81,7 +81,7 @@ export interface ButtonProps extends SpaceProps, WidthProps {
 }
 
 const Button = styled('button')<ButtonProps>`
-  ${variant({ prop: 'size', scale: 'buttons.sizes' })}
+  ${variant({ prop: 'size', scale: 'buttonStyle.sizes' })}
   ${p => (p.fullWidth ? 'width: 100%;' : '')}
   ${width}
   ${space}

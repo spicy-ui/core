@@ -1,12 +1,12 @@
-import { buttons } from './components/buttons';
-import { typeScale } from './components/typeScale';
-import { radii } from './core/borders';
-import { breakpoints } from './core/breakpoints';
-import { colors } from './core/colors';
-import { shadows } from './core/shadows';
-import { space } from './core/space';
-import { fonts, fontSizes, fontWeights, letterSpacings, lineHeights } from './core/typography';
-import { zIndices } from './core/zIndices';
+import { buttonStyle } from './buttonStyle';
+import { textStyle } from './textStyle';
+import { radii } from './borders';
+import { breakpoints } from './breakpoints';
+import { colors } from './colors';
+import { shadows } from './shadows';
+import { space } from './space';
+import { fonts, fontSizes, fontWeights, letterSpacings, lineHeights } from './typography';
+import { zIndices } from './zIndices';
 
 export const system = {
   // Core
@@ -23,6 +23,6 @@ export const system = {
   zIndices,
 
   // Components
-  buttons,
-  typeScale,
+  buttonStyle,
+  textStyle,
 };

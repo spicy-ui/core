@@ -11,7 +11,7 @@ export const getTextColor = (key: string, reverse = false) => {
 };
 
 export const applyVariants = (variants: any) => (props: any) => {
-  const colors = props.theme.buttons.colors[props.color];
+  const colors = props.theme.buttonStyle.colors[props.color];
 
   // We can also extend this to add additional variants from the user's theme if we'd like too.
   return `

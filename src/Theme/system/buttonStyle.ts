@@ -68,7 +68,7 @@ const colors = {
   },
 };
 
-export const buttons = {
+export const buttonStyle = {
   sizes,
   colors,
 };

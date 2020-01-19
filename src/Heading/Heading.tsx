@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
 import {
   color,
   ColorProps,
@@ -9,15 +9,14 @@ import {
   typography,
   TypographyProps as SystemTypographyProps,
 } from 'styled-system';
-import { system } from '../Theme/system';
 import variant from '../util/variant';
 
 export interface HeadingProps extends LayoutProps, SpaceProps, ColorProps, SystemTypographyProps {
-  variant?: keyof typeof system.typeScale;
+  variant?: keyof DefaultTheme['textStyle'];
 }
 
 const Heading = styled('h2')<HeadingProps>`
-  ${variant({ scale: 'typeScale' })}
+  ${variant({ scale: 'textStyle' })}
   ${layout}
   ${space}
   ${color}

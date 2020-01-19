@@ -1,5 +1,4 @@
-// TODO: Rename to textStyles
-export const typeScale = {
+export const textStyle = {
   h1: {
     fontFamily: 'heading',
     fontSize: '6xl',

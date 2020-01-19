@@ -12,11 +12,11 @@ import {
 import variant from '../util/variant';
 
 export interface TextProps extends LayoutProps, SpaceProps, ColorProps, SystemTypographyProps {
-  variant?: keyof DefaultTheme['typeScale'];
+  variant?: keyof DefaultTheme['textStyle'];
 }
 
 const Text = styled('p')<TextProps>`
-  ${variant({ scale: 'typeScale' })}
+  ${variant({ scale: 'textStyle' })}
   ${layout}
   ${space}
   ${color}
