@@ -1,4 +1,4 @@
-import styled, { DefaultTheme } from 'styled-components';
+import styled from 'styled-components';
 import {
   color,
   ColorProps,
@@ -12,7 +12,7 @@ import {
 import { variant } from '../util';
 
 export interface TextProps extends LayoutProps, SpaceProps, ColorProps, SystemTypographyProps {
-  variant?: keyof DefaultTheme['textStyle'];
+  variant?: 'body1' | 'body2' | 'lead';
 }
 
 const Text = styled('p')<TextProps>`

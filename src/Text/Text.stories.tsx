@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { uid } from 'react-uid';
 import Text from './Text';
 
 export default {
@@ -8,46 +9,43 @@ export default {
 
 export const Simple = () => (
   <Text>
-    This is a normal paragraph of text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit,
+    This is a regular paragraph of text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit,
     hendrerit consequat lectus. Pellentesque egestas mauris mollis.
   </Text>
 );
 
 export const Variants = () => (
   <>
-    <Text variant="lead">
-      lead: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit, hendrerit consequat lectus.
-      Pellentesque egestas mauris mollis.
-    </Text>
-    <Text variant="body1">
-      body1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit, hendrerit consequat lectus.
-      Pellentesque egestas mauris mollis.
-    </Text>
-    <Text variant="body2">
-      body2: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit, hendrerit consequat lectus.
-      Pellentesque egestas mauris mollis.
-    </Text>
-    <Text variant="small">
-      small: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit, hendrerit consequat lectus.
-      Pellentesque egestas mauris mollis.
-    </Text>
-    <Text variant="code">
-      code: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit, hendrerit consequat lectus.
-      Pellentesque egestas mauris mollis.
-    </Text>
+    {['lead', 'body1', 'body2', 'small', 'code'].map((variant: any, idx) => (
+      <Text key={uid(variant, idx)} variant={variant}>
+        {variant}: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit, hendrerit consequat
+        lectus. Pellentesque egestas mauris mollis.
+      </Text>
+    ))}
   </>
 );
 
 export const SemanticText = () => (
   <>
-    <Text>
-      <strong>This text is strong</strong>
-    </Text>
-    <Text>
-      <em>This text has emphasis</em>
-    </Text>
-    <Text>
-      <small>This text is small</small>
-    </Text>
+    {[
+      { as: 'em', label: 'Emphasis' },
+      { as: 'strong', label: 'Strong' },
+      { as: 'small', label: 'Small' },
+      { as: 'code', label: '&lt;div /&gt;' },
+      { as: 'abbr', label: 'I18N' },
+      { as: 'cite', label: 'Citation' },
+      { as: 'del', label: 'Deleted' },
+      { as: 'ins', label: 'Inserted' },
+      { as: 'kbd', label: 'Ctrl + C' },
+      { as: 'mark', label: 'Highlighted' },
+      { as: 's', label: 'Strikethrough' },
+      { as: 'samp', label: 'Sample' },
+      { as: 'sub', label: 'sub' },
+      { as: 'sup', label: 'sup' },
+    ].map(({ as: As, label }: any, idx) => (
+      <Text key={uid(label, idx)}>
+        <As>{label}</As>
+      </Text>
+    ))}
   </>
 );

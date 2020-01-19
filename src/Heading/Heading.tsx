@@ -1,4 +1,4 @@
-import styled, { DefaultTheme } from 'styled-components';
+import styled from 'styled-components';
 import {
   color,
   ColorProps,
@@ -12,7 +12,7 @@ import {
 import { variant } from '../util';
 
 export interface HeadingProps extends LayoutProps, SpaceProps, ColorProps, SystemTypographyProps {
-  variant?: keyof DefaultTheme['textStyle'];
+  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 
 const Heading = styled('h2')<HeadingProps>`
