@@ -1,63 +1,66 @@
-import { get } from '@styled-system/core';
+import { darken, rgba } from 'polished';
 import styled, { DefaultTheme } from 'styled-components';
-import { space, SpaceProps, width, WidthProps } from 'styled-system';
+import { get, space, SpaceProps, width, WidthProps } from 'styled-system';
 import variant from '../util/variant';
-import { applyVariants, getTextColor } from './utils';
+import { applyVariants, getTextColor } from './util';
 
-const variants = {
-  fill: (colors: any, props: any) => `
-    background-color: ${get(props.theme.colors, colors.base)};
-    color: ${get(props.theme.colors, getTextColor(colors.text))};
+interface VariantColor {
+  base: string;
+  text: string;
+}
 
-    &:focus {
-      background-color: ${get(props.theme.colors, colors.light)};
-    }
+interface VariantProps extends ButtonProps {
+  theme: DefaultTheme;
+}
+
+interface VariantFunctions {
+  [key: string]: (color: VariantColor, props: VariantProps) => string;
+}
+
+const variants: VariantFunctions = {
+  fill: ({ base, text }, { theme }) => `
+    background-color: ${get(theme.colors, base)};
+    color: ${get(theme.colors, getTextColor(text))};
 
     &:hover {
-      background-color: ${get(props.theme.colors, colors.dark)};
+      background-color: ${darken(0.075, get(theme.colors, base))};
+    }
+
+    &:active {
+      background-color: ${darken(0.15, get(theme.colors, base))};
     }
   `,
-  outline: (colors: any, props: any) => `
+  outline: ({ base }, { theme }) => `
     background-color: transparent;
-    box-shadow: inset 0 0 0 2px ${get(props.theme.colors, colors.base)};
-    color: ${get(props.theme.colors, colors.base)};
-
-    &:focus {
-      background-color: ${get(props.theme.colors, colors.ghost)};
-      box-shadow: inset 0 0 0 2px ${get(props.theme.colors, colors.base)};
-    }
+    color: ${get(theme.colors, getTextColor(base))};
+    border: 2px solid currentcolor;
 
     &:hover {
-      background-color: ${get(props.theme.colors, colors.dark)};
-      box-shadow: inset 0 0 0 2px ${get(props.theme.colors, colors.dark)};
-      color: ${get(props.theme.colors, getTextColor(colors.text))};
+      background-color: ${rgba(get(theme.colors, base), 0.075)};
+    }
+
+    &:active {
+      background-color: ${rgba(get(theme.colors, base), 0.15)};
     }
   `,
-  ghost: (colors: any, props: any) => `
+  ghost: ({ base }, { theme }) => `
     background-color: transparent;
-    color: ${get(props.theme.colors, colors.base)};
-
-    &:focus {
-      background-color: ${get(props.theme.colors, colors.ghost)};
-    }
+    color: ${get(theme.colors, getTextColor(base))};
 
     &:hover {
-      background-color: ${get(props.theme.colors, colors.ghost)};
-      color: ${get(props.theme.colors, getTextColor(colors.dark))};
+      background-color: ${rgba(get(theme.colors, base), 0.075)};
+    }
+
+    &:active {
+      background-color: ${rgba(get(theme.colors, base), 0.15)};
     }
   `,
-  link: (colors: any, props: any) => `
+  link: ({ base }, { theme }) => `
     background-color: transparent;
-    color: ${get(props.theme.colors, colors.base)};
-    vertical-align: inherit;
-
-    &:focus {
-      color: ${get(props.theme.colors, getTextColor(colors.light))};
-      text-decoration: underline;
-    }
+    color: ${get(theme.colors, getTextColor(base))};
+    text-decoration: none;
 
     &:hover {
-      color: ${get(props.theme.colors, getTextColor(colors.dark))};
       text-decoration: underline;
     }
   `,
@@ -78,19 +81,32 @@ export interface ButtonProps extends SpaceProps, WidthProps {
 }
 
 const Button = styled('button')<ButtonProps>`
-  margin: 0;
-  padding: 0;
-  ${p => (p.fullWidth ? 'width: 100%;' : '')}
-  background: none;
-  background-color: none;
-  border: none;
-  cursor: ${p => (p.isDisabled ? 'not-allowed' : 'pointer')};
-  transition: all ease-in-out 0.18s;
-  transition-property: background-color, border, box-shadow, color;
   ${variant({ prop: 'size', scale: 'buttons.sizes' })}
+  ${p => (p.fullWidth ? 'width: 100%;' : '')}
   ${width}
   ${space}
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
   ${applyVariants(variants)}
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  transition: all 250ms ease 0s;
+  user-select: none;
+
+  &:focus {
+    box-shadow: ${p => rgba(get(p.theme.colors, 'blue.500'), 0.6)} 0px 0px 0px 3px;
+    z-index: 1;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
 `;
 
 Button.defaultProps = {

@@ -1,6 +1,10 @@
 export const getTextColor = (key: string, reverse = false) => {
   if (key === 'base' || key === 'inverse') {
-    return reverse ? (key === 'base' ? 'text.inverse' : 'text.base') : `text.${key}`;
+    if (reverse) {
+      return key === 'base' ? 'text.inverse' : 'text.base';
+    }
+
+    return `text.${key}`;
   }
 
   return key;
