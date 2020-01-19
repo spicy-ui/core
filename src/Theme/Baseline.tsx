@@ -4,21 +4,18 @@ import styledNormalize from 'styled-normalize';
 export const Baseline = createGlobalStyle`
   ${styledNormalize}
 
-  * {
+  *, *:before, *:after {
     margin: 0;
     padding: 0;
+    box-sizing: inherit;
   }
 
   html {
     color: ${p => p.theme.colors.gray[900]};
     font-family: ${p => p.theme.fonts.body};
-    font-size: ${p => p.theme.fontSizes.body1};
-    line-height: ${p => p.theme.lineHeights.body1};
+    font-size: ${p => p.theme.fontSizes.base};
+    line-height: ${p => p.theme.lineHeights.body};
     box-sizing: border-box;
-  }
-
-  *, *:before, *:after {
-    box-sizing: inherit;
   }
 
   body {
@@ -44,7 +41,7 @@ export const Baseline = createGlobalStyle`
   }
 
   small {
-    font-size: ${p => p.theme.fontSizes.small};
+    font-size: ${p => p.theme.fontSizes.xs};
     font-weight: ${p => p.theme.fontWeights.normal};
   }
 `;

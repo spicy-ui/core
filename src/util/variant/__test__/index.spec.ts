@@ -1,5 +1,5 @@
-import { variant, textStyle, colorStyle } from '../index';
-import { system, compose } from '@styled-system/core';
+import { compose, system } from 'styled-system';
+import { colorStyle, textStyle, variant } from '../index';
 
 const fontSize = system({ fontSize: true });
 const color = system({ color: true });

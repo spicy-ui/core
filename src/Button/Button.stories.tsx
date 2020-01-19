@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { uid } from 'react-uid';
-import Button, { ButtonSize, ButtonVariant, ButtonColor } from './Button';
+import Button, { ButtonColor, ButtonSize, ButtonVariant } from './Button';
 
 export default {
   title: 'Button',
@@ -11,9 +11,9 @@ export const Simple = () => <Button>Button</Button>;
 
 export const Sizes = () => (
   <>
-    {['sm', 'md', 'lg'].map((size, index) => (
+    {['sm', 'base', 'lg'].map((size, index) => (
       <div key={uid(size, index)}>
-        <Button size={size as ButtonSize}>Button ({size})</Button>
+        <Button size={size as ButtonSize}>Button</Button>
       </div>
     ))}
   </>

@@ -15,6 +15,10 @@ export const Simple = () => (
 
 export const Variants = () => (
   <>
+    <Text variant="lead">
+      lead: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit, hendrerit consequat lectus.
+      Pellentesque egestas mauris mollis.
+    </Text>
     <Text variant="body1">
       body1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit, hendrerit consequat lectus.
       Pellentesque egestas mauris mollis.
@@ -25,6 +29,10 @@ export const Variants = () => (
     </Text>
     <Text variant="small">
       small: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit, hendrerit consequat lectus.
+      Pellentesque egestas mauris mollis.
+    </Text>
+    <Text variant="code">
+      code: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit, hendrerit consequat lectus.
       Pellentesque egestas mauris mollis.
     </Text>
   </>

@@ -4,11 +4,12 @@ import {
   ColorProps,
   layout,
   LayoutProps,
+  space,
+  SpaceProps,
   typography,
   TypographyProps as SystemTypographyProps,
 } from 'styled-system';
 import { system } from '../Theme/system';
-import { space, SpaceProps } from '../util/space';
 import variant from '../util/variant';
 
 export interface HeadingProps extends LayoutProps, SpaceProps, ColorProps, SystemTypographyProps {
