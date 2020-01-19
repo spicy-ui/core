@@ -7,7 +7,7 @@ export default {
   component: Divider,
 };
 
-export const Simple = () => <Divider my="lg" />;
+export const Simple = () => <Divider />;
 
 export const Vertical = () => (
   <Box display="inline-flex">
