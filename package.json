@@ -30,8 +30,7 @@
     "build": "tsdx build",
     "build:storybook": "build-storybook",
     "lint": "tsdx lint",
-    "test": "tsdx test --passWithNoTests",
-    "prepare": "tsdx build"
+    "test": "tsdx test --passWithNoTests"
   },
   "dependencies": {
     "@styled-system/css": "^5.1.4",
