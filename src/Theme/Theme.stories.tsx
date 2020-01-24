@@ -60,13 +60,13 @@ const Palette: React.FC<{ color: string }> = ({ color }) => {
 
   return (
     <>
-      <Heading as="h3" variant="h3" mt={2}>
-        <code>{color}</code>
+      <Heading as="h3" variant="h3" fontFamily="monospace" mt="24px">
+        {color}
       </Heading>
       <Box
-        mt={2}
+        mt={16}
         display="grid"
-        gridTemplateColumns="repeat(auto-fit, minmax(calc(960px / 4 - 24px), 1fr))"
+        gridTemplateColumns="repeat(auto-fill, minmax(calc(960px / 4 - 24px), 1fr))"
         gridGap="24px"
       >
         {Object.keys(palette).map((key, index) => (
@@ -78,15 +78,15 @@ const Palette: React.FC<{ color: string }> = ({ color }) => {
 };
 
 export const Colors = () => (
-  <Box p={2}>
+  <Box p="16px">
     <Heading>Colors</Heading>
-    <Heading as="h3" variant="h3" mt={2}>
+    <Heading as="h3" variant="h3" mt="24px">
       Neutrals
     </Heading>
     <Box
-      mt={2}
+      mt="16px"
       display="grid"
-      gridTemplateColumns="repeat(auto-fit, minmax(calc(960px / 4 - 24px), 1fr))"
+      gridTemplateColumns="repeat(auto-fill, minmax(calc(960px / 4 - 24px), 1fr))"
       gridGap="24px"
     >
       <Swatch name="white" color="#fff" />
