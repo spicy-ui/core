@@ -33,16 +33,20 @@ export const Nested = () => (
 // export const Typography = () => <>todo Typography</>;
 
 const Swatch: React.FC<{ name: string; color: string }> = ({ name, color }) => (
-  <Box
-    borderRadius="md"
-    overflow="hidden"
-    backgroundColor="white"
-    borderWidth="1px"
-    borderStyle="solid"
-    borderColor="gray.100"
-  >
-    <Box height="120px" style={{ backgroundColor: color }} />
-    <Box p={1} borderTopWidth="1px" borderTopStyle="solid" borderTopColor="gray.100">
+  <Box overflow="hidden" backgroundColor="white">
+    <Box
+      mb="4px"
+      height="120px"
+      style={{ backgroundColor: color }}
+      {...(color.toLowerCase() === system.colors.white
+        ? {
+            borderWidth: '1px',
+            borderStyle: 'solid',
+            borderColor: 'gray.100',
+          }
+        : {})}
+    />
+    <Box>
       <Heading as="h4" variant="h6" fontWeight={600}>
         {name}
       </Heading>
