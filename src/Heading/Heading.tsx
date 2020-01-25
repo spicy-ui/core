@@ -12,6 +12,7 @@ import {
 import { variant } from '../util';
 
 export interface HeadingProps extends LayoutProps, SpaceProps, ColorProps, SystemTypographyProps {
+  /** Variant style of the heading. */
   variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 

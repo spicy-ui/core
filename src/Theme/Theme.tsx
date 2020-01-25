@@ -6,6 +6,7 @@ import { Baseline } from './Baseline';
 import { system } from './system';
 
 export interface ThemeProps {
+  /** Custom theme to merge with the defaults. */
   theme?: DeepPartial<typeof system>;
 }
 

@@ -12,6 +12,7 @@ import {
 import { variant } from '../util';
 
 export interface TextProps extends LayoutProps, SpaceProps, ColorProps, SystemTypographyProps {
+  /** Variant style of the text. */
   variant?: 'body1' | 'body2' | 'lead';
 }
 
