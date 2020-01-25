@@ -1,32 +1,24 @@
+import { select, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
-import Heading from './Heading';
+import { uid } from 'react-uid';
+import Heading, { HeadingVariant } from './Heading';
+
+const variants: HeadingVariant[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
 export default {
   title: 'Heading',
   component: Heading,
+  decorators: [withKnobs],
 };
 
-export const Simple = () => <Heading>Heading</Heading>;
+export const Simple = () => <Heading variant={select('variant', variants, 'h2')}>Heading</Heading>;
 
-export const Variants = () => (
+export const AllVariants = () => (
   <>
-    <Heading as="h1" variant="h1">
-      h1: Heading
-    </Heading>
-    <Heading as="h2" variant="h2">
-      h2: Heading
-    </Heading>
-    <Heading as="h3" variant="h3">
-      h3: Heading
-    </Heading>
-    <Heading as="h4" variant="h4">
-      h4: Heading
-    </Heading>
-    <Heading as="h5" variant="h5">
-      h5: Heading
-    </Heading>
-    <Heading as="h6" variant="h6">
-      h6: Heading
-    </Heading>
+    {variants.map((variant, idx) => (
+      <Heading key={uid(variant, idx)} variant={variant}>
+        {variant}: Heading
+      </Heading>
+    ))}
   </>
 );
