@@ -33,16 +33,20 @@ export const Nested = () => (
 // export const Typography = () => <>todo Typography</>;
 
 const Swatch: React.FC<{ name: string; color: string }> = ({ name, color }) => (
-  <Box
-    borderRadius="md"
-    overflow="hidden"
-    backgroundColor="white"
-    borderWidth="1px"
-    borderStyle="solid"
-    borderColor="gray.100"
-  >
-    <Box height="120px" style={{ backgroundColor: color }} />
-    <Box p={1} borderTopWidth="1px" borderTopStyle="solid" borderTopColor="gray.100">
+  <Box overflow="hidden" backgroundColor="white">
+    <Box
+      mb="4px"
+      height="120px"
+      style={{ backgroundColor: color }}
+      {...(color.toLowerCase() === system.colors.white
+        ? {
+            borderWidth: '1px',
+            borderStyle: 'solid',
+            borderColor: 'gray.100',
+          }
+        : {})}
+    />
+    <Box>
       <Heading as="h4" variant="h6" fontWeight={600}>
         {name}
       </Heading>
@@ -60,13 +64,13 @@ const Palette: React.FC<{ color: string }> = ({ color }) => {
 
   return (
     <>
-      <Heading as="h3" variant="h3" mt={2}>
-        <code>{color}</code>
+      <Heading as="h3" variant="h3" fontFamily="monospace" mt="24px">
+        {color}
       </Heading>
       <Box
-        mt={2}
+        mt={16}
         display="grid"
-        gridTemplateColumns="repeat(auto-fit, minmax(calc(960px / 4 - 24px), 1fr))"
+        gridTemplateColumns="repeat(auto-fill, minmax(calc(960px / 4 - 24px), 1fr))"
         gridGap="24px"
       >
         {Object.keys(palette).map((key, index) => (
@@ -78,15 +82,15 @@ const Palette: React.FC<{ color: string }> = ({ color }) => {
 };
 
 export const Colors = () => (
-  <Box p={2}>
+  <Box p="16px">
     <Heading>Colors</Heading>
-    <Heading as="h3" variant="h3" mt={2}>
+    <Heading as="h3" variant="h3" mt="24px">
       Neutrals
     </Heading>
     <Box
-      mt={2}
+      mt="16px"
       display="grid"
-      gridTemplateColumns="repeat(auto-fit, minmax(calc(960px / 4 - 24px), 1fr))"
+      gridTemplateColumns="repeat(auto-fill, minmax(calc(960px / 4 - 24px), 1fr))"
       gridGap="24px"
     >
       <Swatch name="white" color="#fff" />
