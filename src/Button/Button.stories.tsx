@@ -1,59 +1,77 @@
+import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
 import Button, { ButtonColor, ButtonSize, ButtonVariant } from './Button';
 
+const buttonColors: ButtonColor[] = [
+  'gray',
+  'red',
+  'orange',
+  'yellow',
+  'green',
+  'teal',
+  'blue',
+  'cyan',
+  'purple',
+  'pink',
+];
+
+const buttonSizes: ButtonSize[] = ['sm', 'base', 'lg'];
+
+const buttonVariants: ButtonVariant[] = ['fill', 'outline', 'ghost', 'link'];
+
 export default {
   title: 'Button',
   component: Button,
+  decorators: [withKnobs],
 };
 
-export const Simple = () => <Button>Button</Button>;
-
-export const Sizes = () => (
-  <>
-    {['sm', 'base', 'lg'].map((size, index) => (
-      <div key={uid(size, index)}>
-        <Button size={size as ButtonSize}>Button</Button>
-      </div>
-    ))}
-  </>
+export const Simple = () => (
+  <Button
+    color={select('color', buttonColors, 'gray')}
+    disabled={boolean('disabled', false)}
+    fullWidth={boolean('fullWidth', false)}
+    size={select('size', buttonSizes, 'base')}
+    variant={select('variant', buttonVariants, 'fill')}
+  >
+    Button
+  </Button>
 );
 
-export const Variants = () => (
-  <>
-    {['fill', 'outline', 'ghost', 'link'].map((variant, index) => (
-      <div key={uid(variant, index)}>
-        <Button variant={variant as ButtonVariant}>Button ({variant})</Button>
-      </div>
-    ))}
-  </>
-);
-
-export const VariantColors = () => (
+export const AllColorsAndVariants = () => (
   <table>
     <tbody>
-      {['gray', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'cyan', 'purple', 'pink'].map((color, index) => (
+      {buttonColors.map((color, index) => (
         <tr key={uid(color, index)}>
-          <td>
-            <Button color={color as ButtonColor}>Button ({color})</Button>
-          </td>
-          <td>
-            <Button color={color as ButtonColor} variant="outline">
-              Button ({color})
-            </Button>
-          </td>
-          <td>
-            <Button color={color as ButtonColor} variant="ghost">
-              Button ({color})
-            </Button>
-          </td>
-          <td>
-            <Button color={color as ButtonColor} variant="link">
-              Button ({color})
-            </Button>
-          </td>
+          {buttonVariants.map((variant, index2) => (
+            <td key={uid(variant, index2)}>
+              <Button color={color} disabled={boolean('disabled', false)} variant={variant}>
+                Button ({color})
+              </Button>
+            </td>
+          ))}
         </tr>
       ))}
     </tbody>
   </table>
+);
+
+export const AllSizes = () => (
+  <>
+    {buttonSizes.map((size, index) => (
+      <div key={uid(size, index)}>
+        <Button size={size}>Button</Button>
+      </div>
+    ))}
+  </>
+);
+
+export const AllVariants = () => (
+  <>
+    {buttonVariants.map((variant, index) => (
+      <div key={uid(variant, index)}>
+        <Button variant={variant}>Button ({variant})</Button>
+      </div>
+    ))}
+  </>
 );

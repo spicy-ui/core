@@ -47,17 +47,20 @@ const variants: VariantFunctions = {
   }),
 };
 
-export type ButtonSize = keyof DefaultTheme['componentStyles']['buttons']['sizes'];
-
 export type ButtonColor = keyof DefaultTheme['componentStyles']['buttons']['colors'];
+
+export type ButtonSize = keyof DefaultTheme['componentStyles']['buttons']['sizes'];
 
 export type ButtonVariant = keyof DefaultTheme['componentStyles']['buttons']['variants'];
 
 export interface ButtonProps extends SpaceProps, WidthProps {
-  fullWidth?: boolean;
-  isDisabled?: boolean;
-  size?: ButtonSize;
+  /** Color of the button. */
   color?: ButtonColor;
+  /** If `true` the button will grow to the full width of it's container.  */
+  fullWidth?: boolean;
+  /** Size of the button. */
+  size?: ButtonSize;
+  /** Variant style of the button. */
   variant?: ButtonVariant;
 }
 
@@ -91,11 +94,10 @@ const Button = styled('button')<ButtonProps>`
 `;
 
 Button.defaultProps = {
+  color: 'gray',
   fullWidth: false,
-  isDisabled: false,
   size: 'base',
   type: 'button',
-  color: 'gray',
   variant: 'fill',
 };
 
