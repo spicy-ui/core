@@ -41,10 +41,10 @@ export const Simple = () => (
 export const AllColorsAndVariants = () => (
   <table>
     <tbody>
-      {buttonColors.map((color, index) => (
-        <tr key={uid(color, index)}>
-          {buttonVariants.map((variant, index2) => (
-            <td key={uid(variant, index2)}>
+      {buttonColors.map((color, idx) => (
+        <tr key={uid(color, idx)}>
+          {buttonVariants.map((variant, idy) => (
+            <td key={uid(variant, idy)}>
               <Button color={color} disabled={boolean('disabled', false)} variant={variant}>
                 Button ({color})
               </Button>
@@ -58,8 +58,8 @@ export const AllColorsAndVariants = () => (
 
 export const AllSizes = () => (
   <>
-    {buttonSizes.map((size, index) => (
-      <div key={uid(size, index)}>
+    {buttonSizes.map((size, idx) => (
+      <div key={uid(size, idx)}>
         <Button size={size}>Button</Button>
       </div>
     ))}
@@ -68,8 +68,8 @@ export const AllSizes = () => (
 
 export const AllVariants = () => (
   <>
-    {buttonVariants.map((variant, index) => (
-      <div key={uid(variant, index)}>
+    {buttonVariants.map((variant, idx) => (
+      <div key={uid(variant, idx)}>
         <Button variant={variant}>Button ({variant})</Button>
       </div>
     ))}
