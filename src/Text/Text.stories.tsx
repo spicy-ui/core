@@ -1,22 +1,26 @@
+import { select, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import Text from './Text';
+import Text, { TextVariant } from './Text';
+
+const variants: TextVariant[] = ['lead', 'body1', 'body2'];
 
 export default {
   title: 'Text',
   component: Text,
+  decorators: [withKnobs],
 };
 
 export const Simple = () => (
-  <Text>
+  <Text variant={select('variant', variants, 'body1')}>
     This is a regular paragraph of text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit,
     hendrerit consequat lectus. Pellentesque egestas mauris mollis.
   </Text>
 );
 
-export const Variants = () => (
+export const AllVariants = () => (
   <>
-    {['lead', 'body1', 'body2', 'small', 'code'].map((variant: any, idx) => (
+    {variants.map((variant, idx) => (
       <Text key={uid(variant, idx)} variant={variant}>
         {variant}: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit, hendrerit consequat
         lectus. Pellentesque egestas mauris mollis.
@@ -25,7 +29,7 @@ export const Variants = () => (
   </>
 );
 
-export const SemanticText = () => (
+export const SemanticTextExamples = () => (
   <>
     {[
       { as: 'em', label: 'Emphasis' },
