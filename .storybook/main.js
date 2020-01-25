@@ -11,5 +11,14 @@ module.exports = {
         include: [path.resolve(__dirname, '../src')],
       },
     },
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        configureJSX: true,
+        babelOptions: {},
+        sourceLoaderOptions: null,
+      },
+    },
+    '@storybook/addon-knobs/register',
   ],
 };
