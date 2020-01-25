@@ -11,7 +11,7 @@ export default {
   component: Theme,
 };
 
-export const Simple = () => <>I am wrapped by the Theme component</>;
+export const Simple = () => <Theme>I am wrapped by the Theme component</Theme>;
 
 export const Nested = () => (
   <>
@@ -103,3 +103,9 @@ export const Colors = () => (
 // export const Shadows = () => <>todo Shadows</>;
 
 // export const zIndices = () => <>todo ZIndices</>;
+
+export const DefaultThemeObject = () => (
+  <Box as="pre" m="base" fontSize="xs">
+    {JSON.stringify(system, undefined, 2)}
+  </Box>
+);
