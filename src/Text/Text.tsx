@@ -11,8 +11,11 @@ import {
 } from 'styled-system';
 import { variant } from '../util';
 
+export type TextVariant = 'body1' | 'body2' | 'lead';
+
 export interface TextProps extends LayoutProps, SpaceProps, ColorProps, SystemTypographyProps {
-  variant?: 'body1' | 'body2' | 'lead';
+  /** Variant style of the text. */
+  variant?: TextVariant;
 }
 
 const Text = styled('p')<TextProps>`

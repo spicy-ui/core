@@ -18,6 +18,7 @@ import {
   ShadowProps,
   space,
   SpaceProps,
+  TextColorProps,
   typography,
   TypographyProps,
 } from 'styled-system';
@@ -32,7 +33,18 @@ export interface BoxProps
     ColorProps,
     TypographyProps,
     BorderProps,
-    ShadowProps {}
+    ShadowProps {
+  /**
+   * Styled components `as` polymorphic prop.
+   *
+   * [`styled-components` docs](https://styled-components.com/docs/api#as-polymorphic-prop)
+   */
+  as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
+  /**
+   * Extended color prop.
+   */
+  color?: TextColorProps['color'];
+}
 
 const Box = styled('div')<BoxProps>`
   ${layout}
