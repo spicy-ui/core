@@ -1,22 +1,27 @@
 import deepmerge from 'deepmerge';
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import * as React from 'react';
+import { ThemeContext, ThemeProvider } from 'styled-components';
 import { DeepPartial } from 'utility-types';
 import { Baseline } from './Baseline';
 import { system } from './system';
 
+export const useTheme = () => {
+  const theme = React.useContext(ThemeContext);
+
+  if (!theme) {
+    throw new Error('useTheme must be used within a Theme');
+  }
+
+  return theme;
+};
+
 export interface ThemeProps {
-  /** Custom theme to merge with the defaults. */
+  /** Custom theme to merge with the default theme. */
   theme?: DeepPartial<typeof system>;
 }
 
 const Theme: React.FC<ThemeProps> = ({ children, theme = {} }) => {
   const mergedTheme = React.useMemo(() => deepmerge(system, theme as Partial<typeof system>), [theme]);
-
-  if (process.env.NODE_ENV !== 'production') {
-    // @ts-ignore
-    window.theme = mergedTheme;
-  }
 
   return (
     <ThemeProvider theme={mergedTheme}>
