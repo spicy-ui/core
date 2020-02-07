@@ -8,3 +8,4 @@ export * from './Link';
 export * from './Stack';
 export * from './Text';
 export * from './Theme';
+export * from './ThemeMode';
