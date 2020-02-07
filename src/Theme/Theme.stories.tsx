@@ -2,9 +2,8 @@ import Color from 'color';
 import * as React from 'react';
 import { uid } from 'react-uid';
 import { ThemeContext } from 'styled-components';
-import { Box, Heading, Text } from '../';
+import { Box, Heading, Text, Theme } from '../';
 import { system } from './system';
-import Theme from './Theme';
 
 export default {
   title: 'Theme',
@@ -37,6 +36,7 @@ const Swatch: React.FC<{ name: string; color: string }> = ({ name, color }) => (
     <Box
       mb="4px"
       height="120px"
+      borderRadius="lg"
       style={{ backgroundColor: color }}
       {...(color.toLowerCase() === system.colors.white
         ? {

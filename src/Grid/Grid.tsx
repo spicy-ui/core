@@ -15,7 +15,7 @@ import {
 } from 'styled-system';
 import { Box, BoxProps } from '../Box';
 
-export interface FlexProps extends BoxProps {
+export interface GridProps extends BoxProps {
   /** Shorthand for styled-system `gridGap` prop. */
   gap?: GridGapProps['gridGap'];
   /** Shorthand for styled-system `gridRowGap` prop. */
@@ -42,7 +42,7 @@ export interface FlexProps extends BoxProps {
   row?: GridRowProps['gridRow'];
 }
 
-const Grid: React.FC<FlexProps> = ({
+const Grid: React.FC<GridProps> = ({
   gap,
   rowGap,
   columnGap,

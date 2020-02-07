@@ -2,7 +2,6 @@ import deepmerge from 'deepmerge';
 import * as React from 'react';
 import { ThemeContext, ThemeProvider } from 'styled-components';
 import { DeepPartial } from 'utility-types';
-import { Baseline } from './Baseline';
 import { system } from './system';
 
 export const useTheme = () => {
@@ -25,7 +24,6 @@ const Theme: React.FC<ThemeProps> = ({ children, theme = {} }) => {
 
   return (
     <ThemeProvider theme={mergedTheme}>
-      <Baseline />
       <>{children}</>
     </ThemeProvider>
   );
