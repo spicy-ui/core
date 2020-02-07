@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Box } from '../Box';
-import Grid from './Grid';
+import { Box, Grid } from '../';
 
 export default {
   title: 'Grid',

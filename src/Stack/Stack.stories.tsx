@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Box } from '../Box';
-import Stack from './Stack';
+import { Box, Stack } from '../';
 
 export default {
   title: 'Stack',

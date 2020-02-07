@@ -1,7 +1,7 @@
 import { select, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import Text, { TextVariant } from './Text';
+import { Text, TextVariant } from '../';
 
 const variants: TextVariant[] = ['lead', 'body1', 'body2'];
 
