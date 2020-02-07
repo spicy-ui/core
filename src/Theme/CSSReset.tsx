@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import styledNormalize from 'styled-normalize';
 import { get } from 'styled-system';
 
-export const Baseline = createGlobalStyle`
+export const CSSReset = createGlobalStyle`
   ${styledNormalize}
 
   *, *:before, *:after {
@@ -13,9 +13,9 @@ export const Baseline = createGlobalStyle`
   }
 
   html {
+    box-sizing: border-box;
     color: ${p => p.theme.colors.gray[900]};
     ${p => css(get(p.theme.componentStyles.text, 'body1'))(p)}
-    box-sizing: border-box;
   }
 
   body {
