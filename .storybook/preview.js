@@ -1,10 +1,10 @@
 import { addDecorator } from '@storybook/react';
 import React from 'react';
-import { CSSReset, Theme } from '../src/Theme';
+import { Box, CSSReset, Theme } from '../src';
 
 addDecorator(storyFn => (
   <Theme>
     <CSSReset />
-    {storyFn()}
+    <Box m="base">{storyFn()}</Box>
   </Theme>
 ));
