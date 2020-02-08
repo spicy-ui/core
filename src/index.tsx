@@ -5,6 +5,8 @@ export * from './Flex';
 export * from './Grid';
 export * from './Heading';
 export * from './Link';
+export * from './Modal';
+export * from './Portal';
 export * from './Stack';
 export * from './Text';
 export * from './Theme';

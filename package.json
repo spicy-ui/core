@@ -35,8 +35,10 @@
   },
   "dependencies": {
     "@styled-system/css": "^5.1.4",
+    "clsx": "^1.1.0",
     "deepmerge": "^4.2.2",
     "polished": "^3.4.4",
+    "react-transition-group": "^4.3.0",
     "styled-normalize": "^8.0.7",
     "styled-system": "^5.1.4",
     "use-dark-mode": "^2.3.1",
@@ -52,6 +54,7 @@
     "@types/jest": "^25.1.2",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
+    "@types/react-transition-group": "^4.2.3",
     "@types/styled-components": "^4.4.2",
     "@types/styled-system": "^5.1.6",
     "@types/styled-system__css": "^5.0.4",
