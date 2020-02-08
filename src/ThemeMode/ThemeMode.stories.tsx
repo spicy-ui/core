@@ -10,18 +10,14 @@ const Test = () => {
   const { mode, isLight, toggle } = useThemeMode();
 
   return (
-    <>
-      <Box p="base" bg={isLight ? 'gray.50' : 'gray.800'} color={isLight ? 'gray.900' : 'gray.100'}>
-        <Text>
-          Current mode is: <code>{mode}</code>
-        </Text>
-      </Box>
-      <Box p="base">
-        <Button variant="ghost" color="blue" onClick={toggle}>
-          Toggle mode
-        </Button>
-      </Box>
-    </>
+    <Box p="base" bg={isLight ? 'gray.50' : 'gray.800'} color={isLight ? 'gray.900' : 'gray.100'}>
+      <Text mb="sm">
+        Current mode is: <code>{mode}</code>
+      </Text>
+      <Button variant="ghost" color={isLight ? 'blue' : 'cyan'} onClick={toggle}>
+        Toggle mode
+      </Button>
+    </Box>
   );
 };
 
