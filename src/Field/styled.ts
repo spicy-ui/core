@@ -1,6 +1,5 @@
 import { rgba } from 'polished';
 import styled from 'styled-components';
-import { get } from 'styled-system';
 import { StyledInput } from '../Input/styled';
 
 export const FieldLabel = styled('label')`
@@ -10,7 +9,7 @@ export const FieldLabel = styled('label')`
 
 export const FieldRequired = styled.span`
   margin-left: ${p => p.theme.space.xs}px;
-  color: ${p => get(p.theme.colors, 'red.600')};
+  color: ${p => p.theme.colors.red[600]};
 `;
 
 export const FieldControl = styled('div')<{ isInvalid?: boolean }>`
@@ -18,7 +17,7 @@ export const FieldControl = styled('div')<{ isInvalid?: boolean }>`
     ${p =>
       p.isInvalid
         ? `
-    box-shadow: ${rgba(get(p.theme.colors, 'red.600'), 0.83)} 0px 0px 0px 3px;
+    box-shadow: ${rgba(p.theme.colors.red[600], 0.83)} 0px 0px 0px 3px;
     z-index: 1;`
         : ``}
   }
@@ -30,7 +29,7 @@ export const FieldHelperText = styled('div')`
 `;
 
 export const FieldErrorText = styled('div')`
-  color: ${p => get(p.theme.colors, 'red.600')};
+  color: ${p => p.theme.colors.red[600]};
   font-size: ${p => p.theme.fontSizes.sm}px;
   line-height: ${p => p.theme.lineHeights.body};
 `;

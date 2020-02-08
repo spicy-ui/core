@@ -82,7 +82,7 @@ const Button = styled('button')<ButtonProps>`
   user-select: none;
 
   &:focus {
-    box-shadow: ${p => rgba(get(p.theme.colors, 'blue.500'), 0.6)} 0px 0px 0px 3px;
+    box-shadow: ${p => rgba(p.theme.colors.blue[500], 0.6)} 0px 0px 0px 3px;
     z-index: 1;
   }
 
