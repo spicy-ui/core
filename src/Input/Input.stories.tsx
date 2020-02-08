@@ -1,7 +1,7 @@
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Input, InputSpace, InputVariant } from '../';
+import { Input, InputSpace, InputVariant, Stack, Text } from '../';
 
 const inputSpaces: InputSpace[] = ['sm', 'base', 'lg'];
 
@@ -42,21 +42,30 @@ export const Simple = () => (
 );
 
 export const AllSpaces = () => (
-  <>
+  <Stack spacing="base">
     {inputSpaces.map((space, idx) => (
-      <div key={uid(space, idx)}>
-        <Input space={space} placeholder={space} />
-      </div>
+      <Input key={uid(space, idx)} space={space} placeholder={space} />
     ))}
-  </>
+  </Stack>
 );
 
 export const AllVariants = () => (
-  <>
+  <Stack spacing="base">
     {inputVariants.map((variant, idx) => (
-      <div key={uid(variant, idx)}>
-        <Input variant={variant} placeholder={variant} />
+      <Input key={uid(variant, idx)} variant={variant} placeholder={variant} />
+    ))}
+  </Stack>
+);
+
+export const AllTypes = () => (
+  <Stack spacing="base">
+    {inputTypes.map((type, idx) => (
+      <div key={uid(type, idx)}>
+        <Text>
+          <code>{type}</code>
+        </Text>
+        <Input type={type} />
       </div>
     ))}
-  </>
+  </Stack>
 );

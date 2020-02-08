@@ -1,7 +1,7 @@
 import { select, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Text, TextVariant } from '../';
+import { Text, TextVariant, Stack } from '../';
 
 const variants: TextVariant[] = ['lead', 'body1', 'body2'];
 
@@ -19,18 +19,18 @@ export const Simple = () => (
 );
 
 export const AllVariants = () => (
-  <>
+  <Stack spacing="base">
     {variants.map((variant, idx) => (
       <Text key={uid(variant, idx)} variant={variant}>
         {variant}: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit, hendrerit consequat
         lectus. Pellentesque egestas mauris mollis.
       </Text>
     ))}
-  </>
+  </Stack>
 );
 
 export const SemanticTextExamples = () => (
-  <>
+  <Stack spacing="base">
     {[
       { as: 'em', label: 'Emphasis' },
       { as: 'strong', label: 'Strong' },
@@ -51,5 +51,5 @@ export const SemanticTextExamples = () => (
         <As>{label}</As>
       </Text>
     ))}
-  </>
+  </Stack>
 );
