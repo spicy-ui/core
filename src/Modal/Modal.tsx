@@ -1,15 +1,12 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
 import clsx from 'clsx';
 import Transition, { TransitionStatus } from 'react-transition-group/Transition';
-import ModalOverlay from './ModalOverlay';
-import { Box } from '../Box';
 import { Portal } from '../Portal';
-import { ANIMATION_DURATION } from './constants';
+import { ANIMATION_DURATION } from './utils/constants';
+import { ModalContent, SizeableModalProps, ModalOverlay } from './styled';
+import { Button } from '../Button';
 
-export type ModalSizes = 'sm' | 'md' | 'lg';
-
-export interface ModalProps {
+export interface ModalProps extends SizeableModalProps {
   /** Additional CSS classes to give to the modal. */
   className?: string;
   /** Additional CSS properties to give to the modal. */
@@ -29,8 +26,6 @@ export interface ModalProps {
   enableFocusTrap?: boolean;
   /** Used to reference the ID of the title element in the modal */
   labelledById?: string;
-  /** Set max size of the modal */
-  size?: ModalSizes;
   /** Callback method run when the Close button is clicked. */
   onClose?: () => void;
 }
@@ -38,49 +33,6 @@ export interface ModalProps {
 interface ModalState {
   isOpen: boolean;
 }
-
-const ModalIn = keyframes`
-  0% {
-    opacity: 0;
-    transform: translate(0, -25%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-const ModalOut = keyframes`
-  0% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(0, -25%);
-  }
-`;
-
-const ModalContent = styled(Box)`
-  opacity: 0;
-  transform: translate(0, -25%);
-  overflow: hidden;
-  &[data-state='entering'],
-  &[data-state='entered'] {
-    animation-fill-mode: forwards;
-    animation-name: ${ModalIn};
-    animation-duration: ${ANIMATION_DURATION}ms;
-  }
-  &[data-state='exiting'] {
-    animation-fill-mode: forwards;
-    animation-name: ${ModalOut};
-    animation-duration: ${ANIMATION_DURATION}ms;
-  }
-  &.entered {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-`;
 
 class Modal extends React.Component<ModalProps, ModalState> {
   static displayName = 'Modal';
@@ -91,6 +43,7 @@ class Modal extends React.Component<ModalProps, ModalState> {
     enableFocusTrap: false,
     disableOverlayClick: false,
     isOpen: false,
+    size: 'sm',
   };
 
   constructor(props: ModalProps) {
@@ -150,21 +103,17 @@ class Modal extends React.Component<ModalProps, ModalState> {
   }
 
   renderInnerContent = (state: TransitionStatus) => {
-    const { labelledById, hideCloseButton, children } = this.props;
+    const { labelledById, hideCloseButton, size, children } = this.props;
     const { isOpen } = this.state;
 
     return (
       <ModalOverlay className={clsx(isOpen && 'entered')} data-state={state} onClick={this.handleOverlayClick}>
         <ModalContent
           className={clsx(isOpen && 'entered')}
-          display="flex"
-          flexDirection="column"
+          size={size}
           backgroundColor="white"
-          boxShadow={2}
-          width="100%"
-          maxWidth="500px"
-          height="100%"
-          maxHeight="calc(100% - 24vmin)"
+          boxShadow={3}
+          borderRadius="xs"
           my="12vmin"
           mx="md"
           role="dialog"
@@ -173,14 +122,15 @@ class Modal extends React.Component<ModalProps, ModalState> {
           data-state={state}
         >
           {!hideCloseButton && (
-            <button
+            <Button
               style={{ position: 'absolute', top: 16, right: 16 }}
               type="button"
+              variant="ghost"
               aria-label="Close"
               onClick={this.handleCloseSideSheet}
             >
               Close
-            </button>
+            </Button>
           )}
           {children}
         </ModalContent>
