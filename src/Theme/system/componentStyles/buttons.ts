@@ -1,32 +1,5 @@
 import { SystemStyleObject } from '@styled-system/css';
 
-const sizes = {
-  sm: {
-    borderRadius: 'sm',
-    fontSize: 'sm',
-    fontWeight: 'normal',
-    lineHeight: 1.2,
-    px: 8,
-    height: 32,
-  },
-  base: {
-    borderRadius: 'sm',
-    fontSize: 'base',
-    fontWeight: 'medium',
-    lineHeight: 1.2,
-    px: 12,
-    height: 40,
-  },
-  lg: {
-    borderRadius: 'sm',
-    fontSize: 'lg',
-    fontWeight: 'medium',
-    lineHeight: 1.2,
-    px: 16,
-    height: 48,
-  },
-};
-
 const colors = {
   gray: {
     base: 'gray.500',
@@ -70,19 +43,46 @@ const colors = {
   },
 };
 
-export type VariantFunc = (color: { base: string; text: string }, props: any) => SystemStyleObject;
+const sizes = {
+  sm: {
+    borderRadius: 'sm',
+    fontSize: 'sm',
+    fontWeight: 'normal',
+    lineHeight: 1.2,
+    px: 8,
+    height: 32,
+  },
+  base: {
+    borderRadius: 'sm',
+    fontSize: 'base',
+    fontWeight: 'medium',
+    lineHeight: 1.2,
+    px: 12,
+    height: 40,
+  },
+  lg: {
+    borderRadius: 'sm',
+    fontSize: 'lg',
+    fontWeight: 'medium',
+    lineHeight: 1.2,
+    px: 16,
+    height: 48,
+  },
+};
 
-export interface VariantFunctions {
-  fill?: VariantFunc;
-  outline?: VariantFunc;
-  ghost?: VariantFunc;
-  link?: VariantFunc;
+export type ButtonVariantFunc = (color: { base: string; text: string }, props: any) => SystemStyleObject;
+
+export interface ButtonVariantFunctions {
+  fill?: ButtonVariantFunc;
+  outline?: ButtonVariantFunc;
+  ghost?: ButtonVariantFunc;
+  link?: ButtonVariantFunc;
 }
 
-const variants: VariantFunctions = {};
+const variants: ButtonVariantFunctions = {};
 
 export const buttons = {
-  sizes,
   colors,
+  sizes,
   variants,
 };

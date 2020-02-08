@@ -1,11 +1,11 @@
 import { darken, rgba } from 'polished';
 import styled, { DefaultTheme } from 'styled-components';
 import { get, space, SpaceProps, width, WidthProps } from 'styled-system';
-import { VariantFunctions } from '../Theme/system/componentStyles/buttons';
+import { ButtonVariantFunctions } from '../Theme/system/componentStyles/buttons';
 import { variant } from '../util';
 import { applyButtonVariations } from './util';
 
-const variants: VariantFunctions = {
+const variants: ButtonVariantFunctions = {
   fill: ({ base, text }, { theme }) => ({
     backgroundColor: get(theme.colors, base),
     color: get(theme.colors, text),
@@ -56,7 +56,7 @@ export type ButtonVariant = keyof DefaultTheme['componentStyles']['buttons']['va
 export interface ButtonProps extends SpaceProps, WidthProps {
   /** Color of the button. */
   color?: ButtonColor;
-  /** If `true` the button will grow to the full width of it's container.  */
+  /** If `true` the button will grow to the full width of it's container. */
   fullWidth?: boolean;
   /** Size of the button. */
   size?: ButtonSize;
