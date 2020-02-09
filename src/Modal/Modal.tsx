@@ -51,10 +51,6 @@ class Modal extends React.Component<ModalProps, ModalState> {
     this.state = {
       isOpen: props.isOpen,
     };
-
-    this.handleCloseSideSheet = this.handleCloseSideSheet.bind(this);
-    this.handleOverlayClick = this.handleOverlayClick.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   static getDerivedStateFromProps(props: ModalProps) {
@@ -63,33 +59,21 @@ class Modal extends React.Component<ModalProps, ModalState> {
     };
   }
 
-  componentDidUpdate(prev: ModalProps) {
-    const { isOpen } = this.props;
-
-    if (prev.isOpen !== isOpen) {
-      if (isOpen) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
-    }
-  }
-
-  handleKeyDown(event: React.KeyboardEvent) {
+  handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Escape') {
       this.handleCloseSideSheet();
     }
-  }
+  };
 
-  handleCloseSideSheet() {
+  handleCloseSideSheet = () => {
     const { onClose } = this.props;
 
     if (onClose) {
       onClose();
     }
-  }
+  };
 
-  handleOverlayClick(e: React.MouseEvent<HTMLDivElement>) {
+  handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const { disableOverlayClick } = this.props;
 
     // Prevent clicking to exit inside the dialog
@@ -100,7 +84,7 @@ class Modal extends React.Component<ModalProps, ModalState> {
     if (!disableOverlayClick) {
       this.handleCloseSideSheet();
     }
-  }
+  };
 
   renderInnerContent = (state: TransitionStatus) => {
     const { labelledById, hideCloseButton, size, children } = this.props;
