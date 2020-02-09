@@ -1,10 +1,15 @@
 import * as React from 'react';
+import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import { Modal, Text } from '../';
 import { Box } from '../Box';
+import { ModalSizes } from './utils/helpers';
+
+const modalSizes: ModalSizes[] = ['sm', 'md', 'lg'];
 
 export default {
   title: 'Modal',
   component: Modal,
+  decorators: [withKnobs],
 };
 
 export const Basic = () => {
@@ -15,7 +20,14 @@ export const Basic = () => {
       <button type="button" onClick={() => setIsOpen(!isOpen)}>
         Toggle Modal
       </button>
-      <Modal labelledById="stories-title" isOpen={isOpen} onClose={() => setIsOpen(false)}>
+      <Modal
+        labelledById="stories-title"
+        isOpen={isOpen}
+        size={select('size', modalSizes, 'sm')}
+        hideCloseButton={boolean('hide close button', false)}
+        disableOverlayClick={boolean('disable overlay click', false)}
+        onClose={() => setIsOpen(false)}
+      >
         <Text>Hello!</Text>
       </Modal>
     </>

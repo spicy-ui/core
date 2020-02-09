@@ -68,9 +68,9 @@ class Modal extends React.Component<ModalProps, ModalState> {
 
     if (prev.isOpen !== isOpen) {
       if (isOpen) {
-        document.body.classList.add('noscroll');
+        document.body.style.overflow = 'hidden';
       } else {
-        document.body.classList.remove('noscroll');
+        document.body.style.overflow = '';
       }
     }
   }

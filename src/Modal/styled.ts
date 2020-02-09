@@ -1,9 +1,9 @@
 import styled, { keyframes } from 'styled-components';
-import { get } from 'styled-system';
+import { get, variant } from 'styled-system';
 import { rgba } from 'polished';
 import { colors } from '../Theme/system/colors';
 import { Box } from '../Box';
-import { getModalSize, ModalSizes } from './utils/helpers';
+import { ModalSizes } from './utils/helpers';
 import { ANIMATION_DURATION } from './utils/constants';
 
 export interface SizeableModalProps {
@@ -110,8 +110,8 @@ export const ModalContent = styled(Box)<SizeableModalProps>`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: ${props => getModalSize(props.size)};
   height: 100%;
+  ${variant({ prop: 'size', scale: 'componentStyles.modal.sizes' })}
   max-height: calc(100% - 24vmin);
   margin: ${p => get(p.theme.space.md, 'md')} 12vmin;
   opacity: 0;
