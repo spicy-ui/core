@@ -2,15 +2,19 @@ import * as React from 'react';
 import clsx from 'clsx';
 import Transition, { TransitionStatus } from 'react-transition-group/Transition';
 import { Portal } from '../Portal';
+import { ModalSizes } from './utils/helpers';
 import { ANIMATION_DURATION } from './utils/constants';
-import { ModalContent, SizeableModalProps, ModalOverlay } from './styled';
+import { ModalContent, ModalOverlay } from './styled';
 import { Button } from '../Button';
+import { Box } from '../Box';
 
-export interface ModalProps extends SizeableModalProps {
+export interface ModalProps {
   /** Additional CSS classes to give to the modal. */
   className?: string;
   /** Additional CSS properties to give to the modal. */
   style?: React.CSSProperties;
+  /** Set max size of the modal */
+  size?: ModalSizes;
   /** Whether the modal is open or not. */
   isOpen: boolean;
   /** Set to `true` if you want to hide the modal backdrop. */
@@ -94,7 +98,7 @@ class Modal extends React.Component<ModalProps, ModalState> {
       <ModalOverlay className={clsx(isOpen && 'entered')} data-state={state} onClick={this.handleOverlayClick}>
         <ModalContent
           className={clsx(isOpen && 'entered')}
-          size={size}
+          modalSize={size}
           backgroundColor="white"
           boxShadow={3}
           borderRadius="xs"
@@ -106,15 +110,11 @@ class Modal extends React.Component<ModalProps, ModalState> {
           data-state={state}
         >
           {!hideCloseButton && (
-            <Button
-              style={{ position: 'absolute', top: 16, right: 16 }}
-              type="button"
-              variant="ghost"
-              aria-label="Close"
-              onClick={this.handleCloseSideSheet}
-            >
-              Close
-            </Button>
+            <Box position="absolute" top="sm" right="md">
+              <Button type="button" variant="ghost" aria-label="Close" onClick={this.handleCloseSideSheet}>
+                Close
+              </Button>
+            </Box>
           )}
           {children}
         </ModalContent>

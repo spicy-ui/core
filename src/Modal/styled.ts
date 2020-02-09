@@ -8,7 +8,7 @@ import { ANIMATION_DURATION } from './utils/constants';
 
 export interface SizeableModalProps {
   /** Set max size of the modal */
-  size?: ModalSizes;
+  modalSize?: ModalSizes;
 }
 
 const ModalIn = keyframes`
@@ -111,7 +111,7 @@ export const ModalContent = styled(Box)<SizeableModalProps>`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  ${variant({ prop: 'size', scale: 'componentStyles.modal.sizes' })}
+  ${variant({ prop: 'modalSize', scale: 'componentStyles.modal.sizes' })}
   max-height: calc(100% - 24vmin);
   margin: ${p => get(p.theme.space.md, 'md')} 12vmin;
   opacity: 0;
