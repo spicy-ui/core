@@ -63,6 +63,14 @@ class Modal extends React.Component<ModalProps, ModalState> {
     };
   }
 
+  componentDidUpdate(prev: ModalProps) {
+    const { isOpen } = this.props;
+
+    if (prev.isOpen !== isOpen) {
+      document.body.classList.toggle('noscroll', isOpen);
+    }
+  }
+
   handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Escape') {
       this.handleCloseSideSheet();
