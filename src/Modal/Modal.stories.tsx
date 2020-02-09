@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
-import { Modal, Text } from '../';
-import { Box } from '../Box';
+import { Modal, ModalHeader, ModalContent, ModalFooter, Button } from '../';
 import { ModalSizes } from './utils/helpers';
 
 const modalSizes: ModalSizes[] = ['sm', 'md', 'lg'];
@@ -28,7 +27,12 @@ export const Basic = () => {
         disableOverlayClick={boolean('disable overlay click', false)}
         onClose={() => setIsOpen(false)}
       >
-        <Text>Hello!</Text>
+        <ModalHeader>Modal Header</ModalHeader>
+        <ModalContent>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam eligendi nihil voluptatibus aliquid
+          provident, sapiente quam. Reiciendis vel animi odio odit! Expedita possimus accusamus quam, vel molestiae at
+          asperiores repellendus!
+        </ModalContent>
       </Modal>
     </>
   );
@@ -43,12 +47,15 @@ export const CustomCloseBehaviour = () => {
         Toggle Modal
       </button>
       <Modal labelledById="stories-title" isOpen={isOpen} hideCloseButton>
-        <Box>
-          <Text as="p">Hello!</Text>
-        </Box>
-        <Box>
-          <button onClick={() => setIsOpen(!isOpen)}>Close Modal</button>
-        </Box>
+        <ModalHeader>Modal Header</ModalHeader>
+        <ModalContent>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam eligendi nihil voluptatibus aliquid
+          provident, sapiente quam. Reiciendis vel animi odio odit! Expedita possimus accusamus quam, vel molestiae at
+          asperiores repellendus!
+        </ModalContent>
+        <ModalFooter>
+          <Button onClick={() => setIsOpen(!isOpen)}>Close Modal</Button>
+        </ModalFooter>
       </Modal>
     </>
   );
