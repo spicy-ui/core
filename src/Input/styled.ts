@@ -1,4 +1,3 @@
-import { rgba } from 'polished';
 import styled from 'styled-components';
 import { space, width } from 'styled-system';
 import { variant } from '../util';
@@ -20,7 +19,7 @@ export const StyledInput = styled('input')<InputProps>`
   user-select: none;
 
   &:focus {
-    box-shadow: ${p => rgba(p.theme.colors.blue[500], 0.6)} 0px 0px 0px 3px;
+    ${p => p.theme.common.focus.default(p)}
     z-index: 1;
   }
 

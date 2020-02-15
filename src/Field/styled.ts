@@ -1,4 +1,3 @@
-import { rgba } from 'polished';
 import styled from 'styled-components';
 import { StyledInput } from '../Input/styled';
 
@@ -17,7 +16,7 @@ export const FieldControl = styled('div')<{ isInvalid?: boolean }>`
     ${p =>
       p.isInvalid
         ? `
-    box-shadow: ${rgba(p.theme.colors.red[600], 0.83)} 0px 0px 0px 3px;
+    ${p.theme.common.focus.error(p)}
     z-index: 1;`
         : ``}
   }

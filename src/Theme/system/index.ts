@@ -1,6 +1,7 @@
 import { radii } from './borders';
 import { breakpoints } from './breakpoints';
 import { colors } from './colors';
+import { common } from './common';
 import { componentStyles } from './componentStyles';
 import { shadows } from './shadows';
 import { space } from './space';
@@ -8,6 +9,7 @@ import { fonts, fontSizes, fontWeights, letterSpacings, lineHeights } from './ty
 import { zIndices } from './zIndices';
 
 export const system = {
+  common,
   componentStyles,
   breakpoints,
   space,
