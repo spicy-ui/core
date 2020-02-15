@@ -18,7 +18,7 @@ export interface IconProps extends BoxProps {
 const Icon: React.FC<IconProps> = ({ name, ...rest }) => {
   const { icons } = useTheme();
 
-  const { path } = React.useMemo(() => {
+  const { path, viewBox } = React.useMemo(() => {
     if (!icons[name]) {
       console.error(`[Icon] Unknown icon '${name}'`);
 
@@ -30,7 +30,7 @@ const Icon: React.FC<IconProps> = ({ name, ...rest }) => {
   }, [icons, name]);
 
   return (
-    <Svg as="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" {...rest}>
+    <Svg as="svg" xmlns="http://www.w3.org/2000/svg" viewBox={viewBox} stroke="currentColor" {...rest}>
       {path}
     </Svg>
   );
