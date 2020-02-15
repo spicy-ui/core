@@ -38,6 +38,7 @@
     "clsx": "^1.1.0",
     "deepmerge": "^4.2.2",
     "polished": "^3.4.4",
+    "react-focus-lock": "^2.2.1",
     "react-transition-group": "^4.3.0",
     "styled-normalize": "^8.0.7",
     "styled-system": "^5.1.4",

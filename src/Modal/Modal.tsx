@@ -1,10 +1,11 @@
 import * as React from 'react';
 import clsx from 'clsx';
+import FocusLock from 'react-focus-lock';
 import Transition, { TransitionStatus } from 'react-transition-group/Transition';
 import { Portal } from '../Portal';
 import { ModalSizes } from './utils/helpers';
 import { ANIMATION_DURATION } from './utils/constants';
-import { ModalContent, ModalOverlay } from './styled';
+import { ModalWrapper, ModalOverlay } from './styled';
 import { Button } from '../Button';
 import { Box } from '../Box';
 
@@ -104,28 +105,30 @@ class Modal extends React.Component<ModalProps, ModalState> {
 
     return (
       <ModalOverlay className={clsx(isOpen && 'entered')} data-state={state} onClick={this.handleOverlayClick}>
-        <ModalContent
-          className={clsx(isOpen && 'entered')}
-          modalSize={size}
-          backgroundColor="white"
-          boxShadow={3}
-          borderRadius="xs"
-          my="12vmin"
-          mx="md"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby={labelledById}
-          data-state={state}
-        >
-          {!hideCloseButton && (
-            <Box position="absolute" top="sm" right="md">
-              <Button type="button" variant="ghost" aria-label="Close" onClick={this.handleCloseSideSheet}>
-                Close
-              </Button>
-            </Box>
-          )}
-          {children}
-        </ModalContent>
+        <FocusLock disabled={!isOpen}>
+          <ModalWrapper
+            className={clsx(isOpen && 'entered')}
+            modalSize={size}
+            backgroundColor="white"
+            boxShadow={3}
+            borderRadius="xs"
+            my="12vmin"
+            mx="md"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={labelledById}
+            data-state={state}
+          >
+            {!hideCloseButton && (
+              <Box position="absolute" top="sm" right="md">
+                <Button type="button" variant="ghost" aria-label="Close" onClick={this.handleCloseSideSheet}>
+                  Close
+                </Button>
+              </Box>
+            )}
+            {children}
+          </ModalWrapper>
+        </FocusLock>
       </ModalOverlay>
     );
   };

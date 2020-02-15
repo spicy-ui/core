@@ -106,7 +106,7 @@ export const ModalOverlay = styled('div')`
 
 ModalOverlay.displayName = 'ModalOverlay';
 
-export const ModalContent = styled(Box)<SizeableModalProps>`
+export const ModalWrapper = styled(Box)<SizeableModalProps>`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -137,4 +137,4 @@ export const ModalContent = styled(Box)<SizeableModalProps>`
   }
 `;
 
-ModalContent.displayName = 'ModalContent';
+ModalWrapper.displayName = 'ModalWrapper';
