@@ -12,7 +12,7 @@ export const StyledInput = styled('input')<InputProps>`
   display: flex;
   align-items: center;
   background: none;
-  border: none;
+  border: 1px solid transparent;
   color: ${p => p.theme.colors.gray[900]};
   ${variant({ prop: 'variant', scale: 'componentStyles.inputs.variants' })}
   outline: none;

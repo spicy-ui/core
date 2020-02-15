@@ -28,7 +28,6 @@ const spaces = {
 const variants = {
   outline: {
     backgroundColor: 'white',
-    border: '1px solid',
     borderColor: 'gray.100',
   },
   filled: {
