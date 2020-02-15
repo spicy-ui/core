@@ -25,17 +25,17 @@ export const Simple = () => (
 
 export const Fields = () => (
   <Stack spacing="base">
-    <Field id="uuid" label="UUID" helperText="This is a UUID for your new account" isReadOnly isDisabled>
-      <Input value="c3f3b729-0a28-44d7-ac13-63b23cf7b5d3" />
+    <Field id="disabled" label="Disabled" isDisabled>
+      <Input value="Disabled field" />
     </Field>
-    <Field id="name" label="Name">
-      <Input />
+    <Field id="readonly" label="Readonly" isReadOnly>
+      <Input value="Readonly field" />
     </Field>
-    <Field id="username" label="Username" isRequired>
-      <Input />
+    <Field id="required" label="Required" isRequired>
+      <Input value="Required field" />
     </Field>
-    <Field id="password" label="Password" isInvalid errorText="Please enter a password">
-      <Input type="password" />
+    <Field id="invalid" label="Invalid" isInvalid>
+      <Input value="Invalid field" />
     </Field>
   </Stack>
 );
