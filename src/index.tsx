@@ -4,6 +4,7 @@ export * from './Divider';
 export * from './Flex';
 export * from './Grid';
 export * from './Heading';
+export * from './Icon';
 export * from './Link';
 export * from './Stack';
 export * from './Text';
