@@ -32,19 +32,19 @@ export const CSSReset = createGlobalStyle`
   }
   
   em {
-    ${p => css(get(p.theme.componentStyles.text, 'em'))(p)}
+    ${p => css(get(p.theme.componentStyles, 'em'))(p)}
   }
 
   strong {
-    ${p => css(get(p.theme.componentStyles.text, 'strong'))(p)}
+    ${p => css(get(p.theme.componentStyles, 'strong'))(p)}
   }
 
   small {
-    ${p => css(get(p.theme.componentStyles.text, 'small'))(p)}
+    ${p => css(get(p.theme.componentStyles, 'small'))(p)}
   }
 
   code {
-    ${p => css(get(p.theme.componentStyles.text, 'code'))(p)}
+    ${p => css(get(p.theme.componentStyles, 'code'))(p)}
   }
 
   pre {
