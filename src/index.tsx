@@ -1,5 +1,6 @@
 export * from './Box';
 export * from './Button';
+export * from './ColorMode';
 export * from './Divider';
 export * from './Flex';
 export * from './Grid';
@@ -8,4 +9,3 @@ export * from './Link';
 export * from './Stack';
 export * from './Text';
 export * from './Theme';
-export * from './ThemeMode';
