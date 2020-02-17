@@ -19,7 +19,7 @@ export interface HeadingProps extends LayoutProps, SpaceProps, ColorProps, Syste
 }
 
 const Heading = styled('h2')<HeadingProps>`
-  ${variant({ scale: 'componentStyles.text' })}
+  ${variant({ scale: 'componentStyles' })}
   ${layout}
   ${space}
   ${color}

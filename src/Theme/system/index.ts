@@ -8,7 +8,6 @@ import { fonts, fontSizes, fontWeights, letterSpacings, lineHeights } from './ty
 import { zIndices } from './zIndices';
 
 export const system = {
-  componentStyles,
   breakpoints,
   space,
   fontSizes,
@@ -20,4 +19,5 @@ export const system = {
   radii,
   shadows,
   zIndices,
+  componentStyles,
 };

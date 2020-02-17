@@ -1,4 +1,4 @@
-export const text = {
+export const componentStyles = {
   h1: {
     fontFamily: 'heading',
     fontSize: '6xl',
