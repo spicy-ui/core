@@ -14,10 +14,10 @@ export const Simple = () => <Theme>I am wrapped by the Theme component</Theme>;
 
 export const Nested = () => (
   <>
-    <Box bg="black" color="white" p={1}>
+    <Box bg="black" color="white" p="base">
       <code>theme.black = '#000'</code>
       <Theme theme={{ colors: { black: 'rebeccapurple' } }}>
-        <Box bg="black" color="white" p={1} mt={1}>
+        <Box bg="black" color="white" p="base" mt="base">
           <code>theme.black = 'rebeccapurple'</code>
         </Box>
       </Theme>
