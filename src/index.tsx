@@ -10,4 +10,5 @@ export * from './Input';
 export * from './Link';
 export * from './Stack';
 export * from './Text';
+export * from './TextArea';
 export * from './Theme';
