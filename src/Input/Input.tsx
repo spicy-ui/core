@@ -1,9 +1,7 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { SpaceProps, WidthProps } from 'styled-system';
-import { useInputStyle } from './style';
-
-const StyledInput = styled('input')<InputProps>(useInputStyle);
+import { useField } from '../Field/Context';
+import { StyledInput } from './styled';
 
 export type InputSpace = 'xs' | 'sm' | 'md' | 'lg';
 
@@ -19,12 +17,7 @@ export interface InputProps extends SpaceProps, WidthProps {
 }
 
 const Input: React.FC<InputProps & React.InputHTMLAttributes<HTMLInputElement>> = ({ ...rest }) => {
-  // const { id, isDisabled, isReadOnly, isRequired } = useField();
-
-  const id = 'abc';
-  const isDisabled = false;
-  const isReadOnly = false;
-  const isRequired = false;
+  const { id, isDisabled, isReadOnly, isRequired } = useField();
 
   const props = {
     id,

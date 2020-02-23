@@ -1,6 +1,6 @@
 import { css as withSystem } from '@styled-system/css';
 import { darken, lighten } from 'polished';
-import { css, DefaultTheme } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 import { get, space, width } from 'styled-system';
 import { useColorMode } from '../ColorMode';
 import { InputProps } from './Input';
@@ -131,7 +131,7 @@ interface useInputStyleProps extends InputProps {
   colorMode: 'light' | 'dark';
 }
 
-export const useInputStyle = (props: Omit<useInputStyleProps, 'colorMode'>) => {
+const useInputStyle = (props: Omit<useInputStyleProps, 'colorMode'>) => {
   const { mode: colorMode } = useColorMode();
   const _props = { ...props, colorMode };
 
@@ -148,3 +148,5 @@ export const useInputStyle = (props: Omit<useInputStyleProps, 'colorMode'>) => {
     })(props),
   );
 };
+
+export const StyledInput = styled('input')<InputProps>(useInputStyle);
