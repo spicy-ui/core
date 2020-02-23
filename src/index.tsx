@@ -2,6 +2,7 @@ export * from './Box';
 export * from './Button';
 export * from './ColorMode';
 export * from './Divider';
+export * from './Field';
 export * from './Flex';
 export * from './Grid';
 export * from './Heading';
