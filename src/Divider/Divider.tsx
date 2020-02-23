@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Box, BoxProps } from '../Box';
-import { useDividerStyle } from './style';
+import { useDividerStyle } from './styled';
 
 export interface DividerProps extends BoxProps {
   /** Orientation of the divider. */
