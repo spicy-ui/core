@@ -3,9 +3,9 @@ import * as React from 'react';
 import { uid } from 'react-uid';
 import { TextArea, TextAreaSpace, TextAreaVariant, Stack } from '../';
 
-const inputSpaces: TextAreaSpace[] = ['xs', 'sm', 'md', 'lg'];
+const textAreaSpaces: TextAreaSpace[] = ['xs', 'sm', 'md', 'lg'];
 
-const inputVariants: TextAreaVariant[] = ['outlined', 'filled', 'unstyled'];
+const textAreaVariants: TextAreaVariant[] = ['outlined', 'filled', 'unstyled'];
 
 export default {
   title: 'TextArea',
@@ -16,18 +16,18 @@ export default {
 export const Simple = () => (
   <TextArea
     disabled={boolean('disabled', false)}
-    fullWidth={boolean('fullWidth', true)}
+    fullWidth={boolean('fullWidth', false)}
     placeholder={text('placeholder', 'Simple input')}
     readOnly={boolean('readOnly', false)}
     required={boolean('required', false)}
-    space={select('space', inputSpaces, 'md')}
-    variant={select('variant', inputVariants, 'outlined')}
+    space={select('space', textAreaSpaces, 'md')}
+    variant={select('variant', textAreaVariants, 'outlined')}
   />
 );
 
 export const AllSpaces = () => (
   <Stack spacing="base">
-    {inputSpaces.map((space, idx) => (
+    {textAreaSpaces.map((space, idx) => (
       <TextArea key={uid(space, idx)} space={space} placeholder={space} />
     ))}
   </Stack>
@@ -35,7 +35,7 @@ export const AllSpaces = () => (
 
 export const AllVariants = () => (
   <Stack spacing="base">
-    {inputVariants.map((variant, idx) => (
+    {textAreaVariants.map((variant, idx) => (
       <TextArea key={uid(variant, idx)} variant={variant} placeholder={variant} />
     ))}
   </Stack>

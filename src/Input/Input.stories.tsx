@@ -31,7 +31,7 @@ export default {
 export const Simple = () => (
   <Input
     disabled={boolean('disabled', false)}
-    fullWidth={boolean('fullWidth', true)}
+    fullWidth={boolean('fullWidth', false)}
     placeholder={text('placeholder', 'Simple input')}
     readOnly={boolean('readOnly', false)}
     required={boolean('required', false)}
