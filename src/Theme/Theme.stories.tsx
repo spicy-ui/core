@@ -32,7 +32,7 @@ export const Nested = () => (
 // export const Typography = () => <>todo Typography</>;
 
 const Swatch: React.FC<{ name: string; color: string }> = ({ name, color }) => (
-  <Box overflow="hidden" backgroundColor="white">
+  <Box overflow="hidden">
     <Box
       mb="4px"
       height="120px"
