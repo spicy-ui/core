@@ -8,6 +8,7 @@ export * from './Grid';
 export * from './Heading';
 export * from './Input';
 export * from './Link';
+export * from './Select';
 export * from './Stack';
 export * from './Text';
 export * from './TextArea';
