@@ -5,24 +5,24 @@ import { get, space, width } from 'styled-system';
 import { useColorMode } from '../ColorMode';
 import { InputProps } from './Input';
 
-const outlined = ({ colorMode, theme }: useInputStyleProps) => {
+const outlined = ({ colorMode }: useInputStyleProps) => {
   if (colorMode === 'dark') {
     return {
-      backgroundColor: get(theme.colors, `gray.800`),
-      borderColor: get(theme.colors, `gray.700`),
-      color: get(theme.colors, 'text.inverse'),
+      backgroundColor: `gray.800`,
+      borderColor: `gray.700`,
+      color: 'text.inverse',
       ':hover': {
-        borderColor: get(theme.colors, `gray.600`),
+        borderColor: `gray.600`,
       },
     };
   }
 
   return {
-    backgroundColor: get(theme.colors, `white`),
-    borderColor: get(theme.colors, `gray.100`),
-    color: get(theme.colors, 'text.base'),
+    backgroundColor: `white`,
+    borderColor: `gray.100`,
+    color: 'text.base',
     ':hover': {
-      borderColor: get(theme.colors, `gray.200`),
+      borderColor: `gray.200`,
     },
   };
 };
@@ -30,8 +30,8 @@ const outlined = ({ colorMode, theme }: useInputStyleProps) => {
 const filled = ({ colorMode, theme }: useInputStyleProps) => {
   if (colorMode === 'dark') {
     return {
-      backgroundColor: get(theme.colors, `gray.700`),
-      color: get(theme.colors, 'text.inverse'),
+      backgroundColor: `gray.700`,
+      color: 'text.inverse',
       ':hover': {
         backgroundColor: lighten(0.05, get(theme.colors, `gray.700`)),
       },
@@ -39,23 +39,23 @@ const filled = ({ colorMode, theme }: useInputStyleProps) => {
   }
 
   return {
-    backgroundColor: get(theme.colors, `gray.100`),
-    color: get(theme.colors, 'text.base'),
+    backgroundColor: `gray.100`,
+    color: 'text.base',
     ':hover': {
       backgroundColor: darken(0.05, get(theme.colors, `gray.100`)),
     },
   };
 };
 
-const baseStyles = {
+const baseStyles = (props: useInputStyleProps) => ({
   display: 'flex',
   alignItems: 'center',
   background: 'none',
   border: '1px solid transparent',
-  color: 'gray.900',
+  color: props.colorMode === 'dark' ? 'text.inverse' : 'text.base',
   outline: 'none',
   transition: 'all 250ms ease 0s',
-};
+});
 
 const sizes = (props: useInputStyleProps) => {
   switch (props.space) {
@@ -137,7 +137,7 @@ const useInputStyle = (props: Omit<useInputStyleProps, 'colorMode'>) => {
 
   return css(
     withSystem({
-      ...baseStyles,
+      ...baseStyles(_props),
       width: _props.fullWidth ? '100%' : undefined,
       ...sizes(_props),
       ...width(_props),
