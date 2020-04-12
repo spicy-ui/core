@@ -5,33 +5,33 @@ import { get, space, width } from 'styled-system';
 import { useColorMode } from '../ColorMode';
 import { TextAreaProps } from './TextArea';
 
-const outlined = ({ colorMode, theme }: useInputStyleProps) => {
+const outlined = ({ colorMode }: useTextAreaStyleProps) => {
   if (colorMode === 'dark') {
     return {
-      backgroundColor: get(theme.colors, `gray.800`),
-      borderColor: get(theme.colors, `gray.700`),
-      color: get(theme.colors, 'text.inverse'),
+      backgroundColor: `gray.800`,
+      borderColor: `gray.700`,
+      color: 'text.inverse',
       ':hover': {
-        borderColor: get(theme.colors, `gray.600`),
+        borderColor: `gray.600`,
       },
     };
   }
 
   return {
-    backgroundColor: get(theme.colors, `white`),
-    borderColor: get(theme.colors, `gray.100`),
-    color: get(theme.colors, 'text.base'),
+    backgroundColor: `white`,
+    borderColor: `gray.100`,
+    color: 'text.base',
     ':hover': {
-      borderColor: get(theme.colors, `gray.200`),
+      borderColor: `gray.200`,
     },
   };
 };
 
-const filled = ({ colorMode, theme }: useInputStyleProps) => {
+const filled = ({ colorMode, theme }: useTextAreaStyleProps) => {
   if (colorMode === 'dark') {
     return {
-      backgroundColor: get(theme.colors, `gray.700`),
-      color: get(theme.colors, 'text.inverse'),
+      backgroundColor: `gray.700`,
+      color: 'text.inverse',
       ':hover': {
         backgroundColor: lighten(0.05, get(theme.colors, `gray.700`)),
       },
@@ -39,25 +39,25 @@ const filled = ({ colorMode, theme }: useInputStyleProps) => {
   }
 
   return {
-    backgroundColor: get(theme.colors, `gray.100`),
-    color: get(theme.colors, 'text.base'),
+    backgroundColor: `gray.100`,
+    color: 'text.base',
     ':hover': {
       backgroundColor: darken(0.05, get(theme.colors, `gray.100`)),
     },
   };
 };
 
-const baseStyles = {
+const baseStyles = (props: useTextAreaStyleProps) => ({
   display: 'flex',
   alignItems: 'center',
   background: 'none',
   border: '1px solid transparent',
-  color: 'gray.900',
+  color: props.colorMode === 'dark' ? 'text.inverse' : 'text.base',
   outline: 'none',
   transition: 'all 250ms ease 0s',
-};
+});
 
-const sizes = (props: useInputStyleProps) => {
+const sizes = (props: useTextAreaStyleProps) => {
   switch (props.space) {
     case 'xs':
       return {
@@ -104,7 +104,7 @@ const sizes = (props: useInputStyleProps) => {
   }
 };
 
-const focus = (props: useInputStyleProps) => ({
+const focus = (props: useTextAreaStyleProps) => ({
   ':focus': {
     boxShadow: props.theme.shadows.focus(props.colorMode === 'dark'),
     zIndex: 1,
@@ -119,7 +119,7 @@ const disabled = {
   },
 };
 
-const variants = (props: useInputStyleProps) => {
+const variants = (props: useTextAreaStyleProps) => {
   switch (props.variant) {
     case 'outlined':
       return outlined(props);
@@ -130,18 +130,18 @@ const variants = (props: useInputStyleProps) => {
   }
 };
 
-interface useInputStyleProps extends TextAreaProps {
+interface useTextAreaStyleProps extends TextAreaProps {
   theme: DefaultTheme;
   colorMode: 'light' | 'dark';
 }
 
-const useTextAreaStyle = (props: Omit<useInputStyleProps, 'colorMode'>) => {
+const useTextAreaStyle = (props: Omit<useTextAreaStyleProps, 'colorMode'>) => {
   const { mode: colorMode } = useColorMode();
   const _props = { ...props, colorMode };
 
   return css(
     withSystem({
-      ...baseStyles,
+      ...baseStyles(_props),
       width: _props.fullWidth ? '100%' : undefined,
       ...sizes(_props),
       ...width(_props),
