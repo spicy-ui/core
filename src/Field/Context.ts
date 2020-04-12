@@ -10,8 +10,4 @@ interface FieldContextProps {
 
 export const FieldContext = React.createContext<FieldContextProps>({});
 
-export const useField = () => {
-  const context = React.useContext(FieldContext);
-
-  return context;
-};
+export const useField = () => React.useContext(FieldContext);

@@ -4,16 +4,6 @@ import { ThemeContext, ThemeProvider } from 'styled-components';
 import { DeepPartial } from 'utility-types';
 import { system } from './system';
 
-export const useTheme = () => {
-  const theme = React.useContext(ThemeContext);
-
-  if (!theme) {
-    throw new Error('useTheme must be used within a Theme');
-  }
-
-  return theme;
-};
-
 export interface ThemeProps {
   /** Custom theme to merge with the default theme. */
   theme?: DeepPartial<typeof system>;
@@ -32,3 +22,5 @@ const Theme: React.FC<ThemeProps> = ({ children, theme = {} }) => {
 Theme.displayName = 'Theme';
 
 export default Theme;
+
+export const useTheme = () => React.useContext(ThemeContext);
