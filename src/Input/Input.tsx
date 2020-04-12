@@ -31,7 +31,7 @@ const Input: React.FC<InputProps & React.InputHTMLAttributes<HTMLInputElement>> 
 };
 
 Input.defaultProps = {
-  fullWidth: false,
+  fullWidth: true,
   space: 'md',
   type: 'text',
   variant: 'outlined',

@@ -16,7 +16,7 @@ export default {
 export const Simple = () => (
   <TextArea
     disabled={boolean('disabled', false)}
-    fullWidth={boolean('fullWidth', false)}
+    fullWidth={boolean('fullWidth', true)}
     placeholder={text('placeholder', 'Simple input')}
     readOnly={boolean('readOnly', false)}
     required={boolean('required', false)}

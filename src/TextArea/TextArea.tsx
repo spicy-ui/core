@@ -31,7 +31,7 @@ const TextArea: React.FC<TextAreaProps & React.TextareaHTMLAttributes<HTMLTextAr
 };
 
 TextArea.defaultProps = {
-  fullWidth: false,
+  fullWidth: true,
   space: 'md',
   variant: 'outlined',
   rows: 1,
