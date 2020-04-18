@@ -1,6 +1,9 @@
 import { boolean, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { Field, Input, Stack } from '../';
+import { Select } from '../Select';
+import { uid } from 'react-uid';
+import { TextArea } from '../TextArea';
 
 export default {
   title: 'Field',
@@ -23,7 +26,7 @@ export const Simple = () => (
   </Field>
 );
 
-export const Fields = () => (
+export const InputFields = () => (
   <Stack spacing="base">
     <Field id="disabled" label="Disabled" isDisabled>
       <Input value="Disabled field" />
@@ -36,6 +39,46 @@ export const Fields = () => (
     </Field>
     <Field id="invalid" label="Invalid" isInvalid>
       <Input value="Invalid field" />
+    </Field>
+  </Stack>
+);
+
+const options = ['apples', 'bananas', 'oranges', 'pears'].map((value, idx) => (
+  <option key={uid(value, idx)} value={value}>
+    {value}
+  </option>
+));
+
+export const SelectFields = () => (
+  <Stack spacing="base">
+    <Field id="disabled" label="Disabled" isDisabled>
+      <Select>{options}</Select>
+    </Field>
+    <Field id="readonly" label="Readonly" isReadOnly>
+      <Select>{options}</Select>
+    </Field>
+    <Field id="required" label="Required" isRequired>
+      <Select>{options}</Select>
+    </Field>
+    <Field id="invalid" label="Invalid" isInvalid>
+      <Select>{options}</Select>
+    </Field>
+  </Stack>
+);
+
+export const TextAreaFields = () => (
+  <Stack spacing="base">
+    <Field id="disabled" label="Disabled" isDisabled>
+      <TextArea />
+    </Field>
+    <Field id="readonly" label="Readonly" isReadOnly>
+      <TextArea />
+    </Field>
+    <Field id="required" label="Required" isRequired>
+      <TextArea />
+    </Field>
+    <Field id="invalid" label="Invalid" isInvalid>
+      <TextArea />
     </Field>
   </Stack>
 );
