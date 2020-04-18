@@ -100,12 +100,21 @@ const sizes = (props: useSelectStyleProps) => {
   }
 };
 
-const focus = (props: useSelectStyleProps) => ({
-  ':focus': {
-    boxShadow: props.theme.shadows.focus(props.colorMode === 'dark'),
-    zIndex: 1,
-  },
-});
+const focus = (props: useSelectStyleProps) => {
+  if (props.isInvalid) {
+    return {
+      boxShadow: props.theme.shadows.error(props.colorMode === 'dark'),
+      zIndex: 1,
+    };
+  }
+
+  return {
+    ':focus': {
+      boxShadow: props.theme.shadows.focus(props.colorMode === 'dark'),
+      zIndex: 1,
+    },
+  };
+};
 
 const disabled = {
   ':disabled': {

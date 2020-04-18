@@ -1,4 +1,5 @@
-import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
 import { Select, SelectSpace, SelectVariant, Stack } from '../';
@@ -23,10 +24,12 @@ export const Simple = () => (
   <Select
     disabled={boolean('disabled', false)}
     fullWidth={boolean('fullWidth', true)}
+    isInvalid={boolean('isInvalid', false)}
     placeholder={text('placeholder', 'Select input')}
     required={boolean('required', false)}
     space={select('space', selectSpaces, 'md')}
     variant={select('variant', selectVariants, 'outlined')}
+    onChange={({ target }) => action('onChange')(target.value)}
   >
     {options}
   </Select>

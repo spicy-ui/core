@@ -1,7 +1,8 @@
+import { action } from '@storybook/addon-actions';
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { TextArea, TextAreaSpace, TextAreaVariant, Stack } from '../';
+import { Stack, TextArea, TextAreaSpace, TextAreaVariant } from '../';
 
 const textAreaSpaces: TextAreaSpace[] = ['xs', 'sm', 'md', 'lg'];
 
@@ -17,11 +18,13 @@ export const Simple = () => (
   <TextArea
     disabled={boolean('disabled', false)}
     fullWidth={boolean('fullWidth', true)}
-    placeholder={text('placeholder', 'Simple input')}
+    isInvalid={boolean('isInvalid', false)}
+    placeholder={text('placeholder', 'Text area')}
     readOnly={boolean('readOnly', false)}
     required={boolean('required', false)}
     space={select('space', textAreaSpaces, 'md')}
     variant={select('variant', textAreaVariants, 'outlined')}
+    onChange={({ target }) => action('onChange')(target.value)}
   />
 );
 

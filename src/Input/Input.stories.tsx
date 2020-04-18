@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
@@ -32,12 +33,14 @@ export const Simple = () => (
   <Input
     disabled={boolean('disabled', false)}
     fullWidth={boolean('fullWidth', true)}
-    placeholder={text('placeholder', 'Simple input')}
+    isInvalid={boolean('isInvalid', false)}
+    placeholder={text('placeholder', 'Input')}
     readOnly={boolean('readOnly', false)}
     required={boolean('required', false)}
     space={select('space', inputSpaces, 'md')}
     type={select('type', inputTypes, 'text')}
     variant={select('variant', inputVariants, 'outlined')}
+    onChange={({ target }) => action('onChange')(target.value)}
   />
 );
 

@@ -10,28 +10,40 @@ export type InputVariant = 'outlined' | 'filled' | 'unstyled';
 export interface InputProps extends SpaceProps, WidthProps {
   /** If `true` the input will grow to the full width of it's container. */
   fullWidth?: boolean;
+  /** Indicate whether the input has a valid value or not. */
+  isInvalid?: boolean;
   /** Size of the input. */
   space?: InputSpace;
   /** Variant style of the input. */
   variant?: InputVariant;
 }
 
-const Input: React.FC<InputProps & React.InputHTMLAttributes<HTMLInputElement>> = ({ ...rest }) => {
-  const { id, isDisabled, isReadOnly, isRequired } = useField();
+const Input: React.FC<InputProps & React.InputHTMLAttributes<HTMLInputElement>> = ({
+  id,
+  name,
+  disabled,
+  isInvalid,
+  readOnly,
+  required,
+  ...rest
+}) => {
+  const field = useField();
 
   const props = {
-    id,
-    name: id,
-    disabled: isDisabled,
-    readOnly: isReadOnly,
-    require: isRequired,
+    id: id || field.id,
+    name: name || id || field.id,
+    disabled: disabled || field.isDisabled,
+    isInvalid: isInvalid || field.isInvalid,
+    readOnly: readOnly || field.isReadOnly,
+    required: required || field.isRequired,
   };
 
-  return <StyledInput {...props} {...rest} />;
+  return <StyledInput {...rest} {...props} />;
 };
 
 Input.defaultProps = {
   fullWidth: true,
+  isInvalid: false,
   space: 'md',
   type: 'text',
   variant: 'outlined',
