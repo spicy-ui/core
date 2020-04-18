@@ -15,12 +15,6 @@ const ColorModeContext = React.createContext<{
   },
 });
 
-export const useColorMode = () => {
-  const context = React.useContext(ColorModeContext);
-
-  return context;
-};
-
 const ColorModeProvider: React.FC = ({ children }) => {
   const { value, toggle } = useDarkMode(false);
 
@@ -41,3 +35,5 @@ const ColorModeProvider: React.FC = ({ children }) => {
 ColorModeProvider.displayName = 'ColorModeProvider';
 
 export default ColorModeProvider;
+
+export const useColorMode = () => React.useContext(ColorModeContext);

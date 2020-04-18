@@ -11,7 +11,7 @@ const filled = ({ color, colorMode, theme }: useButtonStyleProps) => {
 
   const isReversed = ['yellow', 'cyan'].includes(color as string) || (colorMode === 'dark' && color === 'gray');
 
-  const style = {
+  return {
     backgroundColor: bg,
     color: isReversed ? 'text.base' : 'text.inverse',
     ':hover': {
@@ -21,15 +21,13 @@ const filled = ({ color, colorMode, theme }: useButtonStyleProps) => {
       backgroundColor: darken(0.15, bg),
     },
   };
-
-  return style;
 };
 
 const outlined = ({ color, colorMode, theme }: useButtonStyleProps) => {
   const bg =
     colorMode === 'dark' && color === 'gray' ? get(theme.colors, `gray.50`) : get(theme.colors, `${color}.500`);
 
-  const style = {
+  return {
     backgroundColor: 'transparent',
     border: '2px solid currentColor',
     color: bg,
@@ -40,15 +38,13 @@ const outlined = ({ color, colorMode, theme }: useButtonStyleProps) => {
       backgroundColor: rgba(bg, 0.15),
     },
   };
-
-  return style;
 };
 
 const ghost = ({ color, colorMode, theme }: useButtonStyleProps) => {
   const bg =
     colorMode === 'dark' && color === 'gray' ? get(theme.colors, `gray.50`) : get(theme.colors, `${color}.500`);
 
-  const style = {
+  return {
     backgroundColor: 'transparent',
     color: bg,
     ':hover': {
@@ -58,8 +54,6 @@ const ghost = ({ color, colorMode, theme }: useButtonStyleProps) => {
       backgroundColor: rgba(bg, 0.15),
     },
   };
-
-  return style;
 };
 
 const link = ({ color, colorMode, theme }: useButtonStyleProps) => {

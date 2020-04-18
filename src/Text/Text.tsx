@@ -1,19 +1,10 @@
 import styled from 'styled-components';
-import {
-  color,
-  ColorProps,
-  layout,
-  LayoutProps,
-  space,
-  SpaceProps,
-  typography,
-  TypographyProps as SystemTypographyProps,
-} from 'styled-system';
+import { color, ColorProps, layout, LayoutProps, space, SpaceProps, typography, TypographyProps } from 'styled-system';
 import { variant } from '../util';
 
 export type TextVariant = 'body1' | 'body2' | 'lead';
 
-export interface TextProps extends LayoutProps, SpaceProps, ColorProps, SystemTypographyProps {
+export interface TextProps extends LayoutProps, SpaceProps, ColorProps, TypographyProps {
   /** Variant style of the text. */
   variant?: TextVariant;
 }

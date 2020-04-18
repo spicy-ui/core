@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { SpaceProps, WidthProps } from 'styled-system';
-import { useButtonStyle } from './style';
+import { useButtonStyle } from './styled';
 
 export type ButtonColor = 'gray' | 'red' | 'orange' | 'yellow' | 'green' | 'teal' | 'blue' | 'cyan' | 'purple' | 'pink';
 
