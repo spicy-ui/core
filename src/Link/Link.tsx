@@ -16,4 +16,3 @@ Link.defaultProps = {};
 Link.displayName = 'Link';
 
 export { Link };
-
