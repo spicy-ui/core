@@ -1,12 +1,21 @@
 name: CI
 
-on: [push]
+on:
+  push:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+  release:
+    types:
+      - created
 
 jobs:
 
   lint:
     name: Lint
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
@@ -20,6 +29,7 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
@@ -35,6 +45,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
@@ -42,5 +53,75 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Build
+      - name: Build Package
         run: yarn build
+
+  deployDraftOnAnyPullRequest:
+    name: Deploy draft to Netlify
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' && github.ref != 'refs/heads/master'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build Storybook
+        run: yarn build:storybook
+
+      - name: Deploy draft to Netlify
+        uses: South-Paw/action-netlify-deploy@v1.0.3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
+          build-dir: './storybook-static'
+          draft: true
+          comment-on-pull-request: true
+
+  deployDraftOnMasterCommit:
+    name: Deploy draft to Netlify
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@master
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      
+      - name: Build Storybook
+        run: yarn build:storybook
+
+      - name: Deploy draft build to Netlify
+        uses: South-Paw/action-netlify-deploy@v1.0.2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
+          build-dir: './storybook-static'
+          draft: true
+          comment-on-commit: true
+
+  deployProductionOnMasterRelease:
+    name: Publish release to Netlify
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release' && github.event.action == 'created'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build Storybook
+        run: yarn build:storybook
+
+      - name: Deploy production to Netlify
+        uses: South-Paw/action-netlify-deploy@v1.0.3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
+          build-dir: './storybook-static'
