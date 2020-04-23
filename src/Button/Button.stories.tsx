@@ -1,7 +1,7 @@
 import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Button, ButtonColor, ButtonSize, ButtonVariant, Stack } from '../';
+import { Button, ButtonColor, ButtonSize, ButtonVariant, Stack } from '..';
 
 const buttonColors: ButtonColor[] = [
   'gray',

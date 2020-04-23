@@ -3,7 +3,7 @@ import { darken, lighten } from 'polished';
 import styled, { css, DefaultTheme } from 'styled-components';
 import { get, space, width } from 'styled-system';
 import { useColorMode } from '../ColorMode';
-import { InputProps } from './Input';
+import { InputProps } from './types';
 
 const outlined = ({ colorMode }: useInputStyleProps) => {
   if (colorMode === 'dark') {

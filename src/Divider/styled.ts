@@ -1,7 +1,7 @@
 import { css as withSystem } from '@styled-system/css';
 import { css, DefaultTheme } from 'styled-components';
 import { useColorMode } from '../ColorMode';
-import { DividerProps } from './Divider';
+import { DividerProps } from './types';
 
 const horizontal = (props: useDividerStyleProps) => {
   const color = props.colorMode === 'dark' ? 'gray.600' : 'gray.300';

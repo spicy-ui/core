@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Text } from '../';
+import { Flex, Text } from '..';
 
 export default {
   title: 'Flex',

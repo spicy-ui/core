@@ -3,7 +3,7 @@ import { darken, lighten } from 'polished';
 import styled, { css, DefaultTheme } from 'styled-components';
 import { get, space, width } from 'styled-system';
 import { useColorMode } from '../ColorMode';
-import { SelectProps } from './Select';
+import { SelectProps } from './types';
 
 const outlined = ({ colorMode }: useSelectStyleProps) => {
   if (colorMode === 'dark') {

@@ -1,11 +1,7 @@
 import styled from 'styled-components';
-import { Box, BoxProps } from '../Box';
+import { Box } from '../Box';
 import { useDividerStyle } from './styled';
-
-export interface DividerProps extends BoxProps {
-  /** Orientation of the divider. */
-  orientation?: 'horizontal' | 'vertical';
-}
+import { DividerProps } from './types';
 
 const Divider = styled(Box)<DividerProps>(useDividerStyle);
 
@@ -16,4 +12,4 @@ Divider.defaultProps = {
 
 Divider.displayName = 'Divider';
 
-export default Divider;
+export { Divider };

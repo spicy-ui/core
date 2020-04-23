@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Input, InputSpace, InputVariant, Stack } from '../';
+import { Input, InputSpace, InputVariant, Stack } from '..';
 
 const inputTypes = [
   'date',

@@ -1,13 +1,7 @@
 import styled from 'styled-components';
-import { color, ColorProps, layout, LayoutProps, space, SpaceProps, typography, TypographyProps } from 'styled-system';
+import { color, layout, space, typography } from 'styled-system';
 import { variant } from '../util';
-
-export type TextVariant = 'body1' | 'body2' | 'lead';
-
-export interface TextProps extends LayoutProps, SpaceProps, ColorProps, TypographyProps {
-  /** Variant style of the text. */
-  variant?: TextVariant;
-}
+import { TextProps } from './types';
 
 const Text = styled('p')<TextProps>`
   ${variant({ scale: 'componentStyles' })}
@@ -23,4 +17,4 @@ Text.defaultProps = {
 
 Text.displayName = 'Text';
 
-export default Text;
+export { Text };
