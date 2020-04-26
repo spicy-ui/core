@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, ColorModeProvider, Text, useColorMode } from '../';
+import { Button, ColorModeProvider, Text, useColorMode } from '..';
 
 export default {
   title: 'ColorMode',

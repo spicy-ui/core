@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Select, SelectSpace, SelectVariant, Stack } from '../';
+import { Select, SelectSpace, SelectVariant, Stack } from '..';
 
 const options = ['apples', 'bananas', 'oranges', 'pears'].map((value, idx) => (
   <option key={uid(value, idx)} value={value}>

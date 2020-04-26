@@ -43,8 +43,8 @@ test('variant prop can be customized', () => {
 });
 
 test('variant can be composed', () => {
-  const system = compose(variant({ key: 'typography' }), fontSize, color);
-  const result = system({
+  const _system = compose(variant({ key: 'typography' }), fontSize, color);
+  const result = _system({
     theme: {
       typography: {
         primary: {

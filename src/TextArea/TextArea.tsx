@@ -1,22 +1,7 @@
 import * as React from 'react';
-import { SpaceProps, WidthProps } from 'styled-system';
 import { useField } from '../Field/Context';
 import { StyledTextArea } from './styled';
-
-export type TextAreaSpace = 'xs' | 'sm' | 'md' | 'lg';
-
-export type TextAreaVariant = 'outlined' | 'filled' | 'unstyled';
-
-export interface TextAreaProps extends SpaceProps, WidthProps {
-  /** If `true` the text area will grow to the full width of it's container. */
-  fullWidth?: boolean;
-  /** Indicate whether the textarea has a valid value or not. */
-  isInvalid?: boolean;
-  /** Size of the text area. */
-  space?: TextAreaSpace;
-  /** Variant style of the text area. */
-  variant?: TextAreaVariant;
-}
+import { TextAreaProps } from './types';
 
 const TextArea: React.FC<TextAreaProps & React.TextareaHTMLAttributes<HTMLTextAreaElement>> = ({
   id,
@@ -51,4 +36,4 @@ TextArea.defaultProps = {
 
 TextArea.displayName = 'Input';
 
-export default TextArea;
+export { TextArea };

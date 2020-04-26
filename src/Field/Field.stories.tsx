@@ -1,8 +1,8 @@
 import { boolean, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
-import { Field, Input, Stack } from '../';
-import { Select } from '../Select';
 import { uid } from 'react-uid';
+import { Field, Input, Stack } from '..';
+import { Select } from '../Select';
 import { TextArea } from '../TextArea';
 
 export default {

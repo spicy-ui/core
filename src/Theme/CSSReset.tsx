@@ -32,12 +32,12 @@ export const CSSReset = createGlobalStyle`
 
   html {
     box-sizing: border-box;
-    color: ${p => useModeColors(p).color};
-    ${p => css(get(p.theme.componentStyles, 'body1'))(p)}
+    color: ${(p) => useModeColors(p).color};
+    ${(p) => css(get(p.theme.componentStyles, 'body1'))(p)}
   }
 
   body {
-    background-color: ${p => useModeColors(p).backgroundColor};
+    background-color: ${(p) => useModeColors(p).backgroundColor};
   }
 
   h1, h2, h3, h4, h5, h6, p {
@@ -50,19 +50,19 @@ export const CSSReset = createGlobalStyle`
   }
   
   em {
-    ${p => css(get(p.theme.componentStyles, 'em'))(p)}
+    ${(p) => css(get(p.theme.componentStyles, 'em'))(p)}
   }
 
   strong {
-    ${p => css(get(p.theme.componentStyles, 'strong'))(p)}
+    ${(p) => css(get(p.theme.componentStyles, 'strong'))(p)}
   }
 
   small {
-    ${p => css(get(p.theme.componentStyles, 'small'))(p)}
+    ${(p) => css(get(p.theme.componentStyles, 'small'))(p)}
   }
 
   code {
-    ${p => css(get(p.theme.componentStyles, 'code'))(p)}
+    ${(p) => css(get(p.theme.componentStyles, 'code'))(p)}
   }
 
   pre {

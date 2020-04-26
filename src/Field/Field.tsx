@@ -1,18 +1,9 @@
 import * as React from 'react';
 import { Box } from '../Box';
 import { FieldContext } from './Context';
-import { FieldControl, FieldErrorText, FieldHelperText, FieldLabel, FieldRequired } from './styled';
-
-export interface FieldProps {
-  errorText?: React.ReactNode;
-  helperText?: React.ReactNode;
-  id: string;
-  isDisabled?: boolean;
-  isInvalid?: boolean;
-  isReadOnly?: boolean;
-  isRequired?: boolean;
-  label?: string;
-}
+import { FieldText } from './FieldText';
+import { FieldControl, FieldLabel, FieldRequired } from './styled';
+import { FieldProps } from './types';
 
 const Field: React.FC<FieldProps> = ({
   children,
@@ -36,17 +27,7 @@ const Field: React.FC<FieldProps> = ({
         </Box>
       )}
       <FieldControl>{children}</FieldControl>
-      {isInvalid
-        ? (errorText || helperText) && (
-            <Box mt="sm">
-              <FieldErrorText>{errorText || helperText}</FieldErrorText>
-            </Box>
-          )
-        : helperText && (
-            <Box mt="sm">
-              <FieldHelperText>{helperText}</FieldHelperText>
-            </Box>
-          )}
+      <FieldText isInvalid={isInvalid} errorText={errorText} helperText={helperText} />
     </Box>
   </FieldContext.Provider>
 );
@@ -55,4 +36,4 @@ Field.defaultProps = {};
 
 Field.displayName = 'Field';
 
-export default Field;
+export { Field };

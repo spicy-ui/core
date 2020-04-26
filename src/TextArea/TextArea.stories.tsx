@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Stack, TextArea, TextAreaSpace, TextAreaVariant } from '../';
+import { Stack, TextArea, TextAreaSpace, TextAreaVariant } from '..';
 
 const textAreaSpaces: TextAreaSpace[] = ['xs', 'sm', 'md', 'lg'];
 

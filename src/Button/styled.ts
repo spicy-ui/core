@@ -3,7 +3,7 @@ import { darken, rgba } from 'polished';
 import { css, DefaultTheme } from 'styled-components';
 import { get, space, width } from 'styled-system';
 import { useColorMode } from '../ColorMode';
-import { ButtonProps } from './Button';
+import { ButtonProps } from './types';
 
 const filled = ({ color, colorMode, theme }: useButtonStyleProps) => {
   const bg =

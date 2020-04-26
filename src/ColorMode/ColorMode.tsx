@@ -34,6 +34,6 @@ const ColorModeProvider: React.FC = ({ children }) => {
 
 ColorModeProvider.displayName = 'ColorModeProvider';
 
-export default ColorModeProvider;
+export { ColorModeProvider };
 
 export const useColorMode = () => React.useContext(ColorModeContext);

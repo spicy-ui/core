@@ -4,7 +4,7 @@ import { createParser, get } from 'styled-system';
 export const variant = ({ scale, prop = 'variant', variants = {}, key }: any) => {
   let sx: any = { scale: undefined, defaults: undefined };
 
-  sx = (value: any, scale: any, props: any) => css(get(scale, value, ''))(props.theme);
+  sx = (value: any, _scale: any, props: any) => css(get(_scale, value, ''))(props.theme);
 
   sx.scale = scale || key;
   sx.defaults = variants;

@@ -3,7 +3,7 @@ import { darken, lighten } from 'polished';
 import styled, { css, DefaultTheme } from 'styled-components';
 import { get, space, width } from 'styled-system';
 import { useColorMode } from '../ColorMode';
-import { TextAreaProps } from './TextArea';
+import { TextAreaProps } from './types';
 
 const outlined = ({ colorMode }: useTextAreaStyleProps) => {
   if (colorMode === 'dark') {
