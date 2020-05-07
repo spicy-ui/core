@@ -2,6 +2,7 @@
 
 🌶️ A React component library to spice up your UI
 
+[![npm](https://img.shields.io/npm/v/@spicy-ui/core.svg)](https://www.npmjs.com/package/@spicy-ui/core)
 [![CI Status](https://github.com/South-Paw/spicy-ui/workflows/CI/badge.svg)](https://github.com/South-Paw/spicy-ui/actions?query=workflow%3ACI)
 [![Dependencies](https://david-dm.org/South-Paw/spicy-ui/status.svg)](https://david-dm.org/South-Paw/spicy-ui)
 [![Dev Dependencies](https://david-dm.org/South-Paw/spicy-ui/dev-status.svg)](https://david-dm.org/South-Paw/spicy-ui?type=dev)

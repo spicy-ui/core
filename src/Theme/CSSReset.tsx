@@ -2,6 +2,24 @@ import css from '@styled-system/css';
 import { createGlobalStyle } from 'styled-components';
 import styledNormalize from 'styled-normalize';
 import { get } from 'styled-system';
+import { useColorMode } from '../ColorMode';
+
+const useModeColors = (props: any) => {
+  const { mode } = useColorMode();
+
+  const styles = {
+    light: {
+      color: 'text.base',
+      backgroundColor: 'white',
+    },
+    dark: {
+      color: 'text.inverse',
+      backgroundColor: 'gray.800',
+    },
+  };
+
+  return css(styles[mode])(props);
+};
 
 export const CSSReset = createGlobalStyle`
   ${styledNormalize}
@@ -14,12 +32,12 @@ export const CSSReset = createGlobalStyle`
 
   html {
     box-sizing: border-box;
-    color: ${p => p.theme.colors.gray[900]};
-    ${p => css(get(p.theme.componentStyles.text, 'body1'))(p)}
+    color: ${(p) => useModeColors(p).color};
+    ${(p) => css(get(p.theme.componentStyles, 'body1'))(p)}
   }
 
   body {
-    background-color: ${p => p.theme.colors.white};
+    background-color: ${(p) => useModeColors(p).backgroundColor};
   }
 
   h1, h2, h3, h4, h5, h6, p {
@@ -32,19 +50,19 @@ export const CSSReset = createGlobalStyle`
   }
   
   em {
-    ${p => css(get(p.theme.componentStyles.text, 'em'))(p)}
+    ${(p) => css(get(p.theme.componentStyles, 'em'))(p)}
   }
 
   strong {
-    ${p => css(get(p.theme.componentStyles.text, 'strong'))(p)}
+    ${(p) => css(get(p.theme.componentStyles, 'strong'))(p)}
   }
 
   small {
-    ${p => css(get(p.theme.componentStyles.text, 'small'))(p)}
+    ${(p) => css(get(p.theme.componentStyles, 'small'))(p)}
   }
 
   code {
-    ${p => css(get(p.theme.componentStyles.text, 'code'))(p)}
+    ${(p) => css(get(p.theme.componentStyles, 'code'))(p)}
   }
 
   pre {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Divider } from '../';
+import { Box, Divider } from '..';
 
 export default {
   title: 'Divider',

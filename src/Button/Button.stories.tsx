@@ -1,7 +1,7 @@
 import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Button, ButtonColor, ButtonSize, ButtonVariant } from '../';
+import { Button, ButtonColor, ButtonSize, ButtonVariant, Stack } from '..';
 
 const buttonColors: ButtonColor[] = [
   'gray',
@@ -16,9 +16,9 @@ const buttonColors: ButtonColor[] = [
   'pink',
 ];
 
-const buttonSizes: ButtonSize[] = ['sm', 'base', 'lg'];
+const buttonSizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg'];
 
-const buttonVariants: ButtonVariant[] = ['fill', 'outline', 'ghost', 'link'];
+const buttonVariants: ButtonVariant[] = ['filled', 'outlined', 'ghost', 'link'];
 
 export default {
   title: 'Button',
@@ -31,8 +31,8 @@ export const Simple = () => (
     color={select('color', buttonColors, 'gray')}
     disabled={boolean('disabled', false)}
     fullWidth={boolean('fullWidth', false)}
-    size={select('size', buttonSizes, 'base')}
-    variant={select('variant', buttonVariants, 'fill')}
+    size={select('size', buttonSizes, 'md')}
+    variant={select('variant', buttonVariants, 'filled')}
   >
     Button
   </Button>
@@ -57,21 +57,21 @@ export const AllColorsAndVariants = () => (
 );
 
 export const AllSizes = () => (
-  <>
+  <Stack spacing="base">
     {buttonSizes.map((size, idx) => (
-      <div key={uid(size, idx)}>
-        <Button size={size}>Button</Button>
-      </div>
+      <Button key={uid(size, idx)} size={size}>
+        Button ({size})
+      </Button>
     ))}
-  </>
+  </Stack>
 );
 
 export const AllVariants = () => (
-  <>
+  <Stack spacing="base">
     {buttonVariants.map((variant, idx) => (
-      <div key={uid(variant, idx)}>
-        <Button variant={variant}>Button ({variant})</Button>
-      </div>
+      <Button key={uid(variant, idx)} variant={variant}>
+        Button ({variant})
+      </Button>
     ))}
-  </>
+  </Stack>
 );

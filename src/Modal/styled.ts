@@ -111,9 +111,22 @@ export const ModalWrapper = styled(Box)<SizeableModalProps>`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  ${variant({ prop: 'modalSize', scale: 'componentStyles.modal.sizes' })}
+  ${variant({
+    prop: 'modalSize',
+    variants: {
+      sm: {
+        maxWidth: '500px',
+      },
+      md: {
+        maxWidth: '600px',
+      },
+      lg: {
+        maxWidth: '900px',
+      },
+    },
+  })}
   max-height: calc(100% - 24vmin);
-  margin: ${p => get(p.theme.space.md, 'md')} 12vmin;
+  margin: ${(p) => get(p.theme.space.md, 'md')} 12vmin;
   opacity: 0;
   transform: translate(0, -25%);
   overflow: hidden;

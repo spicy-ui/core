@@ -1,16 +1,7 @@
 import * as React from 'react';
-import { SpaceProps } from 'styled-system';
 import { Box } from '../Box';
 import { Flex, FlexProps } from '../Flex';
-
-export interface StackProps extends FlexProps {
-  /** If `true` the items will be reversed.  */
-  isReversed?: boolean;
-  /** Orientation of the stack. */
-  orientation?: 'horizontal' | 'vertical';
-  /** Spacing between each item. Accepts styled-system spacing prop values. */
-  spacing?: SpaceProps['m'];
-}
+import { StackProps } from './types';
 
 const Stack: React.FC<StackProps> = ({ children, direction, isReversed, orientation, spacing, ...rest }) => {
   const _isReversed = isReversed || (direction && (direction as string).endsWith('reverse'));
@@ -38,6 +29,7 @@ const Stack: React.FC<StackProps> = ({ children, direction, isReversed, orientat
           : { [_isReversed ? 'mt' : 'mb']: isLastChild ? undefined : spacing };
 
         return (
+          // eslint-disable-next-line react/no-array-index-key
           <Box key={`stack-box-${idx}`} display="inline-block" {...spacingProps}>
             {child}
           </Box>
@@ -54,4 +46,4 @@ Stack.defaultProps = {
 
 Stack.displayName = 'Stack';
 
-export default Stack;
+export { Stack };

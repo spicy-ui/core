@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, Text } from '../';
+import { Link, Text } from '..';
 
 export default {
   title: 'Link',

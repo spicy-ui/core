@@ -2,7 +2,7 @@ import Color from 'color';
 import * as React from 'react';
 import { uid } from 'react-uid';
 import { ThemeContext } from 'styled-components';
-import { Box, Heading, Text, Theme } from '../';
+import { Box, Heading, Text, Theme } from '..';
 import { system } from './system';
 
 export default {
@@ -14,11 +14,11 @@ export const Simple = () => <Theme>I am wrapped by the Theme component</Theme>;
 
 export const Nested = () => (
   <>
-    <Box bg="black" color="white" p={1}>
-      <code>theme.black = '#000'</code>
+    <Box bg="black" color="white" p="base">
+      <code>theme.colors.black = &apos;#000&apos;</code>
       <Theme theme={{ colors: { black: 'rebeccapurple' } }}>
-        <Box bg="black" color="white" p={1} mt={1}>
-          <code>theme.black = 'rebeccapurple'</code>
+        <Box bg="black" color="white" p="base" mt="base">
+          <code>theme.colors.black = &apos;rebeccapurple&apos;</code>
         </Box>
       </Theme>
     </Box>
@@ -32,7 +32,7 @@ export const Nested = () => (
 // export const Typography = () => <>todo Typography</>;
 
 const Swatch: React.FC<{ name: string; color: string }> = ({ name, color }) => (
-  <Box overflow="hidden" backgroundColor="white">
+  <Box overflow="hidden">
     <Box
       mb="4px"
       height="120px"
@@ -50,11 +50,7 @@ const Swatch: React.FC<{ name: string; color: string }> = ({ name, color }) => (
       <Heading as="h4" variant="h6" fontWeight={600}>
         {name}
       </Heading>
-      <Text>
-        {Color(color)
-          .hex()
-          .toString()}
-      </Text>
+      <Text>{Color(color).hex().toString()}</Text>
     </Box>
   </Box>
 );

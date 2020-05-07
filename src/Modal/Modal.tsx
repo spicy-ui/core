@@ -1,13 +1,14 @@
+/* eslint-disable react/static-property-placement */
 import * as React from 'react';
 import clsx from 'clsx';
 import FocusLock from 'react-focus-lock';
 import Transition, { TransitionStatus } from 'react-transition-group/Transition';
 import { Portal } from '../Portal';
+import { Button } from '../Button';
+import { Box } from '../Box';
 import { ModalSizes } from './utils/helpers';
 import { ANIMATION_DURATION } from './utils/constants';
 import { ModalWrapper, ModalOverlay } from './styled';
-import { Button } from '../Button';
-import { Box } from '../Box';
 
 export interface ModalProps {
   /** Additional CSS classes to give to the modal. */

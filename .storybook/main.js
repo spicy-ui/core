@@ -20,5 +20,6 @@ module.exports = {
       },
     },
     '@storybook/addon-knobs/register',
+    '@storybook/addon-actions/register',
   ],
 };
