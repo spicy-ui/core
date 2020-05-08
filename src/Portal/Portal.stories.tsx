@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Portal } from '../';
+import { Box, Portal } from '..';
 
 export default {
   title: 'Portal',
