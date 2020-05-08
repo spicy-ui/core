@@ -1,6 +1,5 @@
 /* eslint-disable react/static-property-placement */
 import * as React from 'react';
-import clsx from 'clsx';
 import FocusLock from 'react-focus-lock';
 import Transition, { TransitionStatus } from 'react-transition-group/Transition';
 import { Portal } from '../Portal';
@@ -79,12 +78,10 @@ class Modal extends React.Component<ModalProps, ModalState> {
     const { isOpen } = this.state;
 
     return (
-      <ModalOverlay className={clsx(isOpen && 'entered')} data-state={state} onClick={this.handleOverlayClick}>
+      <ModalOverlay data-modal-state={state} onClick={this.handleOverlayClick}>
         <FocusLock disabled={!isOpen}>
           <ModalWrapper
-            className={clsx(isOpen && 'entered')}
             modalSize={size}
-            backgroundColor="white"
             boxShadow={3}
             borderRadius="xs"
             my="12vmin"
@@ -92,7 +89,7 @@ class Modal extends React.Component<ModalProps, ModalState> {
             role="dialog"
             aria-modal="true"
             aria-labelledby={labelledById}
-            data-state={state}
+            data-modal-state={state}
           >
             {!hideCloseButton && (
               <Box position="absolute" top="sm" right="md">
