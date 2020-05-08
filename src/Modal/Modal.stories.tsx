@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import { Modal, ModalHeader, ModalContent, ModalFooter, Button } from '..';
-import { ModalSizes } from './utils/helpers';
+import { ModalSizes } from './types';
 
 const modalSizes: ModalSizes[] = ['sm', 'md', 'lg'];
 

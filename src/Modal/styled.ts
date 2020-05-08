@@ -3,13 +3,8 @@ import { get, variant } from 'styled-system';
 import { rgba } from 'polished';
 import { colors } from '../Theme/system/colors';
 import { Box } from '../Box';
-import { ModalSizes } from './utils/helpers';
+import { ModalWrapperProps } from './types';
 import { ANIMATION_DURATION } from './utils/constants';
-
-export interface SizeableModalProps {
-  /** Set max size of the modal */
-  modalSize?: ModalSizes;
-}
 
 const ModalIn = keyframes`
   0% {
@@ -106,7 +101,7 @@ export const ModalOverlay = styled('div')`
 
 ModalOverlay.displayName = 'ModalOverlay';
 
-export const ModalWrapper = styled(Box)<SizeableModalProps>`
+export const ModalWrapper = styled(Box)<ModalWrapperProps>`
   display: flex;
   flex-direction: column;
   width: 100%;
