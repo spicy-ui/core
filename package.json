@@ -35,11 +35,11 @@
   },
   "dependencies": {
     "@styled-system/css": "^5.1.5",
-    "clsx": "^1.1.0",
+    "clsx": "^1.1.1",
     "deepmerge": "^4.2.2",
-    "polished": "^3.5.2",
-    "react-focus-lock": "^2.2.1",
-    "react-transition-group": "^4.3.0",
+    "polished": "^3.6.4",
+    "react-focus-lock": "^2.3.1",
+    "react-transition-group": "^4.4.1",
     "styled-normalize": "^8.0.7",
     "styled-system": "^5.1.5",
     "use-dark-mode": "^2.3.1",
@@ -87,14 +87,8 @@
   },
   "peerDependencies": {
     "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
     "styled-components": ">=5.1.0"
-  },
-  "prettier": {
-    "endOfLine": "lf",
-    "printWidth": 120,
-    "singleQuote": true,
-    "trailingComma": "all",
-    "parser": "typescript"
   },
   "publishConfig": {
     "access": "public"
