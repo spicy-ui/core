@@ -1,42 +1,37 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-const supportsPortal = typeof ReactDOM.createPortal === 'function';
+const Portal: React.FC = ({ children }) => {
+  const [ready, setReady] = React.useState(false);
 
-class Portal extends React.Component {
-  container: HTMLDivElement | undefined;
+  const container = React.useRef<HTMLDivElement>();
 
-  constructor(props: {}) {
-    super(props);
-
-    if (typeof window !== 'undefined') {
-      this.container = document.createElement('div');
-      this.container.setAttribute('data-spicy-portal', '');
-    }
-  }
-
-  public componentDidMount() {
-    if (this.container) {
-      document.body.appendChild(this.container);
-    }
-  }
-
-  public componentWillUnmount() {
-    if (this.container) {
-      document.body.removeChild(this.container);
-    }
-  }
-
-  public render() {
-    const { children } = this.props;
-
-    if (supportsPortal && this.container) {
-      return ReactDOM.createPortal(children, this.container);
+  React.useEffect(() => {
+    if (!container.current) {
+      const el = document.createElement('div');
+      el.setAttribute('data-spicy-portal', '');
+      container.current = el;
     }
 
-    return null;
-  }
-}
+    document.body.appendChild(container.current);
+    setReady(true);
 
-export default Portal;
+    return () => {
+      if (container.current) {
+        document.body.removeChild(container.current);
+        container.current = undefined;
+        setReady(false);
+      }
+    };
+  }, []);
+
+  if (ready && container.current) {
+    return ReactDOM.createPortal(children, container.current);
+  }
+
+  return null;
+};
+
+Portal.displayName = 'Portal';
+
+export { Portal };
