@@ -6,6 +6,7 @@ export * from './Field';
 export * from './Flex';
 export * from './Grid';
 export * from './Heading';
+export * from './hooks';
 export * from './Input';
 export * from './Link';
 export * from './Modal';

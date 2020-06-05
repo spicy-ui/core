@@ -6,10 +6,6 @@ export interface ModalWrapperProps {
 }
 
 export interface ModalProps {
-  /** Additional CSS classes to give to the modal. */
-  className?: string;
-  /** Additional CSS properties to give to the modal. */
-  style?: React.CSSProperties;
   /** Set max size of the modal */
   size?: ModalSizes;
   /** Whether the modal is open or not. */
@@ -20,6 +16,8 @@ export interface ModalProps {
   hideCloseButton?: boolean;
   /** Set to `true` to disable closing the modal by clicking the overlay. */
   disableOverlayClick?: boolean;
+  /** Set to `true` to disable closing the modal by pushing the escape key. */
+  disableListeners?: boolean;
   /**
    * Enables focus trap mode.
    * @TODO implement focus trapping: https://www.npmjs.com/package/focus-trap

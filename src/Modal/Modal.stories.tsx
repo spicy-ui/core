@@ -1,6 +1,6 @@
+import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
-import { withKnobs, select, boolean } from '@storybook/addon-knobs';
-import { Modal, ModalHeader, ModalContent, ModalFooter, Button } from '..';
+import { Button, Modal, ModalContent, ModalFooter, ModalHeader } from '..';
 import { ModalSizes } from './types';
 
 const modalSizes: ModalSizes[] = ['sm', 'md', 'lg'];
@@ -11,12 +11,12 @@ export default {
   decorators: [withKnobs],
 };
 
-export const Basic = () => {
+export const Simple = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <>
-      <button type="button" onClick={() => setIsOpen(!isOpen)}>
+      <button type="button" onClick={() => setIsOpen(true)}>
         Toggle Modal
       </button>
       <Modal
@@ -25,6 +25,7 @@ export const Basic = () => {
         size={select('size', modalSizes, 'sm')}
         hideCloseButton={boolean('hide close button', false)}
         disableOverlayClick={boolean('disable overlay click', false)}
+        disableListeners={boolean('disable escape key listener', false)}
         onClose={() => setIsOpen(false)}
       >
         <ModalHeader>Modal Header</ModalHeader>
@@ -43,10 +44,10 @@ export const CustomCloseBehaviour = () => {
 
   return (
     <>
-      <button type="button" onClick={() => setIsOpen(!isOpen)}>
+      <button type="button" onClick={() => setIsOpen(true)}>
         Toggle Modal
       </button>
-      <Modal labelledById="stories-title" isOpen={isOpen} hideCloseButton>
+      <Modal labelledById="stories-title" isOpen={isOpen} hideCloseButton disableOverlayClick disableListeners>
         <ModalHeader>Modal Header</ModalHeader>
         <ModalContent>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam eligendi nihil voluptatibus aliquid
@@ -54,7 +55,7 @@ export const CustomCloseBehaviour = () => {
           asperiores repellendus!
         </ModalContent>
         <ModalFooter>
-          <Button onClick={() => setIsOpen(!isOpen)}>Close Modal</Button>
+          <Button onClick={() => setIsOpen(false)}>Close Modal</Button>
         </ModalFooter>
       </Modal>
     </>

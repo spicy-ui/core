@@ -1,9 +1,9 @@
-import styled, { keyframes, DefaultTheme, css, CSSObject } from 'styled-components';
 import { css as withSystem } from '@styled-system/css';
 import { rgba } from 'polished';
-import { colors } from '../Theme/system/colors';
+import styled, { css, CSSObject, DefaultTheme, keyframes } from 'styled-components';
 import { Box } from '../Box';
 import { useColorMode } from '../ColorMode';
+import { colors } from '../Theme/system/colors';
 import { ModalWrapperProps } from './types';
 import { ANIMATION_DURATION } from './utils/constants';
 
@@ -120,6 +120,7 @@ const color = (props: useModalWrapperStyleProps) => {
 };
 
 const sizes = (props: useModalWrapperStyleProps) => {
+  // TODO: use `props.theme.size` so modals are customisable
   switch (props.modalSize) {
     case 'sm': {
       return { maxWidth: '500px' };
@@ -160,6 +161,7 @@ const useModalWrapperStyle = (props: Omit<useModalWrapperStyleProps, 'colorMode'
   );
 };
 
+// TODO: animation duration should come from the `props.theme.timings`
 export const ModalWrapper = styled(Box)<ModalWrapperProps>(
   useModalWrapperStyle,
   // This cannot be moved inside `useModalWrapperStyle` since we use `keyframes`.
