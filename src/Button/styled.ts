@@ -92,7 +92,7 @@ const sizes = (props: useButtonStyleProps) => {
         borderRadius: 'sm',
         fontSize: 'xs',
         fontWeight: 'normal',
-        lineHeight: 1.2,
+        lineHeight: 1,
         px: 4,
         height: 24,
       };
@@ -101,7 +101,7 @@ const sizes = (props: useButtonStyleProps) => {
         borderRadius: 'sm',
         fontSize: 'sm',
         fontWeight: 'normal',
-        lineHeight: 1.2,
+        lineHeight: 1,
         px: 8,
         height: 32,
       };
@@ -110,7 +110,7 @@ const sizes = (props: useButtonStyleProps) => {
         borderRadius: 'sm',
         fontSize: 'base',
         fontWeight: 'medium',
-        lineHeight: 1.2,
+        lineHeight: 1,
         px: 12,
         height: 40,
       };
@@ -119,7 +119,7 @@ const sizes = (props: useButtonStyleProps) => {
         borderRadius: 'sm',
         fontSize: 'lg',
         fontWeight: 'medium',
-        lineHeight: 1.2,
+        lineHeight: 1,
         px: 16,
         height: 48,
       };
