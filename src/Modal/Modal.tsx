@@ -38,7 +38,7 @@ const Modal: React.FC<ModalProps> = ({
         onClose();
       }
     },
-    [onClose],
+    [disableOverlayClick, onClose],
   );
 
   React.useEffect(() => {
@@ -86,4 +86,3 @@ const Modal: React.FC<ModalProps> = ({
 Modal.displayName = 'Modal';
 
 export { Modal };
-
