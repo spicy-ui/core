@@ -13,11 +13,10 @@ const Modal: React.FC<ModalProps> = ({
   children,
   size,
   isOpen,
-  // noBackdrop, // TODO
   hideCloseButton,
   disableOverlayClick,
   disableListeners,
-  // enableFocusTrap, // TODO
+  disableFocusTrap,
   labelledById,
   onClose,
 }) => {
@@ -54,7 +53,7 @@ const Modal: React.FC<ModalProps> = ({
       <Transition appear in={isOpen} timeout={{ enter: ANIMATION_DURATION, exit: ANIMATION_DURATION }} unmountOnExit>
         {(state: TransitionStatus) => (
           <ModalOverlay data-modal-state={state} onClick={handleOverlayClick}>
-            <FocusLock disabled={!isOpen}>
+            <FocusLock disabled={disableFocusTrap || !isOpen}>
               <ModalWrapper
                 modalSize={size}
                 boxShadow={3}

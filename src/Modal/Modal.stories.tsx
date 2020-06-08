@@ -22,11 +22,12 @@ export const Simple = () => {
       <Modal
         labelledById="stories-title"
         isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         size={select('size', modalSizes, 'sm')}
         hideCloseButton={boolean('hide close button', false)}
         disableOverlayClick={boolean('disable overlay click', false)}
         disableListeners={boolean('disable escape key listener', false)}
-        onClose={() => setIsOpen(false)}
+        disableFocusTrap={boolean('disable modal focus trap', false)}
       >
         <ModalHeader>Modal Header</ModalHeader>
         <ModalContent>
