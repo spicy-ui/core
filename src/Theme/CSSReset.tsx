@@ -72,4 +72,14 @@ export const CSSReset = createGlobalStyle`
       color: inherit;
     }
   }
+
+  /* For overlay, disable scrollbar */
+  .noscroll {
+    overflow: hidden;
+
+    @media (min-device-width: 1025px) {
+      /* Prevent reflow when scrollbar disappears on some OS (e.g. Windows) */
+      padding-right: 17px;
+    }
+  }
 `;

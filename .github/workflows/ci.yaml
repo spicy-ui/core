@@ -71,7 +71,7 @@ jobs:
         run: yarn build:storybook
 
       - name: Deploy draft to Netlify
-        uses: South-Paw/action-netlify-deploy@v1.0.3
+        uses: South-Paw/action-netlify-deploy@v1.0.4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
@@ -95,7 +95,7 @@ jobs:
         run: yarn build:storybook
 
       - name: Deploy draft build to Netlify
-        uses: South-Paw/action-netlify-deploy@v1.0.3
+        uses: South-Paw/action-netlify-deploy@v1.0.4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
@@ -119,7 +119,7 @@ jobs:
         run: yarn build:storybook
 
       - name: Deploy production to Netlify
-        uses: South-Paw/action-netlify-deploy@v1.0.3
+        uses: South-Paw/action-netlify-deploy@v1.0.4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
