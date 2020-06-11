@@ -5,11 +5,19 @@ import { get, space, width } from 'styled-system';
 import { useColorMode } from '../ColorMode';
 import { ButtonProps } from './types';
 
-const filled = ({ color, colorMode, theme }: useButtonStyleProps) => {
-  const bg =
-    colorMode === 'dark' && color === 'gray' ? get(theme.colors, `gray.50`) : get(theme.colors, `${color}.500`);
+const getBg = ({ color, colorMode, theme }: useButtonStyleProps) => {
+  if (color === 'white' || color === 'black') {
+    return get(theme.colors, color);
+  }
 
-  const isReversed = ['yellow', 'cyan'].includes(color as string) || (colorMode === 'dark' && color === 'gray');
+  return colorMode === 'dark' && color === 'gray' ? get(theme.colors, `gray.50`) : get(theme.colors, `${color}.500`);
+};
+
+const filled = ({ color, colorMode, theme }: useButtonStyleProps) => {
+  const bg = getBg({ color, colorMode, theme });
+
+  const isReversed =
+    ['yellow', 'cyan', 'white'].includes(color as string) || (colorMode === 'dark' && color === 'gray');
 
   return {
     backgroundColor: bg,
@@ -24,8 +32,7 @@ const filled = ({ color, colorMode, theme }: useButtonStyleProps) => {
 };
 
 const outlined = ({ color, colorMode, theme }: useButtonStyleProps) => {
-  const bg =
-    colorMode === 'dark' && color === 'gray' ? get(theme.colors, `gray.50`) : get(theme.colors, `${color}.500`);
+  const bg = getBg({ color, colorMode, theme });
 
   return {
     backgroundColor: 'transparent',
@@ -41,8 +48,7 @@ const outlined = ({ color, colorMode, theme }: useButtonStyleProps) => {
 };
 
 const ghost = ({ color, colorMode, theme }: useButtonStyleProps) => {
-  const bg =
-    colorMode === 'dark' && color === 'gray' ? get(theme.colors, `gray.50`) : get(theme.colors, `${color}.500`);
+  const bg = getBg({ color, colorMode, theme });
 
   return {
     backgroundColor: 'transparent',
@@ -57,8 +63,7 @@ const ghost = ({ color, colorMode, theme }: useButtonStyleProps) => {
 };
 
 const link = ({ color, colorMode, theme }: useButtonStyleProps) => {
-  const bg =
-    colorMode === 'dark' && color === 'gray' ? get(theme.colors, `gray.50`) : get(theme.colors, `${color}.500`);
+  const bg = getBg({ color, colorMode, theme });
 
   const style = {
     backgroundColor: 'transparent',

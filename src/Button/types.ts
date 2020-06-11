@@ -1,6 +1,18 @@
 import { SpaceProps, WidthProps } from 'styled-system';
 
-export type ButtonColor = 'gray' | 'red' | 'orange' | 'yellow' | 'green' | 'teal' | 'blue' | 'cyan' | 'purple' | 'pink';
+export type ButtonColor =
+  | 'gray'
+  | 'red'
+  | 'orange'
+  | 'yellow'
+  | 'green'
+  | 'teal'
+  | 'blue'
+  | 'cyan'
+  | 'purple'
+  | 'pink'
+  | 'white'
+  | 'black';
 
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
 

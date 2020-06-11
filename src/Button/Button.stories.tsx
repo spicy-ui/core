@@ -14,6 +14,8 @@ const buttonColors: ButtonColor[] = [
   'cyan',
   'purple',
   'pink',
+  'white',
+  'black',
 ];
 
 const buttonSizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg'];
