@@ -3,14 +3,19 @@
   "version": "0.0.1-alpha.1",
   "description": "A React component library to spice up your UI",
   "keywords": [],
-  "homepage": "https://github.com/South-Paw/spicy-ui",
-  "bugs": "https://github.com/South-Paw/spicy-ui/issues",
+  "homepage": "https://github.com/spicy-ui/core",
+  "bugs": "https://github.com/spicy-ui/core/issues",
   "license": "MIT",
   "contributors": [
     {
       "name": "Alex Gabites",
       "email": "hello@southpaw.co.nz",
       "url": "http://southpaw.co.nz/"
+    },
+    {
+      "name": "Resi Respati",
+      "email": "resir014@gmail.com",
+      "url": "https://resir014.xyz/"
     }
   ],
   "files": [
@@ -21,7 +26,7 @@
   "module": "dist/core.esm.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/South-Paw/spicy-ui.git"
+    "url": "https://github.com/spicy-ui/core.git"
   },
   "scripts": {
     "clean": "rimraf dist storybook-static",
