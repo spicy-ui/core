@@ -1,8 +1,11 @@
+import { createShouldForwardProp, props } from '@styled-system/should-forward-prop';
 import styled from 'styled-components';
 import { useButtonStyle } from './styled';
 import { ButtonProps } from './types';
 
-const Button = styled('button')<ButtonProps>(useButtonStyle);
+const shouldForwardProp = createShouldForwardProp([...props, 'color', 'fullWidth', 'size', 'variant']);
+
+const Button = styled('button').withConfig<ButtonProps>({ shouldForwardProp })(useButtonStyle);
 
 Button.defaultProps = {
   color: 'gray',

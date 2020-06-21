@@ -1,9 +1,9 @@
 import { css as withSystem } from '@styled-system/css';
+import { createShouldForwardProp, props as forwardProps } from '@styled-system/should-forward-prop';
 import { rgba } from 'polished';
 import styled, { css, CSSObject, DefaultTheme, keyframes } from 'styled-components';
-import { Box } from '../Box';
+import { Box, BoxProps } from '../Box';
 import { useColorMode } from '../ColorMode';
-import { colors } from '../Theme/system/colors';
 import { ModalWrapperProps } from './types';
 import { ANIMATION_DURATION } from './utils/constants';
 
@@ -51,7 +51,7 @@ const OverlayOut = keyframes`
   }
 `;
 
-export const ModalOverlay = styled('div')`
+const ModalOverlay = styled('div')`
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -69,7 +69,7 @@ export const ModalOverlay = styled('div')`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${rgba(colors.black, 0.35)};
+    background-color: ${(p) => rgba(p.theme.colors.black, 0.38)};
     content: ' ';
     visibility: hidden;
     opacity: 0;
@@ -161,8 +161,10 @@ const useModalWrapperStyle = (props: Omit<useModalWrapperStyleProps, 'colorMode'
   );
 };
 
+const shouldForwardProp = createShouldForwardProp([...forwardProps, 'modalSize']);
+
 // TODO: animation duration should come from the `props.theme.timings`
-export const ModalWrapper = styled(Box)<ModalWrapperProps>(
+const ModalWrapper = styled(Box).withConfig<BoxProps & ModalWrapperProps>({ shouldForwardProp })(
   useModalWrapperStyle,
   // This cannot be moved inside `useModalWrapperStyle` since we use `keyframes`.
   css`
@@ -187,3 +189,5 @@ export const ModalWrapper = styled(Box)<ModalWrapperProps>(
 );
 
 ModalWrapper.displayName = 'ModalWrapper';
+
+export { ModalOverlay, ModalWrapper };
