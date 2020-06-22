@@ -26,7 +26,6 @@ module.exports = {
     'react/jsx-one-expression-per-line': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/jsx-wrap-multilines': 'off',
-    '@typescript-eslint/ban-ts-ignore': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/indent': 'off',
     '@typescript-eslint/quotes': 'off',

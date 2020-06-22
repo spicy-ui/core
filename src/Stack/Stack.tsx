@@ -3,30 +3,37 @@ import { Box } from '../Box';
 import { Flex, FlexProps } from '../Flex';
 import { StackProps } from './types';
 
-const Stack: React.FC<StackProps> = ({ children, direction, isReversed, orientation, spacing, ...rest }) => {
-  const _isReversed = isReversed || (direction && (direction as string).endsWith('reverse'));
+const Stack: React.FC<StackProps> = ({
+  children,
+  direction: directionProp,
+  isReversed: isReversedProp,
+  orientation,
+  spacing,
+  ...rest
+}) => {
+  const isReversed = isReversedProp || (directionProp && (directionProp as string).endsWith('reverse'));
 
-  let _direction = (direction as string) || 'column';
+  let direction = (directionProp as string) || 'column';
 
-  if (!direction && orientation === 'horizontal') {
-    _direction = `row`;
+  if (!directionProp && orientation === 'horizontal') {
+    direction = `row`;
   }
 
-  if (!direction && _isReversed) {
-    _direction += '-reverse';
+  if (!directionProp && isReversed) {
+    direction += '-reverse';
   }
 
-  const isInline = (_direction as string).startsWith('row');
+  const isInline = (direction as string).startsWith('row');
 
   const validChildrenArray = React.Children.toArray(children).filter(React.isValidElement);
 
   return (
-    <Flex direction={_direction as FlexProps['direction']} {...rest}>
+    <Flex direction={direction as FlexProps['direction']} {...rest}>
       {validChildrenArray.map((child, idx) => {
         const isLastChild = validChildrenArray.length === idx + 1;
         const spacingProps = isInline
-          ? { [_isReversed ? 'ml' : 'mr']: isLastChild ? undefined : spacing }
-          : { [_isReversed ? 'mt' : 'mb']: isLastChild ? undefined : spacing };
+          ? { [isReversed ? 'ml' : 'mr']: isLastChild ? undefined : spacing }
+          : { [isReversed ? 'mt' : 'mb']: isLastChild ? undefined : spacing };
 
         return (
           // eslint-disable-next-line react/no-array-index-key

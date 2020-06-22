@@ -1,6 +1,6 @@
 {
   "name": "@spicy-ui/core",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "A React component library to spice up your UI",
   "keywords": [],
   "homepage": "https://github.com/spicy-ui/core",
@@ -10,12 +10,12 @@
     {
       "name": "Alex Gabites",
       "email": "hello@southpaw.co.nz",
-      "url": "http://southpaw.co.nz/"
+      "url": "http://southpaw.co.nz"
     },
     {
       "name": "Resi Respati",
       "email": "resir014@gmail.com",
-      "url": "https://resir014.xyz/"
+      "url": "https://resir014.xyz"
     }
   ],
   "files": [
@@ -70,10 +70,13 @@
     "@typescript-eslint/parser": "^3.3.0",
     "babel-loader": "^8.1.0",
     "color": "^3.1.2",
-    "eslint": "^7.3.0",
+    "eslint": "7.2.0",
     "eslint-config-airbnb-typescript": "^8.0.2",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-plugin-flowtype": "^5.1.3",
     "eslint-plugin-import": "^2.21.2",
-    "eslint-plugin-jest": "^23.14.0",
+    "eslint-plugin-jest": "^23.16.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.0",

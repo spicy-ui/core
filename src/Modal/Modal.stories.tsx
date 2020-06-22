@@ -1,7 +1,6 @@
 import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
-import { Button, Modal, ModalContent, ModalFooter, ModalHeader } from '..';
-import { ModalSizes } from './types';
+import { Button, Modal, ModalContent, ModalFooter, ModalHeader, ModalSizes } from '..';
 
 const modalSizes: ModalSizes[] = ['sm', 'md', 'lg'];
 
@@ -20,7 +19,6 @@ export const Simple = () => {
         Toggle Modal
       </button>
       <Modal
-        labelledById="stories-title"
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         size={select('size', modalSizes, 'sm')}
@@ -48,7 +46,7 @@ export const CustomCloseBehaviour = () => {
       <button type="button" onClick={() => setIsOpen(true)}>
         Toggle Modal
       </button>
-      <Modal labelledById="stories-title" isOpen={isOpen} hideCloseButton disableOverlayClick disableListeners>
+      <Modal isOpen={isOpen} hideCloseButton disableOverlayClick disableListeners>
         <ModalHeader>Modal Header</ModalHeader>
         <ModalContent>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam eligendi nihil voluptatibus aliquid

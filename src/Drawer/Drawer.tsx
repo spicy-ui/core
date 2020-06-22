@@ -1,17 +1,28 @@
 import * as React from 'react';
 import FocusLock from 'react-focus-lock';
 import { Box } from '../Box';
-import { Button } from '../Button';
 import { useKeyPress } from '../hooks';
 import { Overlay } from '../Overlay';
-import { ModalWrapper } from './styled';
-import { ModalProps } from './types';
+import { DrawerWrapper } from './styled';
+import { DrawerAnchor, DrawerProps } from './types';
 
-const Modal: React.FC<ModalProps> = ({
+const getAnchor = (anchor: DrawerAnchor) => {
+  switch (anchor) {
+    case 'top':
+      return { top: 0, right: 0, left: 0 };
+    case 'right':
+      return { top: 0, right: 0, bottom: 0 };
+    case 'bottom':
+      return { right: 0, bottom: 0, left: 0 };
+    default:
+      return { top: 0, bottom: 0, left: 0 };
+  }
+};
+
+const Drawer: React.FC<DrawerProps> = ({
   children,
-  size,
   isOpen,
-  hideCloseButton,
+  anchor = 'left',
   disableOverlayClick,
   disableListeners,
   disableFocusTrap,
@@ -25,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({
 
   const handleOverlayClick = React.useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
-      // Prevent clicking to exit inside the dialog
+      // Prevent clicking inside the dialog exiting it
       if (e.target !== e.currentTarget) {
         return;
       }
@@ -46,25 +57,23 @@ const Modal: React.FC<ModalProps> = ({
   }, [isOpen]);
 
   return (
-    <Overlay isOpen={isOpen} onClick={handleOverlayClick} top={0} right={0} bottom={0} left={0}>
+    <Overlay isOpen={isOpen} onClick={handleOverlayClick} {...getAnchor(anchor)}>
       {(state) => (
         <FocusLock disabled={disableFocusTrap || !isOpen}>
-          <ModalWrapper modalSize={size} role="dialog" aria-modal="true" data-modal-state={state}>
-            {!hideCloseButton && onClose && (
-              <Box position="absolute" top="sm" right="md">
-                <Button type="button" variant="ghost" aria-label="Close" onClick={onClose}>
-                  Close
-                </Button>
-              </Box>
-            )}
-            {children}
-          </ModalWrapper>
+          <DrawerWrapper anchor={anchor} role="dialog" aria-modal="true" data-drawer-state={state}>
+            <Box
+              height={['left', 'right'].includes(anchor) ? '100vh' : undefined}
+              width={['top', 'bottom'].includes(anchor) ? '100vw' : undefined}
+            >
+              {children}
+            </Box>
+          </DrawerWrapper>
         </FocusLock>
       )}
     </Overlay>
   );
 };
 
-Modal.displayName = 'Modal';
+Drawer.displayName = 'Drawer';
 
-export { Modal };
+export { Drawer };

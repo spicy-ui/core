@@ -18,8 +18,6 @@ export interface ModalProps {
   disableListeners?: boolean;
   /** Set to `true` to disable the modals focus trap behaviour. */
   disableFocusTrap?: boolean;
-  /** Used to reference the ID of the title element in the modal */
-  labelledById?: string;
   /** Callback method run when the Close button is clicked. */
   onClose?: () => void;
 }

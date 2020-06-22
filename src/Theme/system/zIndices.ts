@@ -1,1 +1,3 @@
-export const zIndices = {};
+export const zIndices = {
+  backdrop: 1000,
+};

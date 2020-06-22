@@ -15,7 +15,7 @@ export const useKeyPress = (targetKey: string, onDown = () => {}, onUp = () => {
         prevKey.current = key;
       }
     },
-    [onDown],
+    [targetKey, onDown],
   );
 
   const handleUp = React.useCallback(
@@ -25,7 +25,7 @@ export const useKeyPress = (targetKey: string, onDown = () => {}, onUp = () => {
         prevKey.current = '';
       }
     },
-    [onUp],
+    [targetKey, onUp],
   );
 
   React.useEffect(() => {

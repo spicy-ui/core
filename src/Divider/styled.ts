@@ -3,8 +3,8 @@ import { css, DefaultTheme } from 'styled-components';
 import { useColorMode } from '../ColorMode';
 import { DividerProps } from './types';
 
-const horizontal = (props: useDividerStyleProps) => {
-  const color = props.colorMode === 'dark' ? 'gray.600' : 'gray.300';
+const horizontal = ({ colorMode }: UseDividerStyleProps) => {
+  const color = colorMode === 'dark' ? 'gray.600' : 'gray.300';
 
   return {
     width: 'auto',
@@ -17,8 +17,8 @@ const horizontal = (props: useDividerStyleProps) => {
   };
 };
 
-const vertical = (props: useDividerStyleProps) => {
-  const color = props.colorMode === 'dark' ? 'gray.600' : 'gray.300';
+const vertical = ({ colorMode }: UseDividerStyleProps) => {
+  const color = colorMode === 'dark' ? 'gray.600' : 'gray.300';
 
   return {
     height: 'auto',
@@ -31,7 +31,7 @@ const vertical = (props: useDividerStyleProps) => {
   };
 };
 
-const variants = (props: useDividerStyleProps) => {
+const variants = (props: UseDividerStyleProps) => {
   switch (props.orientation) {
     case 'horizontal':
       return horizontal(props);
@@ -42,18 +42,18 @@ const variants = (props: useDividerStyleProps) => {
   }
 };
 
-interface useDividerStyleProps extends DividerProps {
+interface UseDividerStyleProps extends DividerProps {
   theme: DefaultTheme;
   colorMode: 'light' | 'dark';
 }
 
-export const useDividerStyle = (props: Omit<useDividerStyleProps, 'colorMode'>) => {
+export const useDividerStyle = (props: Omit<UseDividerStyleProps, 'colorMode'>) => {
   const { mode: colorMode } = useColorMode();
-  const _props = { ...props, colorMode };
+  const dividerProps = { ...props, colorMode };
 
   return css(
     withSystem({
-      ...variants(_props),
+      ...variants(dividerProps),
     })(props),
   );
 };

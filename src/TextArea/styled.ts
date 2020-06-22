@@ -6,7 +6,7 @@ import { get, space, width } from 'styled-system';
 import { useColorMode } from '../ColorMode';
 import { TextAreaProps } from './types';
 
-const outlined = ({ colorMode }: useTextAreaStyleProps) => {
+const outlined = ({ colorMode }: UseTextAreaStyleProps) => {
   if (colorMode === 'dark') {
     return {
       backgroundColor: `gray.800`,
@@ -28,7 +28,7 @@ const outlined = ({ colorMode }: useTextAreaStyleProps) => {
   };
 };
 
-const filled = ({ colorMode, theme }: useTextAreaStyleProps) => {
+const filled = ({ colorMode, theme }: UseTextAreaStyleProps) => {
   if (colorMode === 'dark') {
     return {
       backgroundColor: `gray.700`,
@@ -48,18 +48,18 @@ const filled = ({ colorMode, theme }: useTextAreaStyleProps) => {
   };
 };
 
-const baseStyles = (props: useTextAreaStyleProps) => ({
+const baseStyles = ({ colorMode }: UseTextAreaStyleProps) => ({
   display: 'flex',
   alignItems: 'center',
   background: 'none',
   border: '1px solid transparent',
-  color: props.colorMode === 'dark' ? 'text.inverse' : 'text.base',
+  color: colorMode === 'dark' ? 'text.inverse' : 'text.base',
   outline: 'none',
   transition: 'all 250ms ease 0s',
 });
 
-const sizes = (props: useTextAreaStyleProps) => {
-  switch (props.space) {
+const sizes = ({ space: spaceProp }: UseTextAreaStyleProps) => {
+  switch (spaceProp) {
     case 'xs':
       return {
         borderRadius: 'sm',
@@ -105,17 +105,17 @@ const sizes = (props: useTextAreaStyleProps) => {
   }
 };
 
-const focus = (props: useTextAreaStyleProps) => {
-  if (props.isInvalid) {
+const focus = ({ isInvalid, theme, colorMode }: UseTextAreaStyleProps) => {
+  if (isInvalid) {
     return {
-      boxShadow: props.theme.shadows.error(props.colorMode === 'dark'),
+      boxShadow: theme.shadows.error(colorMode === 'dark'),
       zIndex: 1,
     };
   }
 
   return {
     ':focus': {
-      boxShadow: props.theme.shadows.focus(props.colorMode === 'dark'),
+      boxShadow: theme.shadows.focus(colorMode === 'dark'),
       zIndex: 1,
     },
   };
@@ -129,7 +129,7 @@ const disabled = {
   },
 };
 
-const variants = (props: useTextAreaStyleProps) => {
+const variants = (props: UseTextAreaStyleProps) => {
   switch (props.variant) {
     case 'outlined':
       return outlined(props);
@@ -140,25 +140,25 @@ const variants = (props: useTextAreaStyleProps) => {
   }
 };
 
-interface useTextAreaStyleProps extends TextAreaProps {
+interface UseTextAreaStyleProps extends TextAreaProps {
   theme: DefaultTheme;
   colorMode: 'light' | 'dark';
 }
 
-const useTextAreaStyle = (props: Omit<useTextAreaStyleProps, 'colorMode'>) => {
+const useTextAreaStyle = (props: Omit<UseTextAreaStyleProps, 'colorMode'>) => {
   const { mode: colorMode } = useColorMode();
-  const _props = { ...props, colorMode };
+  const textAreaProps = { ...props, colorMode };
 
   return css(
     withSystem({
-      ...baseStyles(_props),
-      width: _props.fullWidth ? '100%' : undefined,
-      ...sizes(_props),
-      ...width(_props),
-      ...space(_props),
-      ...focus(_props),
+      ...baseStyles(textAreaProps),
+      width: textAreaProps.fullWidth ? '100%' : undefined,
+      ...sizes(textAreaProps),
+      ...width(textAreaProps),
+      ...space(textAreaProps),
+      ...focus(textAreaProps),
       ...disabled,
-      ...variants(_props),
+      ...variants(textAreaProps),
     })(props),
   );
 };
