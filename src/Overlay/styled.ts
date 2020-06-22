@@ -1,5 +1,6 @@
 import { rgba } from 'polished';
 import styled, { keyframes } from 'styled-components';
+import { Box } from '../Box';
 
 const OverlayIn = keyframes`
   0% {
@@ -25,16 +26,12 @@ const OverlayOut = keyframes`
   }
 `;
 
-export const Backdrop = styled('div')`
+export const Backdrop = styled(Box)`
   display: flex;
   align-items: flex-start;
   justify-content: center;
   position: fixed;
-  z-index: 1000;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  z-index: ${(p) => p.theme.zIndices.backdrop};
 
   &::before {
     display: block;

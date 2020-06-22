@@ -15,7 +15,6 @@ const Modal: React.FC<ModalProps> = ({
   disableOverlayClick,
   disableListeners,
   disableFocusTrap,
-  labelledById,
   onClose,
 }) => {
   useKeyPress('Escape', () => {
@@ -47,20 +46,10 @@ const Modal: React.FC<ModalProps> = ({
   }, [isOpen]);
 
   return (
-    <Overlay isOpen={isOpen} onClick={handleOverlayClick}>
+    <Overlay isOpen={isOpen} onClick={handleOverlayClick} top={0} right={0} bottom={0} left={0}>
       {(state) => (
         <FocusLock disabled={disableFocusTrap || !isOpen}>
-          <ModalWrapper
-            modalSize={size}
-            boxShadow={3}
-            borderRadius="xs"
-            my="12vmin"
-            mx="md"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby={labelledById}
-            data-modal-state={state}
-          >
+          <ModalWrapper modalSize={size} role="dialog" aria-modal="true" data-modal-state={state}>
             {!hideCloseButton && onClose && (
               <Box position="absolute" top="sm" right="md">
                 <Button type="button" variant="ghost" aria-label="Close" onClick={onClose}>

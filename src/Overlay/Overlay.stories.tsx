@@ -14,10 +14,10 @@ export const Simple = () => {
       <button type="button" onClick={() => setIsOpen(true)}>
         open overlay
       </button>
-      <Overlay isOpen={isOpen} onClick={() => setIsOpen(false)}>
+      <Overlay isOpen={isOpen} onClick={() => setIsOpen(false)} top={0} right={0} bottom={0} left={0}>
         {(state) => (
           <div>
-            [overlay inner (state: <code>{state}</code>)]
+            overlay inner (state: <code>{state}</code>)
           </div>
         )}
       </Overlay>

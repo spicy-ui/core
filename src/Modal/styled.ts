@@ -47,29 +47,29 @@ const color = (props: UseModalWrapperStyleProps) => {
 };
 
 const sizes = (props: UseModalWrapperStyleProps) => {
-  // TODO: use `props.theme.size` so modals are customisable
   switch (props.modalSize) {
-    case 'sm': {
-      return { maxWidth: '500px' };
+    case 'lg': {
+      return { maxWidth: 'container.lg' };
     }
     case 'md': {
-      return { maxWidth: '600px' };
-    }
-    case 'lg': {
-      return { maxWidth: '900px' };
+      return { maxWidth: 'container.md' };
     }
     default: {
-      return { maxWidth: '500px' };
+      return { maxWidth: 'container.sm' };
     }
   }
 };
 
 const baseStyles: CSSObject = {
+  my: '12vmin',
+  mx: 'md',
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
   height: '100%',
   maxHeight: 'calc(100% - 24vmin)',
+  borderRadius: 'xs',
+  boxShadow: '3',
   opacity: 0,
   transform: 'translate(0, -25%)',
   overflow: 'hidden',

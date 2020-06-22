@@ -5,7 +5,7 @@ import { useTheme } from '../Theme';
 import { Backdrop } from './styled';
 import { OverlayProps } from './types';
 
-const Overlay: React.FC<OverlayProps> = ({ children, isOpen, onClick }) => {
+const Overlay: React.FC<OverlayProps> = ({ children, isOpen, onClick, ...props }) => {
   const {
     transitions: {
       duration: { entering, exiting },
@@ -16,7 +16,7 @@ const Overlay: React.FC<OverlayProps> = ({ children, isOpen, onClick }) => {
     <Portal>
       <Transition appear in={isOpen} timeout={{ enter: entering, exit: exiting }} unmountOnExit>
         {(state) => (
-          <Backdrop data-overlay-state={state} onClick={onClick}>
+          <Backdrop data-overlay-state={state} onClick={onClick} {...props}>
             {children(state)}
           </Backdrop>
         )}
