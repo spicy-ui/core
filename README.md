@@ -29,7 +29,7 @@ Pull the repo and then install dependencies with `yarn`.
 
 In the root directory, use `yarn start:storybook` to run Storybook on `localhost:9000`
 
-See `the package.json` for other scripts such as `clean`, `test` and `lint`.
+See the `package.json` for other scripts such as `clean`, `test` and `lint`.
 
 ## License
 
