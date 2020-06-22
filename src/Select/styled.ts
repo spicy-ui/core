@@ -6,7 +6,7 @@ import { get, space, width } from 'styled-system';
 import { useColorMode } from '../ColorMode';
 import { SelectProps } from './types';
 
-const outlined = ({ colorMode }: useSelectStyleProps) => {
+const outlined = ({ colorMode }: UseSelectStyleProps) => {
   if (colorMode === 'dark') {
     return {
       backgroundColor: `gray.800`,
@@ -28,7 +28,7 @@ const outlined = ({ colorMode }: useSelectStyleProps) => {
   };
 };
 
-const filled = ({ colorMode, theme }: useSelectStyleProps) => {
+const filled = ({ colorMode, theme }: UseSelectStyleProps) => {
   if (colorMode === 'dark') {
     return {
       backgroundColor: `gray.700`,
@@ -48,18 +48,18 @@ const filled = ({ colorMode, theme }: useSelectStyleProps) => {
   };
 };
 
-const baseStyles = (props: useSelectStyleProps) => ({
+const baseStyles = ({ colorMode }: UseSelectStyleProps) => ({
   display: 'flex',
   alignItems: 'center',
   background: 'none',
   border: '1px solid transparent',
-  color: props.colorMode === 'dark' ? 'text.inverse' : 'text.base',
+  color: colorMode === 'dark' ? 'text.inverse' : 'text.base',
   outline: 'none',
   transition: 'all 250ms ease 0s',
 });
 
-const sizes = (props: useSelectStyleProps) => {
-  switch (props.space) {
+const sizes = ({ space: spaceProp }: UseSelectStyleProps) => {
+  switch (spaceProp) {
     case 'xs':
       return {
         borderRadius: 'sm',
@@ -101,17 +101,17 @@ const sizes = (props: useSelectStyleProps) => {
   }
 };
 
-const focus = (props: useSelectStyleProps) => {
-  if (props.isInvalid) {
+const focus = ({ isInvalid, theme, colorMode }: UseSelectStyleProps) => {
+  if (isInvalid) {
     return {
-      boxShadow: props.theme.shadows.error(props.colorMode === 'dark'),
+      boxShadow: theme.shadows.error(colorMode === 'dark'),
       zIndex: 1,
     };
   }
 
   return {
     ':focus': {
-      boxShadow: props.theme.shadows.focus(props.colorMode === 'dark'),
+      boxShadow: theme.shadows.focus(colorMode === 'dark'),
       zIndex: 1,
     },
   };
@@ -125,7 +125,7 @@ const disabled = {
   },
 };
 
-const variants = (props: useSelectStyleProps) => {
+const variants = (props: UseSelectStyleProps) => {
   switch (props.variant) {
     case 'outlined':
       return outlined(props);
@@ -136,25 +136,25 @@ const variants = (props: useSelectStyleProps) => {
   }
 };
 
-interface useSelectStyleProps extends SelectProps {
+interface UseSelectStyleProps extends SelectProps {
   theme: DefaultTheme;
   colorMode: 'light' | 'dark';
 }
 
-const useInputStyle = (props: Omit<useSelectStyleProps, 'colorMode'>) => {
+const useInputStyle = (props: Omit<UseSelectStyleProps, 'colorMode'>) => {
   const { mode: colorMode } = useColorMode();
-  const _props = { ...props, colorMode };
+  const selectProps = { ...props, colorMode };
 
   return css(
     withSystem({
-      ...baseStyles(_props),
-      width: _props.fullWidth ? '100%' : undefined,
-      ...sizes(_props),
-      ...width(_props),
-      ...space(_props),
-      ...focus(_props),
+      ...baseStyles(selectProps),
+      width: selectProps.fullWidth ? '100%' : undefined,
+      ...sizes(selectProps),
+      ...width(selectProps),
+      ...space(selectProps),
+      ...focus(selectProps),
       ...disabled,
-      ...variants(_props),
+      ...variants(selectProps),
     })(props),
   );
 };

@@ -6,7 +6,7 @@ import { get, space, width } from 'styled-system';
 import { useColorMode } from '../ColorMode';
 import { InputProps } from './types';
 
-const outlined = ({ colorMode }: useInputStyleProps) => {
+const outlined = ({ colorMode }: UseInputStyleProps) => {
   if (colorMode === 'dark') {
     return {
       backgroundColor: `gray.800`,
@@ -28,7 +28,7 @@ const outlined = ({ colorMode }: useInputStyleProps) => {
   };
 };
 
-const filled = ({ colorMode, theme }: useInputStyleProps) => {
+const filled = ({ colorMode, theme }: UseInputStyleProps) => {
   if (colorMode === 'dark') {
     return {
       backgroundColor: `gray.700`,
@@ -48,18 +48,18 @@ const filled = ({ colorMode, theme }: useInputStyleProps) => {
   };
 };
 
-const baseStyles = (props: useInputStyleProps) => ({
+const baseStyles = ({ colorMode }: UseInputStyleProps) => ({
   display: 'flex',
   alignItems: 'center',
   background: 'none',
   border: '1px solid transparent',
-  color: props.colorMode === 'dark' ? 'text.inverse' : 'text.base',
+  color: colorMode === 'dark' ? 'text.inverse' : 'text.base',
   outline: 'none',
   transition: 'all 250ms ease 0s',
 });
 
-const sizes = (props: useInputStyleProps) => {
-  switch (props.space) {
+const sizes = ({ space: spaceProp }: UseInputStyleProps) => {
+  switch (spaceProp) {
     case 'xs':
       return {
         borderRadius: 'sm',
@@ -101,17 +101,17 @@ const sizes = (props: useInputStyleProps) => {
   }
 };
 
-const focus = (props: useInputStyleProps) => {
-  if (props.isInvalid) {
+const focus = ({ isInvalid, theme, colorMode }: UseInputStyleProps) => {
+  if (isInvalid) {
     return {
-      boxShadow: props.theme.shadows.error(props.colorMode === 'dark'),
+      boxShadow: theme.shadows.error(colorMode === 'dark'),
       zIndex: 1,
     };
   }
 
   return {
     ':focus': {
-      boxShadow: props.theme.shadows.focus(props.colorMode === 'dark'),
+      boxShadow: theme.shadows.focus(colorMode === 'dark'),
       zIndex: 1,
     },
   };
@@ -125,7 +125,7 @@ const disabled = {
   },
 };
 
-const variants = (props: useInputStyleProps) => {
+const variants = (props: UseInputStyleProps) => {
   switch (props.variant) {
     case 'outlined':
       return outlined(props);
@@ -136,25 +136,25 @@ const variants = (props: useInputStyleProps) => {
   }
 };
 
-interface useInputStyleProps extends InputProps {
+interface UseInputStyleProps extends InputProps {
   theme: DefaultTheme;
   colorMode: 'light' | 'dark';
 }
 
-const useInputStyle = (props: Omit<useInputStyleProps, 'colorMode'>) => {
+const useInputStyle = (props: Omit<UseInputStyleProps, 'colorMode'>) => {
   const { mode: colorMode } = useColorMode();
-  const _props = { ...props, colorMode };
+  const inputProps = { ...props, colorMode };
 
   return css(
     withSystem({
-      ...baseStyles(_props),
-      width: _props.fullWidth ? '100%' : undefined,
-      ...sizes(_props),
-      ...width(_props),
-      ...space(_props),
-      ...focus(_props),
+      ...baseStyles(inputProps),
+      width: inputProps.fullWidth ? '100%' : undefined,
+      ...sizes(inputProps),
+      ...width(inputProps),
+      ...space(inputProps),
+      ...focus(inputProps),
       ...disabled,
-      ...variants(_props),
+      ...variants(inputProps),
     })(props),
   );
 };
