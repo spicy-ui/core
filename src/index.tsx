@@ -3,6 +3,7 @@ export * from './Button';
 export * from './ColorMode';
 export * from './CssReset';
 export * from './Divider';
+export * from './Drawer';
 export * from './Field';
 export * from './Flex';
 export * from './Grid';
