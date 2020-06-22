@@ -1,3 +1,4 @@
+import { createShouldForwardProp } from '@styled-system/should-forward-prop';
 import styled from 'styled-components';
 
 export const FieldLabel = styled('label')`
@@ -12,7 +13,9 @@ export const FieldRequired = styled('span')`
 
 export const FieldControl = styled('div')``;
 
-export const FieldHelperText = styled('div')<{ isError?: boolean }>`
+const shouldForwardProp = createShouldForwardProp(['isError']);
+
+export const FieldHelperText = styled('div').withConfig<{ isError?: boolean }>({ shouldForwardProp })`
   color: ${(p) => (p.isError ? p.theme.colors.red[600] : 'inherit')};
   font-size: ${(p) => p.theme.fontSizes.sm}px;
   line-height: ${(p) => p.theme.lineHeights.body};

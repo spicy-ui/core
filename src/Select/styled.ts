@@ -1,4 +1,5 @@
 import { css as withSystem } from '@styled-system/css';
+import { createShouldForwardProp, props as forwardProps } from '@styled-system/should-forward-prop';
 import { darken, lighten } from 'polished';
 import styled, { css, DefaultTheme } from 'styled-components';
 import { get, space, width } from 'styled-system';
@@ -158,4 +159,6 @@ const useInputStyle = (props: Omit<useSelectStyleProps, 'colorMode'>) => {
   );
 };
 
-export const StyledSelect = styled('select')<SelectProps>(useInputStyle);
+const shouldForwardProp = createShouldForwardProp([...forwardProps, 'fullWidth', 'isInvalid', 'space', 'variant']);
+
+export const StyledSelect = styled('select').withConfig<SelectProps>({ shouldForwardProp })(useInputStyle);

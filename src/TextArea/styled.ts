@@ -1,4 +1,5 @@
 import { css as withSystem } from '@styled-system/css';
+import { createShouldForwardProp, props as forwardProps } from '@styled-system/should-forward-prop';
 import { darken, lighten } from 'polished';
 import styled, { css, DefaultTheme } from 'styled-components';
 import { get, space, width } from 'styled-system';
@@ -162,4 +163,6 @@ const useTextAreaStyle = (props: Omit<useTextAreaStyleProps, 'colorMode'>) => {
   );
 };
 
-export const StyledTextArea = styled('textarea')<TextAreaProps>(useTextAreaStyle);
+const shouldForwardProp = createShouldForwardProp([...forwardProps, 'fullWidth', 'isInvalid', 'space', 'variant']);
+
+export const StyledTextArea = styled('textarea').withConfig<TextAreaProps>({ shouldForwardProp })(useTextAreaStyle);
