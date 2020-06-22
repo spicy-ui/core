@@ -15,7 +15,11 @@ export const FieldControl = styled('div')``;
 
 const shouldForwardProp = createShouldForwardProp(['isError']);
 
-export const FieldHelperText = styled('div').withConfig<{ isError?: boolean }>({ shouldForwardProp })`
+export interface FieldHelperTextProps {
+  isError?: boolean;
+}
+
+export const FieldHelperText = styled('div').withConfig<FieldHelperTextProps>({ shouldForwardProp })`
   color: ${(p) => (p.isError ? p.theme.colors.red[600] : 'inherit')};
   font-size: ${(p) => p.theme.fontSizes.sm}px;
   line-height: ${(p) => p.theme.lineHeights.body};

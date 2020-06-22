@@ -5,7 +5,7 @@ import { get, space, width } from 'styled-system';
 import { useColorMode } from '../ColorMode';
 import { ButtonProps } from './types';
 
-const getBg = ({ color, colorMode, theme }: useButtonStyleProps) => {
+const getBg = ({ color, colorMode, theme }: UseButtonStyleProps) => {
   if (color === 'white' || color === 'black') {
     return get(theme.colors, color);
   }
@@ -13,7 +13,7 @@ const getBg = ({ color, colorMode, theme }: useButtonStyleProps) => {
   return colorMode === 'dark' && color === 'gray' ? get(theme.colors, `gray.50`) : get(theme.colors, `${color}.500`);
 };
 
-const filled = ({ color, colorMode, theme }: useButtonStyleProps) => {
+const filled = ({ color, colorMode, theme }: UseButtonStyleProps) => {
   const bg = getBg({ color, colorMode, theme });
 
   const isReversed =
@@ -31,7 +31,7 @@ const filled = ({ color, colorMode, theme }: useButtonStyleProps) => {
   };
 };
 
-const outlined = ({ color, colorMode, theme }: useButtonStyleProps) => {
+const outlined = ({ color, colorMode, theme }: UseButtonStyleProps) => {
   const bg = getBg({ color, colorMode, theme });
 
   return {
@@ -47,7 +47,7 @@ const outlined = ({ color, colorMode, theme }: useButtonStyleProps) => {
   };
 };
 
-const ghost = ({ color, colorMode, theme }: useButtonStyleProps) => {
+const ghost = ({ color, colorMode, theme }: UseButtonStyleProps) => {
   const bg = getBg({ color, colorMode, theme });
 
   return {
@@ -62,7 +62,7 @@ const ghost = ({ color, colorMode, theme }: useButtonStyleProps) => {
   };
 };
 
-const link = ({ color, colorMode, theme }: useButtonStyleProps) => {
+const link = ({ color, colorMode, theme }: UseButtonStyleProps) => {
   const bg = getBg({ color, colorMode, theme });
 
   const style = {
@@ -90,8 +90,8 @@ const baseStyles = {
   userSelect: 'none',
 };
 
-const sizes = (props: useButtonStyleProps) => {
-  switch (props.size) {
+const sizes = ({ size }: UseButtonStyleProps) => {
+  switch (size) {
     case 'xs':
       return {
         borderRadius: 'sm',
@@ -133,9 +133,9 @@ const sizes = (props: useButtonStyleProps) => {
   }
 };
 
-const focus = (props: useButtonStyleProps) => ({
+const focus = ({ theme, colorMode }: UseButtonStyleProps) => ({
   ':focus': {
-    boxShadow: props.theme.shadows.focus(props.colorMode === 'dark'),
+    boxShadow: theme.shadows.focus(colorMode === 'dark'),
     zIndex: 1,
   },
 });
@@ -148,7 +148,7 @@ const disabled = {
   },
 };
 
-const variants = (props: useButtonStyleProps) => {
+const variants = (props: UseButtonStyleProps) => {
   switch (props.variant) {
     case 'filled':
       return filled(props);
@@ -163,25 +163,25 @@ const variants = (props: useButtonStyleProps) => {
   }
 };
 
-interface useButtonStyleProps extends ButtonProps {
+interface UseButtonStyleProps extends ButtonProps {
   theme: DefaultTheme;
   colorMode: 'light' | 'dark';
 }
 
-export const useButtonStyle = (props: Omit<useButtonStyleProps, 'colorMode'>) => {
+export const useButtonStyle = (props: Omit<UseButtonStyleProps, 'colorMode'>) => {
   const { mode: colorMode } = useColorMode();
-  const _props = { ...props, colorMode };
+  const buttonProps = { ...props, colorMode };
 
   return css(
     withSystem({
       ...baseStyles,
-      width: _props.fullWidth ? '100%' : undefined,
-      ...sizes(_props),
-      ...width(_props),
-      ...space(_props),
-      ...focus(_props),
+      width: buttonProps.fullWidth ? '100%' : undefined,
+      ...sizes(buttonProps),
+      ...width(buttonProps),
+      ...space(buttonProps),
+      ...focus(buttonProps),
       ...disabled,
-      ...variants(_props),
+      ...variants(buttonProps),
     })(props),
   );
 };
