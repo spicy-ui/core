@@ -1,13 +1,11 @@
 import * as React from 'react';
 import FocusLock from 'react-focus-lock';
-import Transition, { TransitionStatus } from 'react-transition-group/Transition';
 import { Box } from '../Box';
 import { Button } from '../Button';
 import { useKeyPress } from '../hooks';
-import { Portal } from '../Portal';
-import { ModalOverlay, ModalWrapper } from './styled';
+import { Overlay } from '../Overlay';
+import { ModalWrapper } from './styled';
 import { ModalProps } from './types';
-import { ANIMATION_DURATION } from './utils/constants';
 
 const Modal: React.FC<ModalProps> = ({
   children,
@@ -49,36 +47,32 @@ const Modal: React.FC<ModalProps> = ({
   }, [isOpen]);
 
   return (
-    <Portal>
-      <Transition appear in={isOpen} timeout={{ enter: ANIMATION_DURATION, exit: ANIMATION_DURATION }} unmountOnExit>
-        {(state: TransitionStatus) => (
-          <ModalOverlay data-modal-state={state} onClick={handleOverlayClick}>
-            <FocusLock disabled={disableFocusTrap || !isOpen}>
-              <ModalWrapper
-                modalSize={size}
-                boxShadow={3}
-                borderRadius="xs"
-                my="12vmin"
-                mx="md"
-                role="dialog"
-                aria-modal="true"
-                aria-labelledby={labelledById}
-                data-modal-state={state}
-              >
-                {!hideCloseButton && onClose && (
-                  <Box position="absolute" top="sm" right="md">
-                    <Button type="button" variant="ghost" aria-label="Close" onClick={onClose}>
-                      Close
-                    </Button>
-                  </Box>
-                )}
-                {children}
-              </ModalWrapper>
-            </FocusLock>
-          </ModalOverlay>
-        )}
-      </Transition>
-    </Portal>
+    <Overlay isOpen={isOpen} onClick={handleOverlayClick}>
+      {(state) => (
+        <FocusLock disabled={disableFocusTrap || !isOpen}>
+          <ModalWrapper
+            modalSize={size}
+            boxShadow={3}
+            borderRadius="xs"
+            my="12vmin"
+            mx="md"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={labelledById}
+            data-modal-state={state}
+          >
+            {!hideCloseButton && onClose && (
+              <Box position="absolute" top="sm" right="md">
+                <Button type="button" variant="ghost" aria-label="Close" onClick={onClose}>
+                  Close
+                </Button>
+              </Box>
+            )}
+            {children}
+          </ModalWrapper>
+        </FocusLock>
+      )}
+    </Overlay>
   );
 };
 

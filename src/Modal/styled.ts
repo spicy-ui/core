@@ -1,17 +1,16 @@
 import { css as withSystem } from '@styled-system/css';
 import { createShouldForwardProp, props as forwardProps } from '@styled-system/should-forward-prop';
-import { rgba } from 'polished';
 import styled, { css, CSSObject, DefaultTheme, keyframes } from 'styled-components';
 import { Box, BoxProps } from '../Box';
 import { useColorMode } from '../ColorMode';
 import { ModalWrapperProps } from './types';
-import { ANIMATION_DURATION } from './utils/constants';
 
 const ModalIn = keyframes`
   0% {
     opacity: 0;
     transform: translate(0, -25%);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -23,91 +22,19 @@ const ModalOut = keyframes`
     opacity: 1;
     transform: translateY(0);
   }
+
   100% {
     opacity: 0;
     transform: translate(0, -25%);
   }
 `;
 
-const OverlayIn = keyframes`
-  0% {
-    visibility: hidden;
-    opacity: 0;
-  }
-  100% {
-    visibility: visible;
-    opacity: 1;
-  }
-`;
-
-const OverlayOut = keyframes`
-  0% {
-    visibility: visible;
-    opacity: 1;
-  }
-  100% {
-    visibility: hidden;
-    opacity: 0;
-  }
-`;
-
-const ModalOverlay = styled('div')`
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  &::before {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: ${(p) => rgba(p.theme.colors.black, 0.38)};
-    content: ' ';
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  &[data-modal-state='entering'],
-  &[data-modal-state='entered'] {
-    &::before {
-      animation-fill-mode: forwards;
-      animation-name: ${OverlayIn};
-      animation-duration: ${ANIMATION_DURATION}ms;
-    }
-  }
-
-  &[data-modal-state='exiting'] {
-    &::before {
-      animation-fill-mode: forwards;
-      animation-name: ${OverlayOut};
-      animation-duration: ${ANIMATION_DURATION}ms;
-    }
-  }
-
-  &[data-modal-state='entered'] {
-    &::before {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-`;
-
-ModalOverlay.displayName = 'ModalOverlay';
-
-interface useModalWrapperStyleProps extends ModalWrapperProps {
+interface UseModalWrapperStyleProps extends ModalWrapperProps {
   theme: DefaultTheme;
   colorMode: 'light' | 'dark';
 }
 
-const color = (props: useModalWrapperStyleProps) => {
+const color = (props: UseModalWrapperStyleProps) => {
   if (props.colorMode === 'dark') {
     return {
       backgroundColor: 'gray.800',
@@ -119,7 +46,7 @@ const color = (props: useModalWrapperStyleProps) => {
   };
 };
 
-const sizes = (props: useModalWrapperStyleProps) => {
+const sizes = (props: UseModalWrapperStyleProps) => {
   // TODO: use `props.theme.size` so modals are customisable
   switch (props.modalSize) {
     case 'sm': {
@@ -148,22 +75,21 @@ const baseStyles: CSSObject = {
   overflow: 'hidden',
 };
 
-const useModalWrapperStyle = (props: Omit<useModalWrapperStyleProps, 'colorMode'>) => {
+const useModalWrapperStyle = (props: Omit<UseModalWrapperStyleProps, 'colorMode'>) => {
   const { mode: colorMode } = useColorMode();
-  const _props = { ...props, colorMode };
+  const modalProps = { ...props, colorMode };
 
   return css(
     withSystem({
       ...baseStyles,
-      ...sizes(_props),
-      ...color(_props),
+      ...sizes(modalProps),
+      ...color(modalProps),
     })(props),
   );
 };
 
 const shouldForwardProp = createShouldForwardProp([...forwardProps, 'modalSize']);
 
-// TODO: animation duration should come from the `props.theme.timings`
 const ModalWrapper = styled(Box).withConfig<BoxProps & ModalWrapperProps>({ shouldForwardProp })(
   useModalWrapperStyle,
   // This cannot be moved inside `useModalWrapperStyle` since we use `keyframes`.
@@ -172,13 +98,13 @@ const ModalWrapper = styled(Box).withConfig<BoxProps & ModalWrapperProps>({ shou
     &[data-modal-state='entered'] {
       animation-fill-mode: forwards;
       animation-name: ${ModalIn};
-      animation-duration: ${ANIMATION_DURATION}ms;
+      animation-duration: ${(p) => p.theme.transitions.duration.entering}ms;
     }
 
     &[data-modal-state='exiting'] {
       animation-fill-mode: forwards;
       animation-name: ${ModalOut};
-      animation-duration: ${ANIMATION_DURATION}ms;
+      animation-duration: ${(p) => p.theme.transitions.duration.exiting}ms;
     }
 
     &[data-modal-state='entered'] {
@@ -190,4 +116,4 @@ const ModalWrapper = styled(Box).withConfig<BoxProps & ModalWrapperProps>({ shou
 
 ModalWrapper.displayName = 'ModalWrapper';
 
-export { ModalOverlay, ModalWrapper };
+export { ModalWrapper };
