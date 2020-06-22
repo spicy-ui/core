@@ -1,5 +1,5 @@
 import { css as withSystem } from '@styled-system/css';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import { createShouldForwardProp, props as forwardProps } from '@styled-system/should-forward-prop';
 import styled, { css, CSSObject, DefaultTheme, keyframes, Keyframes } from 'styled-components';
 import { Box, BoxProps } from '../Box';
 import { useColorMode } from '../ColorMode';
@@ -167,6 +167,8 @@ const useDrawerWrapperStyle = (props: Omit<UseDrawerWrapperStyleProps, 'colorMod
     })(props),
   );
 };
+
+const shouldForwardProp = createShouldForwardProp([...forwardProps, 'anchor']);
 
 const DrawerWrapper = styled(Box).withConfig<BoxProps & DrawerWrapperProps>({ shouldForwardProp })(
   useDrawerWrapperStyle,
