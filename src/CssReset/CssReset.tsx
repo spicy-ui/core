@@ -21,7 +21,7 @@ const useModeColors = (props: any) => {
   return css(styles[mode])(props);
 };
 
-export const CSSReset = createGlobalStyle`
+export const CssReset = createGlobalStyle`
   ${styledNormalize}
 
   *, *:before, *:after {

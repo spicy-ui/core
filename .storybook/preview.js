@@ -1,11 +1,11 @@
 import { addDecorator } from '@storybook/react';
 import React from 'react';
-import { Box, ColorModeProvider, CSSReset, Theme } from '../src';
+import { Box, ColorModeProvider, CssReset, Theme } from '../src';
 
-addDecorator(storyFn => (
+addDecorator((storyFn) => (
   <ColorModeProvider>
     <Theme>
-      <CSSReset />
+      <CssReset />
       <Box m="base">{storyFn()}</Box>
     </Theme>
   </ColorModeProvider>

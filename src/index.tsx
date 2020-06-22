@@ -1,6 +1,7 @@
 export * from './Box';
 export * from './Button';
 export * from './ColorMode';
+export * from './CssReset';
 export * from './Divider';
 export * from './Field';
 export * from './Flex';
@@ -10,6 +11,7 @@ export * from './hooks';
 export * from './Input';
 export * from './Link';
 export * from './Modal';
+export * from './Overlay';
 export * from './Portal';
 export * from './Select';
 export * from './Stack';
