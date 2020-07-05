@@ -1,15 +1,39 @@
 import { createShouldForwardProp, props } from '@styled-system/should-forward-prop';
 import styled from 'styled-components';
-import { useButtonStyle } from './styled';
-import { ButtonProps } from './types';
+import { space, SpaceProps, width, WidthProps } from 'styled-system';
+import { baseStyle, size, transition, TransitionProps, variant, withColorMode } from '../util';
 
-const shouldForwardProp = createShouldForwardProp([...props, 'color', 'fullWidth', 'size', 'variant']);
+export interface ButtonProps extends SpaceProps, WidthProps, TransitionProps {
+  /** Color of the button. */
+  color?: string;
+  /** Size of the button. */
+  size?: string;
+  /** Variant style of the button. */
+  variant?: string;
+}
 
-const Button = styled('button').withConfig<ButtonProps>({ shouldForwardProp })(useButtonStyle);
+const Button = styled('button').withConfig<ButtonProps>({
+  shouldForwardProp: createShouldForwardProp([
+    ...props,
+    'color',
+    'size',
+    'variant',
+    'transitionProperty',
+    'transitionDuration',
+    'transitionTiming',
+    'transitionDelay',
+  ]),
+})`
+  ${withColorMode(baseStyle('components.Button'))}
+  ${withColorMode(size('components.Button'))}
+  ${width}
+  ${space}
+  ${transition}
+  ${withColorMode(variant('components.Button'))}
+`;
 
 Button.defaultProps = {
   color: 'gray',
-  fullWidth: false,
   size: 'md',
   type: 'button',
   variant: 'filled',

@@ -1,13 +1,20 @@
 import { createShouldForwardProp, props } from '@styled-system/should-forward-prop';
 import styled from 'styled-components';
-import { color, layout, space, typography } from 'styled-system';
-import { variant } from '../util';
-import { TextProps } from './types';
+import { color, ColorProps, layout, LayoutProps, space, SpaceProps, typography, TypographyProps } from 'styled-system';
+import { baseStyle, variant, withColorMode } from '../util';
 
-const shouldForwardProp = createShouldForwardProp([...props, 'variant']);
+export type TextVariant = 'body1' | 'body2' | 'lead';
 
-const Text = styled('p').withConfig<TextProps>({ shouldForwardProp })`
-  ${variant({ scale: 'componentStyles' })}
+export interface TextProps extends LayoutProps, SpaceProps, ColorProps, TypographyProps {
+  /** Variant style of the text. */
+  variant?: TextVariant;
+}
+
+const Text = styled('p').withConfig<TextProps>({
+  shouldForwardProp: createShouldForwardProp([...props, 'variant']),
+})`
+  ${withColorMode(baseStyle('components.Text'))}
+  ${withColorMode(variant('components.Text'))}
   ${layout}
   ${space}
   ${color}

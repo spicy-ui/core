@@ -5,6 +5,7 @@
   },
   "rules": {
     "import/named": "off",
+    "import/no-cycle": "off",
     "import/order": [
       "error",
       {

@@ -14,7 +14,7 @@ export default {
 export const Simple = () => <Heading variant={select('variant', variants, 'h2')}>Heading</Heading>;
 
 export const AllVariants = () => (
-  <Stack spacing="base">
+  <Stack spacing="4">
     {variants.map((variant, idx) => (
       <Heading key={uid(variant, idx)} variant={variant}>
         {variant}: Heading

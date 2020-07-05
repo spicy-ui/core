@@ -1,13 +1,20 @@
 import { createShouldForwardProp, props } from '@styled-system/should-forward-prop';
 import styled from 'styled-components';
-import { color, layout, space, typography } from 'styled-system';
-import { variant } from '../util';
-import { HeadingProps } from './types';
+import { color, ColorProps, layout, LayoutProps, space, SpaceProps, typography, TypographyProps } from 'styled-system';
+import { baseStyle, variant, withColorMode } from '../util';
 
-const shouldForwardProp = createShouldForwardProp([...props, 'variant']);
+export type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-const Heading = styled('h2').withConfig<HeadingProps>({ shouldForwardProp })`
-  ${variant({ scale: 'componentStyles' })}
+export interface HeadingProps extends LayoutProps, SpaceProps, ColorProps, TypographyProps {
+  /** Variant style of the heading. */
+  variant?: HeadingVariant;
+}
+
+const Heading = styled('h2').withConfig<HeadingProps>({
+  shouldForwardProp: createShouldForwardProp([...props, 'variant']),
+})`
+  ${withColorMode(baseStyle('components.Heading'))}
+  ${withColorMode(variant('components.Heading'))}
   ${layout}
   ${space}
   ${color}

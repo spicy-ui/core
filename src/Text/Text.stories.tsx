@@ -19,7 +19,7 @@ export const Simple = () => (
 );
 
 export const AllVariants = () => (
-  <Stack spacing="base">
+  <Stack spacing="4">
     {variants.map((variant, idx) => (
       <Text key={uid(variant, idx)} variant={variant}>
         {variant}: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non cursus velit, hendrerit consequat
@@ -30,12 +30,13 @@ export const AllVariants = () => (
 );
 
 export const SemanticTextExamples = () => (
-  <Stack spacing="base">
+  <Stack spacing="4">
     {[
+      { as: 'a', label: 'Link' },
       { as: 'em', label: 'Emphasis' },
       { as: 'strong', label: 'Strong' },
       { as: 'small', label: 'Small' },
-      { as: 'code', label: '&lt;div /&gt;' },
+      { as: 'code', label: '<div>hello world</div>' },
       { as: 'abbr', label: 'I18N' },
       { as: 'cite', label: 'Citation' },
       { as: 'del', label: 'Deleted' },

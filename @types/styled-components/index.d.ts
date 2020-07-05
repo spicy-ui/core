@@ -1,8 +1,8 @@
 import 'styled-components';
 
-import { system } from '../../src/Theme/system';
+import { ExtendableSystem } from '../../src/system';
 
-type ThemeInterface = typeof system;
+type ThemeInterface = ExtendableSystem;
 
 declare module 'styled-components' {
   export interface DefaultTheme extends ThemeInterface {}

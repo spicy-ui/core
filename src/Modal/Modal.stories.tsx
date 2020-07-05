@@ -1,8 +1,9 @@
+import { action } from '@storybook/addon-actions';
 import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
-import { Button, Modal, ModalContent, ModalFooter, ModalHeader, ModalSizes } from '..';
+import { Button, Modal, ModalSize } from '..';
 
-const modalSizes: ModalSizes[] = ['sm', 'md', 'lg'];
+const modalSizes: ModalSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'full'];
 
 export default {
   title: 'Modal',
@@ -10,52 +11,34 @@ export default {
   decorators: [withKnobs],
 };
 
-export const Simple = () => {
+export const Simple = () => (
+  <Modal
+    isOpen
+    onClose={action('onClose')}
+    size={select('size', modalSizes, 'sm')}
+    disableOverlayClick={boolean('disable overlay click', false)}
+    disableListeners={boolean('disable escape key listener', false)}
+    disableFocusTrap={boolean('disable modal focus trap', false)}
+  >
+    Modal
+  </Modal>
+);
+
+export const Toggle = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <>
-      <button type="button" onClick={() => setIsOpen(true)}>
-        Toggle Modal
-      </button>
+      <Button onClick={() => setIsOpen(true)}>Toggle modal</Button>
       <Modal
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         size={select('size', modalSizes, 'sm')}
-        hideCloseButton={boolean('hide close button', false)}
         disableOverlayClick={boolean('disable overlay click', false)}
         disableListeners={boolean('disable escape key listener', false)}
         disableFocusTrap={boolean('disable modal focus trap', false)}
       >
-        <ModalHeader>Modal Header</ModalHeader>
-        <ModalContent>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam eligendi nihil voluptatibus aliquid
-          provident, sapiente quam. Reiciendis vel animi odio odit! Expedita possimus accusamus quam, vel molestiae at
-          asperiores repellendus!
-        </ModalContent>
-      </Modal>
-    </>
-  );
-};
-
-export const CustomCloseBehaviour = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  return (
-    <>
-      <button type="button" onClick={() => setIsOpen(true)}>
-        Toggle Modal
-      </button>
-      <Modal isOpen={isOpen} hideCloseButton disableOverlayClick disableListeners>
-        <ModalHeader>Modal Header</ModalHeader>
-        <ModalContent>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam eligendi nihil voluptatibus aliquid
-          provident, sapiente quam. Reiciendis vel animi odio odit! Expedita possimus accusamus quam, vel molestiae at
-          asperiores repellendus!
-        </ModalContent>
-        <ModalFooter>
-          <Button onClick={() => setIsOpen(false)}>Close Modal</Button>
-        </ModalFooter>
+        Modal
       </Modal>
     </>
   );
