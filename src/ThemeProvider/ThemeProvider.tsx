@@ -11,7 +11,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, theme = {} }) =
   const mergedTheme = React.useMemo(() => deepmerge(system, theme), [theme]);
 
   return (
-    <StyledThemeProvider theme={mergedTheme}>
+    <StyledThemeProvider theme={mergedTheme as any}>
       <>{children}</>
     </StyledThemeProvider>
   );

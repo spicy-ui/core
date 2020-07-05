@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ColorModeProvider } from '../ColorModeProvider';
+import { ColorMode, ColorModeProvider } from '../ColorModeProvider';
 import { CssReset } from '../CssReset';
 import { ExtendableSystem } from '../system';
 import { ThemeProvider } from '../ThemeProvider';
@@ -10,7 +10,7 @@ export interface SpicyProviderProps {
 
 const SpicyProvider: React.FC<SpicyProviderProps> = ({ children, theme }) => (
   <ThemeProvider theme={theme}>
-    <ColorModeProvider initial={theme?.config?.initialColorMode}>
+    <ColorModeProvider initial={theme?.config?.initialColorMode as ColorMode}>
       <CssReset />
       {children}
     </ColorModeProvider>

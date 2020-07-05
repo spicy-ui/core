@@ -7,11 +7,7 @@ export const CssReset = createGlobalStyle`
   ${styledNormalize}
 
   ${(props) => {
-    if (props.theme?.styles?.global) {
-      const { colorMode } = useColorMode();
-      return css(props.theme.styles.global({ ...props, colorMode }));
-    }
-
-    return {};
+    const { colorMode } = useColorMode();
+    return css(props.theme.styles.global({ ...props, colorMode }));
   }}
 `;
