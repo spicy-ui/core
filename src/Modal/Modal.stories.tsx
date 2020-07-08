@@ -1,9 +1,9 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
-import { Button, Modal, ModalSize } from '..';
+import { Button, Modal } from '..';
 
-const modalSizes: ModalSize[] = ['xs', 'sm', 'md', 'lg', 'xl', 'full'];
+const modalSizes = ['xs', 'sm', 'md', 'lg', 'xl', 'full'];
 
 export default {
   title: 'Modal',

@@ -1,6 +1,7 @@
 import { Button } from './Button';
 import { Divider } from './Divider';
 import { Drawer } from './Drawer';
+import { Field } from './Field';
 import { Heading } from './Heading';
 import { Input } from './Input';
 import { Link } from './Link';
@@ -12,6 +13,7 @@ export const components = {
   Button,
   Divider,
   Drawer,
+  ...Field,
   Heading,
   Link,
   Input,

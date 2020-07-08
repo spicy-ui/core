@@ -1,9 +1,9 @@
 import { select, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Stack, Text, TextVariant } from '..';
+import { Stack, Text } from '..';
 
-const variants: TextVariant[] = ['lead', 'body1', 'body2'];
+const variants = ['lead', 'body1', 'body2'];
 
 export default {
   title: 'Text',

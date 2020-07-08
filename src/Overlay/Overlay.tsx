@@ -7,33 +7,37 @@ import { useTheme } from '../ThemeProvider';
 import { baseStyle, withColorMode } from '../util';
 import { OverlayIn, OverlayOut } from './keyframes';
 
-const Backdrop = styled(Box)`
-  ${withColorMode(baseStyle('components.Overlay'))}
-
-  &[data-overlay-state='entering'],
-  &[data-overlay-state='entered'] {
-    &::before {
-      animation-fill-mode: forwards;
-      animation-name: ${OverlayIn};
-      animation-duration: ${(p) => p.theme.transitions.duration['300']};
+const Backdrop = styled(Box)(
+  (p) =>
+    css({
+      ...withColorMode(baseStyle('components.Overlay'))(p),
+    }),
+  css`
+    &[data-overlay-state='entering'],
+    &[data-overlay-state='entered'] {
+      &::before {
+        animation-fill-mode: forwards;
+        animation-name: ${OverlayIn};
+        animation-duration: ${(p) => p.theme.transitions.duration['300']};
+      }
     }
-  }
 
-  &[data-overlay-state='exiting'] {
-    &::before {
-      animation-fill-mode: forwards;
-      animation-name: ${OverlayOut};
-      animation-duration: ${(p) => p.theme.transitions.duration['200']};
+    &[data-overlay-state='exiting'] {
+      &::before {
+        animation-fill-mode: forwards;
+        animation-name: ${OverlayOut};
+        animation-duration: ${(p) => p.theme.transitions.duration['200']};
+      }
     }
-  }
 
-  &[data-overlay-state='entered'] {
-    &::before {
-      visibility: visible;
-      opacity: 1;
+    &[data-overlay-state='entered'] {
+      &::before {
+        visibility: visible;
+        opacity: 1;
+      }
     }
-  }
-`;
+  `,
+);
 
 export interface OverlayProps extends BoxProps {
   children: (state: TransitionStatus) => React.ReactNode;

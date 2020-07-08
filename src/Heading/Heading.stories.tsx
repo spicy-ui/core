@@ -1,9 +1,9 @@
 import { select, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Heading, HeadingVariant, Stack } from '..';
+import { Heading, Stack } from '..';
 
-const variants: HeadingVariant[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+const variants = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
 export default {
   title: 'Heading',

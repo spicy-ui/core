@@ -7,58 +7,44 @@ import { Overlay } from '../Overlay';
 import { baseStyle, size as sizeUtil, withColorMode } from '../util';
 import { ModalIn, ModalOut } from './keyframes';
 
-export type ModalSize =
-  | '3xs'
-  | '2xs'
-  | 'xs'
-  | 'sm'
-  | 'md'
-  | 'lg'
-  | 'xl'
-  | '2xl'
-  | '3xl'
-  | '4xl'
-  | '5xl'
-  | '6xl'
-  | 'full';
-
 interface ModalWrapperProps {
-  size?: ModalSize;
+  size?: string;
 }
 
 const ModalWrapper = styled('div').withConfig<ModalWrapperProps>({
   shouldForwardProp: createShouldForwardProp([...props, 'size']),
-})`
-  ${(p) =>
+})(
+  (p) =>
     css({
       ...withColorMode(baseStyle('components.Modal'))(p),
       ...withColorMode(sizeUtil('components.Modal'))(p),
-    })}
+    }),
+  css`
+    &[data-modal-state='entering'],
+    &[data-modal-state='entered'] {
+      animation-fill-mode: forwards;
+      animation-name: ${ModalIn};
+      animation-duration: ${(p) => p.theme.transitions.duration['300']};
+    }
 
-  &[data-modal-state='entering'],
-  &[data-modal-state='entered'] {
-    animation-fill-mode: forwards;
-    animation-name: ${ModalIn};
-    animation-duration: ${(p) => p.theme.transitions.duration['300']};
-  }
+    &[data-modal-state='exiting'] {
+      animation-fill-mode: forwards;
+      animation-name: ${ModalOut};
+      animation-duration: ${(p) => p.theme.transitions.duration['200']};
+    }
 
-  &[data-modal-state='exiting'] {
-    animation-fill-mode: forwards;
-    animation-name: ${ModalOut};
-    animation-duration: ${(p) => p.theme.transitions.duration['200']};
-  }
-
-  &[data-modal-state='entered'] {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-`;
+    &[data-modal-state='entered'] {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  `,
+);
 
 export interface ModalProps {
   /** Whether the modal is open or not. */
   isOpen: boolean;
   /** Set max size of the modal */
-  size?: ModalSize;
+  size?: string;
   /** Set to `true` to disable closing the modal by clicking the overlay. */
   disableOverlayClick?: boolean;
   /** Set to `true` to disable closing the modal by pushing the escape key. */

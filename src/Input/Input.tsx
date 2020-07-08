@@ -1,6 +1,6 @@
 import { createShouldForwardProp, props } from '@styled-system/should-forward-prop';
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { space, SpaceProps, width, WidthProps } from 'styled-system';
 import { useField } from '../Field';
 import { baseStyle, size, transition, TransitionProps, variant, withColorMode } from '../util';
@@ -22,14 +22,16 @@ const StyledInput = styled('input').withConfig<StyledInputProps>({
     'transitionTiming',
     'transitionDelay',
   ]),
-})`
-  ${withColorMode(baseStyle('components.Input'))}
-  ${withColorMode(size('components.Input', 'space'))}
-  ${width}
-  ${space}
-  ${transition}
-  ${withColorMode(variant('components.Input'))}
-`;
+})((p) =>
+  css({
+    ...withColorMode(baseStyle('components.Input'))(p),
+    ...withColorMode(size('components.Input', 'space'))(p),
+    ...width(p),
+    ...space(p),
+    ...transition(p),
+    ...withColorMode(variant('components.Input'))(p),
+  }),
+);
 
 export interface InputProps extends SpaceProps, WidthProps, TransitionProps {
   /** Indicate whether the input has a valid value or not. */

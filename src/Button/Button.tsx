@@ -1,5 +1,5 @@
 import { createShouldForwardProp, props } from '@styled-system/should-forward-prop';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { space, SpaceProps, width, WidthProps } from 'styled-system';
 import { baseStyle, size, transition, TransitionProps, variant, withColorMode } from '../util';
 
@@ -23,14 +23,16 @@ const Button = styled('button').withConfig<ButtonProps>({
     'transitionTiming',
     'transitionDelay',
   ]),
-})`
-  ${withColorMode(baseStyle('components.Button'))}
-  ${withColorMode(size('components.Button'))}
-  ${width}
-  ${space}
-  ${transition}
-  ${withColorMode(variant('components.Button'))}
-`;
+})((p) =>
+  css({
+    ...withColorMode(baseStyle('components.Button'))(p),
+    ...withColorMode(size('components.Button'))(p),
+    ...width(p),
+    ...space(p),
+    ...transition(p),
+    ...withColorMode(variant('components.Button'))(p),
+  }),
+);
 
 Button.defaultProps = {
   color: 'gray',

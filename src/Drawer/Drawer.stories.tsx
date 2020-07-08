@@ -1,11 +1,11 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
-import { Box, Button, Drawer, DrawerAnchor, DrawerSize } from '..';
+import { Box, Button, Drawer, DrawerAnchor } from '..';
 
 const drawerAnchors: DrawerAnchor[] = ['left', 'right', 'top', 'bottom'];
 
-const drawerSizes: DrawerSize[] = ['xs', 'sm', 'md', 'lg'];
+const drawerSizes = ['xs', 'sm', 'md', 'lg'];
 
 export default {
   title: 'Drawer',

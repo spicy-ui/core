@@ -1,9 +1,28 @@
+import { createShouldForwardProp, props } from '@styled-system/should-forward-prop';
 import * as React from 'react';
+import styled from 'styled-components';
 import { Box } from '../Box';
-import { Text } from '../Text';
+import { Text, TextProps } from '../Text';
+import { baseStyle, withColorMode } from '../util';
 import { FieldContext } from './Context';
 
-// TODO: consider changing text/box components to styled components with baseStyles so they're restylable
+const FieldLabel = styled(Text)`
+  ${withColorMode(baseStyle('components.FieldLabel'))}
+`;
+
+const FieldRequired = styled('span')`
+  ${withColorMode(baseStyle('components.FieldRequired'))}
+`;
+
+const FieldControl = styled('div')`
+  ${withColorMode(baseStyle('components.FieldControl'))}
+`;
+
+const FieldHelperText = styled(Text).withConfig<{ isInvalid?: boolean } & TextProps>({
+  shouldForwardProp: createShouldForwardProp([...props, 'isInvalid']),
+})`
+  ${withColorMode(baseStyle('components.FieldHelperText'))}
+`;
 
 interface HelperTextProps {
   errorText?: React.ReactNode;
@@ -15,18 +34,14 @@ const HelperText: React.FC<HelperTextProps> = ({ errorText, helperText, isInvali
   if (errorText || helperText) {
     if (isInvalid) {
       return (
-        <Text as="div" mt="1" color={isInvalid ? 'red.600' : 'inherit'} fontSize="sm">
+        <FieldHelperText as="div" isInvalid>
           {errorText || helperText}
-        </Text>
+        </FieldHelperText>
       );
     }
 
     if (helperText) {
-      return (
-        <Text as="div" mt="1" fontSize="sm">
-          {helperText}
-        </Text>
-      );
+      return <FieldHelperText as="div">{helperText}</FieldHelperText>;
     }
   }
 
@@ -59,17 +74,13 @@ const Field: React.FC<FieldProps> = ({
     <Box>
       {label && (
         <Box mb="1">
-          <Text as="label" htmlFor={id} fontWeight="medium" lineHeight="normal">
+          <FieldLabel as="label" htmlFor={id}>
             {label}
-            {isRequired && (
-              <Text as="span" ml="1" color="red.600">
-                *
-              </Text>
-            )}
-          </Text>
+            {isRequired && <FieldRequired as="span">*</FieldRequired>}
+          </FieldLabel>
         </Box>
       )}
-      <Box>{children}</Box>
+      <FieldControl>{children}</FieldControl>
       <HelperText errorText={errorText} helperText={helperText} isInvalid={isInvalid} />
     </Box>
   </FieldContext.Provider>

@@ -9,8 +9,6 @@ import { BottomIn, BottomOut, LeftIn, LeftOut, RightIn, RightOut, TopIn, TopOut 
 
 export type DrawerAnchor = 'top' | 'right' | 'bottom' | 'left';
 
-export type DrawerSize = 'xs' | 'sm' | 'md' | 'lg';
-
 const getDrawerAnimation = (anchor: DrawerAnchor) => {
   switch (anchor) {
     case 'top':
@@ -26,36 +24,37 @@ const getDrawerAnimation = (anchor: DrawerAnchor) => {
 
 interface DrawerWrapperProps {
   anchor: DrawerAnchor;
-  size: DrawerSize;
+  size: string;
 }
 
 const DrawerWrapper = styled('div').withConfig<DrawerWrapperProps>({
   shouldForwardProp: createShouldForwardProp([...props, 'anchor', 'size']),
-})`
-  ${(p) =>
+})(
+  (p) =>
     css({
       ...withColorMode(baseStyle('components.Drawer'))(p),
       ...withColorMode(sizeUtil('components.Drawer'))(p),
-    })}
+    }),
+  css<DrawerWrapperProps>`
+    &[data-drawer-state='entering'],
+    &[data-drawer-state='entered'] {
+      animation-fill-mode: forwards;
+      animation-name: ${(p) => getDrawerAnimation(p.anchor).in};
+      animation-duration: ${(p) => p.theme.transitions.duration['300']};
+    }
 
-  &[data-drawer-state='entering'],
-  &[data-drawer-state='entered'] {
-    animation-fill-mode: forwards;
-    animation-name: ${(p) => getDrawerAnimation(p.anchor).in};
-    animation-duration: ${(p) => p.theme.transitions.duration['300']};
-  }
+    &[data-drawer-state='exiting'] {
+      animation-fill-mode: forwards;
+      animation-name: ${(p) => getDrawerAnimation(p.anchor).out};
+      animation-duration: ${(p) => p.theme.transitions.duration['200']};
+    }
 
-  &[data-drawer-state='exiting'] {
-    animation-fill-mode: forwards;
-    animation-name: ${(p) => getDrawerAnimation(p.anchor).out};
-    animation-duration: ${(p) => p.theme.transitions.duration['200']};
-  }
-
-  &[data-drawer-state='entered'] {
-    opacity: 1;
-    transform: translate(0, 0);
-  }
-`;
+    &[data-drawer-state='entered'] {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  `,
+);
 
 const getAnchor = (anchor: DrawerAnchor) => {
   switch (anchor) {
@@ -76,7 +75,7 @@ export interface DrawerProps {
   /** Side that the drawer will appear from. */
   anchor?: DrawerAnchor;
   /** Size of the drawer. */
-  size?: DrawerSize;
+  size?: string;
   /** Set to `true` to disable closing the drawer by clicking the overlay. */
   disableOverlayClick?: boolean;
   /** Set to `true` to disable closing the drawer by pushing the escape key. */
