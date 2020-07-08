@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Transition, { TransitionStatus } from 'react-transition-group/Transition';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Box, BoxProps } from '../Box';
 import { Portal } from '../Portal';
 import { useTheme } from '../ThemeProvider';
