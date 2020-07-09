@@ -24,19 +24,22 @@ const underlined = (props: any): ComponentStyle => ({
   padding: 0,
   border: 'none',
   borderBottom: '2px',
-  borderColor: props.isInvalid ? colorMode('red.500', 'red.300')(props) : colorMode('gray.200', 'whiteAlpha.50')(props),
+  borderBottomColor: props.isInvalid
+    ? colorMode('red.500', 'red.300')(props)
+    : colorMode('gray.200', 'whiteAlpha.50')(props),
   borderRadius: 'none',
   ':not(:disabled):hover': {
-    borderColor: props.isInvalid ? undefined : colorMode('gray.300', 'whiteAlpha.200')(props),
+    borderBottomColor: props.isInvalid ? undefined : colorMode('gray.300', 'whiteAlpha.200')(props),
   },
   ':not(:disabled):focus': {
     boxShadow: 'none',
-    borderColor: colorMode('blue.500', 'blue.300')(props),
+    borderBottomColor: colorMode('blue.500', 'blue.300')(props),
   },
 });
 
 const unstyled = (): ComponentStyle => ({
   padding: 0,
+  borderRadius: 'none',
 });
 
 export const Input: ComponentTheme = {
