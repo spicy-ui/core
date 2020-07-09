@@ -49,13 +49,21 @@ const HelperText: React.FC<HelperTextProps> = ({ errorText, helperText, isInvali
 };
 
 export interface FieldProps {
+  /** Text to display when the field is invalid. */
   errorText?: React.ReactNode;
+  /** Text to display with the control. */
   helperText?: React.ReactNode;
+  /** Unique ID of the field. */
   id: string;
+  /** Set to `true` to disable the field's control. */
   isDisabled?: boolean;
+  /** Set to `true` to mark the field as invalid. */
   isInvalid?: boolean;
+  /** Set to `true` to mark the control as readonly. */
   isReadOnly?: boolean;
+  /** Set to `true` to mark the control as required. */
   isRequired?: boolean;
+  /** Label of the control. */
   label?: string;
 }
 

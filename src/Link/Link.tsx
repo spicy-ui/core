@@ -8,9 +8,13 @@ const StyledLink = styled(Box)`
 `;
 
 export interface LinkProps extends BoxProps {
+  /** External link URL. */
   href?: string;
+  /** Set to `true` to disable the link. */
   isDisabled?: boolean;
+  /** Set to `true` to add external `rel` tags. */
   isExternal?: boolean;
+  /** Function called when the link is clicked. */
   onClick?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }
 

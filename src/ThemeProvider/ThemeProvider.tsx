@@ -4,6 +4,7 @@ import { ThemeContext, ThemeProvider as StyledThemeProvider } from 'styled-compo
 import { ExtendableSystem, system } from '../system';
 
 export interface ThemeProviderProps {
+  /** Theme extensions to add to the theme. */
   theme?: ExtendableSystem;
 }
 
