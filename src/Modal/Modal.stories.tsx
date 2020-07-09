@@ -3,7 +3,7 @@ import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { Button, Modal } from '..';
 
-const modalSizes = ['xs', 'sm', 'md', 'lg', 'xl', 'full'];
+const modalSizes = ['3xs', '2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', 'full'];
 
 export default {
   title: 'Modal',
