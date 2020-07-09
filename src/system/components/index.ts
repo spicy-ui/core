@@ -7,7 +7,9 @@ import { Input } from './Input';
 import { Link } from './Link';
 import { Modal } from './Modal';
 import { Overlay } from './Overlay';
+import { Select } from './Select';
 import { Text } from './Text';
+import { TextArea } from './TextArea';
 
 export const components = {
   Button,
@@ -19,5 +21,7 @@ export const components = {
   Input,
   Modal,
   Overlay,
+  Select,
   Text,
+  TextArea,
 };
