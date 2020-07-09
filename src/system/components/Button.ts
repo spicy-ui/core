@@ -7,8 +7,12 @@ const ghost = (props: any): ComponentStyle => {
   if (props.color === 'gray') {
     return {
       color: colorMode('inherit', 'whiteAlpha.900')(props),
-      ':hover': { backgroundColor: colorMode('gray.100', 'whiteAlpha.200')(props) },
-      ':active': { backgroundColor: colorMode('gray.200', 'whiteAlpha.300')(props) },
+      ':not(:disabled):hover': {
+        backgroundColor: colorMode('gray.100', 'whiteAlpha.200')(props),
+      },
+      ':active': {
+        backgroundColor: colorMode('gray.200', 'whiteAlpha.300')(props),
+      },
     };
   }
 
@@ -16,16 +20,24 @@ const ghost = (props: any): ComponentStyle => {
     return {
       color: props.color,
       backgroundColor: 'transparent',
-      ':hover': { backgroundColor: `${props.color}Alpha.200` },
-      ':active': { backgroundColor: `${props.color}Alpha.300` },
+      ':not(:disabled):hover': {
+        backgroundColor: `${props.color}Alpha.200`,
+      },
+      ':active': {
+        backgroundColor: `${props.color}Alpha.300`,
+      },
     };
   }
 
   return {
     color: `${props.color}.500`,
     backgroundColor: 'transparent',
-    ':hover': { backgroundColor: transparentize(0.9, get(props.theme.colors, `${props.color}.500`)) },
-    ':active': { backgroundColor: transparentize(0.8, get(props.theme.colors, `${props.color}.500`)) },
+    ':not(:disabled):hover': {
+      backgroundColor: transparentize(0.9, get(props.theme.colors, `${props.color}.500`)),
+    },
+    ':active': {
+      backgroundColor: transparentize(0.8, get(props.theme.colors, `${props.color}.500`)),
+    },
   };
 };
 
@@ -41,8 +53,12 @@ const filled = (props: any): ComponentStyle => {
   if (props.color === 'gray') {
     return {
       backgroundColor: colorMode('gray.100', 'whiteAlpha.200')(props),
-      ':hover': { backgroundColor: colorMode('gray.200', 'whiteAlpha.300')(props) },
-      ':active': { backgroundColor: colorMode('gray.300', 'whiteAlpha.400')(props) },
+      ':not(:disabled):hover': {
+        backgroundColor: colorMode('gray.200', 'whiteAlpha.300')(props),
+      },
+      ':active': {
+        backgroundColor: colorMode('gray.300', 'whiteAlpha.400')(props),
+      },
     };
   }
 
@@ -50,16 +66,24 @@ const filled = (props: any): ComponentStyle => {
     return {
       color: props.color === 'white' ? 'black' : 'white',
       backgroundColor: `${props.color}Alpha.800`,
-      ':hover': { backgroundColor: `${props.color}Alpha.900` },
-      ':active': { backgroundColor: props.color },
+      ':not(:disabled):hover': {
+        backgroundColor: `${props.color}Alpha.900`,
+      },
+      ':active': {
+        backgroundColor: props.color,
+      },
     };
   }
 
   return {
     backgroundColor: `${props.color}.500`,
     color: 'white',
-    ':hover': { backgroundColor: `${props.color}.600` },
-    ':active': { backgroundColor: `${props.color}.700` },
+    ':not(:disabled):hover': {
+      backgroundColor: `${props.color}.600`,
+    },
+    ':active': {
+      backgroundColor: `${props.color}.700`,
+    },
   };
 };
 
@@ -67,7 +91,7 @@ const link = (props: any): ComponentStyle => {
   if (props.color === 'white' || props.color === 'black') {
     return {
       color: props.color,
-      ':hover': {
+      ':not(:disabled):hover': {
         color: props.color,
         textDecoration: 'underline',
       },
@@ -79,7 +103,7 @@ const link = (props: any): ComponentStyle => {
 
   return {
     color: `${props.color}.500`,
-    ':hover': {
+    ':not(:disabled):hover': {
       color: `${props.color}.600`,
       textDecoration: 'underline',
     },
