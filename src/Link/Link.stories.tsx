@@ -14,6 +14,6 @@ export const Simple = () => (
     isExternal={boolean('isExternal', true)}
     isDisabled={boolean('isDisabled', false)}
   >
-    Spicy UI
+    🌶️ Spicy UI
   </Link>
 );

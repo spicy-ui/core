@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Button, Portal, Stack } from '..';
+import { Box, Button, Input, Portal, Stack } from '..';
 
 export default {
   title: 'Portal',
@@ -28,7 +28,7 @@ export const ContentRerender = () => {
       <Stack orientation="horizontal" spacing="2" align="center" justify="center">
         <Button onClick={increment}>increase</Button>
         <Button onClick={decrement}>decrease</Button>
-        <input type="number" value={amount} onChange={({ target }) => setAmount(Number.parseInt(target.value, 10))} />
+        <Input type="number" value={amount} onChange={({ target }) => setAmount(Number.parseInt(target.value, 10))} />
       </Stack>
       <Portal>
         <Box position="absolute" bottom={0} right={0} padding="2" color="white" backgroundColor="blue.500">

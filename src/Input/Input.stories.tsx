@@ -1,7 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
-import { Input } from '..';
+import { uid } from 'react-uid';
+import { Input, Stack } from '..';
 
 const inputTypes = [
   'date',
@@ -40,4 +41,20 @@ export const Simple = () => (
     variant={select('variant', inputVariants, 'outlined')}
     onChange={({ target }) => action('onChange')(target.value)}
   />
+);
+
+export const AllSpaces = () => (
+  <Stack spacing="4">
+    {inputSpaces.map((space, idx) => (
+      <Input key={uid(space, idx)} space={space} placeholder={space} />
+    ))}
+  </Stack>
+);
+
+export const AllVariants = () => (
+  <Stack spacing="4">
+    {inputVariants.map((variant, idx) => (
+      <Input key={uid(variant, idx)} variant={variant} placeholder={variant} />
+    ))}
+  </Stack>
 );
