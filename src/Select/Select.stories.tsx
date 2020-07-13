@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Select, SelectSpace, SelectVariant, Stack } from '..';
+import { Select, Stack } from '..';
 
 const options = ['apples', 'bananas', 'oranges', 'pears'].map((value, idx) => (
   <option key={uid(value, idx)} value={value}>
@@ -10,9 +10,9 @@ const options = ['apples', 'bananas', 'oranges', 'pears'].map((value, idx) => (
   </option>
 ));
 
-const selectSpaces: SelectSpace[] = ['xs', 'sm', 'md', 'lg'];
+const selectSpaces = ['xs', 'sm', 'md', 'lg'];
 
-const selectVariants: SelectVariant[] = ['outlined', 'filled', 'unstyled'];
+const selectVariants = ['outlined', 'filled', 'underlined', 'unstyled'];
 
 export default {
   title: 'Select',
@@ -23,7 +23,6 @@ export default {
 export const Simple = () => (
   <Select
     disabled={boolean('disabled', false)}
-    fullWidth={boolean('fullWidth', true)}
     isInvalid={boolean('isInvalid', false)}
     placeholder={text('placeholder', 'Select input')}
     required={boolean('required', false)}
@@ -36,7 +35,7 @@ export const Simple = () => (
 );
 
 export const AllSpaces = () => (
-  <Stack spacing="base">
+  <Stack spacing="4">
     {selectSpaces.map((space, idx) => (
       <Select key={uid(space, idx)} space={space} placeholder={space}>
         {options}
@@ -46,7 +45,7 @@ export const AllSpaces = () => (
 );
 
 export const AllVariants = () => (
-  <Stack spacing="base">
+  <Stack spacing="4">
     {selectVariants.map((variant, idx) => (
       <Select key={uid(variant, idx)} variant={variant} placeholder={variant}>
         {options}

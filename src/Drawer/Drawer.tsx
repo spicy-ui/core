@@ -1,10 +1,60 @@
+import { createShouldForwardProp, props } from '@styled-system/should-forward-prop';
 import * as React from 'react';
 import FocusLock from 'react-focus-lock';
-import { Box } from '../Box';
+import styled, { css } from 'styled-components';
 import { useKeyPress } from '../hooks';
 import { Overlay } from '../Overlay';
-import { DrawerWrapper } from './styled';
-import { DrawerAnchor, DrawerProps } from './types';
+import { baseStyle, size as sizeUtil, withColorMode } from '../util';
+import { BottomIn, BottomOut, LeftIn, LeftOut, RightIn, RightOut, TopIn, TopOut } from './keyframes';
+
+export type DrawerAnchor = 'top' | 'right' | 'bottom' | 'left';
+
+const getDrawerAnimation = (anchor: DrawerAnchor) => {
+  switch (anchor) {
+    case 'top':
+      return { in: TopIn, out: TopOut };
+    case 'right':
+      return { in: RightIn, out: RightOut };
+    case 'bottom':
+      return { in: BottomIn, out: BottomOut };
+    default:
+      return { in: LeftIn, out: LeftOut };
+  }
+};
+
+interface DrawerWrapperProps {
+  anchor: DrawerAnchor;
+  size: string;
+}
+
+const DrawerWrapper = styled('div').withConfig<DrawerWrapperProps>({
+  shouldForwardProp: createShouldForwardProp([...props, 'anchor', 'size']),
+})(
+  (p) =>
+    css({
+      ...withColorMode(baseStyle('components.Drawer'))(p),
+      ...withColorMode(sizeUtil('components.Drawer'))(p),
+    }),
+  css<DrawerWrapperProps>`
+    &[data-drawer-state='entering'],
+    &[data-drawer-state='entered'] {
+      animation-fill-mode: forwards;
+      animation-name: ${(p) => getDrawerAnimation(p.anchor).in};
+      animation-duration: ${(p) => p.theme.transitions.duration['300']};
+    }
+
+    &[data-drawer-state='exiting'] {
+      animation-fill-mode: forwards;
+      animation-name: ${(p) => getDrawerAnimation(p.anchor).out};
+      animation-duration: ${(p) => p.theme.transitions.duration['200']};
+    }
+
+    &[data-drawer-state='entered'] {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  `,
+);
 
 const getAnchor = (anchor: DrawerAnchor) => {
   switch (anchor) {
@@ -19,10 +69,28 @@ const getAnchor = (anchor: DrawerAnchor) => {
   }
 };
 
+export interface DrawerProps {
+  /** Whether the drawer is open or not. */
+  isOpen: boolean;
+  /** Side that the drawer will appear from. */
+  anchor?: DrawerAnchor;
+  /** Size of the drawer. */
+  size?: string;
+  /** Set to `true` to disable closing the drawer by clicking the overlay. */
+  disableOverlayClick?: boolean;
+  /** Set to `true` to disable closing the drawer by pushing the escape key. */
+  disableListeners?: boolean;
+  /** Set to `true` to disable the drawers focus trap behaviour. */
+  disableFocusTrap?: boolean;
+  /** Callback method run when the Close button is clicked. */
+  onClose?: () => void;
+}
+
 const Drawer: React.FC<DrawerProps> = ({
   children,
   isOpen,
-  anchor = 'left',
+  anchor = 'right',
+  size = 'xs',
   disableOverlayClick,
   disableListeners,
   disableFocusTrap,
@@ -60,13 +128,8 @@ const Drawer: React.FC<DrawerProps> = ({
     <Overlay isOpen={isOpen} onClick={handleOverlayClick} {...getAnchor(anchor)}>
       {(state) => (
         <FocusLock disabled={disableFocusTrap || !isOpen}>
-          <DrawerWrapper anchor={anchor} role="dialog" aria-modal="true" data-drawer-state={state}>
-            <Box
-              height={['left', 'right'].includes(anchor) ? '100vh' : undefined}
-              width={['top', 'bottom'].includes(anchor) ? '100vw' : undefined}
-            >
-              {children}
-            </Box>
+          <DrawerWrapper anchor={anchor} size={size} role="dialog" aria-modal="true" data-drawer-state={state}>
+            {children}
           </DrawerWrapper>
         </FocusLock>
       )}

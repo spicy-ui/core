@@ -1,6 +1,8 @@
+import * as util from './util';
+
 export * from './Box';
 export * from './Button';
-export * from './ColorMode';
+export * from './ColorModeProvider';
 export * from './CssReset';
 export * from './Divider';
 export * from './Drawer';
@@ -15,7 +17,10 @@ export * from './Modal';
 export * from './Overlay';
 export * from './Portal';
 export * from './Select';
+export * from './SpicyProvider';
 export * from './Stack';
+export * from './system';
 export * from './Text';
 export * from './TextArea';
-export * from './Theme';
+export * from './ThemeProvider';
+export { util };

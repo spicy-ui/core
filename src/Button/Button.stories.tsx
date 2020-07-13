@@ -1,9 +1,9 @@
 import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Button, ButtonColor, ButtonSize, ButtonVariant, Stack } from '..';
+import { Button, ComponentStyle, Stack, ThemeProvider, util } from '..';
 
-const buttonColors: ButtonColor[] = [
+const buttonColors = [
   'gray',
   'red',
   'orange',
@@ -18,9 +18,9 @@ const buttonColors: ButtonColor[] = [
   'black',
 ];
 
-const buttonSizes: ButtonSize[] = ['xs', 'sm', 'md', 'lg'];
+const buttonSizes = ['xs', 'sm', 'md', 'lg'];
 
-const buttonVariants: ButtonVariant[] = ['filled', 'outlined', 'ghost', 'link'];
+const buttonVariants = ['filled', 'outlined', 'ghost', 'link'];
 
 export default {
   title: 'Button',
@@ -32,7 +32,6 @@ export const Simple = () => (
   <Button
     color={select('color', buttonColors, 'gray')}
     disabled={boolean('disabled', false)}
-    fullWidth={boolean('fullWidth', false)}
     size={select('size', buttonSizes, 'md')}
     variant={select('variant', buttonVariants, 'filled')}
   >
@@ -59,7 +58,7 @@ export const AllColorsAndVariants = () => (
 );
 
 export const AllSizes = () => (
-  <Stack spacing="base">
+  <Stack spacing="4">
     {buttonSizes.map((size, idx) => (
       <Button key={uid(size, idx)} size={size}>
         Button ({size})
@@ -69,7 +68,7 @@ export const AllSizes = () => (
 );
 
 export const AllVariants = () => (
-  <Stack spacing="base">
+  <Stack spacing="4">
     {buttonVariants.map((variant, idx) => (
       <Button key={uid(variant, idx)} variant={variant}>
         Button ({variant})
@@ -77,3 +76,23 @@ export const AllVariants = () => (
     ))}
   </Stack>
 );
+
+export const CustomButton = () => {
+  const customOutline = (props: any): ComponentStyle => ({
+    border: '1px',
+    borderColor: `${props.color}.500`,
+    borderRadius: 'none',
+    color: util.colorMode(`${props.color}.600`, `${props.color}.400`)(props),
+    ':hover': {
+      borderColor: util.colorMode(`${props.color}.800`, `${props.color}.200`)(props),
+    },
+  });
+
+  return (
+    <ThemeProvider theme={{ components: { Button: { variants: { customOutline } } } }}>
+      <Button variant="customOutline" color="blue">
+        Custom outline variant
+      </Button>
+    </ThemeProvider>
+  );
+};

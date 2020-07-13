@@ -2,11 +2,11 @@ import { action } from '@storybook/addon-actions';
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Stack, TextArea, TextAreaSpace, TextAreaVariant } from '..';
+import { Stack, TextArea } from '..';
 
-const textAreaSpaces: TextAreaSpace[] = ['xs', 'sm', 'md', 'lg'];
+const textAreaSpaces = ['xs', 'sm', 'md', 'lg'];
 
-const textAreaVariants: TextAreaVariant[] = ['outlined', 'filled', 'unstyled'];
+const textAreaVariants = ['outlined', 'filled', 'underlined', 'unstyled'];
 
 export default {
   title: 'TextArea',
@@ -17,7 +17,6 @@ export default {
 export const Simple = () => (
   <TextArea
     disabled={boolean('disabled', false)}
-    fullWidth={boolean('fullWidth', true)}
     isInvalid={boolean('isInvalid', false)}
     placeholder={text('placeholder', 'Text area')}
     readOnly={boolean('readOnly', false)}
@@ -29,7 +28,7 @@ export const Simple = () => (
 );
 
 export const AllSpaces = () => (
-  <Stack spacing="base">
+  <Stack spacing="4">
     {textAreaSpaces.map((space, idx) => (
       <TextArea key={uid(space, idx)} space={space} placeholder={space} />
     ))}
@@ -37,7 +36,7 @@ export const AllSpaces = () => (
 );
 
 export const AllVariants = () => (
-  <Stack spacing="base">
+  <Stack spacing="4">
     {textAreaVariants.map((variant, idx) => (
       <TextArea key={uid(variant, idx)} variant={variant} placeholder={variant} />
     ))}

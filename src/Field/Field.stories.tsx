@@ -1,9 +1,8 @@
-import { boolean, withKnobs } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Field, Input, Stack } from '..';
-import { Select } from '../Select';
-import { TextArea } from '../TextArea';
+import { Field, Input, Select, Stack, TextArea } from '..';
 
 export default {
   title: 'Field',
@@ -13,16 +12,16 @@ export default {
 
 export const Simple = () => (
   <Field
-    id="email"
-    label="Email"
-    helperText="This will be the email you use to log into your account"
-    errorText="That username is already in use"
+    id="example"
+    label={text('label', 'Example')}
+    helperText={text('helperText', 'Helper text')}
+    errorText={text('errorText', 'An error occurred')}
     isDisabled={boolean('isDisabled', false)}
     isInvalid={boolean('isInvalid', false)}
     isReadOnly={boolean('isReadOnly', false)}
     isRequired={boolean('isRequired', false)}
   >
-    <Input placeholder="example@gmail.com" type="email" />
+    <Input onChange={({ target }) => action('onChange')(target.value)} />
   </Field>
 );
 

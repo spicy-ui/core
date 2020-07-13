@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Overlay } from '..';
+import { Button, Overlay, Text } from '..';
 
 export default {
   title: 'Overlay',
@@ -11,14 +11,12 @@ export const Simple = () => {
 
   return (
     <>
-      <button type="button" onClick={() => setIsOpen(true)}>
-        open overlay
-      </button>
+      <Button onClick={() => setIsOpen(true)}>Open overlay</Button>
       <Overlay isOpen={isOpen} onClick={() => setIsOpen(false)} top={0} right={0} bottom={0} left={0}>
         {(state) => (
-          <div>
-            overlay inner (state: <code>{state}</code>)
-          </div>
+          <Text>
+            Overlay inner (state: <code>{state}</code>)
+          </Text>
         )}
       </Overlay>
     </>

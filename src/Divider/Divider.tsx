@@ -1,12 +1,21 @@
 import { createShouldForwardProp, props } from '@styled-system/should-forward-prop';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Box, BoxProps } from '../Box';
-import { useDividerStyle } from './styled';
-import { DividerProps } from './types';
+import { baseStyle, variant, withColorMode } from '../util';
 
-const shouldForwardProp = createShouldForwardProp([...props, 'orientation']);
+export interface DividerProps extends BoxProps {
+  /** Orientation of the divider. */
+  orientation?: 'horizontal' | 'vertical';
+}
 
-const Divider = styled(Box).withConfig<BoxProps & DividerProps>({ shouldForwardProp })(useDividerStyle);
+const Divider = styled(Box).withConfig<BoxProps & DividerProps>({
+  shouldForwardProp: createShouldForwardProp([...props, 'orientation']),
+})((p) =>
+  css({
+    ...withColorMode(baseStyle('components.Divider'))(p),
+    ...withColorMode(variant('components.Divider', 'orientation'))(p),
+  }),
+);
 
 Divider.defaultProps = {
   as: 'hr',

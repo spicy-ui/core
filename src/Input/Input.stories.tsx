@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Input, InputSpace, InputVariant, Stack } from '..';
+import { Input, Stack } from '..';
 
 const inputTypes = [
   'date',
@@ -19,9 +19,9 @@ const inputTypes = [
   'week',
 ];
 
-const inputSpaces: InputSpace[] = ['xs', 'sm', 'md', 'lg'];
+const inputSpaces = ['xs', 'sm', 'md', 'lg'];
 
-const inputVariants: InputVariant[] = ['outlined', 'filled', 'unstyled'];
+const inputVariants = ['outlined', 'filled', 'underlined', 'unstyled'];
 
 export default {
   title: 'Input',
@@ -32,7 +32,6 @@ export default {
 export const Simple = () => (
   <Input
     disabled={boolean('disabled', false)}
-    fullWidth={boolean('fullWidth', true)}
     isInvalid={boolean('isInvalid', false)}
     placeholder={text('placeholder', 'Input')}
     readOnly={boolean('readOnly', false)}
@@ -45,7 +44,7 @@ export const Simple = () => (
 );
 
 export const AllSpaces = () => (
-  <Stack spacing="base">
+  <Stack spacing="4">
     {inputSpaces.map((space, idx) => (
       <Input key={uid(space, idx)} space={space} placeholder={space} />
     ))}
@@ -53,7 +52,7 @@ export const AllSpaces = () => (
 );
 
 export const AllVariants = () => (
-  <Stack spacing="base">
+  <Stack spacing="4">
     {inputVariants.map((variant, idx) => (
       <Input key={uid(variant, idx)} variant={variant} placeholder={variant} />
     ))}

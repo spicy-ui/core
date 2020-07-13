@@ -1,18 +1,19 @@
+import { boolean, withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
-import { Link, Text } from '..';
+import { Link } from '..';
 
 export default {
   title: 'Link',
   component: Link,
+  decorators: [withKnobs],
 };
 
-export const Simple = () => <Link href="//example.com">🌶️ Spicy UI</Link>;
-
-export const Inline = () => (
-  <Text>
-    Welcome to the hot world of{' '}
-    <Link href="//example.com" color="blue.500">
-      🌶️ Spicy UI
-    </Link>
-  </Text>
+export const Simple = () => (
+  <Link
+    href="//github.com/spicy-ui/core"
+    isExternal={boolean('isExternal', true)}
+    isDisabled={boolean('isDisabled', false)}
+  >
+    🌶️ Spicy UI
+  </Link>
 );
