@@ -36,7 +36,7 @@ export interface BoxProps
     BorderProps,
     ShadowProps {
   /**
-   * Styled comopnent's `as` polymorphic prop.
+   * Styled components's `as` polymorphic prop.
    *
    * [`styled-components` docs](https://styled-components.com/docs/api#as-polymorphic-prop)
    */
