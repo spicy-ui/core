@@ -7,15 +7,11 @@ const StyledLink = styled(Box)`
   ${withColorMode(baseStyle('components.Link'))}
 `;
 
-export interface LinkProps extends BoxProps {
-  /** External link URL. */
-  href?: string;
+export interface LinkProps extends BoxProps, Omit<Partial<React.AnchorHTMLAttributes<HTMLAnchorElement>>, 'color'> {
   /** Set to `true` to disable the link. */
   isDisabled?: boolean;
   /** Set to `true` to add external `rel` tags. */
   isExternal?: boolean;
-  /** Function called when the link is clicked. */
-  onClick?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }
 
 const Link: React.FC<LinkProps> = ({ children, isExternal, isDisabled, onClick, ...props }) => {

@@ -13,6 +13,7 @@ export const Simple = () => (
     href="//github.com/spicy-ui/core"
     isExternal={boolean('isExternal', true)}
     isDisabled={boolean('isDisabled', false)}
+    target="_blank"
   >
     🌶️ Spicy UI
   </Link>
