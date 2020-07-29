@@ -1,5 +1,5 @@
 {
-  "include": ["src", "types"],
+  "include": ["src", "@types"],
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
@@ -22,9 +22,6 @@
     "moduleResolution": "node",
     "jsx": "react",
     "esModuleInterop": true,
-    "typeRoots": [
-      "./@types",
-      "./node_modules/@types"
-    ]
+    "typeRoots": ["./@types", "./node_modules/@types"]
   }
 }

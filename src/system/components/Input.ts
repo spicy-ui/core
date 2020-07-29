@@ -75,25 +75,25 @@ export const Input: ComponentTheme = {
     unstyled,
   },
   sizes: {
-    xs: {
+    xs: () => ({
       fontSize: 'xs',
       px: 2,
       height: 6,
-    },
-    sm: {
+    }),
+    sm: () => ({
       fontSize: 'sm',
       px: 3,
       height: 8,
-    },
-    md: {
+    }),
+    md: () => ({
       fontSize: 'md',
       px: 4,
       height: 10,
-    },
-    lg: {
+    }),
+    lg: () => ({
       fontSize: 'lg',
       px: 6,
       height: 12,
-    },
+    }),
   },
 };

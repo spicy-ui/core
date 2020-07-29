@@ -9,15 +9,15 @@ export const Divider: ComponentTheme = {
     opacity: 0.6,
   }),
   variants: {
-    horizontal: {
+    horizontal: () => ({
       width: 'auto',
       my: 2,
       borderBottom: '1px solid',
-    },
-    vertical: {
+    }),
+    vertical: () => ({
       height: 'auto',
       mx: 2,
       borderLeft: '1px solid',
-    },
+    }),
   },
 };

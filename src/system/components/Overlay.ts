@@ -1,7 +1,7 @@
 import { ComponentTheme } from '../types';
 
 export const Overlay: ComponentTheme = {
-  baseStyle: {
+  baseStyle: () => ({
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',
@@ -19,5 +19,5 @@ export const Overlay: ComponentTheme = {
       visibility: 'hidden',
       opacity: 0,
     },
-  },
+  }),
 };

@@ -21,41 +21,41 @@ export const Modal: ComponentTheme = {
     full: (props: any) => ({
       width: `calc(100vw - ${props.theme.space['12']})`,
     }),
-    '3xs': {
+    '3xs': () => ({
       width: '3xs',
-    },
-    '2xs': {
+    }),
+    '2xs': () => ({
       width: '2xs',
-    },
-    xs: {
+    }),
+    xs: () => ({
       width: 'xs',
-    },
-    sm: {
+    }),
+    sm: () => ({
       width: 'sm',
-    },
-    md: {
+    }),
+    md: () => ({
       width: 'md',
-    },
-    lg: {
+    }),
+    lg: () => ({
       width: 'lg',
-    },
-    xl: {
+    }),
+    xl: () => ({
       width: 'xl',
-    },
-    '2xl': {
+    }),
+    '2xl': () => ({
       width: '2xl',
-    },
-    '3xl': {
+    }),
+    '3xl': () => ({
       width: '3xl',
-    },
-    '4xl': {
+    }),
+    '4xl': () => ({
       width: '4xl',
-    },
-    '5xl': {
+    }),
+    '5xl': () => ({
       width: '5xl',
-    },
-    '6xl': {
+    }),
+    '6xl': () => ({
       width: '6xl',
-    },
+    }),
   },
 };
