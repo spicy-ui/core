@@ -7,6 +7,7 @@ import {
   BorderProps,
   color,
   ColorProps,
+  compose,
   flexbox,
   FlexboxProps,
   grid,
@@ -19,7 +20,6 @@ import {
   ShadowProps,
   space,
   SpaceProps,
-  TextColorProps,
   typography,
   TypographyProps,
 } from 'styled-system';
@@ -31,33 +31,15 @@ export interface BoxProps
     GridProps,
     SpaceProps,
     BackgroundProps,
-    ColorProps,
+    Omit<ColorProps, 'color'>,
     TypographyProps,
     BorderProps,
-    ShadowProps {
-  /**
-   * Styled comopnent's `as` polymorphic prop.
-   *
-   * [`styled-components` docs](https://styled-components.com/docs/api#as-polymorphic-prop)
-   */
-  as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
-  /**
-   * Extended color prop.
-   */
-  color?: TextColorProps['color'];
-}
+    ShadowProps {}
 
-const Box = styled('div').withConfig<BoxProps>({ shouldForwardProp })`
-  ${layout}
-  ${position}
-  ${flexbox}
-  ${grid}
-  ${space}
-  ${background}
-  ${color}
-  ${typography}
-  ${border}
-  ${shadow}
+export const boxMixin = compose(layout, position, flexbox, grid, space, background, color, typography, border, shadow);
+
+const Box = styled.div.withConfig<BoxProps>({ shouldForwardProp })`
+  ${boxMixin}
 `;
 
 Box.displayName = 'Box';

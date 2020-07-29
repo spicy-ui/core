@@ -25,3 +25,5 @@ export const transition = system({
     scale: 'transitions.delay',
   },
 });
+
+export const transitionProps = ['transitionProperty', 'transitionDuration', 'transitionTiming', 'transitionDelay'];

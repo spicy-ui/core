@@ -8,9 +8,9 @@ export interface TextProps extends LayoutProps, SpaceProps, ColorProps, Typograp
   variant?: string;
 }
 
-const Text = styled('p').withConfig<TextProps>({
-  shouldForwardProp: createShouldForwardProp([...props, 'variant']),
-})((p) =>
+const shouldForwardProp = createShouldForwardProp([...props, 'variant']);
+
+const Text = styled('p').withConfig<TextProps>({ shouldForwardProp })((p) =>
   css({
     ...withColorMode(baseStyle('components.Text'))(p),
     ...withColorMode(variant('components.Text'))(p),

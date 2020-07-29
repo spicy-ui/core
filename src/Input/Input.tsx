@@ -3,33 +3,18 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { space, SpaceProps, width, WidthProps } from 'styled-system';
 import { useField } from '../Field';
-import { baseStyle, size, transition, TransitionProps, variant, withColorMode } from '../util';
+import { baseStyle, size, transition, TransitionProps, transitionProps, variant, withColorMode } from '../util';
 
-interface StyledInputProps {
-  isInvalid?: boolean;
-  space?: string;
-  variant?: string;
-}
+const shouldForwardProp = createShouldForwardProp([...props, ...transitionProps, 'isInvalid', 'space', 'variant']);
 
-const StyledInput = styled('input').withConfig<StyledInputProps>({
-  shouldForwardProp: createShouldForwardProp([
-    ...props,
-    'isInvalid',
-    'space',
-    'variant',
-    'transitionProperty',
-    'transitionDuration',
-    'transitionTiming',
-    'transitionDelay',
-  ]),
-})((p) =>
+const StyledInput = styled('input').withConfig<InputProps>({ shouldForwardProp })((p) =>
   css({
     ...withColorMode(baseStyle('components.Input'))(p),
     ...withColorMode(size('components.Input', 'space'))(p),
+    ...withColorMode(variant('components.Input'))(p),
     ...width(p),
     ...space(p),
     ...transition(p),
-    ...withColorMode(variant('components.Input'))(p),
   }),
 );
 

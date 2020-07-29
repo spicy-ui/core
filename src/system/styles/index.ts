@@ -37,10 +37,6 @@ export const styles = {
     },
     '.noscroll': {
       overflow: 'hidden',
-      '@media (min-device-width: 1025px)': {
-        /* Prevent reflow when scrollbar disappears on some OS (e.g. Windows) */
-        pr: '17px',
-      },
     },
   }),
 };

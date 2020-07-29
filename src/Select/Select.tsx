@@ -3,33 +3,18 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { space, SpaceProps, width, WidthProps } from 'styled-system';
 import { useField } from '../Field';
-import { baseStyle, size, transition, TransitionProps, variant, withColorMode } from '../util';
+import { baseStyle, size, transition, TransitionProps, transitionProps, variant, withColorMode } from '../util';
 
-interface StyledSelectProps {
-  isInvalid?: boolean;
-  space?: string;
-  variant?: string;
-}
+const shouldForwardProp = createShouldForwardProp([...props, ...transitionProps, 'isInvalid', 'space', 'variant']);
 
-const StyledSelect = styled('select').withConfig<StyledSelectProps>({
-  shouldForwardProp: createShouldForwardProp([
-    ...props,
-    'isInvalid',
-    'space',
-    'variant',
-    'transitionProperty',
-    'transitionDuration',
-    'transitionTiming',
-    'transitionDelay',
-  ]),
-})((p) =>
+const StyledSelect = styled('select').withConfig<SelectProps>({ shouldForwardProp })((p) =>
   css({
     ...withColorMode(baseStyle('components.Select'))(p),
     ...withColorMode(size('components.Select', 'space'))(p),
+    ...withColorMode(variant('components.Select'))(p),
     ...width(p),
     ...space(p),
     ...transition(p),
-    ...withColorMode(variant('components.Select'))(p),
   }),
 );
 
