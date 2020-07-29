@@ -8,9 +8,9 @@ export interface HeadingProps extends LayoutProps, SpaceProps, ColorProps, Typog
   variant?: string;
 }
 
-const Heading = styled('h2').withConfig<HeadingProps>({
-  shouldForwardProp: createShouldForwardProp([...props, 'variant']),
-})((p) =>
+const shouldForwardProp = createShouldForwardProp([...props, 'variant']);
+
+const Heading = styled('h2').withConfig<HeadingProps>({ shouldForwardProp })((p) =>
   css({
     ...withColorMode(baseStyle('components.Heading'))(p),
     ...withColorMode(variant('components.Heading'))(p),

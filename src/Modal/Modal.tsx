@@ -2,22 +2,24 @@ import { createShouldForwardProp, props } from '@styled-system/should-forward-pr
 import * as React from 'react';
 import FocusLock from 'react-focus-lock';
 import styled, { css } from 'styled-components';
+import { color, ColorProps } from 'styled-system';
 import { useKeyPress } from '../hooks';
 import { Overlay } from '../Overlay';
 import { baseStyle, size as sizeUtil, withColorMode } from '../util';
 import { ModalIn, ModalOut } from './keyframes';
 
-interface ModalWrapperProps {
+interface ModalWrapperProps extends Omit<ColorProps, 'color'> {
   size?: string;
 }
 
-const ModalWrapper = styled('div').withConfig<ModalWrapperProps>({
-  shouldForwardProp: createShouldForwardProp([...props, 'size']),
-})(
+const shouldForwardProp = createShouldForwardProp([...props, 'size']);
+
+const ModalWrapper = styled('div').withConfig<ModalWrapperProps>({ shouldForwardProp })(
   (p) =>
     css({
       ...withColorMode(baseStyle('components.Modal'))(p),
       ...withColorMode(sizeUtil('components.Modal'))(p),
+      ...color(p),
     }),
   css`
     &[data-modal-state='entering'],
@@ -40,7 +42,7 @@ const ModalWrapper = styled('div').withConfig<ModalWrapperProps>({
   `,
 );
 
-export interface ModalProps {
+export interface ModalProps extends Omit<ColorProps, 'color'> {
   /** Whether the modal is open or not. */
   isOpen: boolean;
   /** Set max size of the modal */
@@ -51,7 +53,7 @@ export interface ModalProps {
   disableListeners?: boolean;
   /** Set to `true` to disable the modals focus trap behaviour. */
   disableFocusTrap?: boolean;
-  /** Callback method run when the Close button is clicked. */
+  /** Callback method run when the close button is clicked. */
   onClose?: () => void;
 }
 
@@ -63,6 +65,7 @@ const Modal: React.FC<ModalProps> = ({
   disableListeners,
   disableFocusTrap,
   onClose,
+  ...other
 }) => {
   useKeyPress('Escape', () => {
     if (isOpen && !disableListeners && onClose) {
@@ -96,7 +99,7 @@ const Modal: React.FC<ModalProps> = ({
     <Overlay isOpen={isOpen} onClick={handleOverlayClick} top={0} right={0} bottom={0} left={0}>
       {(state) => (
         <FocusLock disabled={disableFocusTrap || !isOpen}>
-          <ModalWrapper size={size} role="dialog" aria-modal="true" data-modal-state={state}>
+          <ModalWrapper size={size} role="dialog" aria-modal="true" data-modal-state={state} {...other}>
             {children}
           </ModalWrapper>
         </FocusLock>

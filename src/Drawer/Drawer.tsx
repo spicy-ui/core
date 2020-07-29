@@ -2,6 +2,7 @@ import { createShouldForwardProp, props } from '@styled-system/should-forward-pr
 import * as React from 'react';
 import FocusLock from 'react-focus-lock';
 import styled, { css } from 'styled-components';
+import { color, ColorProps } from 'styled-system';
 import { useKeyPress } from '../hooks';
 import { Overlay } from '../Overlay';
 import { baseStyle, size as sizeUtil, withColorMode } from '../util';
@@ -27,13 +28,14 @@ interface DrawerWrapperProps {
   size: string;
 }
 
-const DrawerWrapper = styled('div').withConfig<DrawerWrapperProps>({
-  shouldForwardProp: createShouldForwardProp([...props, 'anchor', 'size']),
-})(
+const shouldForwardProp = createShouldForwardProp([...props, 'anchor', 'size']);
+
+const DrawerWrapper = styled('div').withConfig<DrawerWrapperProps>({ shouldForwardProp })(
   (p) =>
     css({
       ...withColorMode(baseStyle('components.Drawer'))(p),
       ...withColorMode(sizeUtil('components.Drawer'))(p),
+      ...color(p),
     }),
   css<DrawerWrapperProps>`
     &[data-drawer-state='entering'],
@@ -69,7 +71,7 @@ const getAnchor = (anchor: DrawerAnchor) => {
   }
 };
 
-export interface DrawerProps {
+export interface DrawerProps extends Omit<ColorProps, 'color'> {
   /** Whether the drawer is open or not. */
   isOpen: boolean;
   /** Side that the drawer will appear from. */
@@ -95,6 +97,7 @@ const Drawer: React.FC<DrawerProps> = ({
   disableListeners,
   disableFocusTrap,
   onClose,
+  ...other
 }) => {
   useKeyPress('Escape', () => {
     if (isOpen && !disableListeners && onClose) {
@@ -128,7 +131,14 @@ const Drawer: React.FC<DrawerProps> = ({
     <Overlay isOpen={isOpen} onClick={handleOverlayClick} {...getAnchor(anchor)}>
       {(state) => (
         <FocusLock disabled={disableFocusTrap || !isOpen}>
-          <DrawerWrapper anchor={anchor} size={size} role="dialog" aria-modal="true" data-drawer-state={state}>
+          <DrawerWrapper
+            anchor={anchor}
+            size={size}
+            role="dialog"
+            aria-modal="true"
+            data-drawer-state={state}
+            {...other}
+          >
             {children}
           </DrawerWrapper>
         </FocusLock>

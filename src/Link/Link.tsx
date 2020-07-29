@@ -1,20 +1,20 @@
+import shouldForwardProp from '@styled-system/should-forward-prop';
 import * as React from 'react';
 import styled from 'styled-components';
-import { Box, BoxProps } from '../Box';
 import { baseStyle, withColorMode } from '../util';
 
-const StyledLink = styled(Box)`
+const StyledLink = styled('a').withConfig<LinkProps>({ shouldForwardProp })`
   ${withColorMode(baseStyle('components.Link'))}
 `;
 
-export interface LinkProps extends BoxProps, Omit<Partial<React.AnchorHTMLAttributes<HTMLAnchorElement>>, 'color'> {
+export interface LinkProps extends Partial<React.AnchorHTMLAttributes<HTMLAnchorElement>> {
   /** Set to `true` to disable the link. */
   isDisabled?: boolean;
   /** Set to `true` to add external `rel` tags. */
   isExternal?: boolean;
 }
 
-const Link: React.FC<LinkProps> = ({ children, isExternal, isDisabled, onClick, ...props }) => {
+const InnerLink: React.FC<LinkProps> = ({ children, isExternal, isDisabled, onClick, ...props }) => {
   const handleClick = React.useCallback(
     (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
       if (isDisabled) {
@@ -31,7 +31,6 @@ const Link: React.FC<LinkProps> = ({ children, isExternal, isDisabled, onClick, 
 
   return (
     <StyledLink
-      as="a"
       aria-disabled={isDisabled || undefined}
       tabIndex={isDisabled ? -1 : undefined}
       target={isExternal ? '_blank' : undefined}
@@ -43,6 +42,8 @@ const Link: React.FC<LinkProps> = ({ children, isExternal, isDisabled, onClick, 
     </StyledLink>
   );
 };
+
+const Link = styled(InnerLink)``;
 
 Link.displayName = 'Link';
 

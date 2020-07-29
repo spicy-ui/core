@@ -1,16 +1,20 @@
+import shouldForwardProp from '@styled-system/should-forward-prop';
 import * as React from 'react';
 import Transition, { TransitionStatus } from 'react-transition-group/Transition';
 import styled, { css } from 'styled-components';
-import { Box, BoxProps } from '../Box';
+import { position, PositionProps } from 'styled-system';
 import { Portal } from '../Portal';
 import { useTheme } from '../ThemeProvider';
 import { baseStyle, withColorMode } from '../util';
 import { OverlayIn, OverlayOut } from './keyframes';
 
-const Backdrop = styled(Box)(
+interface BackdropProps {}
+
+const Backdrop = styled('div').withConfig<BackdropProps>({ shouldForwardProp })(
   (p) =>
     css({
       ...withColorMode(baseStyle('components.Overlay'))(p),
+      ...position(p),
     }),
   css`
     &[data-overlay-state='entering'],
@@ -39,13 +43,15 @@ const Backdrop = styled(Box)(
   `,
 );
 
-export interface OverlayProps extends BoxProps {
+export interface OverlayProps extends PositionProps {
   children: (state: TransitionStatus) => React.ReactNode;
+  /** Whether the overlay is open or not. */
   isOpen: boolean;
+  /** Callback method to run when the overlay is clicked. */
   onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
-const Overlay: React.FC<OverlayProps> = ({ children, isOpen, onClick, ...props }) => {
+const Overlay: React.FC<OverlayProps> = ({ children, isOpen, onClick, ...other }) => {
   const {
     transitions: { duration },
   } = useTheme();
@@ -62,7 +68,7 @@ const Overlay: React.FC<OverlayProps> = ({ children, isOpen, onClick, ...props }
         unmountOnExit
       >
         {(state) => (
-          <Backdrop data-overlay-state={state} onClick={onClick} {...props}>
+          <Backdrop data-overlay-state={state} onClick={onClick} {...other}>
             {children(state)}
           </Backdrop>
         )}

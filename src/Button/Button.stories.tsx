@@ -79,12 +79,13 @@ export const AllVariants = () => (
 
 export const CustomButton = () => {
   const customOutline = (props: any): ComponentStyle => ({
-    border: '1px',
+    border: '2px',
     borderColor: `${props.color}.500`,
     borderRadius: 'none',
     color: util.colorMode(`${props.color}.600`, `${props.color}.400`)(props),
     ':hover': {
-      borderColor: util.colorMode(`${props.color}.800`, `${props.color}.200`)(props),
+      borderColor: util.colorMode(`${props.color}.700`, `${props.color}.300`)(props),
+      color: util.colorMode(`${props.color}.700`, `${props.color}.300`)(props),
     },
   });
 
