@@ -78,6 +78,7 @@
     "@types/styled-system__css": "^5.0.12",
     "@typescript-eslint/eslint-plugin": "^3.7.1",
     "@typescript-eslint/parser": "^3.7.1",
+    "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
     "eslint": "^7.5.0",
     "eslint-config-airbnb-typescript": "^9.0.0",
