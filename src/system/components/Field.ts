@@ -1,21 +1,21 @@
 import { ComponentTheme } from '../types';
 
 const FieldLabel: ComponentTheme = {
-  baseStyle: {
+  baseStyle: () => ({
     fontWeight: 'medium',
     lineHeight: 'normal',
-  },
+  }),
 };
 
 const FieldRequired: ComponentTheme = {
-  baseStyle: {
+  baseStyle: () => ({
     ml: 1,
     color: 'red.600',
-  },
+  }),
 };
 
 const FieldControl: ComponentTheme = {
-  baseStyle: {},
+  baseStyle: () => ({}),
 };
 
 const FieldHelperText: ComponentTheme = {

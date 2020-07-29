@@ -34,33 +34,33 @@ export const TextArea: ComponentTheme = {
     unstyled,
   },
   sizes: {
-    xs: {
+    xs: () => ({
       fontSize: 'xs',
       px: 2,
       py: '3px',
       height: 6,
       minHeight: 6,
-    },
-    sm: {
+    }),
+    sm: () => ({
       fontSize: 'sm',
       px: 3,
       py: '6px',
       height: 8,
       minHeight: 8,
-    },
-    md: {
+    }),
+    md: () => ({
       fontSize: 'md',
       px: 4,
       py: '9px',
       height: 10,
       minHeight: 10,
-    },
-    lg: {
+    }),
+    lg: () => ({
       fontSize: 'lg',
       px: 6,
       py: 3,
       height: 12,
       minHeight: 12,
-    },
+    }),
   },
 };
