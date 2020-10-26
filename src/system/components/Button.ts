@@ -115,9 +115,11 @@ const link = (props: any): ComponentStyle => {
 
 export const Button: ComponentTheme = {
   baseStyle: (props: any) => ({
+    m: 0,
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
+    appearance: 'none',
     background: 'none',
     border: 'none',
     borderRadius: 'sm',
