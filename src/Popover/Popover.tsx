@@ -43,4 +43,4 @@ Popover.defaultProps = {
 
 Popover.displayName = 'Popover';
 
-export { Popover as UncontrolledPopover };
+export { Popover };
