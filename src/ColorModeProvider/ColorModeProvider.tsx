@@ -29,7 +29,12 @@ ColorModeProvider.displayName = 'ColorModeProvider';
 
 export { ColorModeProvider };
 
-export const useColorMode = () => {
+export const useColorMode = (): {
+  colorMode: ColorMode;
+  isLight: boolean;
+  isDark: boolean;
+  toggle: () => void;
+} => {
   const { value, toggle } = React.useContext(ColorModeContext);
 
   return {
