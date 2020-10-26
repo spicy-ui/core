@@ -1,3 +1,4 @@
+import { Avatar } from './Avatar';
 import { Button } from './Button';
 import { Divider } from './Divider';
 import { Drawer } from './Drawer';
@@ -12,6 +13,7 @@ import { Text } from './Text';
 import { TextArea } from './TextArea';
 
 export const components = {
+  Avatar,
   Button,
   Divider,
   Drawer,
