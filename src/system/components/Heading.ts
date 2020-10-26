@@ -2,6 +2,8 @@ import { ComponentTheme } from '../types';
 
 export const Heading: ComponentTheme = {
   baseStyle: () => ({
+    m: 0,
+    p: 0,
     fontFamily: 'heading',
     fontWeight: 'normal',
     lineHeight: 'tightest',
