@@ -30,5 +30,20 @@ export const Avatar: ComponentTheme = {
       height: 12,
       fontSize: 'lg',
     }),
+    xl: () => ({
+      width: 16,
+      height: 16,
+      fontSize: 'xl',
+    }),
+    '2xl': () => ({
+      width: 24,
+      height: 24,
+      fontSize: '2xl',
+    }),
+    '3xl': () => ({
+      width: 32,
+      height: 32,
+      fontSize: '3xl',
+    }),
   },
 };

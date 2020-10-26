@@ -33,7 +33,7 @@ const Initials: React.FC<{ name: string }> = ({ name }) => (
 
 const Image: React.FC<{ src?: string }> = ({ src }) => <Box as="img" src={src} maxWidth="100%" />;
 
-export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg';
+export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
 
 export interface AvatarProps extends Omit<ColorProps, 'color'> {
   /** Size of the avatar. */
