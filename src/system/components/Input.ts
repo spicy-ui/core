@@ -87,12 +87,12 @@ export const Input: ComponentTheme = {
     }),
     md: () => ({
       fontSize: 'md',
-      px: 4,
+      px: 3,
       height: 10,
     }),
     lg: () => ({
       fontSize: 'lg',
-      px: 6,
+      px: 4,
       height: 12,
     }),
   },
