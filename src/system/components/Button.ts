@@ -136,7 +136,7 @@ export const Button: ComponentTheme = {
       zIndex: 1,
     },
     ':disabled': {
-      opacity: 0.4,
+      opacity: 0.5,
       cursor: 'not-allowed',
       boxShadow: 'none',
     },

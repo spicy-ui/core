@@ -22,7 +22,7 @@ export const Link: ComponentTheme = {
       boxShadow: 'outline',
     },
     '&[aria-disabled="true"], &[aria-disabled="true"]:focus, &[aria-disabled="true"]:hover': {
-      opacity: 0.4,
+      opacity: 0.5,
       boxShadow: 'none',
       cursor: 'not-allowed',
       textDecoration: 'none',
