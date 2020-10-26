@@ -18,7 +18,7 @@ const ghost = (props: any): ComponentStyle => {
 
   if (props.color === 'white' || props.color === 'black') {
     return {
-      color: props.color,
+      color: `${props.color}Alpha.900`,
       backgroundColor: 'transparent',
       ':not(:disabled):hover': {
         backgroundColor: `${props.color}Alpha.200`,
@@ -64,7 +64,7 @@ const filled = (props: any): ComponentStyle => {
 
   if (props.color === 'white' || props.color === 'black') {
     return {
-      color: props.color === 'white' ? 'black' : 'white',
+      color: `${props.color === 'white' ? 'black' : 'white'}Alpha.900`,
       backgroundColor: `${props.color}Alpha.800`,
       ':not(:disabled):hover': {
         backgroundColor: `${props.color}Alpha.900`,
@@ -90,7 +90,7 @@ const filled = (props: any): ComponentStyle => {
 const link = (props: any): ComponentStyle => {
   if (props.color === 'white' || props.color === 'black') {
     return {
-      color: props.color,
+      color: `${props.color}Alpha.900`,
       ':not(:disabled):hover': {
         color: props.color,
         textDecoration: 'underline',
@@ -115,9 +115,11 @@ const link = (props: any): ComponentStyle => {
 
 export const Button: ComponentTheme = {
   baseStyle: (props: any) => ({
+    m: 0,
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
+    appearance: 'none',
     background: 'none',
     border: 'none',
     borderRadius: 'sm',
@@ -136,7 +138,7 @@ export const Button: ComponentTheme = {
       zIndex: 1,
     },
     ':disabled': {
-      opacity: 0.4,
+      opacity: 0.5,
       cursor: 'not-allowed',
       boxShadow: 'none',
     },

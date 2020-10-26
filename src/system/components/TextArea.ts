@@ -50,14 +50,14 @@ export const TextArea: ComponentTheme = {
     }),
     md: () => ({
       fontSize: 'md',
-      px: 4,
+      px: 3,
       py: '9px',
       height: 10,
       minHeight: 10,
     }),
     lg: () => ({
       fontSize: 'lg',
-      px: 6,
+      px: 4,
       py: 3,
       height: 12,
       minHeight: 12,
