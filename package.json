@@ -51,12 +51,14 @@
     "prepublishOnly": "yarn build"
   },
   "dependencies": {
+    "@popperjs/core": "^2.5.3",
     "@styled-system/css": "^5.1.5",
     "@styled-system/should-forward-prop": "^5.1.5",
     "clsx": "^1.1.1",
     "deepmerge": "^4.2.2",
     "polished": "^4.0.3",
     "react-focus-lock": "^2.4.1",
+    "react-popper": "^2.2.3",
     "react-transition-group": "^4.4.1",
     "styled-normalize": "^8.0.7",
     "styled-system": "^5.1.5",
