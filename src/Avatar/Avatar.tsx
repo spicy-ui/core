@@ -54,15 +54,13 @@ const AvatarWrapper = styled('div').withConfig<AvatarProps>({ shouldForwardProp 
   }),
 );
 
-const Avatar: React.FC<AvatarProps> = ({ name, src, ...rest }) => {
-  return (
-    <AvatarWrapper {...rest}>
-      {!name && !src && <Fallback />}
-      {name && !src && <Initials name={name} />}
-      {src && <Image src={src} />}
-    </AvatarWrapper>
-  );
-};
+const Avatar: React.FC<AvatarProps> = ({ name, src, ...rest }) => (
+  <AvatarWrapper {...rest}>
+    {!name && !src && <Fallback />}
+    {name && !src && <Initials name={name} />}
+    {src && <Image src={src} />}
+  </AvatarWrapper>
+);
 
 Avatar.defaultProps = {
   bg: 'gray.100',
