@@ -40,7 +40,7 @@ export interface AvatarProps extends Omit<ColorProps, 'color'> {
   size?: AvatarSize;
   /** Name of the user. */
   name?: string;
-  /* Url of avatar image. */
+  /** Url of avatar image. */
   src?: string;
 }
 
