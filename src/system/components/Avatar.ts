@@ -8,6 +8,7 @@ export const Avatar: ComponentTheme = {
     borderRadius: 'full',
     fontWeight: 'medium',
     overflow: 'hidden',
+    userSelect: 'none',
   }),
   sizes: {
     xs: () => ({
