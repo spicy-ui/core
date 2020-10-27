@@ -1,44 +1,117 @@
 import { Placement } from '@popperjs/core';
 import * as React from 'react';
-import { usePopper } from 'react-popper';
-import styled from 'styled-components';
+import { Modifier, usePopper } from 'react-popper';
+import { Box } from '../Box';
+import { useKeyPress } from '../hooks';
 
-const Trigger = styled('div')`
-  display: inline-flex;
-`;
-
-const Container = styled('div')``;
+export type Offset = [skidding?: number, distance?: number];
 
 export interface PopoverProps {
+  /** Trigger element for the popover. */
   trigger: React.ReactElement;
+  /** The content of the popover. */
   children: React.ReactElement;
+  /** Whether the popover is open or not. */
+  isOpen: boolean;
+  /** Callback method to close the popover. */
+  onClose?: () => void;
+  /** Set to `true` to enable closing of the popover when the trigger element looses focus. */
+  closeOnBlur?: boolean;
+  /** Set to `true` to enable closing of the popover by pushing the `Esc` key. */
+  closeOnEsc?: boolean;
+  /** Set to `true` to enable closing of the popover when a click is made inside the popover. */
+  closeOnInnerClick?: boolean;
+  /** Set to `true` to enable closing of the popover when a click is made outside the popover. */
+  closeOnOuterClick?: boolean;
+  /** Position of the popover. */
   placement?: Placement;
+  /** Popover offset. */
+  offset?: Offset;
+  /** Additional Popper modifiers. */
+  modifiers?: Modifier<string>[];
 }
 
-const Popover: React.FC<PopoverProps> = ({ trigger, children, placement }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-
+const Popover: React.FC<PopoverProps> = ({
+  trigger,
+  children,
+  isOpen,
+  onClose,
+  closeOnBlur,
+  closeOnEsc,
+  closeOnInnerClick,
+  closeOnOuterClick,
+  placement,
+  offset,
+  modifiers = [],
+}) => {
   const referenceEl = React.useRef<HTMLDivElement>(null);
   const popperEl = React.useRef<HTMLDivElement>(null);
 
-  const { attributes, styles } = usePopper(referenceEl.current, popperEl.current, { placement });
+  const { attributes, styles } = usePopper(referenceEl.current, popperEl.current, {
+    placement,
+    modifiers: [...(offset ? [{ name: 'offset', options: { offset } }] : []), ...modifiers],
+  });
+
+  useKeyPress('Escape', () => {
+    if (isOpen && closeOnEsc && onClose) {
+      onClose();
+    }
+  });
+
+  const onTriggerBlur = React.useCallback(() => {
+    if (closeOnBlur && onClose) {
+      onClose();
+    }
+  }, [closeOnBlur, onClose]);
+
+  const handleDocumentClick = React.useCallback(
+    ({ target }: MouseEvent) => {
+      if (!isOpen || !onClose) {
+        return;
+      }
+
+      if (closeOnInnerClick && popperEl.current?.contains(target as Node)) {
+        onClose();
+      }
+
+      if (
+        closeOnOuterClick &&
+        !popperEl.current?.contains(target as Node) &&
+        !referenceEl.current?.contains(target as Node)
+      ) {
+        onClose();
+      }
+    },
+    [closeOnInnerClick, closeOnOuterClick, isOpen, onClose],
+  );
+
+  React.useEffect(() => {
+    document.addEventListener('mousedown', handleDocumentClick);
+
+    return () => {
+      document.removeEventListener('mousedown', handleDocumentClick);
+    };
+  }, [handleDocumentClick]);
 
   return (
     <>
-      <Trigger ref={referenceEl}>
-        {React.cloneElement(trigger, {
-          onClick: () => setIsOpen((prev) => !prev),
-        })}
-      </Trigger>
-      <Container ref={popperEl} style={styles.popper} {...attributes.popper}>
+      <Box ref={referenceEl} display="inline-flex">
+        {React.cloneElement(trigger, { onBlur: onTriggerBlur })}
+      </Box>
+      <Box ref={popperEl} zIndex="popover" style={styles.popper} {...attributes.popper}>
         {isOpen && <>{children}</>}
-      </Container>
+      </Box>
     </>
   );
 };
 
 Popover.defaultProps = {
+  closeOnBlur: true,
+  closeOnEsc: false,
+  closeOnInnerClick: false,
+  closeOnOuterClick: false,
   placement: 'bottom-start',
+  modifiers: [],
 };
 
 Popover.displayName = 'Popover';
