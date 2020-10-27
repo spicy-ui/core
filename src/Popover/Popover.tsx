@@ -4,7 +4,7 @@ import { Modifier, usePopper } from 'react-popper';
 import { Box } from '../Box';
 import { useKeyPress } from '../hooks';
 
-export type Offset = [skidding?: number, distance?: number];
+export type Offset = [number, number];
 
 export interface PopoverProps {
   /** Trigger element for the popover. */
