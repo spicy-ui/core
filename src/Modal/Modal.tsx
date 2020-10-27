@@ -45,6 +45,8 @@ const ModalWrapper = styled('div').withConfig<ModalWrapperProps>({ shouldForward
 export interface ModalProps extends Omit<ColorProps, 'color'> {
   /** Whether the modal is open or not. */
   isOpen: boolean;
+  /** Callback method to close the modal. */
+  onClose?: () => void;
   /** Set max size of the modal */
   size?: string;
   /** Set to `true` to disable closing the modal by clicking the overlay. */
@@ -53,8 +55,6 @@ export interface ModalProps extends Omit<ColorProps, 'color'> {
   disableListeners?: boolean;
   /** Set to `true` to disable the modals focus trap behaviour. */
   disableFocusTrap?: boolean;
-  /** Callback method run when the close button is clicked. */
-  onClose?: () => void;
 }
 
 const Modal: React.FC<ModalProps> = ({

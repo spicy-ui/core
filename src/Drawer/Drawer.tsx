@@ -74,6 +74,8 @@ const getAnchor = (anchor: DrawerAnchor) => {
 export interface DrawerProps extends Omit<ColorProps, 'color'> {
   /** Whether the drawer is open or not. */
   isOpen: boolean;
+  /** Callback method to close the drawer. */
+  onClose?: () => void;
   /** Side that the drawer will appear from. */
   anchor?: DrawerAnchor;
   /** Size of the drawer. */
@@ -84,8 +86,6 @@ export interface DrawerProps extends Omit<ColorProps, 'color'> {
   disableListeners?: boolean;
   /** Set to `true` to disable the drawers focus trap behaviour. */
   disableFocusTrap?: boolean;
-  /** Callback method run when the Close button is clicked. */
-  onClose?: () => void;
 }
 
 const Drawer: React.FC<DrawerProps> = ({
