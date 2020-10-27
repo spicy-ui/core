@@ -47,12 +47,12 @@ export interface ModalProps extends Omit<ColorProps, 'color'> {
   isOpen: boolean;
   /** Callback method to close the modal. */
   onClose?: () => void;
-  /** Set max size of the modal */
+  /** Set max size of the modal. */
   size?: string;
-  /** Set to `true` to disable closing the modal by clicking the overlay. */
-  disableOverlayClick?: boolean;
-  /** Set to `true` to disable closing the modal by pushing the escape key. */
-  disableListeners?: boolean;
+  /** Set to `true` to enable closing the modal by pushing the `Esc` key. */
+  closeOnEsc?: boolean;
+  /** Set to `true` to enable closing the modal by clicking the overlay. */
+  closeOnOverlayClick?: boolean;
   /** Set to `true` to disable the modals focus trap behaviour. */
   disableFocusTrap?: boolean;
 }
@@ -61,30 +61,30 @@ const Modal: React.FC<ModalProps> = ({
   children,
   size = 'md',
   isOpen,
-  disableOverlayClick,
-  disableListeners,
+  closeOnEsc,
+  closeOnOverlayClick,
   disableFocusTrap,
   onClose,
   ...other
 }) => {
   useKeyPress('Escape', () => {
-    if (isOpen && !disableListeners && onClose) {
+    if (isOpen && closeOnEsc && onClose) {
       onClose();
     }
   });
 
   const handleOverlayClick = React.useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
-      // Prevent clicking to exit inside the dialog
+      // Prevent clicks inside the modal from closing it
       if (e.target !== e.currentTarget) {
         return;
       }
 
-      if (!disableOverlayClick && onClose) {
+      if (closeOnOverlayClick && onClose) {
         onClose();
       }
     },
-    [disableOverlayClick, onClose],
+    [closeOnOverlayClick, onClose],
   );
 
   React.useEffect(() => {

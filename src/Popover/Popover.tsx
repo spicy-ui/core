@@ -19,9 +19,9 @@ export interface PopoverProps {
   closeOnBlur?: boolean;
   /** Set to `true` to enable closing of the popover by pushing the `Esc` key. */
   closeOnEsc?: boolean;
-  /** Set to `true` to enable closing of the popover when a click is made inside the popover. */
+  /** Set to `true` to enable closing of the popover by clicking inside the popover. */
   closeOnInnerClick?: boolean;
-  /** Set to `true` to enable closing of the popover when a click is made outside the popover. */
+  /** Set to `true` to enable closing of the popover by clicking outside the popover. */
   closeOnOuterClick?: boolean;
   /** Position of the popover. */
   placement?: Placement;
@@ -36,11 +36,11 @@ const Popover: React.FC<PopoverProps> = ({
   children,
   isOpen,
   onClose,
-  closeOnBlur,
-  closeOnEsc,
-  closeOnInnerClick,
-  closeOnOuterClick,
-  placement,
+  closeOnBlur = true,
+  closeOnEsc = false,
+  closeOnInnerClick = false,
+  closeOnOuterClick = false,
+  placement = 'bottom-start',
   offset,
   modifiers = [],
 }) => {
@@ -103,15 +103,6 @@ const Popover: React.FC<PopoverProps> = ({
       </Box>
     </>
   );
-};
-
-Popover.defaultProps = {
-  closeOnBlur: true,
-  closeOnEsc: false,
-  closeOnInnerClick: false,
-  closeOnOuterClick: false,
-  placement: 'bottom-start',
-  modifiers: [],
 };
 
 Popover.displayName = 'Popover';

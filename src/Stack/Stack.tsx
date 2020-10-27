@@ -15,8 +15,8 @@ export interface StackProps extends FlexProps {
 const Stack: React.FC<StackProps> = ({
   children,
   direction: directionProp,
-  isReversed: isReversedProp,
-  orientation,
+  isReversed: isReversedProp = false,
+  orientation = 'vertical',
   spacing,
   ...rest
 }) => {
@@ -53,11 +53,6 @@ const Stack: React.FC<StackProps> = ({
       })}
     </Flex>
   );
-};
-
-Stack.defaultProps = {
-  isReversed: false,
-  orientation: 'vertical',
 };
 
 Stack.displayName = 'Stack';
