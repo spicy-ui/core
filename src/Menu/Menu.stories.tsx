@@ -1,7 +1,7 @@
 import { withKnobs } from '@storybook/addon-knobs';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Button, Flex, Menu, MenuDivider, MenuHeader, MenuItem, Popover, Text, Box } from '..';
+import { Box, Button, Flex, Menu, MenuDivider, MenuHeader, MenuItem, Popover, Text } from '..';
 
 export default {
   title: 'Menu',
@@ -127,5 +127,3 @@ export const WithCustomItems = () => (
     </Menu>
   </Box>
 );
-
-// can you popper off a popper element...? 🤔
