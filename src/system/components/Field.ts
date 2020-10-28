@@ -26,7 +26,7 @@ const FieldHelperText: ComponentTheme = {
   }),
 };
 
-export const Field = {
+export const FieldComponents = {
   FieldLabel,
   FieldRequired,
   FieldControl,

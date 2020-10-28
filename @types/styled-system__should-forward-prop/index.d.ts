@@ -1,4 +1,4 @@
-/* eslint-disable no-shadow, @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/no-shadow, @typescript-eslint/naming-convention */
 
 declare module '@styled-system/should-forward-prop' {
   type genericShouldForwardProp = (prop: string | number) => boolean;

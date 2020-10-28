@@ -8,6 +8,7 @@ import { useTheme } from '../ThemeProvider';
 import { baseStyle, withColorMode } from '../util';
 import { OverlayIn, OverlayOut } from './keyframes';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface BackdropProps {}
 
 const Backdrop = styled('div').withConfig<BackdropProps>({ shouldForwardProp })(

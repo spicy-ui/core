@@ -16,8 +16,8 @@ export const Simple = () => (
     isOpen
     onClose={action('onClose')}
     size={select('size', modalSizes, 'sm')}
-    disableOverlayClick={boolean('disable overlay click', false)}
-    disableListeners={boolean('disable escape key listener', false)}
+    closeOnEsc={boolean('enable escape key listener', false)}
+    closeOnOverlayClick={boolean('enable overlay click', false)}
     disableFocusTrap={boolean('disable modal focus trap', false)}
   >
     Modal
@@ -34,8 +34,8 @@ export const Toggle = () => {
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         size={select('size', modalSizes, 'sm')}
-        disableOverlayClick={boolean('disable overlay click', false)}
-        disableListeners={boolean('disable escape key listener', false)}
+        closeOnEsc={boolean('enable escape key listener', false)}
+        closeOnOverlayClick={boolean('enable overlay click', false)}
         disableFocusTrap={boolean('disable modal focus trap', false)}
       >
         Modal

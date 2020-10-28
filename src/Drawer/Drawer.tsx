@@ -74,18 +74,18 @@ const getAnchor = (anchor: DrawerAnchor) => {
 export interface DrawerProps extends Omit<ColorProps, 'color'> {
   /** Whether the drawer is open or not. */
   isOpen: boolean;
+  /** Callback method to close the drawer. */
+  onClose?: () => void;
   /** Side that the drawer will appear from. */
   anchor?: DrawerAnchor;
   /** Size of the drawer. */
   size?: string;
-  /** Set to `true` to disable closing the drawer by clicking the overlay. */
-  disableOverlayClick?: boolean;
-  /** Set to `true` to disable closing the drawer by pushing the escape key. */
-  disableListeners?: boolean;
+  /** Set to `true` to enable closing the drawer by pushing the `Esc` key. */
+  closeOnEsc?: boolean;
+  /** Set to `true` to enable closing the modal by clicking the overlay. */
+  closeOnOverlayClick?: boolean;
   /** Set to `true` to disable the drawers focus trap behaviour. */
   disableFocusTrap?: boolean;
-  /** Callback method run when the Close button is clicked. */
-  onClose?: () => void;
 }
 
 const Drawer: React.FC<DrawerProps> = ({
@@ -93,30 +93,30 @@ const Drawer: React.FC<DrawerProps> = ({
   isOpen,
   anchor = 'right',
   size = 'xs',
-  disableOverlayClick,
-  disableListeners,
+  closeOnEsc,
+  closeOnOverlayClick,
   disableFocusTrap,
   onClose,
   ...other
 }) => {
   useKeyPress('Escape', () => {
-    if (isOpen && !disableListeners && onClose) {
+    if (isOpen && !closeOnEsc && onClose) {
       onClose();
     }
   });
 
   const handleOverlayClick = React.useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
-      // Prevent clicking inside the dialog exiting it
+      // Prevent clicks inside the drawer from closing it
       if (e.target !== e.currentTarget) {
         return;
       }
 
-      if (!disableOverlayClick && onClose) {
+      if (closeOnOverlayClick && onClose) {
         onClose();
       }
     },
-    [disableOverlayClick, onClose],
+    [closeOnOverlayClick, onClose],
   );
 
   React.useEffect(() => {
