@@ -8,10 +8,12 @@ const Menu: ComponentTheme = {
     minWidth: '56',
     display: 'flex',
     flexDirection: 'column',
+    bg: colorMode('white', 'gray.800')(props),
     border: '1px',
-    borderColor: transparentize(0.6, get(props.theme.colors, colorMode('gray.300', 'gray.600')(props))),
+    borderColor: transparentize(0.6, get(props.theme.colors, colorMode('gray.300', 'gray.900')(props))),
     borderRadius: 'sm',
     boxShadow: 'sm',
+    overflow: 'hidden',
   }),
 };
 
@@ -33,10 +35,10 @@ const MenuItem: ComponentTheme = {
     transitionDuration: get(props.theme, 'transitions.duration.300'),
     transitionTimingFunction: get(props.theme, 'transitions.timing.inOut'),
     ':not(:disabled):hover': {
-      bg: transparentize(0.8, get(props.theme.colors, 'gray.100')),
+      bg: transparentize(0.8, get(props.theme.colors, colorMode('gray.100', 'gray.700')(props))),
     },
     ':active': {
-      bg: transparentize(0.7, get(props.theme.colors, 'gray.100')),
+      bg: transparentize(0.7, get(props.theme.colors, colorMode('gray.100', 'gray.700')(props))),
     },
   }),
 };
@@ -47,7 +49,7 @@ const MenuDivider: ComponentTheme = {
     border: 0,
     borderBottom: '1px solid',
     borderColor: 'inherit',
-    color: colorMode('gray.300', 'gray.600')(props),
+    color: colorMode('gray.300', 'gray.900')(props),
     opacity: 0.6,
   }),
 };
