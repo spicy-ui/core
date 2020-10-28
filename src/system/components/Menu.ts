@@ -53,7 +53,7 @@ const MenuDivider: ComponentTheme = {
 };
 
 const MenuHeader: ComponentTheme = {
-  baseStyle: (props: any) => ({
+  baseStyle: () => ({
     mx: '4',
     my: '2',
     flex: '1 1 auto',
