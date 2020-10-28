@@ -4,7 +4,7 @@ import { uid } from 'react-uid';
 import { Avatar } from '..';
 import { Stack } from '../Stack';
 
-const names = ['Dan Abrahmov', 'Ryan Florence', 'Resi Respati', 'Alex Gabites', undefined, 'John Brown', 'Alan Sega'];
+const names = ['Dan Abramov', 'Ryan Florence', 'Resi Respati', 'Alex Gabites', undefined, 'John Brown', 'Alan Sega'];
 
 const avatarSizes = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl'];
 
@@ -17,7 +17,7 @@ export default {
 export const Simple = () => (
   <Avatar
     size={select<any>('size', avatarSizes, 'md')}
-    name={text('name', 'Dan Abrahmov')}
+    name={text('name', 'Dan Abramov')}
     src={text('src', 'https://bit.ly/dan-abramov')}
   />
 );
