@@ -2,10 +2,11 @@ import { Avatar } from './Avatar';
 import { Button } from './Button';
 import { Divider } from './Divider';
 import { Drawer } from './Drawer';
-import { Field } from './Field';
+import { FieldComponents } from './Field';
 import { Heading } from './Heading';
 import { Input } from './Input';
 import { Link } from './Link';
+import { MenuComponents } from './Menu';
 import { Modal } from './Modal';
 import { Overlay } from './Overlay';
 import { Select } from './Select';
@@ -17,10 +18,11 @@ export const components = {
   Button,
   Divider,
   Drawer,
-  ...Field,
+  ...FieldComponents,
   Heading,
-  Link,
   Input,
+  Link,
+  ...MenuComponents,
   Modal,
   Overlay,
   Select,
