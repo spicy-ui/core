@@ -19,8 +19,8 @@ export const Simple = () => (
     anchor={select('anchor', drawerAnchors, 'right')}
     size={select('size', drawerSizes, 'xs')}
     onClose={action('onClose')}
-    closeOnEsc={boolean('disable escape key listener', false)}
-    closeOnOverlayClick={boolean('disable overlay click', false)}
+    closeOnEsc={boolean('enable escape key listener', false)}
+    closeOnOverlayClick={boolean('enable overlay click', false)}
     disableFocusTrap={boolean('disable drawer focus trap', false)}
   >
     <Box>
@@ -41,8 +41,8 @@ export const Toggle = () => {
         anchor={select('anchor', drawerAnchors, 'right')}
         size={select('size', drawerSizes, 'xs')}
         onClose={() => setIsOpen(false)}
-        closeOnEsc={boolean('disable escape key listener', false)}
-        closeOnOverlayClick={boolean('disable overlay click', false)}
+        closeOnEsc={boolean('enable escape key listener', false)}
+        closeOnOverlayClick={boolean('enable overlay click', false)}
         disableFocusTrap={boolean('disable drawer focus trap', false)}
       >
         Drawer
