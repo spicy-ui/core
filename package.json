@@ -1,6 +1,6 @@
 {
   "name": "@spicy-ui/core",
-  "version": "0.0.1-alpha.8",
+  "version": "0.0.1-alpha.9",
   "description": "A React component library to spice up your UI",
   "keywords": [
     "react",
@@ -68,10 +68,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
-    "@storybook/addon-actions": "^6.0.27",
-    "@storybook/addon-docs": "^6.0.27",
-    "@storybook/addon-knobs": "^6.0.27",
-    "@storybook/react": "^6.0.27",
+    "@storybook/addon-essentials": "^6.0.28",
+    "@storybook/react": "^6.0.28",
     "@types/jest": "^26.0.15",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
