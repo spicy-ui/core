@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Button, Modal } from '..';
+import { Box, Button, Modal } from '..';
 
 const modalSizes = ['3xs', '2xs', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', 'full'];
 
@@ -21,9 +21,9 @@ export const Simple = (props: any) => {
       <Button onClick={() => setIsOpen(true)}>Open</Button>
 
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} {...props}>
-        <Flex p={4} align="center" justify="center">
+        <Box>
           <Button onClick={() => setIsOpen(false)}>Close</Button>
-        </Flex>
+        </Box>
       </Modal>
     </>
   );
