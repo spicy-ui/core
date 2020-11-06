@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Box, Flex, Menu, MenuDivider, MenuHeader, MenuItem, Text } from '..';
+import { Box, Button, Flex, Menu, MenuDivider, MenuHeader, MenuItem, Popover, Text } from '..';
 
 export default {
   title: 'Menu',
@@ -61,7 +61,6 @@ export const WithHeaders = () => (
   </Box>
 );
 
-/*
 export const WithPopover = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -82,7 +81,6 @@ export const WithPopover = () => {
     </Popover>
   );
 };
-*/
 
 export const WithCustomItems = () => (
   <Box maxWidth="56">
