@@ -8,6 +8,7 @@ export * from './Heading';
 export * from './Menu';
 export * from './Modal';
 export * from './Overlay';
+export * from './Popover';
 export * from './Portal';
 export * from './Stack';
 export * from './Text';
