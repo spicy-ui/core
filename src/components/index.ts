@@ -3,6 +3,7 @@ export * from './Button';
 export * from './Flex';
 export * from './Grid';
 export * from './Heading';
+export * from './Portal';
 export * from './Stack';
 export * from './Text';
 export * from './Theme';
