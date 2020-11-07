@@ -3,13 +3,13 @@ import { get } from 'styled-system';
 import { ComponentTheme } from '../types';
 
 const Menu: ComponentTheme = {
-  baseStyle: (props: any) => ({
+  baseStyle: () => ({
     minWidth: '56',
     display: 'flex',
     flexDirection: 'column',
     bg: 'white',
-    border: '1px',
-    borderColor: transparentize(0.6, get(props.theme.colors, 'gray.300')),
+    borderWidth: '1px',
+    borderStyle: 'solid',
     borderRadius: 'sm',
     boxShadow: 'sm',
     overflow: 'hidden',
@@ -17,7 +17,7 @@ const Menu: ComponentTheme = {
 };
 
 const MenuItem: ComponentTheme = {
-  baseStyle: (props) => ({
+  baseStyle: ({ theme }) => ({
     px: '4',
     minHeight: '10',
     flex: '1 1 auto',
@@ -30,14 +30,14 @@ const MenuItem: ComponentTheme = {
     cursor: 'pointer',
     outline: 'none',
     textAlign: 'left',
-    transitionProperty: get(props.theme, 'transitions.property.common'),
-    transitionDuration: get(props.theme, 'transitions.duration.300'),
-    transitionTimingFunction: get(props.theme, 'transitions.timing.inOut'),
+    transitionProperty: get(theme, 'transitions.property.common'),
+    transitionDuration: get(theme, 'transitions.duration.300'),
+    transitionTimingFunction: get(theme, 'transitions.timing.inOut'),
     ':not(:disabled):hover': {
-      bg: transparentize(0.8, get(props.theme.colors, 'gray.100')),
+      backgroundColor: transparentize(0.5, get(theme.colors, `gray.100`)),
     },
-    ':active': {
-      bg: transparentize(0.7, get(props.theme.colors, 'gray.100')),
+    ':not(:disabled):active': {
+      backgroundColor: transparentize(0.5, get(theme.colors, `gray.200`)),
     },
   }),
 };
@@ -45,10 +45,8 @@ const MenuItem: ComponentTheme = {
 const MenuDivider: ComponentTheme = {
   baseStyle: () => ({
     width: 'auto',
-    border: 0,
-    borderBottom: '1px solid',
-    borderColor: 'inherit',
-    color: 'gray.300',
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
     opacity: 0.6,
   }),
 };
