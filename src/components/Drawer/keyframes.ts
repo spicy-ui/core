@@ -5,6 +5,7 @@ export const TopIn = keyframes`
     opacity: 0;
     transform: translate(0, -25%);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -16,6 +17,7 @@ export const TopOut = keyframes`
     opacity: 1;
     transform: translateY(0);
   }
+
   100% {
     opacity: 0;
     transform: translate(0, -25%);
@@ -27,6 +29,7 @@ export const RightIn = keyframes`
     opacity: 0;
     transform: translate(25%, 0);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);
@@ -38,6 +41,7 @@ export const RightOut = keyframes`
     opacity: 1;
     transform: translateX(0);
   }
+
   100% {
     opacity: 0;
     transform: translate(25%, 0);
@@ -49,6 +53,7 @@ export const LeftIn = keyframes`
     opacity: 0;
     transform: translate(-25%, 0);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);
@@ -60,6 +65,7 @@ export const LeftOut = keyframes`
     opacity: 1;
     transform: translateX(0);
   }
+
   100% {
     opacity: 0;
     transform: translate(-25%, 0);
@@ -71,6 +77,7 @@ export const BottomIn = keyframes`
     opacity: 0;
     transform: translate(0, 25%);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -82,6 +89,7 @@ export const BottomOut = keyframes`
     opacity: 1;
     transform: translateY(0);
   }
+
   100% {
     opacity: 0;
     transform: translate(0, 25%);
