@@ -94,10 +94,10 @@ export const Popover: React.FC<PopoverProps> = ({
   );
 
   React.useEffect(() => {
-    document.addEventListener('mousedown', handleDocumentClick);
+    document.addEventListener('mouseup', handleDocumentClick);
 
     return () => {
-      document.removeEventListener('mousedown', handleDocumentClick);
+      document.removeEventListener('mouseup', handleDocumentClick);
     };
   }, [handleDocumentClick]);
 
