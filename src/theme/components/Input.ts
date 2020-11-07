@@ -74,7 +74,7 @@ export const Input: ComponentTheme = {
       },
     }),
     underlined: ({ isInvalid }) => ({
-      padding: 0,
+      p: 0,
       border: 'none',
       borderBottom: '2px',
       borderBottomColor: isInvalid ? 'red.500' : 'gray.200',
@@ -88,7 +88,8 @@ export const Input: ComponentTheme = {
       },
     }),
     unstyled: () => ({
-      padding: 0,
+      p: 0,
+      height: 'unset',
       borderRadius: 'none',
     }),
   },
