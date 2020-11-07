@@ -2,6 +2,7 @@ import { Button } from './Button';
 import { Divider } from './Divider';
 import { Drawer } from './Drawer';
 import { Heading } from './Heading';
+import { Input } from './Input';
 import { Link } from './Link';
 import { MenuComponents } from './Menu';
 import { Modal } from './Modal';
@@ -13,6 +14,7 @@ export const components = {
   Divider,
   Drawer,
   Heading,
+  Input,
   Link,
   ...MenuComponents,
   Modal,
