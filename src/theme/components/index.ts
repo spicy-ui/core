@@ -7,6 +7,7 @@ import { Link } from './Link';
 import { MenuComponents } from './Menu';
 import { Modal } from './Modal';
 import { Overlay } from './Overlay';
+import { Select } from './Select';
 import { Text } from './Text';
 import { TextArea } from './TextArea';
 
@@ -20,6 +21,7 @@ export const components = {
   ...MenuComponents,
   Modal,
   Overlay,
+  Select,
   Text,
   TextArea,
 };
