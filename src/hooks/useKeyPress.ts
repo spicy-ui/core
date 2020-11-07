@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const useKeyPress = (targetKey: string, onDown = () => {}, onUp = () => {}) => {
+export const useKeyPress = (targetKey: string, onDown = () => {}, onUp = () => {}): void => {
   const prevKey = React.useRef<string>('');
 
   const handleDown = React.useCallback(
