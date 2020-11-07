@@ -28,17 +28,17 @@ export const Drawer: ComponentTheme = {
     transform: getTransform(anchor),
   }),
   sizes: {
-    xs: (props) => ({
-      width: ['top', 'bottom'].includes(props.anchor) ? '100vw' : 'xs',
+    xs: ({ anchor }) => ({
+      width: ['top', 'bottom'].includes(anchor) ? '100vw' : 'xs',
     }),
-    sm: (props) => ({
-      width: ['top', 'bottom'].includes(props.anchor) ? '100vw' : 'sm',
+    sm: ({ anchor }) => ({
+      width: ['top', 'bottom'].includes(anchor) ? '100vw' : 'sm',
     }),
-    md: (props) => ({
-      width: ['top', 'bottom'].includes(props.anchor) ? '100vw' : 'md',
+    md: ({ anchor }) => ({
+      width: ['top', 'bottom'].includes(anchor) ? '100vw' : 'md',
     }),
-    lg: (props) => ({
-      width: ['top', 'bottom'].includes(props.anchor) ? '100vw' : 'lg',
+    lg: ({ anchor }) => ({
+      width: ['top', 'bottom'].includes(anchor) ? '100vw' : 'lg',
     }),
   },
 };

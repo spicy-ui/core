@@ -12,6 +12,6 @@ export interface ComponentSizes {
 
 export interface ComponentTheme {
   baseStyle?: ComponentStyle;
-  variants?: ComponentVariants;
   sizes?: ComponentSizes;
+  variants?: ComponentVariants;
 }

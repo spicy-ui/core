@@ -1,7 +1,7 @@
 import { ComponentTheme } from '../types';
 
 export const Modal: ComponentTheme = {
-  baseStyle: ({ theme }: any) => ({
+  baseStyle: ({ theme }) => ({
     mx: 6,
     my: 8,
     display: 'flex',
@@ -17,7 +17,7 @@ export const Modal: ComponentTheme = {
     transform: 'translate(0, -25%)',
   }),
   sizes: {
-    full: ({ theme }: any) => ({
+    full: ({ theme }) => ({
       width: `calc(100vw - ${theme.space['12']})`,
     }),
     '3xs': () => ({

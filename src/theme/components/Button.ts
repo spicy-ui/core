@@ -2,7 +2,7 @@ import { transparentize } from 'polished';
 import { get } from 'styled-system';
 import { ComponentStyle, ComponentTheme } from '../types';
 
-const ghost = ({ color, theme }: any): ComponentStyle => {
+const ghost: ComponentStyle = ({ color, theme }) => {
   switch (color) {
     case 'gray':
       return {
@@ -27,7 +27,7 @@ const ghost = ({ color, theme }: any): ComponentStyle => {
   }
 };
 
-const outlined = (props: any): ComponentStyle => {
+const outlined: ComponentStyle = (props) => {
   return {
     border: '2px',
     borderColor: props.color === 'gray' ? 'gray.200' : 'currentcolor',
@@ -35,7 +35,7 @@ const outlined = (props: any): ComponentStyle => {
   };
 };
 
-const filled = ({ color }: any): ComponentStyle => {
+const filled: ComponentStyle = ({ color }) => {
   switch (color) {
     case 'gray':
       return {
@@ -62,7 +62,7 @@ const filled = ({ color }: any): ComponentStyle => {
   }
 };
 
-const link = ({ color }: any): ComponentStyle => ({
+const link: ComponentStyle = ({ color }) => ({
   color: `${color}.500`,
   ':not(:disabled):hover': {
     textDecoration: 'underline',
@@ -72,10 +72,10 @@ const link = ({ color }: any): ComponentStyle => ({
   },
 });
 
-const unstyled = (): ComponentStyle => ({});
+const unstyled: ComponentStyle = () => ({});
 
 export const Button: ComponentTheme = {
-  baseStyle: (props: any) => ({
+  baseStyle: (props) => ({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',

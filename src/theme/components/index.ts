@@ -12,8 +12,8 @@ export const components = {
   Divider,
   Drawer,
   Heading,
+  ...MenuComponents,
   Modal,
   Overlay,
   Text,
-  ...MenuComponents,
 };
