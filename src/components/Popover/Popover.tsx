@@ -79,6 +79,7 @@ export const Popover: React.FC<PopoverProps> = ({
 
       if (closeOnInnerClick && popperEl.current?.contains(target as Node)) {
         onClose();
+        return;
       }
 
       if (
