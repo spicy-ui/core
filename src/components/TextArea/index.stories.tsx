@@ -14,7 +14,10 @@ export default {
     disabled: {
       control: { type: 'boolean' },
     },
-    readOnly: {
+    required: {
+      control: { type: 'boolean' },
+    },
+    isInvalid: {
       control: { type: 'boolean' },
     },
     space: {

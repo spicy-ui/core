@@ -3,7 +3,9 @@ import { uid } from 'react-uid';
 import { Button } from '..';
 
 const buttonColors = ['gray', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'indigo', 'purple', 'pink'];
+
 const buttonSizes = ['xs', 'sm', 'md', 'lg'];
+
 const buttonVariants = ['filled', 'outlined', 'ghost', 'link', 'unstyled'];
 
 export default {

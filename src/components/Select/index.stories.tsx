@@ -27,6 +27,12 @@ export default {
     readOnly: {
       control: { type: 'boolean' },
     },
+    required: {
+      control: { type: 'boolean' },
+    },
+    isInvalid: {
+      control: { type: 'boolean' },
+    },
     space: {
       control: { type: 'select', options: selectSpaces },
     },
