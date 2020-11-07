@@ -47,10 +47,17 @@ export const Popover: React.FC<PopoverProps> = ({
   const referenceEl = React.useRef<HTMLDivElement>(null);
   const popperEl = React.useRef<HTMLDivElement>(null);
 
-  const { attributes, styles } = usePopper(referenceEl.current, popperEl.current, {
+  const { attributes, styles, forceUpdate } = usePopper(referenceEl.current, popperEl.current, {
     placement,
     modifiers: [...(offset ? [{ name: 'offset', options: { offset } }] : []), ...modifiers],
   });
+
+  // Ensures the popper is correctly positioned when opened.
+  React.useEffect(() => {
+    if (isOpen && forceUpdate) {
+      forceUpdate();
+    }
+  }, [isOpen, forceUpdate]);
 
   useKeyPress('Escape', () => {
     if (isOpen && closeOnEsc && onClose) {
