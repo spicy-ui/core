@@ -16,6 +16,37 @@
 
 -->
 
+## 0.0.1-alpha.9 (7 November, 2020)
+
+### Features
+
+- New Theme component
+  - Replaces the ThemeProvider.
+  - Replaces the CssReset component with a new `injectGlobalStyles` function which allows a user to restyle and extend their apps base CSS.
+
+### Changes
+
+- Removed the following components
+  - ColorModeProvider (see below)
+  - CssReset (moved into Theme)
+  - Field (see below)
+  - SpicyProvider
+  - ThemeProvider
+- Removed color mode implementations from all components
+  - Our intention is to provide an alternate dark theme instead of a provider + hook.
+- Removed Field component
+  - Determined through implementations that this provider is best implemented by the consumer as different form libraries (formik, react-form-hook) call for different implementations and usages.
+- Default theme now uses Tailwind CSS colors
+- Component styles have been adjusted to use new theme colors
+- Added CHANGELOG.md
+
+### Bug Fixes
+
+- Fixed outline and ghost variants of the Button component not having transparent background colors
+- Fixed issue with color prop on Text and Heading components
+- Fixed height prop not being avaliable on Input, Select and TextArea components
+- Fixed ref forwarding issue with Input, Select and TextArea components
+
 ## 0.0.1-alpha.8 (28 October, 2020)
 
 ### Bug Fixes
