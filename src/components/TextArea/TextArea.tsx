@@ -1,7 +1,7 @@
 import { createShouldForwardProp, props } from '@styled-system/should-forward-prop';
 import styled from 'styled-components';
 import { height, HeightProps, space, SpaceProps, width, WidthProps } from 'styled-system';
-import { baseStyle, size, transition, TransitionProps, variant } from '../../helpers';
+import { baseStyle, size, transition, transitionProps, TransitionProps, variant } from '../../helpers';
 
 export interface TextAreaProps
   extends SpaceProps,
@@ -17,16 +17,7 @@ export interface TextAreaProps
   variant?: string;
 }
 
-const shouldForwardProp = createShouldForwardProp([
-  ...props,
-  'isInvalid',
-  'space',
-  'variant',
-  'transitionProperty',
-  'transitionDuration',
-  'transitionTiming',
-  'transitionDelay',
-]);
+const shouldForwardProp = createShouldForwardProp([...props, ...transitionProps, 'isInvalid', 'space', 'variant']);
 
 export const TextArea = styled('textarea').withConfig<TextAreaProps>({ shouldForwardProp })`
   ${baseStyle('components.TextArea')}
