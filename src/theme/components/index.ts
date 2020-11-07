@@ -1,5 +1,6 @@
 import { Avatar } from './Avatar';
 import { Button } from './Button';
+import { CheckboxComponents } from './Checkbox';
 import { Divider } from './Divider';
 import { Drawer } from './Drawer';
 import { Heading } from './Heading';
@@ -15,6 +16,7 @@ import { TextArea } from './TextArea';
 export const components = {
   Avatar,
   Button,
+  ...CheckboxComponents,
   Divider,
   Drawer,
   Heading,
