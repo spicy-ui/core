@@ -64,19 +64,23 @@ export const WithHeaders = () => (
 export const WithPopover = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
+  const onClose = React.useCallback(() => setIsOpen(false), []);
+  const toggleOpen = React.useCallback(() => setIsOpen((prev) => !prev), []);
+
   return (
     <Popover
       isOpen={isOpen}
-      onClose={() => setIsOpen(false)}
-      trigger={<Button onClick={() => setIsOpen((prev) => !prev)}>Menu Trigger</Button>}
+      onClose={onClose}
+      trigger={<Button onClick={toggleOpen}>Menu Trigger</Button>}
       offset={[0, 8]}
+      closeOnOuterClick
     >
       <Menu>
-        <MenuItem>Profile</MenuItem>
-        <MenuItem>Friends</MenuItem>
+        <MenuItem onClick={onClose}>Profile</MenuItem>
+        <MenuItem onClick={onClose}>Friends</MenuItem>
         <MenuDivider />
-        <MenuItem>Settings</MenuItem>
-        <MenuItem>Sign out</MenuItem>
+        <MenuItem onClick={onClose}>Settings</MenuItem>
+        <MenuItem onClick={onClose}>Sign out</MenuItem>
       </Menu>
     </Popover>
   );
