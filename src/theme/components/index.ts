@@ -8,6 +8,7 @@ import { MenuComponents } from './Menu';
 import { Modal } from './Modal';
 import { Overlay } from './Overlay';
 import { Text } from './Text';
+import { TextArea } from './TextArea';
 
 export const components = {
   Button,
@@ -20,4 +21,5 @@ export const components = {
   Modal,
   Overlay,
   Text,
+  TextArea,
 };

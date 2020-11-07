@@ -14,4 +14,5 @@ export * from './Popover';
 export * from './Portal';
 export * from './Stack';
 export * from './Text';
+export * from './TextArea';
 export * from './Theme';
