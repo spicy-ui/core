@@ -1,14 +1,15 @@
 import { createShouldForwardProp, props } from '@styled-system/should-forward-prop';
 import * as React from 'react';
 import styled from 'styled-components';
-import { space, SpaceProps, width, WidthProps } from 'styled-system';
+import { height, HeightProps, space, SpaceProps, width, WidthProps } from 'styled-system';
 import { baseStyle, size, transition, TransitionProps, transitionProps, variant } from '../../helpers';
 
 export interface InputProps
   extends SpaceProps,
     WidthProps,
+    HeightProps,
     TransitionProps,
-    Omit<React.InputHTMLAttributes<HTMLInputElement>, 'width'> {
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, 'width' | 'height'> {
   /** Indicate whether the input has a valid value or not. */
   isInvalid?: boolean;
   /** Size of the input. */
@@ -24,6 +25,7 @@ export const Input = styled('input').withConfig<InputProps>({ shouldForwardProp 
   ${size('components.Input', 'space')}
   ${variant('components.Input')}
   ${width}
+  ${height}
   ${space}
   ${transition}
 `;
