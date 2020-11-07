@@ -22,7 +22,7 @@
 
 - New Theme component
   - Replaces the ThemeProvider.
-  - Replaces the CssReset component with a new `injectGlobalStyles` function which allows a user to restyle and extend their apps base CSS.
+  - Replaces the CssReset component with a new `injectGlobalStyles` function which allows a consumer to restyle and extend their app's base CSS.
 
 ### Changes
 
