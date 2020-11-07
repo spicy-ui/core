@@ -82,4 +82,22 @@
 
 ## 0.0.1-alpha.2 (22 June, 2020)
 
+### Features
+
+- New Portal component
+- New Modal component
+- New Drawer component
+
+### Changes
+
+- Various changes to component styles
+- Split CssReset component out of the Theme component
+- Implemented shouldForwardProp on styled components
+
+### Fixes
+
+- Various fixes to types, linting and component internals
+
 ## 0.0.1-alpha.1 (26 April, 2020)
+
+- First publish of components
