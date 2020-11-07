@@ -12,22 +12,13 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    "@typescript-eslint/no-empty-interface": "off",
-    // "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    // "@typescript-eslint/indent": "off",
+    "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    // "@typescript-eslint/quotes": "off",
-    // "import/named": "off",
     "import/no-cycle": "off",
     "import/prefer-default-export": "off",
     "jsx-a11y/accessible-emoji": "off",
-    // "no-console": "off",
-    // "no-underscore-dangle": "off",
-    // "react/jsx-curly-newline": "off",
-    // "react/jsx-one-expression-per-line": "off",
     "react/jsx-props-no-spreading": "off"
-    // "react/jsx-wrap-multilines": "off"
   },
   "overrides": [
     {
