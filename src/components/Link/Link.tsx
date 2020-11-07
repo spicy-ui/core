@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { display, DisplayProps, position, PositionProps, space, SpaceProps } from 'styled-system';
 import { baseStyle } from '../../helpers';
 
+export type LinkUnderlineBehaviour = 'default' | 'none' | 'hover';
+
 export interface LinkProps
   extends DisplayProps,
     PositionProps,
@@ -14,7 +16,7 @@ export interface LinkProps
   /** Hover color of the link. */
   hoverColor?: string;
   /** Underline behaviour of the link. */
-  underlineBehaviour?: 'default' | 'none' | 'hover';
+  underlineBehaviour?: LinkUnderlineBehaviour;
   /** Set to `true` to disable the link. */
   isDisabled?: boolean;
   /** Set to `true` to add external `rel` tags. */

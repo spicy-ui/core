@@ -19,17 +19,19 @@ const ModalWrapper = styled('div').withConfig<ModalWrapperProps>({ shouldForward
   ${sizeVariant('components.Modal')}
   ${color}
 
-    &[data-modal-state='entering'],
-    &[data-modal-state='entered'] {
+  &[data-modal-state='entering'],
+  &[data-modal-state='entered'] {
     animation-fill-mode: forwards;
     animation-name: ${ModalIn};
     animation-duration: ${(p) => p.theme.transitions.duration['300']};
   }
+
   &[data-modal-state='exiting'] {
     animation-fill-mode: forwards;
     animation-name: ${ModalOut};
     animation-duration: ${(p) => p.theme.transitions.duration['200']};
   }
+
   &[data-modal-state='entered'] {
     opacity: 1;
     transform: translate(0, 0);

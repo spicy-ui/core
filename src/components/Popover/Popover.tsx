@@ -4,7 +4,7 @@ import { Modifier, usePopper } from 'react-popper';
 import { useKeyPress } from '../../hooks';
 import { Box } from '../Box';
 
-export type Offset = [number, number];
+export type PopoverOffset = [number, number];
 
 export interface PopoverProps {
   /** Trigger element for the popover. */
@@ -26,7 +26,7 @@ export interface PopoverProps {
   /** Position of the popover. */
   placement?: Placement;
   /** Popover offset. */
-  offset?: Offset;
+  offset?: PopoverOffset;
   /** Additional Popper modifiers. */
   modifiers?: Modifier<string>[];
 }

@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import { space, SpaceProps, width, WidthProps } from 'styled-system';
 import { baseStyle, variant } from '../../helpers';
 
+export type DividerOrientation = 'horizontal' | 'vertical';
+
 export interface DividerProps extends SpaceProps, WidthProps {
   /** Orientation of the divider. */
-  orientation?: 'horizontal' | 'vertical';
+  orientation?: DividerOrientation;
 }
 
 const shouldForwardProp = createShouldForwardProp([...props, 'orientation']);

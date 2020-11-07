@@ -3,11 +3,13 @@ import { SpaceProps } from 'styled-system';
 import { Box } from '../Box';
 import { Flex, FlexProps } from '../Flex';
 
+export type StackOrientation = 'horizontal' | 'vertical';
+
 export interface StackProps extends FlexProps {
   /** If `true` the items will be reversed.  */
   isReversed?: boolean;
   /** Orientation of the stack. */
-  orientation?: 'horizontal' | 'vertical';
+  orientation?: StackOrientation;
   /** Spacing between each item. Accepts styled-system spacing prop values. */
   spacing?: SpaceProps['m'];
 }

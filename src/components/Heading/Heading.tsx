@@ -14,10 +14,10 @@ import {
 import { baseStyle, variant } from '../../helpers';
 
 export interface HeadingProps extends Omit<ColorProps, 'color'>, LayoutProps, SpaceProps, TypographyProps {
-  /** Variant style of the text. */
-  variant?: string;
   /** Color of the text. */
   color?: ResponsiveValue<string>;
+  /** Variant style of the text. */
+  variant?: string;
 }
 
 const shouldForwardProp = createShouldForwardProp([...props, 'variant']);
