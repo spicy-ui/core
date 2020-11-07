@@ -9,10 +9,10 @@ const Menu: ComponentTheme = {
     flexDirection: 'column',
     bg: 'white',
     borderWidth: '1px',
-    borderStyle: 'solid',
     borderRadius: 'sm',
     boxShadow: 'sm',
     overflow: 'hidden',
+    userSelect: 'none',
   }),
 };
 
