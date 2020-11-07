@@ -36,7 +36,7 @@ export const Popover: React.FC<PopoverProps> = ({
   children,
   isOpen,
   onClose,
-  closeOnBlur = true,
+  closeOnBlur = false,
   closeOnEsc = false,
   closeOnInnerClick = false,
   closeOnOuterClick = false,
