@@ -8,7 +8,7 @@
 
 ## Basic usage
 
-Install the library with `yarn add @spicy-ui/core`
+Install the library with `npm i @spicy-ui/core` or `yarn add @spicy-ui/core`
 
 ```js
 import React from 'react';
@@ -17,7 +17,7 @@ import { Button } from '@spciy-ui/core';
 export const App = () => <Button>Hey hot stuff 🌶️</Button>;
 ```
 
-See the [documentation](https://spicy-ui.netlify.app/) for more examples and advanced usages.
+See the [documentation](https://spicy-ui.netlify.app/) for component documentation, examples and advanced usages.
 
 ## Issues and Bugs
 
