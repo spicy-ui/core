@@ -40,7 +40,7 @@ export const Simple = (props: any) => {
 export const AllSpaces = (props: any) => (
   <Stack spacing="4">
     {switchSpaces.map((space, idx) => (
-      <Switch key={uid(space, idx)} {...props} space={space} />
+      <Switch key={uid(space, idx)} {...props} checked space={space} />
     ))}
   </Stack>
 );
@@ -48,7 +48,7 @@ export const AllSpaces = (props: any) => (
 export const AllColors = (props: any) => (
   <Stack spacing="4">
     {switchColors.map((color, idx) => (
-      <Switch key={uid(color, idx)} {...props} color={color} />
+      <Switch key={uid(color, idx)} {...props} checked color={color} />
     ))}
   </Stack>
 );
