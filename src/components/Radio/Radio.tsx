@@ -20,12 +20,14 @@ export const RadioOuter = styled(Box)<RadioOuterProps>`
 interface RadioInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   color?: string;
   isInvalid?: boolean;
+  space?: string;
 }
 
 export const RadioInput = styled('input').withConfig<RadioInputProps>({
   shouldForwardProp,
 })`
   ${baseStyle('components.RadioInput')}
+  ${size('components.RadioInput', 'space')}
 `;
 
 interface RadioLabelProps {}
@@ -52,14 +54,14 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((props, ref)
   const { id, name, value, label, disabled, isInvalid, space, color, height, width, ...rest } = props;
 
   const outerProps: RadioOuterProps = { htmlFor: id, isDisabled: disabled, space, height, width };
-  const inputProps: RadioInputProps = { id, name, value, disabled, isInvalid, color, ...rest };
+  const inputProps: RadioInputProps = { id, name, value, disabled, isInvalid, color, space, ...rest };
   const labelProps: RadioLabelProps = {};
 
   return (
     <RadioOuter as="label" {...outerProps}>
       <RadioInput type="checkbox" {...inputProps} ref={ref} />
       {label && (
-        <RadioLabel as="div" {...labelProps}>
+        <RadioLabel as="div" fontSize="inherit" {...labelProps}>
           {label}
         </RadioLabel>
       )}

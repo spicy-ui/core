@@ -12,10 +12,6 @@ const CheckboxOuter: ComponentTheme = {
     userSelect: 'none',
   }),
   sizes: {
-    xs: () => ({
-      fontSize: 'xs',
-      height: 6,
-    }),
     sm: () => ({
       fontSize: 'sm',
       height: 8,
@@ -36,20 +32,20 @@ const supportedQuery = '@supports (-webkit-appearance: none) or (-moz-appearance
 const CheckboxInput: ComponentTheme = {
   baseStyle: ({ color = 'blue', isInvalid, theme }) => ({
     [supportedQuery]: {
-      position: 'relative',
-      verticalAlign: 'top',
       m: 0,
-      width: '4',
-      height: '4',
+      width: 4,
+      height: 4,
       display: 'inline-block',
+      position: 'relative',
       appearance: 'none',
       bg: 'white',
       borderRadius: 'xs',
-      borderStyle: 'solid',
       borderWidth: '1px',
+      borderStyle: 'solid',
       boxShadow: isInvalid ? 'error' : 'none',
       cursor: 'pointer',
       outline: 'none',
+      verticalAlign: 'top',
       transitionDuration: get(theme, 'transitions.duration.300'),
       transitionProperty: get(theme, 'transitions.property.common'),
       transitionTimingFunction: get(theme, 'transitions.timing.inOut'),
@@ -58,11 +54,6 @@ const CheckboxInput: ComponentTheme = {
         content: '""',
         display: 'block',
         position: 'absolute',
-        top: '1px',
-        left: '4px',
-        width: '6px',
-        height: '10px',
-        borderWidth: '2px',
         borderStyle: 'solid',
         borderColor: 'white',
         borderLeft: 0,
@@ -91,6 +82,47 @@ const CheckboxInput: ComponentTheme = {
       },
     },
   }),
+  sizes: {
+    sm: () => ({
+      [supportedQuery]: {
+        height: 3,
+        width: 3,
+        '&::after': {
+          top: 0,
+          left: '3px',
+          width: '4px',
+          height: '8px',
+          borderWidth: '2px',
+        },
+      },
+    }),
+    md: () => ({
+      [supportedQuery]: {
+        height: 4,
+        width: 4,
+        '&::after': {
+          top: '1px',
+          left: '4px',
+          width: '6px',
+          height: '10px',
+          borderWidth: '2px',
+        },
+      },
+    }),
+    lg: () => ({
+      [supportedQuery]: {
+        height: 6,
+        width: 6,
+        '&::after': {
+          top: '1px',
+          left: '7px',
+          width: '8px',
+          height: '16px',
+          borderWidth: '3px',
+        },
+      },
+    }),
+  },
 };
 
 const CheckboxLabel: ComponentTheme = {

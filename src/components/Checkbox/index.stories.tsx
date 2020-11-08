@@ -2,7 +2,7 @@ import * as React from 'react';
 import { uid } from 'react-uid';
 import { Checkbox, Stack } from '..';
 
-const checkboxSpaces = ['xs', 'sm', 'md', 'lg'];
+const checkboxSpaces = ['sm', 'md', 'lg'];
 
 const checkboxColors = ['gray', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'indigo', 'purple', 'pink'];
 

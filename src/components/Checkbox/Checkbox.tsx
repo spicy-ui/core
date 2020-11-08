@@ -20,12 +20,14 @@ export const CheckboxOuter = styled(Box)<CheckboxOuterProps>`
 interface CheckboxInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   color?: string;
   isInvalid?: boolean;
+  space?: string;
 }
 
 export const CheckboxInput = styled('input').withConfig<CheckboxInputProps>({
   shouldForwardProp,
 })`
   ${baseStyle('components.CheckboxInput')}
+  ${size('components.CheckboxInput', 'space')}
 `;
 
 interface CheckboxLabelProps {}
@@ -52,14 +54,14 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((props
   const { id, name, value, label, disabled, isInvalid, space, color, height, width, ...rest } = props;
 
   const outerProps: CheckboxOuterProps = { htmlFor: id, isDisabled: disabled, space, height, width };
-  const inputProps: CheckboxInputProps = { id, name, value, disabled, isInvalid, color, ...rest };
+  const inputProps: CheckboxInputProps = { id, name, value, disabled, isInvalid, color, space, ...rest };
   const labelProps: CheckboxLabelProps = {};
 
   return (
     <CheckboxOuter as="label" {...outerProps}>
       <CheckboxInput type="checkbox" {...inputProps} ref={ref} />
       {label && (
-        <CheckboxLabel as="div" {...labelProps}>
+        <CheckboxLabel as="div" fontSize="inherit" {...labelProps}>
           {label}
         </CheckboxLabel>
       )}

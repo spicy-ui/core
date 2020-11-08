@@ -11,20 +11,20 @@ const supportedQuery = '@supports (-webkit-appearance: none) or (-moz-appearance
 const RadioInput: ComponentTheme = {
   baseStyle: ({ color = 'blue', isInvalid, theme }) => ({
     [supportedQuery]: {
-      position: 'relative',
-      verticalAlign: 'top',
       m: 0,
-      width: '4',
-      height: '4',
+      width: 4,
+      height: 4,
       display: 'inline-block',
+      position: 'relative',
       appearance: 'none',
       bg: 'white',
       borderRadius: 'full',
-      borderStyle: 'solid',
       borderWidth: '1px',
+      borderStyle: 'solid',
       boxShadow: isInvalid ? 'error' : 'none',
       cursor: 'pointer',
       outline: 'none',
+      verticalAlign: 'top',
       transitionDuration: get(theme, 'transitions.duration.300'),
       transitionProperty: get(theme, 'transitions.property.common'),
       transitionTimingFunction: get(theme, 'transitions.timing.inOut'),
@@ -33,10 +33,6 @@ const RadioInput: ComponentTheme = {
         content: '""',
         display: 'block',
         position: 'absolute',
-        top: '3px',
-        left: '3px',
-        width: '8px',
-        height: '8px',
         bg: `${color}.500`,
         borderRadius: 'full',
         opacity: 'var(--o, 0)',
@@ -61,6 +57,44 @@ const RadioInput: ComponentTheme = {
       },
     },
   }),
+  sizes: {
+    sm: () => ({
+      [supportedQuery]: {
+        height: 3,
+        width: 3,
+        '&::after': {
+          top: '2px',
+          left: '2px',
+          width: '6px',
+          height: '6px',
+        },
+      },
+    }),
+    md: () => ({
+      [supportedQuery]: {
+        height: 4,
+        width: 4,
+        '&::after': {
+          top: '3px',
+          left: '3px',
+          width: '8px',
+          height: '8px',
+        },
+      },
+    }),
+    lg: () => ({
+      [supportedQuery]: {
+        height: 6,
+        width: 6,
+        '&::after': {
+          top: '4px',
+          left: '4px',
+          width: '14px',
+          height: '14px',
+        },
+      },
+    }),
+  },
 };
 
 const RadioLabel: ComponentTheme = {

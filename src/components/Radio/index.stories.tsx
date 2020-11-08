@@ -2,7 +2,7 @@ import * as React from 'react';
 import { uid } from 'react-uid';
 import { Radio, Stack } from '..';
 
-const radioSpaces = ['xs', 'sm', 'md', 'lg'];
+const radioSpaces = ['sm', 'md', 'lg'];
 
 const radioColors = ['gray', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'indigo', 'purple', 'pink'];
 
