@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { HeightProps, WidthProps } from 'styled-system';
 import { baseStyle, size } from '../../helpers';
 import { Box, BoxProps } from '../Box';
-import { Text } from '../Text';
+import { Text, TextProps } from '../Text';
 
 interface RadioOuterProps extends BoxProps {
   htmlFor?: string;
@@ -30,7 +30,7 @@ export const RadioInput = styled('input').withConfig<RadioInputProps>({ shouldFo
   ${size('components.RadioInput', 'space')}
 `;
 
-interface RadioLabelProps {
+interface RadioLabelProps extends TextProps {
   isDisabled?: boolean;
   isInvalid?: boolean;
   color?: string;
