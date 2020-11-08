@@ -13,9 +13,6 @@ export default {
     disabled: {
       control: { type: 'boolean' },
     },
-    readOnly: {
-      control: { type: 'boolean' },
-    },
     required: {
       control: { type: 'boolean' },
     },
