@@ -26,7 +26,7 @@ export default {
       control: { type: 'text' },
     },
     color: {
-      control: { type: 'text' },
+      control: { type: 'select', options: checkboxColors },
     },
     space: {
       control: { type: 'select', options: checkboxSpaces },

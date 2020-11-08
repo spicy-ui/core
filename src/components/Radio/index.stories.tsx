@@ -23,7 +23,7 @@ export default {
       control: { type: 'text' },
     },
     color: {
-      control: { type: 'text' },
+      control: { type: 'select', options: radioColors },
     },
     space: {
       control: { type: 'select', options: radioSpaces },

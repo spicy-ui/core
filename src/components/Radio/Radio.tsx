@@ -9,31 +9,37 @@ import { Text } from '../Text';
 interface RadioOuterProps extends BoxProps {
   htmlFor?: string;
   isDisabled?: boolean;
+  isInvalid?: boolean;
+  color?: string;
   space?: string;
 }
 
-export const RadioOuter = styled(Box)<RadioOuterProps>`
+export const RadioOuter = styled(Box).withConfig<RadioOuterProps>({ shouldForwardProp })`
   ${baseStyle('components.RadioOuter')}
   ${size('components.RadioOuter', 'space')}
 `;
 
 interface RadioInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  color?: string;
   isInvalid?: boolean;
+  color?: string;
   space?: string;
 }
 
-export const RadioInput = styled('input').withConfig<RadioInputProps>({
-  shouldForwardProp,
-})`
+export const RadioInput = styled('input').withConfig<RadioInputProps>({ shouldForwardProp })`
   ${baseStyle('components.RadioInput')}
   ${size('components.RadioInput', 'space')}
 `;
 
-interface RadioLabelProps {}
+interface RadioLabelProps {
+  isDisabled?: boolean;
+  isInvalid?: boolean;
+  color?: string;
+  space?: string;
+}
 
-export const RadioLabel = styled(Text)<RadioLabelProps>`
+export const RadioLabel = styled(Text).withConfig<RadioLabelProps>({ shouldForwardProp })`
   ${baseStyle('components.RadioLabel')}
+  ${size('components.RadioLabel', 'space')}
 `;
 
 export interface RadioProps
@@ -50,24 +56,45 @@ export interface RadioProps
   space?: string;
 }
 
-export const Radio = React.forwardRef<HTMLInputElement, RadioProps>((props, ref) => {
-  const { id, name, value, label, disabled, isInvalid, space, color, height, width, ...rest } = props;
+export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
+  ({ id, name, value, label, checked, disabled, isInvalid, space, color, height, width, ...rest }, ref) => {
+    const radioProps = { isInvalid, color, space };
 
-  const outerProps: RadioOuterProps = { htmlFor: id, isDisabled: disabled, space, height, width };
-  const inputProps: RadioInputProps = { id, name, value, disabled, isInvalid, color, space, ...rest };
-  const labelProps: RadioLabelProps = {};
+    const outerProps: RadioOuterProps = {
+      htmlFor: id,
+      isDisabled: disabled,
+      ...radioProps,
+      height,
+      width,
+    };
 
-  return (
-    <RadioOuter as="label" {...outerProps}>
-      <RadioInput type="checkbox" {...inputProps} ref={ref} />
-      {label && (
-        <RadioLabel as="div" fontSize="inherit" {...labelProps}>
-          {label}
-        </RadioLabel>
-      )}
-    </RadioOuter>
-  );
-});
+    const inputProps: RadioInputProps = {
+      id,
+      name,
+      value,
+      checked,
+      disabled,
+      ...radioProps,
+      ...rest,
+    };
+
+    const labelProps: RadioLabelProps = {
+      isDisabled: disabled,
+      ...radioProps,
+    };
+
+    return (
+      <RadioOuter as="label" {...outerProps}>
+        <RadioInput type="checkbox" {...inputProps} ref={ref} />
+        {label && (
+          <RadioLabel as="div" fontSize="inherit" {...labelProps}>
+            {label}
+          </RadioLabel>
+        )}
+      </RadioOuter>
+    );
+  },
+);
 
 Radio.defaultProps = {
   color: 'blue',

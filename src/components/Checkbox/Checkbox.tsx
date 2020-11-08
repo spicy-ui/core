@@ -4,36 +4,42 @@ import styled from 'styled-components';
 import { HeightProps, WidthProps } from 'styled-system';
 import { baseStyle, size } from '../../helpers';
 import { Box, BoxProps } from '../Box';
-import { Text } from '../Text';
+import { Text, TextProps } from '../Text';
 
 interface CheckboxOuterProps extends BoxProps {
   htmlFor?: string;
   isDisabled?: boolean;
+  isInvalid?: boolean;
+  color?: string;
   space?: string;
 }
 
-export const CheckboxOuter = styled(Box)<CheckboxOuterProps>`
+export const CheckboxOuter = styled(Box).withConfig<CheckboxOuterProps>({ shouldForwardProp })`
   ${baseStyle('components.CheckboxOuter')}
   ${size('components.CheckboxOuter', 'space')}
 `;
 
 interface CheckboxInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  color?: string;
   isInvalid?: boolean;
+  color?: string;
   space?: string;
 }
 
-export const CheckboxInput = styled('input').withConfig<CheckboxInputProps>({
-  shouldForwardProp,
-})`
+export const CheckboxInput = styled('input').withConfig<CheckboxInputProps>({ shouldForwardProp })`
   ${baseStyle('components.CheckboxInput')}
   ${size('components.CheckboxInput', 'space')}
 `;
 
-interface CheckboxLabelProps {}
+interface CheckboxLabelProps extends TextProps {
+  isDisabled?: boolean;
+  isInvalid?: boolean;
+  color?: string;
+  space?: string;
+}
 
-export const CheckboxLabel = styled(Text)<CheckboxLabelProps>`
+export const CheckboxLabel = styled(Text).withConfig<CheckboxLabelProps>({ shouldForwardProp })`
   ${baseStyle('components.CheckboxLabel')}
+  ${size('components.CheckboxLabel', 'space')}
 `;
 
 export interface CheckboxProps
@@ -50,24 +56,45 @@ export interface CheckboxProps
   space?: string;
 }
 
-export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
-  const { id, name, value, label, disabled, isInvalid, space, color, height, width, ...rest } = props;
+export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
+  ({ id, name, value, label, checked, disabled, isInvalid, color, space, height, width, ...rest }, ref) => {
+    const checkboxProps = { isInvalid, color, space };
 
-  const outerProps: CheckboxOuterProps = { htmlFor: id, isDisabled: disabled, space, height, width };
-  const inputProps: CheckboxInputProps = { id, name, value, disabled, isInvalid, color, space, ...rest };
-  const labelProps: CheckboxLabelProps = {};
+    const outerProps: CheckboxOuterProps = {
+      htmlFor: id,
+      isDisabled: disabled,
+      ...checkboxProps,
+      height,
+      width,
+    };
 
-  return (
-    <CheckboxOuter as="label" {...outerProps}>
-      <CheckboxInput type="checkbox" {...inputProps} ref={ref} />
-      {label && (
-        <CheckboxLabel as="div" fontSize="inherit" {...labelProps}>
-          {label}
-        </CheckboxLabel>
-      )}
-    </CheckboxOuter>
-  );
-});
+    const inputProps: CheckboxInputProps = {
+      id,
+      name,
+      value,
+      checked,
+      disabled,
+      ...checkboxProps,
+      ...rest,
+    };
+
+    const labelProps: CheckboxLabelProps = {
+      isDisabled: disabled,
+      ...checkboxProps,
+    };
+
+    return (
+      <CheckboxOuter as="label" {...outerProps}>
+        <CheckboxInput type="checkbox" {...inputProps} ref={ref} />
+        {label && (
+          <CheckboxLabel as="div" fontSize="inherit" {...labelProps}>
+            {label}
+          </CheckboxLabel>
+        )}
+      </CheckboxOuter>
+    );
+  },
+);
 
 Checkbox.defaultProps = {
   color: 'blue',

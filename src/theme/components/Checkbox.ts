@@ -87,6 +87,7 @@ const CheckboxInput: ComponentTheme = {
       [supportedQuery]: {
         height: 3,
         width: 3,
+
         '&::after': {
           top: 0,
           left: '3px',
@@ -100,6 +101,7 @@ const CheckboxInput: ComponentTheme = {
       [supportedQuery]: {
         height: 4,
         width: 4,
+
         '&::after': {
           top: '1px',
           left: '4px',
@@ -113,6 +115,7 @@ const CheckboxInput: ComponentTheme = {
       [supportedQuery]: {
         height: 6,
         width: 6,
+
         '&::after': {
           top: '1px',
           left: '7px',
