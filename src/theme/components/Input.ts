@@ -65,12 +65,12 @@ export const Input: ComponentTheme = {
       },
     }),
     filled: ({ isInvalid }) => ({
-      backgroundColor: 'gray.50',
+      backgroundColor: 'gray.100',
       borderWidth: '1px',
       borderColor: 'transparent',
       boxShadow: isInvalid ? 'error' : 'none',
       ':not(:disabled):hover': {
-        backgroundColor: 'gray.100',
+        backgroundColor: 'gray.200',
       },
     }),
     underlined: ({ isInvalid }) => ({
