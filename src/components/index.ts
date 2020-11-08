@@ -17,6 +17,7 @@ export * from './Portal';
 export * from './Radio';
 export * from './Select';
 export * from './Stack';
+export * from './Switch';
 export * from './Text';
 export * from './TextArea';
 export * from './Theme';
