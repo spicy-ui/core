@@ -33,10 +33,15 @@ const initialState: ToastComponentProps[] = [];
 
 export interface ToastProviderProps<P> {
   children: React.FC;
+  /** Toast component. */
   component: React.FC<ToastComponentProps<P>>;
+  /** Default duration for toasts to be visible for. */
   duration?: number;
+  /** Maximum number of visible toasts. */
   maxVisible?: number;
+  /** Default all toasts to be persistent. */
   persist?: boolean;
+  /** Placement of the Toast container. */
   placement?: ToastPlacement;
 }
 
@@ -54,6 +59,7 @@ export function ToastProvider<P = any>({
 
   const [visibleToasts, setVisibleToasts] = React.useState<ToastComponentProps[]>([]);
 
+  /** Queue a toast to be shown. */
   const enqueueToast = React.useCallback(
     ({ id, ...options }: ToastOptions): ToastId => {
       const toast = mergeDefined<ToastComponentProps<P>>(providerProps, {
@@ -71,19 +77,7 @@ export function ToastProvider<P = any>({
     [providerProps, visibleToasts.length],
   );
 
-  const removeToast = React.useCallback(
-    (id: ToastId) => {
-      const toast = toastQueue.find((t) => t.id === id);
-
-      if (!toast) {
-        return;
-      }
-
-      dispatch({ type: ToastAction.REMOVE, toast });
-    },
-    [toastQueue],
-  );
-
+  /** Open a queued toast. */
   const openToast = React.useCallback(
     (id: ToastId) => {
       const toast = toastQueue.find((t) => t.id === id);
@@ -97,6 +91,7 @@ export function ToastProvider<P = any>({
     [toastQueue],
   );
 
+  /** Close an open toast (and prepare to remove it). */
   const closeToast = React.useCallback(
     (id: ToastId) => {
       const toast = toastQueue.find((t) => t.id === id);
@@ -106,6 +101,20 @@ export function ToastProvider<P = any>({
       }
 
       dispatch({ type: ToastAction.UPDATE, toast: { ...toast, isOpen: false, isRemoving: true } });
+    },
+    [toastQueue],
+  );
+
+  /** Remove a toast. */
+  const removeToast = React.useCallback(
+    (id: ToastId) => {
+      const toast = toastQueue.find((t) => t.id === id);
+
+      if (!toast) {
+        return;
+      }
+
+      dispatch({ type: ToastAction.REMOVE, toast });
     },
     [toastQueue],
   );

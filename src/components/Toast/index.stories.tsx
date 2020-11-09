@@ -13,7 +13,7 @@ const DemoControls = () => {
   return (
     <Stack direction="row" spacing={4}>
       <Button onClick={() => enqueueToast({ message: 'I will dismiss in 5 seconds' })}>Add Toast</Button>
-      <Button onClick={() => enqueueToast({ message: 'I will survive!', persist: true })}>Add Persistent Toast</Button>
+      <Button onClick={() => enqueueToast({ message: 'I will persist', persist: true })}>Add Persistent Toast</Button>
     </Stack>
   );
 };
