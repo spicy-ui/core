@@ -32,7 +32,7 @@ const SwitchInput: ComponentTheme = {
     },
 
     '&:not(:checked):not(:disabled):hover + *': {
-      bg: 'gray.200',
+      bg: 'gray.300',
     },
 
     '&:not(:disabled):focus + *': {
@@ -63,7 +63,7 @@ const SwitchInput: ComponentTheme = {
 const SwitchToggle: ComponentTheme = {
   baseStyle: ({ isInvalid, theme }) => ({
     position: 'relative',
-    bg: 'gray.100',
+    bg: 'gray.200',
     borderRadius: 'full',
     boxShadow: isInvalid ? 'error' : 'none',
     transitionDuration: get(theme, 'transitions.duration.300'),
