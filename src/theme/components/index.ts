@@ -14,6 +14,7 @@ import { Select } from './Select';
 import { SwitchComponents } from './Switch';
 import { Text } from './Text';
 import { TextArea } from './TextArea';
+import { ToastComponents } from './Toast';
 
 export const components = {
   Avatar,
@@ -32,4 +33,5 @@ export const components = {
   ...SwitchComponents,
   Text,
   TextArea,
+  ...ToastComponents,
 };
