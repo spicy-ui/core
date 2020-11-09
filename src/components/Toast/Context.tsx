@@ -3,7 +3,7 @@ import { ToastContextProps } from './types';
 
 export const ToastContext = React.createContext<ToastContextProps | undefined>(undefined);
 
-export const useToast = () => {
+export function useToast<P = any>(): ToastContextProps<P> {
   const context = React.useContext(ToastContext);
 
   if (!context) {
@@ -11,4 +11,4 @@ export const useToast = () => {
   }
 
   return context;
-};
+}

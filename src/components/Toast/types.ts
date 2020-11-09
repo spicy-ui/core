@@ -23,8 +23,8 @@ export interface ToastOptions<P = any> {
   persist?: boolean;
 }
 
-export interface ToastContextProps {
-  enqueueToast: (options: ToastOptions) => ToastId;
+export interface ToastContextProps<P = any> {
+  enqueueToast: (options: ToastOptions<P>) => ToastId;
   closeToast: (id: ToastId) => void;
 }
 
