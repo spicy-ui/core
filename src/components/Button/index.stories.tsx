@@ -2,7 +2,20 @@ import * as React from 'react';
 import { uid } from 'react-uid';
 import { Button } from '..';
 
-const buttonColors = ['gray', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'indigo', 'purple', 'pink'];
+const buttonColors = [
+  'gray',
+  'red',
+  'orange',
+  'yellow',
+  'green',
+  'teal',
+  'blue',
+  'indigo',
+  'purple',
+  'pink',
+  'whiteAlpha',
+  'blackAlpha',
+];
 
 const buttonSizes = ['xs', 'sm', 'md', 'lg'];
 
