@@ -17,7 +17,6 @@ const ToastItem: ComponentTheme = {
     width: 'full',
     position: 'relative',
     boxShadow: 'xl',
-    bg: 'white',
     opacity: 0,
   }),
 };

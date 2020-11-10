@@ -1,15 +1,16 @@
+import shouldForwardProp from '@styled-system/should-forward-prop';
 import * as React from 'react';
 import { TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { baseStyle } from '../../helpers';
-import { Box } from '../Box';
+import { Box, BoxProps } from '../Box';
 import { Portal } from '../Portal';
-import { ToastItem } from './ToastItem';
 import { ToastContext } from './Context';
+import { ToastItem } from './ToastItem';
 import { ToastAction, ToastComponentProps, ToastId, ToastOptions, ToastPlacement, ToastReducerAction } from './types';
 import { getPlacement, mergeDefined, uuid } from './util';
 
-const ToastContainer = styled(Box)`
+const ToastContainer = styled(Box).withConfig<BoxProps>({ shouldForwardProp })`
   ${baseStyle('components.ToastContainer')}
 `;
 
@@ -32,7 +33,7 @@ const reducer = (state: ToastComponentProps[], { type, toast }: ToastReducerActi
 const initialState: ToastComponentProps[] = [];
 
 export interface ToastProviderProps<P> {
-  children: React.FC;
+  children: React.ReactNode;
   /** Toast component. */
   component: React.FC<ToastComponentProps<P>>;
   /** Default duration for toasts to be visible for. */
