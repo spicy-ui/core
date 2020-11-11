@@ -10,6 +10,7 @@ import { Link } from './Link';
 import { MenuComponents } from './Menu';
 import { Modal } from './Modal';
 import { Overlay } from './Overlay';
+import { ProgressComponents } from './Progress';
 import { RadioComponents } from './Radio';
 import { Select } from './Select';
 import { SwitchComponents } from './Switch';
@@ -30,6 +31,7 @@ export const components = {
   ...MenuComponents,
   Modal,
   Overlay,
+  ...ProgressComponents,
   ...RadioComponents,
   Select,
   ...SwitchComponents,

@@ -15,6 +15,7 @@ export * from './Modal';
 export * from './Overlay';
 export * from './Popover';
 export * from './Portal';
+export * from './Progress';
 export * from './Radio';
 export * from './Select';
 export * from './Stack';
