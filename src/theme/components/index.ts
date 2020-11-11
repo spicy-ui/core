@@ -1,3 +1,4 @@
+import { Alert } from './Alert';
 import { Avatar } from './Avatar';
 import { Button } from './Button';
 import { CheckboxComponents } from './Checkbox';
@@ -17,6 +18,7 @@ import { TextArea } from './TextArea';
 import { ToastComponents } from './Toast';
 
 export const components = {
+  Alert,
   Avatar,
   Button,
   ...CheckboxComponents,
