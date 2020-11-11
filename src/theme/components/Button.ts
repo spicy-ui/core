@@ -14,6 +14,17 @@ const ghost: ComponentStyle = ({ color, theme }) => {
           backgroundColor: transparentize(0.5, get(theme.colors, `gray.300`)),
         },
       };
+    case 'blackAlpha':
+    case 'whiteAlpha':
+      return {
+        color: `${color}.800`,
+        ':not(:disabled):hover': {
+          backgroundColor: `${color}.200`,
+        },
+        ':not(:disabled):active': {
+          backgroundColor: `${color}.300`,
+        },
+      };
     default:
       return {
         color: `${color}.500`,
