@@ -95,7 +95,10 @@ const link: ComponentStyle = ({ color }) => ({
   },
 });
 
-const unstyled: ComponentStyle = () => ({});
+const unstyled: ComponentStyle = () => ({
+  p: 0,
+  height: 'auto',
+});
 
 export const Button: ComponentTheme = {
   baseStyle: (props) => ({
