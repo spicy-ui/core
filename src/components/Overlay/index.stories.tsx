@@ -12,6 +12,7 @@ export const Simple = () => {
   return (
     <>
       <Button onClick={() => setIsOpen(true)}>Open</Button>
+
       <Overlay isOpen={isOpen} onClick={() => setIsOpen(false)} top={0} right={0} bottom={0} left={0}>
         {(state) => (
           <Text>

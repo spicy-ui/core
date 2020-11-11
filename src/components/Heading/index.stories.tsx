@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Heading } from '..';
+import { Stack, Heading } from '..';
 
 const headingVariants = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
@@ -25,11 +25,11 @@ Simple.args = {
 };
 
 export const Variants = () => (
-  <>
+  <Stack spacing={4}>
     {headingVariants.map((variant, idx) => (
       <Heading key={uid(variant, idx)} variant={variant}>
         {variant}: The quick brown fox jumped over the lazy dog.
       </Heading>
     ))}
-  </>
+  </Stack>
 );

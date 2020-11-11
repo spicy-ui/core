@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Alert, Button, Link, Stack, Text, ToastProvider, useToast } from '..';
-import { Heading } from '../Heading';
-import { ToastComponentProps } from '../Toast';
+import { Alert, Button, Heading, Link, Stack, Text, ToastComponentProps, ToastProvider, useToast } from '..';
 
 const alertVariants = ['info', 'success', 'warning', 'error'];
 

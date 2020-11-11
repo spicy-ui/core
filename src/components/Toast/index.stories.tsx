@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Box, Button, Flex, Stack, ToastProvider, useToast } from '..';
-import { ToastComponentProps } from './types';
+import { Box, Button, Flex, Stack, ToastComponentProps, ToastProvider, useToast } from '..';
 
 export default {
   title: 'Toast',
