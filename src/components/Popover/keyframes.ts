@@ -1,6 +1,6 @@
 import { keyframes } from 'styled-components';
 
-export const OverlayIn = keyframes`
+export const PopoverIn = keyframes`
   0% {
     visibility: hidden;
     opacity: 0;
@@ -12,7 +12,7 @@ export const OverlayIn = keyframes`
   }
 `;
 
-export const OverlayOut = keyframes`
+export const PopoverOut = keyframes`
   0% {
     visibility: visible;
     opacity: 1;

@@ -22,6 +22,7 @@ const Backdrop = styled('div').withConfig<BackdropProps>({ shouldForwardProp })`
       animation-duration: ${(p) => p.theme.transitions.duration['300']};
     }
   }
+
   &[data-overlay-state='exiting'] {
     &::before {
       animation-fill-mode: forwards;
@@ -29,6 +30,7 @@ const Backdrop = styled('div').withConfig<BackdropProps>({ shouldForwardProp })`
       animation-duration: ${(p) => p.theme.transitions.duration['200']};
     }
   }
+
   &[data-overlay-state='entered'] {
     &::before {
       visibility: visible;

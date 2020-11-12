@@ -10,7 +10,21 @@ export default {
   title: 'Avatar',
   component: Avatar,
   argTypes: {
-    bg: { type: 'string' },
+    name: {
+      control: { type: 'text' },
+    },
+    src: {
+      control: { type: 'text' },
+    },
+    bg: {
+      control: { type: 'text' },
+    },
+    color: {
+      control: { type: 'text' },
+    },
+    size: {
+      control: { type: 'select', options: avatarSizes },
+    },
   },
 };
 

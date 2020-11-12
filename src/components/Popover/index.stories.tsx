@@ -1,8 +1,6 @@
 import { Placement } from '@popperjs/core';
 import * as React from 'react';
-import { Box } from '../Box';
-import { Button } from '../Button';
-import { Popover } from './Popover';
+import { Box, Button, Popover } from '..';
 
 const popoverPlacements: Placement[] = [
   'auto',

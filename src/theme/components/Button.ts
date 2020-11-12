@@ -14,6 +14,17 @@ const ghost: ComponentStyle = ({ color, theme }) => {
           backgroundColor: transparentize(0.5, get(theme.colors, `gray.300`)),
         },
       };
+    case 'blackAlpha':
+    case 'whiteAlpha':
+      return {
+        color: `${color}.800`,
+        ':not(:disabled):hover': {
+          backgroundColor: `${color}.200`,
+        },
+        ':not(:disabled):active': {
+          backgroundColor: `${color}.300`,
+        },
+      };
     default:
       return {
         color: `${color}.500`,
@@ -39,13 +50,25 @@ const filled: ComponentStyle = ({ color }) => {
   switch (color) {
     case 'gray':
       return {
-        backgroundColor: 'gray.100',
+        backgroundColor: `${color}.100`,
         color: 'gray.800',
         ':not(:disabled):hover': {
-          backgroundColor: 'gray.200',
+          backgroundColor: `${color}.200`,
         },
         ':not(:disabled):active': {
-          backgroundColor: 'gray.300',
+          backgroundColor: `${color}.300`,
+        },
+      };
+    case 'blackAlpha':
+    case 'whiteAlpha':
+      return {
+        backgroundColor: `${color}.200`,
+        color: 'white',
+        ':not(:disabled):hover': {
+          backgroundColor: `${color}.300`,
+        },
+        ':not(:disabled):active': {
+          backgroundColor: `${color}.400`,
         },
       };
     default:
@@ -72,7 +95,10 @@ const link: ComponentStyle = ({ color }) => ({
   },
 });
 
-const unstyled: ComponentStyle = () => ({});
+const unstyled: ComponentStyle = () => ({
+  p: 0,
+  height: 'auto',
+});
 
 export const Button: ComponentTheme = {
   baseStyle: (props) => ({

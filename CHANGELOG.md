@@ -16,13 +16,35 @@
 
 -->
 
+## 0.0.1-alpha.10 (12 November, 2020)
+
+### Features
+
+- New Checkbox component
+- New Radio component
+- New Switch component
+- New Toast component
+- New Progress component
+
+### Changes
+
+- Changed props of popover so that it's all 'opt in'
+- Added transition to popover inner
+- Added `0.5` size to theme
+- Added blackAlpha and whiteAlpha button colors to button story
+- Changed unstyled button styles
+
+### Bug Fixes
+
+- Fixed issue with popover component rendering out of view
+
 ## 0.0.1-alpha.9 (7 November, 2020)
 
 ### Features
 
 - New Theme component
   - Replaces the ThemeProvider.
-  - Replaces the CssReset component with a new `injectGlobalStyles` function which allows a user to restyle and extend their apps base CSS.
+  - Replaces the CssReset component with a new `injectGlobalStyles` function which allows a consumer to restyle and extend their app's base CSS.
 
 ### Changes
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Text } from '..';
+import { Stack, Text } from '..';
 
 const textVariants = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl'];
 
@@ -27,17 +27,17 @@ Simple.args = {
 const reversedVariants = [...textVariants].reverse();
 
 export const Variants = () => (
-  <>
+  <Stack spacing={4}>
     {reversedVariants.map((variant, idx) => (
       <Text key={uid(variant, idx)} variant={variant}>
         {variant}: The quick brown fox jumped over the lazy dog.
       </Text>
     ))}
-  </>
+  </Stack>
 );
 
 export const SemanticText = () => (
-  <>
+  <Stack spacing={4}>
     {[
       { as: 'a', label: 'Link' },
       { as: 'em', label: 'Emphasis' },
@@ -59,5 +59,5 @@ export const SemanticText = () => (
         <As>{label}</As>
       </Text>
     ))}
-  </>
+  </Stack>
 );
