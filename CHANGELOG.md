@@ -16,6 +16,10 @@
 
 -->
 
+## 0.0.1-alpha.11 (16 November, 2020)
+
+- Republish package to npm
+
 ## 0.0.1-alpha.10 (12 November, 2020)
 
 ### Features
