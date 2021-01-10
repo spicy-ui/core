@@ -28,7 +28,7 @@ const PopoverInner = styled('div')`
   }
 `;
 
-export type PopoverOffset = [number, number];
+export type PopoverOffset = [x: number, y: number];
 
 export interface PopoverProps {
   /** Trigger element for the popover. */
@@ -49,7 +49,7 @@ export interface PopoverProps {
   closeOnOuterClick?: boolean;
   /** Position of the popover. */
   placement?: Placement;
-  /** Popover offset. */
+  /** Popover offset in pixels. */
   offset?: PopoverOffset;
   /** Additional Popper modifiers. */
   modifiers?: Modifier<string>[];
