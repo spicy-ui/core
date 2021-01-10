@@ -36,7 +36,7 @@ const MenuItem: ComponentTheme = {
     ':not(:disabled):hover': {
       backgroundColor: transparentize(0.5, get(theme.colors, `gray.100`)),
     },
-    ':not(:disabled):active': {
+    ':not(:disabled):active, &.active': {
       backgroundColor: transparentize(0.5, get(theme.colors, `gray.200`)),
     },
   }),

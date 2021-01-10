@@ -1,6 +1,6 @@
 {
   "name": "@spicy-ui/core",
-  "version": "0.0.1-alpha.11",
+  "version": "0.0.1-alpha.12",
   "description": "A React component library to spice up your UI",
   "keywords": [
     "react",
@@ -57,10 +57,13 @@
     "clsx": "^1.1.1",
     "csstype": "^3.0.4",
     "deepmerge": "^4.2.2",
+    "downshift": "^6.0.12",
     "polished": "^4.0.3",
     "react-focus-lock": "^2.4.1",
+    "react-icons": "^4.1.0",
     "react-popper": "^2.2.4",
     "react-transition-group": "^4.4.1",
+    "react-uid": "^2.3.1",
     "styled-normalize": "^8.0.7",
     "styled-system": "^5.1.5",
     "utility-types": "^3.10.0"
@@ -93,7 +96,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-is": "^17.0.1",
-    "react-uid": "^2.3.0",
+    "react-query": "^3.5.11",
     "rimraf": "^3.0.2",
     "styled-components": "^5.2.1",
     "tsdx": "^0.14.1",
