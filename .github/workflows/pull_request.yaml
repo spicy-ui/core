@@ -7,7 +7,6 @@ on:
       - synchronize
 
 jobs:
-
   deployDraftOnAnyPullRequest:
     name: Deploy draft to Netlify
     runs-on: ubuntu-latest
@@ -17,10 +16,10 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Build Storybook
-        run: yarn build:storybook
+        run: npm run build:storybook
 
       - name: Deploy draft to Netlify
         uses: South-Paw/action-netlify-deploy@v1.0.4
@@ -28,6 +27,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
-          build-dir: './storybook-static'
+          build-dir: "./storybook-static"
           draft: true
           comment-on-pull-request: true
