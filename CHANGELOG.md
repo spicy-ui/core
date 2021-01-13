@@ -16,6 +16,17 @@
 
 -->
 
+## 0.0.1-alpha.12 (13 January, 2021)
+
+### Changes
+
+- Migrated project to npm
+- Fixed GitHub release script, package should publish correctly on release creation now
+
+### Bug Fixes
+
+- Minor change to toast internals to fix type error
+
 ## 0.0.1-alpha.11 (16 November, 2020)
 
 - Republish package to npm

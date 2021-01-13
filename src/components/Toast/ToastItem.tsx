@@ -84,14 +84,14 @@ export const ToastItem: React.FC<ToastItemProps> = ({
 
   React.useEffect(() => {
     if (!closeTimer.current && !persist) {
-      closeTimer.current = setTimeout(() => {
+      closeTimer.current = window.setTimeout(() => {
         onClose();
       }, duration);
     }
   }, [duration, onClose, persist]);
 
   React.useEffect(() => {
-    return () => (closeTimer.current ? clearTimeout(closeTimer.current) : undefined);
+    return () => (closeTimer.current ? window.clearTimeout(closeTimer.current) : undefined);
   }, []);
 
   return (

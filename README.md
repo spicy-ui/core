@@ -8,7 +8,9 @@
 
 ## Basic usage
 
-Install the library with `npm i @spicy-ui/core` or `yarn add @spicy-ui/core`
+Install Spicy UI with the following command `npm i @spicy-ui/core styled-components`
+
+If you are using TypeScript, you'll additionally install these dev dependencies `npm i -D @types/styled-components @types/styled-system`
 
 ```js
 import React from 'react';
@@ -25,9 +27,9 @@ If you manage to find any, please report them [here](https://github.com/spicy-ui
 
 ## Development and Contributing
 
-Pull the repo and then install dependencies with `yarn`.
+Pull the repo and then install dependencies with `npm`.
 
-In the root directory, use `yarn start:storybook` to run Storybook on `localhost:9000`
+In the root directory, use `npm run start:storybook` to run Storybook on `localhost:9000`
 
 See the `package.json` for other scripts such as `clean`, `test` and `lint`.
 

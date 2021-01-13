@@ -3,7 +3,6 @@ name: Push CI
 on: [push]
 
 jobs:
-
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -13,10 +12,10 @@ jobs:
         uses: actions/checkout@master
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Lint
-        run: yarn lint
+        run: npm run lint
 
   test:
     name: Test
@@ -27,12 +26,12 @@ jobs:
         uses: actions/checkout@master
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Test
         env:
           CI: true
-        run: yarn test
+        run: npm run test
 
   build:
     name: Build
@@ -43,10 +42,10 @@ jobs:
         uses: actions/checkout@master
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Build Package
-        run: yarn build
+        run: npm run build
 
   deployDraftOnMasterCommit:
     name: Deploy draft to Netlify
@@ -57,10 +56,10 @@ jobs:
         uses: actions/checkout@master
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
-      
+        run: npm ci
+
       - name: Build Storybook
-        run: yarn build:storybook
+        run: npm run build:storybook
 
       - name: Deploy draft build to Netlify
         uses: South-Paw/action-netlify-deploy@v1.0.4
@@ -68,6 +67,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
-          build-dir: './storybook-static'
+          build-dir: "./storybook-static"
           draft: true
           comment-on-commit: true
