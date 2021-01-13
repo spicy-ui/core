@@ -4,7 +4,7 @@ import * as React from 'react';
 import { uid } from 'react-uid';
 import { Box, Flex, Input, Menu, MenuItem } from '../..';
 import { SelectActions } from '../components/SelectActions';
-import { BaseSelectProps, SelectOption } from '../types';
+import { BaseSelectProps } from '../types';
 import { renderMenuItemLabel } from '../util';
 
 export interface SingleProps extends BaseSelectProps {}
