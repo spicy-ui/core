@@ -16,6 +16,16 @@
 
 -->
 
+## 0.0.1-alpha.14 (17 January, 2021)
+
+### Changes
+
+- Renamed Select prop `renderMenuItemLabel` to `renderItem`
+
+### Bug Fixes
+
+- Fixed select inner button submitting wrapping form components
+
 ## 0.0.1-alpha.13 (17 January, 2021)
 
 ### Changes

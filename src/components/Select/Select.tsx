@@ -9,7 +9,7 @@ function defaultItemToString(item: SelectItem | null) {
   return item ? item.label : '';
 }
 
-function defaultRenderMenuItemLabel(item: SelectItem | null, fallback: string | null = null) {
+function defaultRenderItem(item: SelectItem | null, fallback: string | null = null) {
   if (!item && fallback) {
     return <Text color="gray.400">{fallback}</Text>;
   }
@@ -47,7 +47,7 @@ export interface SelectProps<V = any> {
   onChange: (value: SelectItem<V> | null) => void;
   onInputChange?: (value: string) => void;
   placeholder?: string;
-  renderMenuItemLabel?: (item: SelectItem<V> | null, fallback?: string | null) => React.ReactNode;
+  renderItem?: (item: SelectItem<V> | null, fallback?: string | null) => React.ReactNode;
   space?: string;
   value: SelectItem<V> | null;
   variant?: string;
@@ -71,7 +71,7 @@ export function Select<V = any>({
   onChange,
   onInputChange,
   placeholder,
-  renderMenuItemLabel = defaultRenderMenuItemLabel,
+  renderItem = defaultRenderItem,
   space,
   value,
   variant,
@@ -138,6 +138,7 @@ export function Select<V = any>({
     <Box position="relative" {...getComboboxProps()}>
       <Input
         as="button"
+        type="button"
         disabled={disabled}
         isInvalid={isInvalid}
         space={space}
@@ -155,7 +156,7 @@ export function Select<V = any>({
               {...inputProps}
             />
           ) : (
-            renderMenuItemLabel(selectedItem, placeholder)
+            renderItem(selectedItem, placeholder)
           )}
         </Flex>
         <Stack spacing={2} direction="row" flexShrink={0}>
@@ -200,7 +201,7 @@ export function Select<V = any>({
                 item,
               })}
             >
-              {renderMenuItemLabel(item)}
+              {renderItem(item)}
             </MenuItem>
           ))}
       </Menu>
