@@ -2,9 +2,12 @@ import clsx from 'clsx';
 import { useCombobox, UseComboboxStateChange } from 'downshift';
 import * as React from 'react';
 import { FiChevronDown, FiLoader, FiX } from 'react-icons/fi';
-import { uid } from 'react-uid';
 import { Box, Flex, Input, Menu, MenuItem, Stack, Text } from '..';
 import { SelectArrow, SelectClear, SelectLoading } from './styled';
+
+function defaultItemToString(item: SelectItem | null) {
+  return item ? item.label : '';
+}
 
 function defaultRenderMenuItemLabel(item: SelectItem | null, fallback: string | null = null) {
   if (!item && fallback) {
@@ -12,17 +15,6 @@ function defaultRenderMenuItemLabel(item: SelectItem | null, fallback: string | 
   }
 
   return item ? <>{item.label}</> : null;
-}
-
-function defaultItemToString(item: SelectItem | null) {
-  return item ? item.label : '';
-}
-
-export interface SelectActionsProps {
-  isClearable: boolean;
-  isLoading?: boolean;
-  onClear: (event: React.MouseEvent) => void;
-  size?: string;
 }
 
 const MenuMessage: React.FC = ({ children }) => (
@@ -200,7 +192,8 @@ export function Select<V = any>({
         {!isLoading &&
           items.map((item, index) => (
             <MenuItem
-              key={uid(item, index)}
+              // eslint-disable-next-line react/no-array-index-key
+              key={`select-item-${index}`}
               {...getItemProps({
                 className: clsx({ active: highlightedIndex === index }),
                 index,
