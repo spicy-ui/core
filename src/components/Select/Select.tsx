@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useCombobox, UseComboboxStateChange } from 'downshift';
 import * as React from 'react';
 import { FiChevronDown, FiLoader, FiX } from 'react-icons/fi';
-import { Box, Flex, Input, Menu, MenuItem, Portal, Stack, Text } from '..';
+import { Box, Flex, Input, Menu, MenuItem, Stack, Text } from '..';
 import { SelectArrow, SelectClear, SelectLoading } from './styled';
 
 function defaultItemToString(item: SelectItem | null) {
@@ -138,6 +138,7 @@ export function Select<V = any>({
     <Box position="relative" {...getComboboxProps()}>
       <Input
         as="button"
+        type="button"
         disabled={disabled}
         isInvalid={isInvalid}
         space={space}
@@ -174,38 +175,36 @@ export function Select<V = any>({
           </SelectArrow>
         </Stack>
       </Input>
-      <Portal>
-        <Menu
-          mt={2}
-          width="full"
-          maxHeight={48}
-          position="absolute"
-          style={{
-            display: isOpen ? 'flex' : 'none',
-            outline: 'none',
-            overflowY: 'auto',
-          }}
-          zIndex="dropdown"
-          {...getMenuProps()}
-        >
-          {isLoading && <MenuMessage>{localization.loading}</MenuMessage>}
-          {!isLoading && items.length === 0 && <MenuMessage>{localization.noOptions}</MenuMessage>}
-          {!isLoading &&
-            items.map((item, index) => (
-              <MenuItem
-                // eslint-disable-next-line react/no-array-index-key
-                key={`select-item-${index}`}
-                {...getItemProps({
-                  className: clsx({ active: highlightedIndex === index }),
-                  index,
-                  item,
-                })}
-              >
-                {renderItem(item)}
-              </MenuItem>
-            ))}
-        </Menu>
-      </Portal>
+      <Menu
+        mt={2}
+        width="full"
+        maxHeight={48}
+        position="absolute"
+        style={{
+          display: isOpen ? 'flex' : 'none',
+          outline: 'none',
+          overflowY: 'auto',
+        }}
+        zIndex="dropdown"
+        {...getMenuProps()}
+      >
+        {isLoading && <MenuMessage>{localization.loading}</MenuMessage>}
+        {!isLoading && items.length === 0 && <MenuMessage>{localization.noOptions}</MenuMessage>}
+        {!isLoading &&
+          items.map((item, index) => (
+            <MenuItem
+              // eslint-disable-next-line react/no-array-index-key
+              key={`select-item-${index}`}
+              {...getItemProps({
+                className: clsx({ active: highlightedIndex === index }),
+                index,
+                item,
+              })}
+            >
+              {renderItem(item)}
+            </MenuItem>
+          ))}
+      </Menu>
     </Box>
   );
 }
