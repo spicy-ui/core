@@ -2,14 +2,14 @@ import clsx from 'clsx';
 import { useCombobox, UseComboboxStateChange } from 'downshift';
 import * as React from 'react';
 import { FiChevronDown, FiLoader, FiX } from 'react-icons/fi';
-import { Box, Flex, Input, Menu, MenuItem, Stack, Text } from '..';
+import { Box, Flex, Input, Menu, MenuItem, Portal, Stack, Text } from '..';
 import { SelectArrow, SelectClear, SelectLoading } from './styled';
 
 function defaultItemToString(item: SelectItem | null) {
   return item ? item.label : '';
 }
 
-function defaultRenderMenuItemLabel(item: SelectItem | null, fallback: string | null = null) {
+function defaultRenderItem(item: SelectItem | null, fallback: string | null = null) {
   if (!item && fallback) {
     return <Text color="gray.400">{fallback}</Text>;
   }
@@ -47,7 +47,7 @@ export interface SelectProps<V = any> {
   onChange: (value: SelectItem<V> | null) => void;
   onInputChange?: (value: string) => void;
   placeholder?: string;
-  renderMenuItemLabel?: (item: SelectItem<V> | null, fallback?: string | null) => React.ReactNode;
+  renderItem?: (item: SelectItem<V> | null, fallback?: string | null) => React.ReactNode;
   space?: string;
   value: SelectItem<V> | null;
   variant?: string;
@@ -71,7 +71,7 @@ export function Select<V = any>({
   onChange,
   onInputChange,
   placeholder,
-  renderMenuItemLabel = defaultRenderMenuItemLabel,
+  renderItem = defaultRenderItem,
   space,
   value,
   variant,
@@ -155,7 +155,7 @@ export function Select<V = any>({
               {...inputProps}
             />
           ) : (
-            renderMenuItemLabel(selectedItem, placeholder)
+            renderItem(selectedItem, placeholder)
           )}
         </Flex>
         <Stack spacing={2} direction="row" flexShrink={0}>
@@ -174,36 +174,38 @@ export function Select<V = any>({
           </SelectArrow>
         </Stack>
       </Input>
-      <Menu
-        mt={2}
-        width="full"
-        maxHeight={48}
-        position="absolute"
-        style={{
-          display: isOpen ? 'flex' : 'none',
-          outline: 'none',
-          overflowY: 'auto',
-        }}
-        zIndex="dropdown"
-        {...getMenuProps()}
-      >
-        {isLoading && <MenuMessage>{localization.loading}</MenuMessage>}
-        {!isLoading && items.length === 0 && <MenuMessage>{localization.noOptions}</MenuMessage>}
-        {!isLoading &&
-          items.map((item, index) => (
-            <MenuItem
-              // eslint-disable-next-line react/no-array-index-key
-              key={`select-item-${index}`}
-              {...getItemProps({
-                className: clsx({ active: highlightedIndex === index }),
-                index,
-                item,
-              })}
-            >
-              {renderMenuItemLabel(item)}
-            </MenuItem>
-          ))}
-      </Menu>
+      <Portal>
+        <Menu
+          mt={2}
+          width="full"
+          maxHeight={48}
+          position="absolute"
+          style={{
+            display: isOpen ? 'flex' : 'none',
+            outline: 'none',
+            overflowY: 'auto',
+          }}
+          zIndex="dropdown"
+          {...getMenuProps()}
+        >
+          {isLoading && <MenuMessage>{localization.loading}</MenuMessage>}
+          {!isLoading && items.length === 0 && <MenuMessage>{localization.noOptions}</MenuMessage>}
+          {!isLoading &&
+            items.map((item, index) => (
+              <MenuItem
+                // eslint-disable-next-line react/no-array-index-key
+                key={`select-item-${index}`}
+                {...getItemProps({
+                  className: clsx({ active: highlightedIndex === index }),
+                  index,
+                  item,
+                })}
+              >
+                {renderItem(item)}
+              </MenuItem>
+            ))}
+        </Menu>
+      </Portal>
     </Box>
   );
 }
