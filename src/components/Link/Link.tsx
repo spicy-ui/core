@@ -49,7 +49,5 @@ export const Link = styled('a')
 `;
 
 Link.defaultProps = {
-  // color: 'blue.500',
-  // hoverColor: 'blue.600',
   underlineBehaviour: 'default',
 };

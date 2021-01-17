@@ -49,7 +49,7 @@ export interface PopoverProps {
   closeOnOuterClick?: boolean;
   /** Position of the popover. */
   placement?: Placement;
-  /** Popover offset. */
+  /** Popover offset in pixels. */
   offset?: PopoverOffset;
   /** Additional Popper modifiers. */
   modifiers?: Modifier<string>[];

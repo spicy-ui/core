@@ -14,6 +14,9 @@ export default {
     disabled: {
       control: { type: 'boolean' },
     },
+    placeholder: {
+      control: { type: 'text' },
+    },
     required: {
       control: { type: 'boolean' },
     },

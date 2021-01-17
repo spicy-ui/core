@@ -12,7 +12,7 @@ import { Modal } from './Modal';
 import { Overlay } from './Overlay';
 import { ProgressComponents } from './Progress';
 import { RadioComponents } from './Radio';
-import { Select } from './Select';
+import { SelectComponents } from './Select';
 import { SwitchComponents } from './Switch';
 import { Text } from './Text';
 import { TextArea } from './TextArea';
@@ -33,7 +33,7 @@ export const components = {
   Overlay,
   ...ProgressComponents,
   ...RadioComponents,
-  Select,
+  ...SelectComponents,
   ...SwitchComponents,
   Text,
   TextArea,

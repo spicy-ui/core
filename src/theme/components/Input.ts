@@ -17,7 +17,7 @@ export const Input: ComponentTheme = {
     transitionDuration: get(theme, 'transitions.duration.300'),
     transitionTimingFunction: get(theme, 'transitions.timing.inOut'),
     width: 'full',
-    ':not(:disabled):focus': {
+    ':not(:disabled):focus, :not(:disabled):focus-within': {
       boxShadow: 'outline',
       zIndex: 1,
     },
