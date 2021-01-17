@@ -16,6 +16,12 @@
 
 -->
 
+## 0.0.1-alpha.13 (17 January, 2021)
+
+### Changes
+
+- Breaking: replaced Select component with new Downshift based select component
+
 ## 0.0.1-alpha.12 (13 January, 2021)
 
 ### Changes
