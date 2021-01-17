@@ -62,7 +62,6 @@
     "react-icons": "^4.1.0",
     "react-popper": "^2.2.4",
     "react-transition-group": "^4.4.1",
-    "react-uid": "^2.3.1",
     "styled-normalize": "^8.0.7",
     "styled-system": "^5.1.5",
     "utility-types": "^3.10.0"
@@ -94,7 +93,6 @@
     "prettier": "^2.2.1",
     "react-dom": "^17.0.1",
     "react-is": "^17.0.1",
-    "react-query": "^3.5.12",
     "react-uid": "^2.3.1",
     "react": "^17.0.1",
     "rimraf": "^3.0.2",

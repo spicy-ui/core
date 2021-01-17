@@ -18,7 +18,6 @@ export * from './Portal';
 export * from './Progress';
 export * from './Radio';
 export * from './Select';
-export * from './SelectNative';
 export * from './Stack';
 export * from './Switch';
 export * from './Text';

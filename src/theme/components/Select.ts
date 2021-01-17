@@ -3,14 +3,12 @@ import { ComponentTheme } from '../types';
 
 const SelectLoading: ComponentTheme = {
   baseStyle: () => ({
-    pr: 2,
     color: 'gray.600',
   }),
 };
 
-const SelectClearButton: ComponentTheme = {
+const SelectClear: ComponentTheme = {
   baseStyle: ({ theme }) => ({
-    pr: 2,
     color: 'gray.500',
     transitionProperty: get(theme, 'transitions.property.common'),
     transitionDuration: get(theme, 'transitions.duration.300'),
@@ -21,7 +19,7 @@ const SelectClearButton: ComponentTheme = {
   }),
 };
 
-const SelectArrowDown: ComponentTheme = {
+const SelectArrow: ComponentTheme = {
   baseStyle: ({ theme }) => ({
     color: 'gray.500',
     transitionProperty: get(theme, 'transitions.property.common'),
@@ -35,6 +33,6 @@ const SelectArrowDown: ComponentTheme = {
 
 export const SelectComponents = {
   SelectLoading,
-  SelectClearButton,
-  SelectArrowDown,
+  SelectClear,
+  SelectArrow,
 };
