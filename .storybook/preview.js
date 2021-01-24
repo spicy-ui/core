@@ -1,17 +1,18 @@
-import { addDecorator } from '@storybook/react';
 import React from 'react';
-import { Box, injectGlobalStyles, ThemeProvider } from '../src';
-
-const { GlobalStyle } = injectGlobalStyles();
-
-addDecorator((storyFn) => (
-  <ThemeProvider>
-    <GlobalStyle />
-    <Box p={4}>{storyFn()}</Box>
-  </ThemeProvider>
-));
+import { injectGlobalStyles, ThemeProvider } from '../src';
 
 export const parameters = {
   controls: { expanded: true },
   layout: 'fullscreen',
 };
+
+const { GlobalStyle } = injectGlobalStyles();
+
+const withThemeProvider = (Story) => (
+  <ThemeProvider>
+    <GlobalStyle />
+    <Story />
+  </ThemeProvider>
+);
+
+export const decorators = [withThemeProvider];
