@@ -1,17 +1,18 @@
-import * as React from 'react';
-import { Box, BoxProps } from '../Box';
+import styled from 'styled-components';
+import { allSystemProps, pseudoSystemProps, sfp } from '../../system';
+import { BoxProps } from '../Box';
+import { flexComponent, flexComponentProps, FlexComponentProps } from './util';
 
-export interface FlexProps extends BoxProps {
-  /** Shorthand for styled-system `alignItems` prop. */
-  align?: BoxProps['alignItems'];
-  /** Shorthand for styled-system `flexDirection` prop. */
-  direction?: BoxProps['flexDirection'];
-  /** Shorthand for styled-system `justifyContent` prop. */
-  justify?: BoxProps['justifyContent'];
-  /** Shorthand for styled-system `flexWrap` prop. */
-  wrap?: BoxProps['flexWrap'];
-}
+export interface FlexProps extends BoxProps, FlexComponentProps {}
 
-export const Flex: React.FC<FlexProps> = ({ align, direction, justify, wrap, ...rest }) => (
-  <Box display="flex" alignItems={align} flexDirection={direction} flexWrap={wrap} justifyContent={justify} {...rest} />
+export const Flex = styled.div.withConfig<FlexProps>({ shouldForwardProp: sfp(flexComponentProps) })(
+  allSystemProps,
+  pseudoSystemProps,
+  flexComponent,
 );
+
+Flex.defaultProps = {
+  display: 'flex',
+};
+
+Flex.displayName = 'Flex';
