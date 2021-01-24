@@ -1,17 +1,10 @@
+import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
-import { Box } from '..';
+import { Box, BoxProps } from '..';
 
 export default {
   title: 'Box',
   component: Box,
-  argTypes: {
-    zIndex: { table: { disable: true } },
-    // styled component props
-    as: { table: { disable: true } },
-    forwardedAs: { table: { disable: true } },
-    ref: { table: { disable: true } },
-    theme: { table: { disable: true } },
-  },
-};
+} as Meta<BoxProps>;
 
-export const Simple = (props: any) => <Box {...props}>A Box 📦</Box>;
+export const Simple: Story<BoxProps> = (props) => <Box {...props}>A Box 📦</Box>;
