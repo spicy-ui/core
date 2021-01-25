@@ -1,10 +1,18 @@
 import styled from 'styled-components';
-import { allSystem, AllSystemProps, pseudoSystem, PseudoSystemProps, shouldForwardProp } from '../../system';
+import {
+  allSystem,
+  AllSystemProps,
+  pseudoSystem,
+  PseudoSystemProps,
+  shouldForwardProp,
+  sx,
+  SxProp,
+} from '../../system';
 
-export interface BoxProps extends AllSystemProps, PseudoSystemProps {
+export interface BoxProps extends AllSystemProps, PseudoSystemProps, SxProp {
   color?: string;
 }
 
-export const Box = styled.div.withConfig<BoxProps>({ shouldForwardProp })(allSystem, pseudoSystem);
+export const Box = styled.div.withConfig<BoxProps>({ shouldForwardProp })(allSystem, pseudoSystem, sx);
 
 Box.displayName = 'Box';

@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 
-import css from '@styled-system/css';
+import css, { SystemStyleObject } from '@styled-system/css';
 import { createShouldForwardProp, props } from '@styled-system/should-forward-prop';
 import {
   border,
@@ -124,15 +124,7 @@ export const pseudoSystemProps = {
   _selection: '&::selection',
 };
 
-/**
- * Props for all pseudo system props.
- */
-export type PseudoSystemProps = Partial<Record<keyof typeof pseudoSystemProps, AllSystemProps>>;
-
-/**
- * Pseudo props util.
- */
-export function pseudoSystem({
+function mapPseudoProps({
   _hover,
   _active,
   _focus,
@@ -173,7 +165,7 @@ export function pseudoSystem({
   _fullScreen,
   _selection,
 }: PseudoSystemProps) {
-  return css({
+  return {
     [pseudoSystemProps._hover]: _hover,
     [pseudoSystemProps._active]: _active,
     [pseudoSystemProps._focus]: _focus,
@@ -213,7 +205,37 @@ export function pseudoSystem({
     [pseudoSystemProps._placeholder]: _placeholder,
     [pseudoSystemProps._fullScreen]: _fullScreen,
     [pseudoSystemProps._selection]: _selection,
-  });
+  };
+}
+
+/**
+ * Props for all pseudo system props.
+ */
+export type PseudoSystemProps = Partial<Record<keyof typeof pseudoSystemProps, AllSystemProps>>;
+
+/**
+ * Pseudo props util.
+ */
+export function pseudoSystem(p: any) {
+  return css(mapPseudoProps(p));
+}
+
+/**
+ * The `sx` prop allows you style elements inline, using values from your theme and supports pseudo props.
+ */
+export interface SxProp {
+  sx?: SystemStyleObject;
+}
+
+/**
+ * The `sx` prop util.
+ */
+export function sx(p: any) {
+  if (!p.sx) {
+    return {};
+  }
+
+  return css({ ...p.sx, ...mapPseudoProps(p.sx) });
 }
 
 /**
