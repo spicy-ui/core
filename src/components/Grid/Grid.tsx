@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import { allSystemProps, pseudoSystemProps, sfp } from '../../system';
+import { allSystem, pseudoSystem, sfp } from '../../system';
 import { BoxProps } from '../Box';
-import { gridComponent, gridComponentProps, GridComponentProps } from './util';
+import { gridSystem, gridSystemProps, GridSystemProps } from './system';
 
-export interface GridProps extends BoxProps, GridComponentProps {}
+export interface GridProps extends BoxProps, GridSystemProps {}
 
-export const Grid = styled.div.withConfig<GridProps>({ shouldForwardProp: sfp(gridComponentProps) })(
-  allSystemProps,
-  pseudoSystemProps,
-  gridComponent,
+export const Grid = styled.div.withConfig<GridProps>({ shouldForwardProp: sfp(gridSystemProps) })(
+  allSystem,
+  pseudoSystem,
+  gridSystem,
 );
 
 Grid.defaultProps = {

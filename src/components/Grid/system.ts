@@ -1,7 +1,7 @@
 import * as CSS from 'csstype';
 import { Config, RequiredTheme, ResponsiveValue, system, Theme, TLengthStyledSystem } from 'styled-system';
 
-export interface GridComponentProps<ThemeType extends Theme = RequiredTheme> {
+export interface GridSystemProps<ThemeType extends Theme = RequiredTheme> {
   /**
    * The `grid-column` CSS shorthand property specifies a grid item's size and location within a
    * grid column by contributing a line, a span, or nothing (automatic) to its grid placement,
@@ -90,9 +90,9 @@ const config: Config = {
   },
 };
 
-export const gridComponent = system(config);
+export const gridSystem = system(config);
 
-export const gridComponentProps = [
+export const gridSystemProps = [
   'column',
   'row',
   'area',

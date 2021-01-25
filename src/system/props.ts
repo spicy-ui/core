@@ -43,25 +43,9 @@ import {
   TypographyProps,
 } from './util';
 
-const allProps = [
-  ...props,
-  ...backgroundProps,
-  ...colorProps,
-  ...gridProps,
-  ...layoutProps,
-  ...otherProps,
-  ...positionProps,
-  ...transformProps,
-  ...transitionProps,
-  ...typographyProps,
-];
-
-export function sfp(p: string[] = []) {
-  return createShouldForwardProp([...allProps, ...p]);
-}
-
-export const shouldForwardProp = createShouldForwardProp(allProps);
-
+/**
+ * Props for all styled-system and custom utils.
+ */
 export type AllSystemProps = SpaceProps &
   ColorProps &
   TypographyProps &
@@ -76,7 +60,10 @@ export type AllSystemProps = SpaceProps &
   TransformProps &
   OtherProps;
 
-export const allSystemProps = compose(
+/**
+ * All styled-system and custom utils composed into one util.
+ */
+export const allSystem = compose(
   space,
   color,
   typography,
@@ -92,7 +79,10 @@ export const allSystemProps = compose(
   other,
 );
 
-export const pseudoProps = {
+/**
+ * Pseudo props mapped to CSS rule declartion.
+ */
+export const pseudoSystemProps = {
   _hover: '&:hover, &[data-hover]',
   _active: '&:active, &[data-active]',
   _focus: '&:focus, &[data-focus]',
@@ -134,9 +124,15 @@ export const pseudoProps = {
   _selection: '&::selection',
 };
 
-export type PseudoSystemProps = Partial<Record<keyof typeof pseudoProps, AllSystemProps>>;
+/**
+ * Props for all pseudo system props.
+ */
+export type PseudoSystemProps = Partial<Record<keyof typeof pseudoSystemProps, AllSystemProps>>;
 
-export function pseudoSystemProps({
+/**
+ * Pseudo props util.
+ */
+export function pseudoSystem({
   _hover,
   _active,
   _focus,
@@ -178,44 +174,74 @@ export function pseudoSystemProps({
   _selection,
 }: PseudoSystemProps) {
   return css({
-    [pseudoProps._hover]: _hover,
-    [pseudoProps._active]: _active,
-    [pseudoProps._focus]: _focus,
-    [pseudoProps._highlighted]: _highlighted,
-    [pseudoProps._focusWithin]: _focusWithin,
-    [pseudoProps._focusVisible]: _focusVisible,
-    [pseudoProps._disabled]: _disabled,
-    [pseudoProps._readOnly]: _readOnly,
-    [pseudoProps._before]: _before,
-    [pseudoProps._after]: _after,
-    [pseudoProps._empty]: _empty,
-    [pseudoProps._expanded]: _expanded,
-    [pseudoProps._checked]: _checked,
-    [pseudoProps._grabbed]: _grabbed,
-    [pseudoProps._pressed]: _pressed,
-    [pseudoProps._invalid]: _invalid,
-    [pseudoProps._valid]: _valid,
-    [pseudoProps._loading]: _loading,
-    [pseudoProps._selected]: _selected,
-    [pseudoProps._hidden]: _hidden,
-    [pseudoProps._autofill]: _autofill,
-    [pseudoProps._even]: _even,
-    [pseudoProps._odd]: _odd,
-    [pseudoProps._first]: _first,
-    [pseudoProps._last]: _last,
-    [pseudoProps._notFirst]: _notFirst,
-    [pseudoProps._notLast]: _notLast,
-    [pseudoProps._visited]: _visited,
-    [pseudoProps._activeLink]: _activeLink,
-    [pseudoProps._indeterminate]: _indeterminate,
-    [pseudoProps._groupHover]: _groupHover,
-    [pseudoProps._groupFocus]: _groupFocus,
-    [pseudoProps._groupActive]: _groupActive,
-    [pseudoProps._groupDisabled]: _groupDisabled,
-    [pseudoProps._groupInvalid]: _groupInvalid,
-    [pseudoProps._groupChecked]: _groupChecked,
-    [pseudoProps._placeholder]: _placeholder,
-    [pseudoProps._fullScreen]: _fullScreen,
-    [pseudoProps._selection]: _selection,
+    [pseudoSystemProps._hover]: _hover,
+    [pseudoSystemProps._active]: _active,
+    [pseudoSystemProps._focus]: _focus,
+    [pseudoSystemProps._highlighted]: _highlighted,
+    [pseudoSystemProps._focusWithin]: _focusWithin,
+    [pseudoSystemProps._focusVisible]: _focusVisible,
+    [pseudoSystemProps._disabled]: _disabled,
+    [pseudoSystemProps._readOnly]: _readOnly,
+    [pseudoSystemProps._before]: _before,
+    [pseudoSystemProps._after]: _after,
+    [pseudoSystemProps._empty]: _empty,
+    [pseudoSystemProps._expanded]: _expanded,
+    [pseudoSystemProps._checked]: _checked,
+    [pseudoSystemProps._grabbed]: _grabbed,
+    [pseudoSystemProps._pressed]: _pressed,
+    [pseudoSystemProps._invalid]: _invalid,
+    [pseudoSystemProps._valid]: _valid,
+    [pseudoSystemProps._loading]: _loading,
+    [pseudoSystemProps._selected]: _selected,
+    [pseudoSystemProps._hidden]: _hidden,
+    [pseudoSystemProps._autofill]: _autofill,
+    [pseudoSystemProps._even]: _even,
+    [pseudoSystemProps._odd]: _odd,
+    [pseudoSystemProps._first]: _first,
+    [pseudoSystemProps._last]: _last,
+    [pseudoSystemProps._notFirst]: _notFirst,
+    [pseudoSystemProps._notLast]: _notLast,
+    [pseudoSystemProps._visited]: _visited,
+    [pseudoSystemProps._activeLink]: _activeLink,
+    [pseudoSystemProps._indeterminate]: _indeterminate,
+    [pseudoSystemProps._groupHover]: _groupHover,
+    [pseudoSystemProps._groupFocus]: _groupFocus,
+    [pseudoSystemProps._groupActive]: _groupActive,
+    [pseudoSystemProps._groupDisabled]: _groupDisabled,
+    [pseudoSystemProps._groupInvalid]: _groupInvalid,
+    [pseudoSystemProps._groupChecked]: _groupChecked,
+    [pseudoSystemProps._placeholder]: _placeholder,
+    [pseudoSystemProps._fullScreen]: _fullScreen,
+    [pseudoSystemProps._selection]: _selection,
   });
 }
+
+/**
+ * Array of all prop keys.
+ */
+const allProps = [
+  ...props,
+  ...Object.keys(pseudoSystemProps),
+  ...backgroundProps,
+  ...colorProps,
+  ...gridProps,
+  ...layoutProps,
+  ...otherProps,
+  ...positionProps,
+  ...transformProps,
+  ...transitionProps,
+  ...typographyProps,
+];
+
+/**
+ * Should forward prop function for adding additional props to exclude.
+ * Includes all styled-system and custom util props.
+ */
+export function sfp(p: string[] = []) {
+  return createShouldForwardProp([...allProps, ...p]);
+}
+
+/**
+ * Should forward prop that includes all styled-system and custom util props.
+ */
+export const shouldForwardProp = createShouldForwardProp(allProps);

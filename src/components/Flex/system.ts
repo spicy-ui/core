@@ -1,7 +1,7 @@
 import * as CSS from 'csstype';
 import { Config, RequiredTheme, ResponsiveValue, system, Theme } from 'styled-system';
 
-export interface FlexComponentProps<ThemeType extends Theme = RequiredTheme> {
+export interface FlexSystemProps<ThemeType extends Theme = RequiredTheme> {
   /**
    * The CSS `align-items` property sets the align-self value on all direct children as a
    * group. In Flexbox, it controls the alignment of items on the Cross Axis. In Grid Layout,
@@ -48,6 +48,6 @@ const config: Config = {
   },
 };
 
-export const flexComponent = system(config);
+export const flexSystem = system(config);
 
-export const flexComponentProps = ['align', 'justify', 'wrap', 'direction'];
+export const flexSystemProps = ['align', 'justify', 'wrap', 'direction'];
