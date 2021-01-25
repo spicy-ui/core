@@ -1,4 +1,4 @@
-export const baseSizes = {
+export const space = {
   0: '0',
   px: '1px',
   0.5: '0.125rem',
@@ -63,7 +63,7 @@ const container = {
 };
 
 export const sizes = {
-  ...baseSizes,
+  ...space,
   ...largeSizes,
   container,
 };
