@@ -53,6 +53,7 @@
     "polished": "^4.1.0",
     "react-fast-compare": "^3.2.0",
     "react-icons": "^4.1.0",
+    "react-transition-group": "^4.4.1",
     "styled-normalize": "^8.0.7",
     "styled-system": "^5.1.5"
   },
