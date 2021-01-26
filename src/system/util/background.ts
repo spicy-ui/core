@@ -13,13 +13,6 @@ import {
 
 export interface BackgroundProps<ThemeType extends Theme = RequiredTheme> extends _BackgroundProps<ThemeType> {
   /**
-   * The background shorthand CSS property sets all background style properties at once,
-   * such as color, image, origin and size, repeat method, and others.
-   *
-   * [MDN reference](https://developer.mozilla.org/en-US/docs/Web/CSS/background)
-   */
-  bg?: ResponsiveValue<CSS.Property.Background<TLengthStyledSystem>, ThemeType>;
-  /**
    * The background-image CSS property sets one or more background images on an element.
    *
    * [MDN reference](https://developer.mozilla.org/en-US/docs/Web/CSS/background-image)
@@ -63,9 +56,6 @@ export interface BackgroundProps<ThemeType extends Theme = RequiredTheme> extend
 }
 
 const config: Config = {
-  bg: {
-    property: 'background',
-  },
   bgImage: {
     property: 'backgroundImage',
   },
@@ -86,12 +76,4 @@ config.bgAttachment = config.backgroundAttachment;
 
 export const background = compose(_background, system(config));
 
-export const backgroundProps = [
-  'bg',
-  'bgImage',
-  'bgSize',
-  'bgPosition',
-  'bgRepeat',
-  'backgroundAttachment',
-  'bgAttachment',
-];
+export const backgroundProps = ['bgImage', 'bgSize', 'bgPosition', 'bgRepeat', 'backgroundAttachment', 'bgAttachment'];
