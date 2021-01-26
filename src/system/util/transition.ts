@@ -51,7 +51,7 @@ const config: Config = {
   },
   transitionTiming: {
     property: 'transitionTimingFunction',
-    scale: 'transitions.timing',
+    scale: 'transitions.timingFn',
   },
   transitionDelay: {
     property: 'transitionDelay',
