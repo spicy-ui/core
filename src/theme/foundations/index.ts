@@ -1,3 +1,4 @@
+import { animations } from './animations';
 import { borders } from './borders';
 import { breakpoints } from './breakpoints';
 import { colors } from './colors';
@@ -8,6 +9,7 @@ import { typography } from './typography';
 import { zIndices } from './zIndices';
 
 export const foundations = {
+  ...animations,
   breakpoints,
   space,
   ...typography,
