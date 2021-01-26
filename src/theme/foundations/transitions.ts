@@ -19,7 +19,7 @@ const duration = {
   1000: '1000ms',
 };
 
-const timing = {
+const timingFn = {
   linear: 'linear',
   in: 'cubic-bezier(0.4, 0, 1, 1)',
   out: 'cubic-bezier(0, 0, 0.2, 1)',
@@ -40,6 +40,6 @@ const delay = {
 export const transitions = {
   property,
   duration,
-  timing,
+  timingFn,
   delay,
 };
