@@ -17,6 +17,7 @@ import { SwitchComponents } from './Switch';
 import { Text } from './Text';
 import { TextArea } from './TextArea';
 import { ToastComponents } from './Toast';
+import * as SpinnerComponents from './Spinner';
 
 export const components = {
   Alert,
@@ -38,4 +39,5 @@ export const components = {
   Text,
   TextArea,
   ...ToastComponents,
+  ...SpinnerComponents,
 };

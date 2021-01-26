@@ -22,5 +22,7 @@ export * from './Stack';
 export * from './Switch';
 export * from './Text';
 export * from './TextArea';
+export * from './Spinner';
 export * from './Theme';
 export * from './Toast';
+export * from './types';

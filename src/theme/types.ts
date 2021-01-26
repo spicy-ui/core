@@ -1,17 +1,10 @@
 import { SystemStyleObject } from '@styled-system/css';
 
-export type ComponentStyle = SystemStyleObject;
+export type ComponentThemeScale = SystemStyleObject;
 
-export interface ComponentVariants {
-  [variant: string]: ComponentStyle;
-}
-
-export interface ComponentSizes {
-  [size: string]: ComponentStyle;
-}
-
-export interface ComponentTheme {
-  baseStyle?: ComponentStyle;
-  sizes?: ComponentSizes;
-  variants?: ComponentVariants;
+export interface ComponentThemeConfig {
+  propToScaleMap?: Array<[string, string]>;
+  defaultProps?: { [prop: string]: any };
+  baseStyle?: ComponentThemeScale;
+  [scale: string]: ComponentThemeScale | undefined;
 }
