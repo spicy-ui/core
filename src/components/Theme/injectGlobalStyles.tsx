@@ -1,9 +1,11 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { normalize } from 'styled-normalize';
+import { keyframeCss } from '../../theme/foundations/animations';
 
 export const injectGlobalStyles = (additionalStyles?: string | ReturnType<typeof css>) => {
   const GlobalStyle = createGlobalStyle`
     ${normalize}
+    ${keyframeCss}
 
     *,
     *::before,
