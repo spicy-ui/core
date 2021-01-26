@@ -1,14 +1,13 @@
 import styled from 'styled-components';
-import { allSystem, pseudoSystem, sfp } from '../../system';
+import { allSystem, flexUtil, flexUtilProps, FlexUtilProps, pseudoSystem, sfp } from '../../system';
 import { BoxProps } from '../Box';
-import { flexSystem, flexSystemProps, FlexSystemProps } from './system';
 
-export interface FlexProps extends BoxProps, FlexSystemProps {}
+export interface FlexProps extends BoxProps, FlexUtilProps {}
 
-export const Flex = styled.div.withConfig<FlexProps>({ shouldForwardProp: sfp(flexSystemProps) })(
+export const Flex = styled.div.withConfig<FlexProps>({ shouldForwardProp: sfp(flexUtilProps) })(
   allSystem,
   pseudoSystem,
-  flexSystem,
+  flexUtil,
 );
 
 Flex.defaultProps = {

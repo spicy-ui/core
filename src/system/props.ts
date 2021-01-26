@@ -41,7 +41,7 @@ import {
   typography,
   typographyProps,
   TypographyProps,
-} from './util';
+} from './core';
 
 /**
  * Props for all styled-system and custom utils.
