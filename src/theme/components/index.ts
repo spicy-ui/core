@@ -1,6 +1,5 @@
 import { Alert } from './Alert';
 import { Avatar } from './Avatar';
-import { Button } from './Button';
 import { CheckboxComponents } from './Checkbox';
 import { Divider } from './Divider';
 import { Drawer } from './Drawer';
@@ -17,12 +16,12 @@ import { SwitchComponents } from './Switch';
 import { Text } from './Text';
 import { TextArea } from './TextArea';
 import { ToastComponents } from './Toast';
+import * as ButtonComponents from './Button';
 import * as SpinnerComponents from './Spinner';
 
 export const components = {
   Alert,
   Avatar,
-  Button,
   ...CheckboxComponents,
   Divider,
   Drawer,
@@ -39,5 +38,6 @@ export const components = {
   Text,
   TextArea,
   ...ToastComponents,
+  ...ButtonComponents,
   ...SpinnerComponents,
 };
