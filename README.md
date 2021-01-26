@@ -1,6 +1,6 @@
 # spicy-ui
 
-🌶️ A React component library to spice up your UI
+🌶️ A themable and extensible React UI library, ready to use out of the box or for you to build atop
 
 [![npm](https://img.shields.io/npm/v/@spicy-ui/core.svg)](https://www.npmjs.com/package/@spicy-ui/core)
 [![Dependencies](https://david-dm.org/spicy-ui/core/status.svg)](https://david-dm.org/spicy-ui/core)
@@ -8,9 +8,7 @@
 
 ## Basic usage
 
-Install Spicy UI with the following command `npm i @spicy-ui/core styled-components`
-
-If you are using TypeScript, you'll additionally install these dev dependencies `npm i -D @types/styled-components @types/styled-system`
+Install Spicy UI to your React project with `npm i @spicy-ui/core styled-components`
 
 ```js
 import React from 'react';
@@ -19,11 +17,11 @@ import { Button } from '@spciy-ui/core';
 export const App = () => <Button>Hey hot stuff 🌶️</Button>;
 ```
 
-See the [documentation](https://spicy-ui.netlify.app/) for component documentation, examples and advanced usages.
+See the [documentation](https://spicy-ui.netlify.app/) for components, theming and advanced usage.
 
 ## Issues and Bugs
 
-If you manage to find any, please report them [here](https://github.com/spicy-ui/core/issues) so they can be squashed.
+If you happen to find any, please report them [here](https://github.com/spicy-ui/core/issues) so they can be squashed.
 
 ## Development and Contributing
 
