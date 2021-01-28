@@ -10,12 +10,12 @@ export const Divider: ComponentThemeConfig = {
   }),
   orientations: {
     horizontal: () => ({
-      my: 4,
+      my: 3,
       width: 'auto',
       borderBottom: '1px solid',
     }),
     vertical: () => ({
-      mx: 4,
+      mx: 3,
       height: 'auto',
       borderLeft: '1px solid',
     }),
