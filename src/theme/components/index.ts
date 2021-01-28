@@ -18,6 +18,7 @@ import { TextArea } from './TextArea';
 import { ToastComponents } from './Toast';
 import * as ButtonComponents from './Button';
 import * as SpinnerComponents from './Spinner';
+import * as Divider from './Divider';
 
 export const components = {
   Alert,
@@ -40,4 +41,5 @@ export const components = {
   ...ToastComponents,
   ...ButtonComponents,
   ...SpinnerComponents,
+  ...Divider,
 };

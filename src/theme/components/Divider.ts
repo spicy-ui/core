@@ -1,20 +1,21 @@
-import { ComponentTheme } from '../types';
+import { ComponentThemeConfig } from '../types';
 
-export const Divider: ComponentTheme = {
+export const Divider: ComponentThemeConfig = {
+  propToScaleMap: [['orientation', 'orientations']],
   baseStyle: () => ({
     border: 0,
     borderColor: 'inherit',
     color: 'gray.300',
     opacity: 0.6,
   }),
-  variants: {
+  orientations: {
     horizontal: () => ({
-      my: 2,
+      my: 4,
       width: 'auto',
       borderBottom: '1px solid',
     }),
     vertical: () => ({
-      mx: 2,
+      mx: 4,
       height: 'auto',
       borderLeft: '1px solid',
     }),

@@ -1,24 +1,28 @@
+import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
-import { Box, Divider } from '..';
+import { Divider, DividerProps, Stack } from '..';
 
 export default {
   title: 'Divider',
   component: Divider,
-  argTypes: {
-    // styled component props
-    as: { table: { disable: true } },
-    forwardedAs: { table: { disable: true } },
-    ref: { table: { disable: true } },
-    theme: { table: { disable: true } },
-  },
-};
+} as Meta<DividerProps>;
 
-export const Horizontal = () => <Divider />;
+export const Simple: Story<DividerProps> = (props) => <Divider {...props} />;
 
-export const Vertical = () => (
-  <Box display="inline-flex">
+export const Vertical: Story<DividerProps> = () => (
+  <Stack>
     <div>one</div>
     <Divider orientation="vertical" />
     <div>two</div>
-  </Box>
+  </Stack>
+);
+
+export const Stylised: Story<DividerProps> = () => (
+  <Divider
+    sx={{
+      color: 'purple.700',
+      borderBottomWidth: '2px',
+      borderStyle: 'dashed',
+    }}
+  />
 );
