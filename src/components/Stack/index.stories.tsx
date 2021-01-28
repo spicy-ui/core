@@ -37,7 +37,7 @@ export const Responsive: Story<StackProps> = () => (
 );
 
 export const WithDividers: Story<StackProps> = () => (
-  <Stack divider={<Box borderBottom="1px" borderColor="gray.200" />} direction="column" spacing={4}>
+  <Stack divider={<Box borderBottom="1px" borderColor="gray.200" />} spacing={4}>
     <Box p="2" bg="red.50">
       Box 1
     </Box>

@@ -10,7 +10,7 @@ export default {
 export const Simple: Story<DividerProps> = (props) => <Divider {...props} />;
 
 export const Vertical: Story<DividerProps> = () => (
-  <Stack>
+  <Stack direction="row">
     <div>one</div>
     <Divider orientation="vertical" />
     <div>two</div>

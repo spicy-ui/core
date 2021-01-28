@@ -75,7 +75,7 @@ export const Colors: Story<ButtonProps> = (props) => (
 );
 
 export const Sizes: Story<ButtonProps> = () => (
-  <Stack spacing={4} align="center">
+  <Stack spacing={4} direction="row" align="center">
     <Button size="xs">Button</Button>
     <Button size="sm">Button</Button>
     <Button size="md">Button</Button>
@@ -84,7 +84,7 @@ export const Sizes: Story<ButtonProps> = () => (
 );
 
 export const Variants: Story<ButtonProps> = () => (
-  <Stack spacing={4} align="center">
+  <Stack spacing={4} direction="row" align="center">
     <Button variant="filled">Button</Button>
     <Button variant="outlined">Button</Button>
     <Button variant="ghost">Button</Button>
@@ -94,14 +94,14 @@ export const Variants: Story<ButtonProps> = () => (
 );
 
 export const WithIcon: Story<ButtonProps> = () => (
-  <Stack spacing={4} align="center">
+  <Stack spacing={4} direction="row" align="center">
     <Button iconBefore={<HiOutlineCog />}>Settings</Button>
     <Button iconAfter={<HiOutlineChat />}>Message</Button>
   </Stack>
 );
 
 export const Loading: Story<ButtonProps> = () => (
-  <Stack spacing={4} align="center">
+  <Stack spacing={4} direction="row" align="center">
     <Button isLoading>Settings</Button>
     <Button isLoading loadingText="Sending...">
       Send
@@ -186,7 +186,7 @@ export const CustomButtons: Story<ButtonProps> = () => {
   };
 
   return (
-    <Stack spacing={4} direction="column" shouldWrapChildren>
+    <Stack spacing={4} shouldWrapChildren>
       <Button variant="unstyled" sx={muiButton}>
         Material UI Button
       </Button>

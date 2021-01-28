@@ -48,7 +48,7 @@ export const Stack = React.forwardRef<HTMLDivElement, StackProps>((props, ref) =
   const {
     children,
     sx: sxProp,
-    direction = 'row',
+    direction = 'column',
     align,
     justify,
     wrap,
