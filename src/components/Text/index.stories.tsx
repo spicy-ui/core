@@ -1,42 +1,30 @@
+import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Stack, Text } from '..';
+import { Stack, Text, TextProps } from '..';
 
-const textVariants = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl'];
+const textVariants = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl', '8xl', '9xl'];
 
 export default {
   title: 'Text',
   component: Text,
-  argTypes: {
-    variant: {
-      control: { type: 'select', options: textVariants },
-    },
-    // styled component props
-    as: { table: { disable: true } },
-    forwardedAs: { table: { disable: true } },
-    ref: { table: { disable: true } },
-    theme: { table: { disable: true } },
-  },
-};
+} as Meta<TextProps>;
 
-export const Simple = (props: any) => <Text {...props}>The quick brown fox jumped over the lazy dog.</Text>;
-Simple.args = {
-  variant: 'md',
-};
+export const Simple: Story<TextProps> = (props) => (
+  <Text {...props}>The quick brown fox jumped over the lazy dog.</Text>
+);
 
-const reversedVariants = [...textVariants].reverse();
-
-export const Variants = () => (
+export const Variants: Story<TextProps> = () => (
   <Stack spacing={4}>
-    {reversedVariants.map((variant, idx) => (
-      <Text key={uid(variant, idx)} variant={variant}>
+    {textVariants.map((variant, idx) => (
+      <Text variant={variant} key={uid(variant, idx)}>
         {variant}: The quick brown fox jumped over the lazy dog.
       </Text>
     ))}
   </Stack>
 );
 
-export const SemanticText = () => (
+export const SemanticText: Story<TextProps> = () => (
   <Stack spacing={4}>
     {[
       { as: 'a', label: 'Link' },
@@ -54,9 +42,9 @@ export const SemanticText = () => (
       { as: 'samp', label: 'Sample' },
       { as: 'sub', label: 'sub' },
       { as: 'sup', label: 'sup' },
-    ].map(({ as: As, label }: any, idx) => (
-      <Text key={uid(label, idx)}>
-        <As>{label}</As>
+    ].map(({ as, label }, idx) => (
+      <Text as={as as any} key={uid(label, idx)}>
+        {label}
       </Text>
     ))}
   </Stack>

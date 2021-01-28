@@ -1,36 +1,48 @@
-import { createShouldForwardProp, props } from '@styled-system/should-forward-prop';
 import styled from 'styled-components';
 import {
-  color,
-  ColorProps,
-  layout,
-  LayoutProps,
-  ResponsiveValue,
-  space,
-  SpaceProps,
-  typography,
-  TypographyProps,
-} from 'styled-system';
-import { baseStyle, variant } from '../../helpers';
+  allSystem,
+  AllSystemProps,
+  getComponentScale,
+  pseudoSystem,
+  PseudoSystemProps,
+  shouldForwardProp,
+  sx,
+  SxProp,
+} from '../../system';
+import { LiteralUnion } from '../types';
 
-export interface TextProps extends Omit<ColorProps, 'color'>, LayoutProps, SpaceProps, TypographyProps {
-  /** Color of the text. */
-  color?: ResponsiveValue<string>;
-  /** Variant style of the text. */
-  variant?: string;
+export type TextVariant =
+  | 'xs'
+  | 'sm'
+  | 'md'
+  | 'lg'
+  | 'xl'
+  | '2xl'
+  | '3xl'
+  | '4xl'
+  | '5xl'
+  | '6xl'
+  | '7xl'
+  | '8xl'
+  | '9xl';
+
+export interface TextProps extends AllSystemProps, PseudoSystemProps, SxProp {
+  color?: string;
+  /** Stack children. */
+  children?: React.ReactNode;
+  /** Text variant. */
+  variant?: LiteralUnion<TextVariant>;
 }
 
-const shouldForwardProp = createShouldForwardProp([...props, 'variant']);
-
-export const Text = styled('p').withConfig<TextProps>({ shouldForwardProp })`
-  ${baseStyle('components.Text')}
-  ${variant('components.Text')}
-  ${color}
-  ${layout}
-  ${space}
-  ${typography}
-`;
+export const Text = styled.p.withConfig<TextProps>({ shouldForwardProp })(
+  allSystem,
+  pseudoSystem,
+  sx,
+  getComponentScale('Text.variants', 'variant'),
+);
 
 Text.defaultProps = {
   variant: 'md',
 };
+
+Text.displayName = 'Text';

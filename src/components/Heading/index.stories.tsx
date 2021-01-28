@@ -1,33 +1,23 @@
+import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Stack, Heading } from '..';
+import { Stack, Heading, HeadingProps } from '..';
 
 const headingVariants = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
 export default {
   title: 'Heading',
   component: Heading,
-  argTypes: {
-    variant: {
-      control: { type: 'select', options: headingVariants },
-    },
-    // styled component props
-    as: { table: { disable: true } },
-    forwardedAs: { table: { disable: true } },
-    ref: { table: { disable: true } },
-    theme: { table: { disable: true } },
-  },
-};
+} as Meta<HeadingProps>;
 
-export const Simple = (props: any) => <Heading {...props}>The quick brown fox jumped over the lazy dog.</Heading>;
-Simple.args = {
-  variant: 'h2',
-};
+export const Simple: Story<HeadingProps> = (props) => (
+  <Heading {...props}>The quick brown fox jumped over the lazy dog.</Heading>
+);
 
-export const Variants = () => (
+export const Variants: Story<HeadingProps> = () => (
   <Stack spacing={4}>
     {headingVariants.map((variant, idx) => (
-      <Heading key={uid(variant, idx)} variant={variant}>
+      <Heading variant={variant} key={uid(variant, idx)}>
         {variant}: The quick brown fox jumped over the lazy dog.
       </Heading>
     ))}
