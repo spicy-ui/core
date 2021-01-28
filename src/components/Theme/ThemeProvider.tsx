@@ -16,3 +16,7 @@ export const ThemeProvider: React.FC<ThemeProps> = ({ children, theme = {} }) =>
     </StyledThemeProvider>
   );
 };
+
+ThemeProvider.defaultProps = {};
+
+ThemeProvider.displayName = 'ThemeProvider';
