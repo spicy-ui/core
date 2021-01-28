@@ -4,6 +4,7 @@ import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { theme as defaultTheme } from '../../theme';
 
 export interface ThemeProps {
+  /** Custom theme to be merged with the default theme. */
   theme?: any;
 }
 

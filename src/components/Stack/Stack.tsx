@@ -34,9 +34,13 @@ function responsive(prop: any, mapper: (val: any) => any) {
 }
 
 export interface StackProps extends SxProp, FlexUtilProps {
+  /** Stack children. */
   children?: React.ReactNode;
+  /** Spacing between each stack element. */
   spacing?: MarginProps['margin'];
+  /** Set a custom divider element. */
   divider?: React.ReactElement;
+  /** Set to `true` if each child of the stack should be wrapped in a `Box` component. */
   shouldWrapChildren?: boolean;
 }
 
