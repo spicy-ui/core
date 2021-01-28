@@ -5,7 +5,6 @@ import { keyframeCss } from '../../theme/foundations/animations';
 export const injectGlobalStyles = (additionalStyles?: string | ReturnType<typeof css>) => {
   const GlobalStyle = createGlobalStyle`
     ${normalize}
-    ${keyframeCss}
 
     *,
     *::before,
@@ -113,6 +112,8 @@ export const injectGlobalStyles = (additionalStyles?: string | ReturnType<typeof
       max-width: 100%;
       height: auto;
     }
+
+    /* ${keyframeCss} */
 
     ${additionalStyles};
   `;
