@@ -1,58 +1,133 @@
 import * as React from 'react';
-import { SpaceProps } from 'styled-system';
+import { MarginProps } from 'styled-system';
+import { FlexUtilProps, SxProp } from '../../system';
 import { Box } from '../Box';
-import { Flex, FlexProps } from '../Flex';
 
-export type StackOrientation = 'horizontal' | 'vertical';
+function responsive(prop: any, mapper: (val: any) => any) {
+  if (Array.isArray(prop)) {
+    return prop.map((item) => {
+      if (item === null) {
+        return null;
+      }
+      return mapper(item);
+    });
+  }
 
-export interface StackProps extends FlexProps {
-  /** If `true` the items will be reversed.  */
-  isReversed?: boolean;
-  /** Orientation of the stack. */
-  orientation?: StackOrientation;
-  /** Spacing between each item. Accepts styled-system spacing prop values. */
-  spacing?: SpaceProps['m'];
+  const type = typeof prop;
+
+  // isObject check
+  if ((type === 'function' || type === 'object') && !!prop) {
+    const result: { [key: string]: any } = {};
+
+    Object.keys(prop).forEach((key) => {
+      result[key] = mapper(prop[key]);
+    });
+
+    return result;
+  }
+
+  if (prop != null) {
+    return mapper(prop);
+  }
+
+  return null;
 }
 
-export const Stack: React.FC<StackProps> = ({
-  children,
-  direction: directionProp,
-  isReversed: isReversedProp = false,
-  orientation = 'vertical',
-  spacing,
-  ...rest
-}) => {
-  const isReversed = isReversedProp || (directionProp && (directionProp as string).endsWith('reverse'));
+export interface StackProps extends SxProp, FlexUtilProps {
+  children?: React.ReactNode;
+  spacing?: MarginProps['margin'];
+  divider?: React.ReactElement;
+  shouldWrapChildren?: boolean;
+}
 
-  let direction = (directionProp as string) || 'column';
+export const Stack = React.forwardRef<HTMLDivElement, StackProps>((props, ref) => {
+  const {
+    children,
+    sx: sxProp,
+    direction = 'row',
+    align,
+    justify,
+    wrap,
+    spacing,
+    shouldWrapChildren,
+    divider: dividerComponent,
+    ...rest
+  } = props;
 
-  if (!directionProp && orientation === 'horizontal') {
-    direction = `row`;
-  }
+  const stackStyle = React.useMemo(() => {
+    const directions = {
+      row: { marginLeft: spacing, marginTop: 0 },
+      column: { marginTop: spacing, marginLeft: 0 },
+      'row-reverse': { marginRight: spacing, marginBottom: 0 },
+      'column-reverse': { marginBottom: spacing, marginRight: 0 },
+    };
 
-  if (!directionProp && isReversed) {
-    direction += '-reverse';
-  }
+    return {
+      '& > * ~ *': responsive(direction, (v: keyof typeof directions) => directions[v]),
+    };
+  }, [direction, spacing]);
 
-  const isInline = (direction as string).startsWith('row');
+  const dividerStyle = React.useMemo(() => {
+    const dividers = {
+      row: { my: 0, mx: spacing },
+      column: { my: spacing, mx: 0 },
+      'row-reverse': { my: 0, mx: spacing },
+      'column-reverse': { my: spacing, mx: 0 },
+    };
 
-  const validChildrenArray = React.Children.toArray(children).filter(React.isValidElement);
+    return {
+      '&': responsive(direction, (v: keyof typeof dividers) => dividers[v]),
+    };
+  }, [direction, spacing]);
+
+  const validChildren = React.Children.toArray(children).filter((child) => React.isValidElement(child));
+
+  const sx = React.useMemo(() => (!dividerComponent ? { ...stackStyle, ...sxProp } : sxProp), [
+    dividerComponent,
+    stackStyle,
+    sxProp,
+  ]);
 
   return (
-    <Flex direction={direction as FlexProps['direction']} {...rest}>
-      {validChildrenArray.map((child, idx) => {
-        const isLastChild = validChildrenArray.length === idx + 1;
-        const spacingProps = isInline
-          ? { [isReversed ? 'ml' : 'mr']: isLastChild ? undefined : spacing }
-          : { [isReversed ? 'mt' : 'mb']: isLastChild ? undefined : spacing };
+    <Box
+      ref={ref}
+      display="flex"
+      alignItems={align}
+      justifyContent={justify}
+      flexDirection={direction}
+      flexWrap={wrap}
+      sx={sx}
+      {...rest}
+    >
+      {!shouldWrapChildren && !dividerComponent
+        ? validChildren
+        : validChildren.map((element, index) => {
+            const child = shouldWrapChildren ? (
+              // eslint-disable-next-line react/no-array-index-key
+              <Box key={`stack-child-${index}`}>{element}</Box>
+            ) : (
+              element
+            );
 
-        return (
-          // eslint-disable-next-line react/no-array-index-key
-          <Box key={`stack-box-${idx}`} display="inline-block" {...spacingProps}>
-            {child}
-          </Box>
-        );
-      })}
-    </Flex>
+            if (!dividerComponent) {
+              return child;
+            }
+
+            const divider =
+              index + 1 !== validChildren.length ? React.cloneElement(dividerComponent, { sx: dividerStyle }) : null;
+
+            return (
+              // eslint-disable-next-line react/no-array-index-key
+              <React.Fragment key={`stack-fragment-${index}`}>
+                {child}
+                {divider}
+              </React.Fragment>
+            );
+          })}
+    </Box>
   );
-};
+});
+
+Stack.defaultProps = {};
+
+Stack.displayName = 'Stack';
