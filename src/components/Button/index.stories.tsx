@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react';
+import { SystemStyleObject } from '@styled-system/css';
 import * as React from 'react';
 import { HiOutlineChat, HiOutlineCog } from 'react-icons/hi';
 import { uid } from 'react-uid';
@@ -121,44 +122,77 @@ export const CustomLoadingSpinner: Story<ButtonProps> = () => {
   );
 };
 
-export const CustomButtons: Story<ButtonProps> = () => (
-  <Stack spacing={4} direction="column" shouldWrapChildren>
-    <Button
-      size="md"
-      sx={{
-        height: '48px',
-        width: '200px',
-        border: '2px',
-        borderColor: 'green.500',
-      }}
-    >
-      Extended Button
-    </Button>
-    <Button
-      sx={{
-        height: '24px',
-        lineHeight: '1.2',
-        transition: 'all 0.2s cubic-bezier(.08,.52,.52,1)',
-        border: '1px',
-        px: '8px',
-        borderRadius: '2px',
-        fontSize: '14px',
-        fontWeight: 'semibold',
-        bg: '#f5f6f7',
-        borderColor: '#ccd0d5',
-        color: '#4b4f56',
-        _hover: { bg: '#ebedf0' },
-        _active: {
-          bg: '#dddfe2',
-          transform: 'scale(0.98)',
-          borderColor: '#bec3c9',
-        },
-        _focus: {
-          boxShadow: '0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15)',
-        },
-      }}
-    >
-      Custom Button
-    </Button>
-  </Stack>
-);
+export const CustomButtons: Story<ButtonProps> = () => {
+  const muiButton: SystemStyleObject = {
+    color: 'white',
+    backgroundColor: 'blue.500',
+    boxShadow: `0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12)`,
+    padding: '6px 16px',
+    fontSize: '0.875rem',
+    minWidth: '64px',
+    boxSizing: 'border-box',
+    transition: `background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms`,
+    fontFamily: `"Roboto", "Helvetica", "Arial", sans-serif`,
+    fontWeight: 500,
+    lineHeight: 1.75,
+    borderRadius: `4px`,
+    letterSpacing: `0.02857em`,
+    textTransform: `uppercase`,
+    border: 0,
+    cursor: 'pointer',
+    display: 'inline-flex',
+    outline: 0,
+    position: 'relative',
+    alignItems: 'center',
+    userSelect: 'none',
+    verticalAlign: 'middle',
+    justifyContent: 'center',
+    textDecoration: 'none',
+    _hover: { backgroundColor: 'blue.600' },
+    _active: { backgroundColor: 'blue.700' },
+    _focus: { boxShadow: 'none' },
+  };
+
+  const ghButton: SystemStyleObject = {
+    position: `relative`,
+    display: `inline-block`,
+    padding: `6px 16px`,
+    fontFamily: `inherit`,
+    fontWeight: `600`,
+    lineHeight: `20px`,
+    whiteSpace: `nowrap`,
+    verticalAlign: `middle`,
+    cursor: `pointer`,
+    userSelect: `none`,
+    borderRadius: `6px`,
+    appearance: `none`,
+    textDecoration: `none`,
+    textAlign: `center`,
+    fontSize: `14px`,
+    color: `rgb(36, 41, 46)`,
+    backgroundColor: `rgb(250, 251, 252)`,
+    border: `1px solid rgba(27, 31, 35, 0.12)`,
+    boxShadow: `rgba(149, 157, 165, 0.1) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 2px 0px inset`,
+    _hover: {
+      backgroundColor: `rgb(243, 244, 246)`,
+      boxShadow: `rgba(209, 213, 218, 0.2) 0px 1px 0px, rgba(255, 255, 255, 0.1) 0px 2px 0px inset`,
+    },
+    _active: {
+      backgroundColor: `rgb(237, 239, 242)`,
+      boxShadow: `rgba(149, 157, 165, 0.1) 0px 2px 0px inset`,
+      borderColor: `rgb(209, 213, 218)`,
+    },
+    _focus: { boxShadow: 'none' },
+  };
+
+  return (
+    <Stack spacing={4} direction="column" shouldWrapChildren>
+      <Button variant="unstyled" sx={muiButton}>
+        Material UI Button
+      </Button>
+      <Button variant="unstyled" sx={ghButton}>
+        Github Button
+      </Button>
+    </Stack>
+  );
+};
