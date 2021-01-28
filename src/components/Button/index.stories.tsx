@@ -3,8 +3,7 @@ import * as React from 'react';
 import { HiOutlineChat, HiOutlineCog } from 'react-icons/hi';
 import { uid } from 'react-uid';
 import { useTheme } from 'styled-components';
-import { Button, ButtonProps } from '..';
-import { ButtonVariants } from './Button';
+import { Button, ButtonProps, ButtonVariants, Stack } from '..';
 
 const buttonColors = [
   'blueGray',
@@ -75,46 +74,38 @@ export const Colors: Story<ButtonProps> = (props) => (
 );
 
 export const Sizes: Story<ButtonProps> = () => (
-  // <Stack spacing={4} direction="row" align="center">
-  <>
+  <Stack spacing={4} align="center">
     <Button size="xs">Button</Button>
     <Button size="sm">Button</Button>
     <Button size="md">Button</Button>
     <Button size="lg">Button</Button>
-  </>
-  // </Stack>
+  </Stack>
 );
 
 export const Variants: Story<ButtonProps> = () => (
-  // <Stack spacing={4} direction="row" align="center">
-  <>
+  <Stack spacing={4} align="center">
     <Button variant="filled">Button</Button>
     <Button variant="outlined">Button</Button>
     <Button variant="ghost">Button</Button>
     <Button variant="link">Button</Button>
     <Button variant="unstyled">Button</Button>
-  </>
-  // </Stack>
+  </Stack>
 );
 
 export const WithIcon: Story<ButtonProps> = () => (
-  // <Stack spacing={4} direction="row" align="center">
-  <>
+  <Stack spacing={4} align="center">
     <Button iconBefore={<HiOutlineCog />}>Settings</Button>
     <Button iconAfter={<HiOutlineChat />}>Message</Button>
-  </>
-  // </Stack>
+  </Stack>
 );
 
 export const Loading: Story<ButtonProps> = () => (
-  // <Stack spacing={4} direction="row" align="center">
-  <>
+  <Stack spacing={4} align="center">
     <Button isLoading>Settings</Button>
     <Button isLoading loadingText="Sending...">
       Send
     </Button>
-  </>
-  // </Stack>
+  </Stack>
 );
 
 export const CustomLoadingSpinner: Story<ButtonProps> = () => {
@@ -131,8 +122,7 @@ export const CustomLoadingSpinner: Story<ButtonProps> = () => {
 };
 
 export const CustomButtons: Story<ButtonProps> = () => (
-  // <Stack spacing={4} direction="column">
-  <>
+  <Stack spacing={4} direction="column" shouldWrapChildren>
     <Button
       size="md"
       sx={{
@@ -170,6 +160,5 @@ export const CustomButtons: Story<ButtonProps> = () => (
     >
       Custom Button
     </Button>
-  </>
-  // </Stack>
+  </Stack>
 );
