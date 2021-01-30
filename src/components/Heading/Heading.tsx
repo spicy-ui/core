@@ -1,19 +1,11 @@
+import { shouldForwardProp } from '@spicy-ui/styled-system';
 import styled from 'styled-components';
-import {
-  allSystem,
-  AllSystemProps,
-  getComponentScale,
-  pseudoSystem,
-  PseudoSystemProps,
-  shouldForwardProp,
-  sx,
-  SxProp,
-} from '../../system';
-import { LiteralUnion } from '../types';
+import { allSystem, AllSystemProps, getComponentScale, sx, SxProps } from '../../system';
+import { LiteralUnion } from '../../types';
 
 export type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-export interface HeadingProps extends AllSystemProps, PseudoSystemProps, SxProp {
+export interface HeadingProps extends AllSystemProps, SxProps {
   color?: string;
   /** Stack children. */
   children?: React.ReactNode;
@@ -22,10 +14,9 @@ export interface HeadingProps extends AllSystemProps, PseudoSystemProps, SxProp 
 }
 
 export const Heading = styled.p.withConfig<HeadingProps>({ shouldForwardProp })(
-  allSystem,
-  pseudoSystem,
-  sx,
   getComponentScale('Heading.variants', 'variant'),
+  allSystem,
+  sx,
 );
 
 Heading.defaultProps = {

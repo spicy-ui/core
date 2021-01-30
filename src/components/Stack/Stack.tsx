@@ -1,6 +1,7 @@
+import { ExtendedFlexboxProps } from '@spicy-ui/styled-system';
+import { MarginProps } from '@spicy-ui/styled-system/dist/parsers/space';
 import * as React from 'react';
-import { MarginProps } from 'styled-system';
-import { FlexUtilProps, SxProp } from '../../system';
+import { SxProps } from '../../system';
 import { Box } from '../Box';
 
 function responsive(prop: any, mapper: (val: any) => any) {
@@ -33,7 +34,7 @@ function responsive(prop: any, mapper: (val: any) => any) {
   return null;
 }
 
-export interface StackProps extends SxProp, FlexUtilProps {
+export interface StackProps extends SxProps, ExtendedFlexboxProps {
   /** Stack children. */
   children?: React.ReactNode;
   /** Spacing between each stack element. */

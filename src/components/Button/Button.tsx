@@ -1,14 +1,14 @@
+import { SpaceProps } from '@spicy-ui/styled-system';
 import * as React from 'react';
-import { MarginProps } from 'styled-system';
 import { useComponentStyles } from '../../hooks';
-import { SxProp } from '../../system';
-import { LiteralUnion } from '../types';
+import { SxProps } from '../../system';
+import { LiteralUnion } from '../../types';
 import { Box } from '../Box';
 import { Spinner } from '../Spinner';
 
 interface ButtonSpinnerProps {
   hasText: boolean;
-  spacing?: MarginProps['margin'];
+  spacing?: SpaceProps['margin'];
 }
 
 const ButtonSpinner: React.FC<ButtonSpinnerProps> = (props) => {
@@ -23,10 +23,10 @@ export type ButtonSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export type ButtonVariants = 'filled' | 'outlined' | 'ghost' | 'link' | 'unstyled';
 
-export interface ButtonProps extends SxProp {
+export interface ButtonProps extends SxProps {
   children?: React.ReactNode;
   as?: string | React.ComponentType<any>;
-  iconSpacing?: MarginProps['margin'];
+  iconSpacing?: SpaceProps['margin'];
   iconBefore?: React.ReactElement;
   iconAfter?: React.ReactElement;
   isActive?: boolean;

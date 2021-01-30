@@ -1,14 +1,11 @@
+import { extendedFlexbox, ExtendedFlexboxProps, shouldForwardProp } from '@spicy-ui/styled-system';
 import styled from 'styled-components';
-import { allSystem, flexUtil, flexUtilProps, FlexUtilProps, pseudoSystem, sfp } from '../../system';
+import { allSystem, sx } from '../../system';
 import { BoxProps } from '../Box';
 
-export interface FlexProps extends BoxProps, FlexUtilProps {}
+export interface FlexProps extends BoxProps, ExtendedFlexboxProps {}
 
-export const Flex = styled.div.withConfig<FlexProps>({ shouldForwardProp: sfp(flexUtilProps) })(
-  allSystem,
-  pseudoSystem,
-  flexUtil,
-);
+export const Flex = styled.div.withConfig<FlexProps>({ shouldForwardProp })(allSystem, extendedFlexbox, sx);
 
 Flex.defaultProps = {
   display: 'flex',

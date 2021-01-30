@@ -1,14 +1,11 @@
+import { extendedGrid, ExtendedGridProps, shouldForwardProp } from '@spicy-ui/styled-system';
 import styled from 'styled-components';
-import { allSystem, gridUtil, gridUtilProps, GridUtilProps, pseudoSystem, sfp } from '../../system';
+import { allSystem, sx } from '../../system';
 import { BoxProps } from '../Box';
 
-export interface GridProps extends BoxProps, GridUtilProps {}
+export interface GridProps extends BoxProps, ExtendedGridProps {}
 
-export const Grid = styled.div.withConfig<GridProps>({ shouldForwardProp: sfp(gridUtilProps) })(
-  allSystem,
-  pseudoSystem,
-  gridUtil,
-);
+export const Grid = styled.div.withConfig<GridProps>({ shouldForwardProp })(allSystem, extendedGrid, sx);
 
 Grid.defaultProps = {
   display: 'grid',

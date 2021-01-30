@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useComponentStyles } from '../../hooks';
-import { SxProp } from '../../system';
-import { LiteralUnion } from '../types';
+import { SxProps } from '../../system';
+import { LiteralUnion } from '../../types';
 import { Box } from '../Box';
 
 export type SpinnerSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
-export interface SpinnerProps extends SxProp {
+export interface SpinnerProps extends SxProps {
   /** Color of the spinner. */
   color?: string;
   /** Color of the spinner's track. */

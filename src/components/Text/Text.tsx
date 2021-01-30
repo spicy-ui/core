@@ -1,15 +1,7 @@
+import { shouldForwardProp } from '@spicy-ui/styled-system';
 import styled from 'styled-components';
-import {
-  allSystem,
-  AllSystemProps,
-  getComponentScale,
-  pseudoSystem,
-  PseudoSystemProps,
-  shouldForwardProp,
-  sx,
-  SxProp,
-} from '../../system';
-import { LiteralUnion } from '../types';
+import { allSystem, AllSystemProps, getComponentScale, sx, SxProps } from '../../system';
+import { LiteralUnion } from '../../types';
 
 export type TextVariant =
   | 'xs'
@@ -26,7 +18,7 @@ export type TextVariant =
   | '8xl'
   | '9xl';
 
-export interface TextProps extends AllSystemProps, PseudoSystemProps, SxProp {
+export interface TextProps extends AllSystemProps, SxProps {
   color?: string;
   /** Stack children. */
   children?: React.ReactNode;
@@ -35,10 +27,9 @@ export interface TextProps extends AllSystemProps, PseudoSystemProps, SxProp {
 }
 
 export const Text = styled.p.withConfig<TextProps>({ shouldForwardProp })(
-  allSystem,
-  pseudoSystem,
-  sx,
   getComponentScale('Text.variants', 'variant'),
+  allSystem,
+  sx,
 );
 
 Text.defaultProps = {
