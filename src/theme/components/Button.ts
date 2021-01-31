@@ -1,7 +1,7 @@
 import { transparentize } from 'polished';
 import { ComponentThemeConfig, ComponentThemeScale } from '../types';
 
-const ghost: ComponentThemeScale = ({ color }) => {
+const ghost: ComponentThemeScale = ({ color }: any) => {
   switch (color) {
     case 'blueGray':
     case 'coolGray':
@@ -10,21 +10,32 @@ const ghost: ComponentThemeScale = ({ color }) => {
     case 'warmGray':
       return {
         color: `${color}.800`,
-        _hover: { backgroundColor: ({ colors }) => transparentize(0.5, colors[color][200]) },
-        _active: { backgroundColor: ({ colors }) => transparentize(0.5, colors[color][300]) },
+        _hover: {
+          backgroundColor: ({ colors }: any) => transparentize(0.5, colors[color][200]),
+          _disabled: { backgroundColor: 'transparent' },
+        },
+        _active: {
+          backgroundColor: ({ colors }: any) => transparentize(0.5, colors[color][300]),
+        },
       };
     case 'blackAlpha':
     case 'whiteAlpha':
       return {
         color: `${color}.800`,
-        _hover: { backgroundColor: `${color}.200` },
+        _hover: {
+          backgroundColor: `${color}.200`,
+          _disabled: { backgroundColor: 'transparent' },
+        },
         _active: { backgroundColor: `${color}.300` },
       };
     default:
       return {
         color: `${color}.500`,
-        _hover: { backgroundColor: ({ colors }) => transparentize(0.5, colors[color][100]) },
-        _active: { backgroundColor: ({ colors }) => transparentize(0.5, colors[color][200]) },
+        _hover: {
+          backgroundColor: ({ colors }: any) => transparentize(0.5, colors[color][100]),
+          _disabled: { backgroundColor: 'transparent' },
+        },
+        _active: { backgroundColor: ({ colors }: any) => transparentize(0.5, colors[color][200]) },
       };
   }
 };
@@ -33,13 +44,13 @@ function isGray(color: string) {
   return ['blueGray', 'coolGray', 'gray', 'trueGray', 'warmGray'].includes(color);
 }
 
-const outlined: ComponentThemeScale = (props) => ({
+const outlined: ComponentThemeScale = (props: any) => ({
   border: '2px',
   borderColor: isGray(props.color) ? `${props.color}.200` : 'currentcolor',
   ...ghost(props),
 });
 
-const filled: ComponentThemeScale = ({ color }) => {
+const filled: ComponentThemeScale = ({ color }: any) => {
   switch (color) {
     case 'blueGray':
     case 'coolGray':
@@ -49,7 +60,10 @@ const filled: ComponentThemeScale = ({ color }) => {
       return {
         backgroundColor: `${color}.100`,
         color: 'gray.800',
-        _hover: { backgroundColor: `${color}.200` },
+        _hover: {
+          backgroundColor: `${color}.200`,
+          _disabled: { backgroundColor: `${color}.100` },
+        },
         _active: { backgroundColor: `${color}.300` },
       };
     case 'blackAlpha':
@@ -57,25 +71,34 @@ const filled: ComponentThemeScale = ({ color }) => {
       return {
         backgroundColor: `${color}.200`,
         color: 'white',
-        _hover: { backgroundColor: `${color}.300` },
+        _hover: {
+          backgroundColor: `${color}.300`,
+          _disabled: { backgroundColor: `${color}.200` },
+        },
         _active: { backgroundColor: `${color}.400` },
       };
     default:
       return {
         backgroundColor: `${color}.500`,
         color: `white`,
-        _hover: { backgroundColor: `${color}.600` },
+        _hover: {
+          backgroundColor: `${color}.600`,
+          _disabled: { backgroundColor: `${color}.500` },
+        },
         _active: { backgroundColor: `${color}.700` },
       };
   }
 };
 
-const link: ComponentThemeScale = ({ color }) => ({
+const link: ComponentThemeScale = ({ color }: any) => ({
   p: 0,
   height: 'auto',
   lineHeight: 'normal',
   color: `${color}.500`,
-  _hover: { textDecoration: 'underline' },
+  _hover: {
+    textDecoration: 'underline',
+    _disabled: { textDecoration: 'none' },
+  },
   _disabled: { textDecoration: 'none' },
   _active: { color: `${color}.700` },
 });
@@ -95,7 +118,7 @@ export const Button: ComponentThemeConfig = {
     ['size', 'sizes'],
     ['variant', 'variants'],
   ],
-  baseStyle: ({ isFullWidth }) => ({
+  baseStyle: ({ isFullWidth }: any) => ({
     width: isFullWidth ? '100%' : 'auto',
     position: 'relative',
     display: 'inline-flex',
@@ -109,9 +132,9 @@ export const Button: ComponentThemeConfig = {
     fontWeight: 'semibold',
     lineHeight: '1.2',
     outline: 'none',
-    transitionProperty: ({ transitions }) => transitions.property.common,
-    transitionTimingFunction: ({ transitions }) => transitions.timingFn.inOut,
-    transitionDuration: ({ transitions }) => transitions.duration[300],
+    transitionProperty: ({ transitions }: any) => transitions.property.common,
+    transitionTimingFunction: ({ transitions }: any) => transitions.timingFn.inOut,
+    transitionDuration: ({ transitions }: any) => transitions.duration[300],
     userSelect: 'none',
     verticalAlign: 'middle',
     whiteSpace: 'nowrap',
@@ -161,7 +184,7 @@ export const Button: ComponentThemeConfig = {
 };
 
 export const ButtonSpinner: ComponentThemeConfig = {
-  baseStyle: ({ hasText, spacing }) => ({
+  baseStyle: ({ hasText, spacing }: any) => ({
     display: 'flex',
     alignItems: 'center',
     position: hasText ? 'relative' : 'absolute',
