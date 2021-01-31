@@ -1,17 +1,22 @@
-import { get } from 'styled-system';
-import { ComponentTheme } from '../types';
+import { get } from '@spicy-ui/styled-system';
+import { ComponentThemeConfig } from '../types';
 
-const CheckboxOuter: ComponentTheme = {
-  baseStyle: ({ isDisabled }) => ({
+export const CheckboxOuter: ComponentThemeConfig = {
+  propToScaleMap: [['size', 'sizes']],
+  baseStyle: ({ disabled }: any) => ({
     width: 'full',
     display: 'inline-flex',
     flexDirection: 'row',
     alignItems: 'center',
-    opacity: isDisabled ? 0.7 : 1,
+    opacity: disabled ? 0.7 : 1,
     cursor: 'pointer',
     userSelect: 'none',
   }),
   sizes: {
+    xs: () => ({
+      fontSize: 'xs',
+      height: 6,
+    }),
     sm: () => ({
       fontSize: 'sm',
       height: 8,
@@ -29,8 +34,9 @@ const CheckboxOuter: ComponentTheme = {
 
 const supportedQuery = '@supports (-webkit-appearance: none) or (-moz-appearance: none)';
 
-const CheckboxInput: ComponentTheme = {
-  baseStyle: ({ color = 'blue', isInvalid, theme }) => ({
+export const CheckboxInput: ComponentThemeConfig = {
+  propToScaleMap: [['size', 'sizes']],
+  baseStyle: ({ color, isInvalid, theme }: any) => ({
     [supportedQuery]: {
       m: 0,
       width: 4,
@@ -38,7 +44,7 @@ const CheckboxInput: ComponentTheme = {
       display: 'inline-block',
       position: 'relative',
       appearance: 'none',
-      bg: 'white',
+      bgColor: 'white',
       borderRadius: 'xs',
       borderWidth: '1px',
       borderStyle: 'solid',
@@ -49,13 +55,12 @@ const CheckboxInput: ComponentTheme = {
       transitionDuration: get(theme, 'transitions.duration.300'),
       transitionProperty: get(theme, 'transitions.property.common'),
       transitionTimingFunction: get(theme, 'transitions.timing.inOut'),
-
-      '&::after': {
+      _after: {
         content: '""',
         display: 'block',
         position: 'absolute',
         borderStyle: 'solid',
-        borderColor: 'white',
+        borderColor: color === 'whiteAlpha' ? 'black' : 'white',
         borderLeft: 0,
         borderTop: 0,
         opacity: 'var(--o, 0)',
@@ -64,18 +69,16 @@ const CheckboxInput: ComponentTheme = {
         transitionProperty: get(theme, 'transitions.property.common'),
         transitionTimingFunction: get(theme, 'transitions.timing.inOut'),
       },
-
-      '&:checked': {
+      _checked: {
         '--o': 1,
-        bg: `${color}.500`,
+        bgColor: `${color}.500`,
         borderColor: `${color}.400`,
       },
-
-      '&:not(:checked):not(:disabled):hover': {
+      _hover: {
         borderColor: 'gray.400',
+        _disabled: { borderColor: 'gray.200' },
       },
-
-      '&:not(:disabled):focus': {
+      _focus: {
         borderColor: `${color}.400`,
         boxShadow: 'outline',
         zIndex: 1,
@@ -83,12 +86,24 @@ const CheckboxInput: ComponentTheme = {
     },
   }),
   sizes: {
+    xs: () => ({
+      [supportedQuery]: {
+        height: 3,
+        width: 3,
+        _after: {
+          top: 0,
+          left: '3px',
+          width: '4px',
+          height: '8px',
+          borderWidth: '2px',
+        },
+      },
+    }),
     sm: () => ({
       [supportedQuery]: {
         height: 3,
         width: 3,
-
-        '&::after': {
+        _after: {
           top: 0,
           left: '3px',
           width: '4px',
@@ -101,8 +116,7 @@ const CheckboxInput: ComponentTheme = {
       [supportedQuery]: {
         height: 4,
         width: 4,
-
-        '&::after': {
+        _after: {
           top: '1px',
           left: '4px',
           width: '6px',
@@ -115,8 +129,7 @@ const CheckboxInput: ComponentTheme = {
       [supportedQuery]: {
         height: 6,
         width: 6,
-
-        '&::after': {
+        _after: {
           top: '1px',
           left: '7px',
           width: '8px',
@@ -128,14 +141,8 @@ const CheckboxInput: ComponentTheme = {
   },
 };
 
-const CheckboxLabel: ComponentTheme = {
+export const CheckboxLabel: ComponentThemeConfig = {
   baseStyle: () => ({
-    ml: 2,
+    ml: 1.5,
   }),
-};
-
-export const CheckboxComponents = {
-  CheckboxOuter,
-  CheckboxInput,
-  CheckboxLabel,
 };

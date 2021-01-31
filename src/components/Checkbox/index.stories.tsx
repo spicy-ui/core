@@ -1,10 +1,35 @@
+import { allProps, sfp } from '@spicy-ui/styled-system';
+import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Checkbox, Stack } from '..';
+import { Checkbox, CheckboxProps, Stack } from '..';
 
-const checkboxSpaces = ['sm', 'md', 'lg'];
-
-const checkboxColors = ['gray', 'red', 'orange', 'yellow', 'green', 'teal', 'blue', 'indigo', 'purple', 'pink'];
+const checkboxColors = [
+  'blueGray',
+  'coolGray',
+  'gray',
+  'trueGray',
+  'warmGray',
+  'red',
+  'orange',
+  'amber',
+  'yellow',
+  'lime',
+  'green',
+  'emerald',
+  'teal',
+  'cyan',
+  'lightBlue',
+  'blue',
+  'indigo',
+  'violet',
+  'purple',
+  'fuchsia',
+  'pink',
+  'rose',
+  'whiteAlpha',
+  'blackAlpha',
+];
 
 export default {
   title: 'Checkbox',
@@ -13,25 +38,10 @@ export default {
     disabled: {
       control: { type: 'boolean' },
     },
-    required: {
-      control: { type: 'boolean' },
-    },
-    isInvalid: {
-      control: { type: 'boolean' },
-    },
-    label: {
-      control: { type: 'text' },
-    },
-    color: {
-      control: { type: 'select', options: checkboxColors },
-    },
-    space: {
-      control: { type: 'select', options: checkboxSpaces },
-    },
   },
-};
+} as Meta<CheckboxProps>;
 
-export const Simple = (props: any) => {
+export const Simple: Story<CheckboxProps> = (props) => {
   const [isChecked, setIsChecked] = React.useState(false);
 
   return <Checkbox {...props} checked={isChecked} onChange={({ target }) => setIsChecked(Boolean(target.checked))} />;
@@ -40,18 +50,19 @@ Simple.args = {
   label: 'Checkbox',
 };
 
-export const AllSpaces = (props: any) => (
+export const Colors: Story<CheckboxProps> = () => (
   <Stack spacing="4">
-    {checkboxSpaces.map((space, idx) => (
-      <Checkbox key={uid(space, idx)} {...props} checked space={space} label={space} />
+    {checkboxColors.map((color, idx) => (
+      <Checkbox key={uid(color, idx)} checked color={color} label={color} />
     ))}
   </Stack>
 );
 
-export const AllColors = (props: any) => (
+export const Sizes: Story<CheckboxProps> = () => (
   <Stack spacing="4">
-    {checkboxColors.map((color, idx) => (
-      <Checkbox key={uid(color, idx)} {...props} checked color={color} label={color} />
-    ))}
+    <Checkbox checked size="xs" label="xs" />
+    <Checkbox checked size="sm" label="sm" />
+    <Checkbox checked size="md" label="md" />
+    <Checkbox checked size="lg" label="lg" />
   </Stack>
 );
