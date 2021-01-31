@@ -2,7 +2,7 @@ import { ComponentThemeConfig } from '../types';
 
 export const Spinner: ComponentThemeConfig = {
   propToScaleMap: [['size', 'sizes']],
-  baseStyle: ({ thickness, trackColor, color, speed }) => ({
+  baseStyle: ({ thickness, trackColor, color, speed }: any) => ({
     display: 'inline-block',
     borderColor: 'currentcolor',
     borderStyle: 'solid',
@@ -11,7 +11,7 @@ export const Spinner: ComponentThemeConfig = {
     borderBottomColor: trackColor,
     borderLeftColor: trackColor,
     color,
-    animation: ({ animationNames: { spin } }) => `${spin} ${speed} linear infinite`,
+    animation: ({ animationNames: { spin } }: any) => `${spin} ${speed} linear infinite`,
   }),
   sizes: {
     xs: {
