@@ -1,5 +1,4 @@
 import { Meta, Story } from '@storybook/react';
-import { SystemStyleObject } from '@styled-system/css';
 import * as React from 'react';
 import { HiOutlineChat, HiOutlineCog } from 'react-icons/hi';
 import { uid } from 'react-uid';
@@ -123,7 +122,7 @@ export const CustomLoadingSpinner: Story<ButtonProps> = () => {
 };
 
 export const CustomButtons: Story<ButtonProps> = () => {
-  const muiButton: SystemStyleObject = {
+  const muiButton = {
     color: 'white',
     backgroundColor: 'blue.500',
     boxShadow: `0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12)`,
@@ -153,7 +152,7 @@ export const CustomButtons: Story<ButtonProps> = () => {
     _focus: { boxShadow: 'none' },
   };
 
-  const ghButton: SystemStyleObject = {
+  const ghButton = {
     position: `relative`,
     display: `inline-block`,
     padding: `6px 16px`,
