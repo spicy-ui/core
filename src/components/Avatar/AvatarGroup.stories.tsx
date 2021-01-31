@@ -1,7 +1,6 @@
 import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
-import { Avatar } from './Avatar';
-import { AvatarGroup, AvatarGroupProps } from './AvatarGroup';
+import { Avatar, AvatarGroup, AvatarGroupProps } from '..';
 
 export default {
   title: 'AvatarGroup',
