@@ -1,7 +1,8 @@
 import { transparentize } from 'polished';
-import { ComponentThemeConfig, ComponentThemeScale } from '../types';
+import { ButtonProps } from '../../components';
+import { ComponentThemeConfig, ComponentThemeScale, ComponentThemeScaleFn } from '../types';
 
-const ghost: ComponentThemeScale = ({ color }: any) => {
+const ghost: ComponentThemeScaleFn<ButtonProps & { color: string }> = ({ color }) => {
   switch (color) {
     case 'blueGray':
     case 'coolGray':
@@ -35,7 +36,9 @@ const ghost: ComponentThemeScale = ({ color }: any) => {
           backgroundColor: ({ colors }: any) => transparentize(0.5, colors[color][100]),
           _disabled: { backgroundColor: 'transparent' },
         },
-        _active: { backgroundColor: ({ colors }: any) => transparentize(0.5, colors[color][200]) },
+        _active: {
+          backgroundColor: ({ colors }: any) => transparentize(0.5, colors[color][200]),
+        },
       };
   }
 };
@@ -44,13 +47,13 @@ function isGray(color: string) {
   return ['blueGray', 'coolGray', 'gray', 'trueGray', 'warmGray'].includes(color);
 }
 
-const outlined: ComponentThemeScale = (props: any) => ({
+const outlined: ComponentThemeScaleFn<ButtonProps & { color: string }> = (props) => ({
   border: '2px',
   borderColor: isGray(props.color) ? `${props.color}.200` : 'currentcolor',
   ...ghost(props),
 });
 
-const filled: ComponentThemeScale = ({ color }: any) => {
+const filled: ComponentThemeScaleFn<ButtonProps> = ({ color }) => {
   switch (color) {
     case 'blueGray':
     case 'coolGray':
@@ -90,7 +93,7 @@ const filled: ComponentThemeScale = ({ color }: any) => {
   }
 };
 
-const link: ComponentThemeScale = ({ color }: any) => ({
+const link: ComponentThemeScaleFn<ButtonProps> = ({ color }) => ({
   p: 0,
   height: 'auto',
   lineHeight: 'normal',
@@ -103,7 +106,7 @@ const link: ComponentThemeScale = ({ color }: any) => ({
   _active: { color: `${color}.700` },
 });
 
-const unstyled: ComponentThemeScale = {
+const unstyled: ComponentThemeScale<ButtonProps> = {
   m: 0,
   p: 0,
   display: 'inline',
@@ -113,12 +116,12 @@ const unstyled: ComponentThemeScale = {
   color: 'inherit',
 };
 
-export const Button: ComponentThemeConfig = {
+export const Button: ComponentThemeConfig<ButtonProps> = {
   propToScaleMap: [
     ['size', 'sizes'],
     ['variant', 'variants'],
   ],
-  baseStyle: ({ isFullWidth }: any) => ({
+  baseStyle: ({ isFullWidth }) => ({
     width: isFullWidth ? '100%' : 'auto',
     position: 'relative',
     display: 'inline-flex',
@@ -148,43 +151,45 @@ export const Button: ComponentThemeConfig = {
       opacity: 0.4,
     },
   }),
-  sizes: {
-    xs: () => ({
-      px: 2,
-      height: 6,
-      minWidth: 6,
-      fontSize: 'xs',
-    }),
-    sm: () => ({
-      px: 3,
-      height: 8,
-      minWidth: 8,
-      fontSize: 'sm',
-    }),
-    md: () => ({
-      px: 4,
-      height: 10,
-      minWidth: 10,
-      fontSize: 'md',
-    }),
-    lg: () => ({
-      px: 6,
-      height: 12,
-      minWidth: 12,
-      fontSize: 'lg',
-    }),
-  },
-  variants: {
-    filled,
-    outlined,
-    ghost,
-    link,
-    unstyled,
+  scales: {
+    sizes: {
+      xs: () => ({
+        px: 2,
+        height: 6,
+        minWidth: 6,
+        fontSize: 'xs',
+      }),
+      sm: () => ({
+        px: 3,
+        height: 8,
+        minWidth: 8,
+        fontSize: 'sm',
+      }),
+      md: () => ({
+        px: 4,
+        height: 10,
+        minWidth: 10,
+        fontSize: 'md',
+      }),
+      lg: () => ({
+        px: 6,
+        height: 12,
+        minWidth: 12,
+        fontSize: 'lg',
+      }),
+    },
+    variants: {
+      filled,
+      outlined,
+      ghost,
+      link,
+      unstyled,
+    },
   },
 };
 
 export const ButtonSpinner: ComponentThemeConfig = {
-  baseStyle: ({ hasText, spacing }: any) => ({
+  baseStyle: ({ hasText, spacing }) => ({
     display: 'flex',
     alignItems: 'center',
     position: hasText ? 'relative' : 'absolute',

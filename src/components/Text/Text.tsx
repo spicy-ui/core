@@ -27,7 +27,7 @@ export interface TextProps extends AllSystemProps, SxProps {
 }
 
 export const Text = styled.p.withConfig<TextProps>({ shouldForwardProp })(
-  getComponentScale('Text.variants', 'variant'),
+  getComponentScale('Text', 'variants', 'variant'),
   allSystem,
   sx,
 );

@@ -1,42 +1,44 @@
-import { get } from '@spicy-ui/styled-system';
+import { CheckboxProps } from '../../components';
 import { ComponentThemeConfig } from '../types';
 
-export const CheckboxOuter: ComponentThemeConfig = {
+export const CheckboxOuter: ComponentThemeConfig<CheckboxProps> = {
   propToScaleMap: [['size', 'sizes']],
-  baseStyle: ({ disabled }: any) => ({
+  baseStyle: ({ isDisabled }) => ({
     width: 'full',
     display: 'inline-flex',
     flexDirection: 'row',
     alignItems: 'center',
-    opacity: disabled ? 0.7 : 1,
+    opacity: isDisabled ? 0.7 : 1,
     cursor: 'pointer',
     userSelect: 'none',
   }),
-  sizes: {
-    xs: () => ({
-      fontSize: 'xs',
-      height: 6,
-    }),
-    sm: () => ({
-      fontSize: 'sm',
-      height: 8,
-    }),
-    md: () => ({
-      fontSize: 'md',
-      height: 10,
-    }),
-    lg: () => ({
-      fontSize: 'lg',
-      height: 12,
-    }),
+  scales: {
+    sizes: {
+      xs: () => ({
+        fontSize: 'xs',
+        height: 6,
+      }),
+      sm: () => ({
+        fontSize: 'sm',
+        height: 8,
+      }),
+      md: () => ({
+        fontSize: 'md',
+        height: 10,
+      }),
+      lg: () => ({
+        fontSize: 'lg',
+        height: 12,
+      }),
+    },
   },
 };
 
 const supportedQuery = '@supports (-webkit-appearance: none) or (-moz-appearance: none)';
 
-export const CheckboxInput: ComponentThemeConfig = {
+export const CheckboxInput: ComponentThemeConfig<CheckboxProps> = {
   propToScaleMap: [['size', 'sizes']],
-  baseStyle: ({ color, isInvalid, theme }: any) => ({
+  baseStyle: ({ color, isInvalid }) => ({
     [supportedQuery]: {
       m: 0,
       width: 4,
@@ -52,9 +54,9 @@ export const CheckboxInput: ComponentThemeConfig = {
       cursor: 'pointer',
       outline: 'none',
       verticalAlign: 'top',
-      transitionDuration: get(theme, 'transitions.duration.300'),
-      transitionProperty: get(theme, 'transitions.property.common'),
-      transitionTimingFunction: get(theme, 'transitions.timing.inOut'),
+      transitionProperty: ({ transitions }: any) => transitions.property.common,
+      transitionTimingFunction: ({ transitions }: any) => transitions.timingFn.inOut,
+      transitionDuration: ({ transitions }: any) => transitions.duration[300],
       _after: {
         content: '""',
         display: 'block',
@@ -65,9 +67,9 @@ export const CheckboxInput: ComponentThemeConfig = {
         borderTop: 0,
         opacity: 'var(--o, 0)',
         transform: 'rotate(43deg)',
-        transitionDuration: get(theme, 'transitions.duration.300'),
-        transitionProperty: get(theme, 'transitions.property.common'),
-        transitionTimingFunction: get(theme, 'transitions.timing.inOut'),
+        transitionProperty: ({ transitions }: any) => transitions.property.common,
+        transitionTimingFunction: ({ transitions }: any) => transitions.timingFn.inOut,
+        transitionDuration: ({ transitions }: any) => transitions.duration[300],
       },
       _checked: {
         '--o': 1,
@@ -75,8 +77,8 @@ export const CheckboxInput: ComponentThemeConfig = {
         borderColor: `${color}.400`,
       },
       _hover: {
-        borderColor: 'gray.400',
-        _disabled: { borderColor: 'gray.200' },
+        borderColor: `${color}.400`,
+        _disabled: { borderColor: `${color}.200` },
       },
       _focus: {
         borderColor: `${color}.400`,
@@ -85,63 +87,65 @@ export const CheckboxInput: ComponentThemeConfig = {
       },
     },
   }),
-  sizes: {
-    xs: () => ({
-      [supportedQuery]: {
-        height: 3,
-        width: 3,
-        _after: {
-          top: 0,
-          left: '3px',
-          width: '4px',
-          height: '8px',
-          borderWidth: '2px',
+  scales: {
+    sizes: {
+      xs: () => ({
+        [supportedQuery]: {
+          height: 3,
+          width: 3,
+          _after: {
+            top: 0,
+            left: '3px',
+            width: '4px',
+            height: '8px',
+            borderWidth: '2px',
+          },
         },
-      },
-    }),
-    sm: () => ({
-      [supportedQuery]: {
-        height: 3,
-        width: 3,
-        _after: {
-          top: 0,
-          left: '3px',
-          width: '4px',
-          height: '8px',
-          borderWidth: '2px',
+      }),
+      sm: () => ({
+        [supportedQuery]: {
+          height: 3,
+          width: 3,
+          _after: {
+            top: 0,
+            left: '3px',
+            width: '4px',
+            height: '8px',
+            borderWidth: '2px',
+          },
         },
-      },
-    }),
-    md: () => ({
-      [supportedQuery]: {
-        height: 4,
-        width: 4,
-        _after: {
-          top: '1px',
-          left: '4px',
-          width: '6px',
-          height: '10px',
-          borderWidth: '2px',
+      }),
+      md: () => ({
+        [supportedQuery]: {
+          height: 4,
+          width: 4,
+          _after: {
+            top: '1px',
+            left: '4px',
+            width: '6px',
+            height: '10px',
+            borderWidth: '2px',
+          },
         },
-      },
-    }),
-    lg: () => ({
-      [supportedQuery]: {
-        height: 6,
-        width: 6,
-        _after: {
-          top: '1px',
-          left: '7px',
-          width: '8px',
-          height: '16px',
-          borderWidth: '3px',
+      }),
+      lg: () => ({
+        [supportedQuery]: {
+          height: 6,
+          width: 6,
+          _after: {
+            top: '1px',
+            left: '7px',
+            width: '8px',
+            height: '16px',
+            borderWidth: '3px',
+          },
         },
-      },
-    }),
+      }),
+    },
   },
 };
 
-export const CheckboxLabel: ComponentThemeConfig = {
+export const CheckboxLabel: ComponentThemeConfig<CheckboxProps> = {
   baseStyle: () => ({
     ml: 1.5,
   }),

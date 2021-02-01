@@ -1,8 +1,9 @@
+import { SpinnerProps } from '../../components';
 import { ComponentThemeConfig } from '../types';
 
-export const Spinner: ComponentThemeConfig = {
+export const Spinner: ComponentThemeConfig<SpinnerProps> = {
   propToScaleMap: [['size', 'sizes']],
-  baseStyle: ({ thickness, trackColor, color, speed }: any) => ({
+  baseStyle: ({ thickness, trackColor, color, speed }) => ({
     display: 'inline-block',
     borderColor: 'currentcolor',
     borderStyle: 'solid',
@@ -13,26 +14,28 @@ export const Spinner: ComponentThemeConfig = {
     color,
     animation: ({ animationNames: { spin } }: any) => `${spin} ${speed} linear infinite`,
   }),
-  sizes: {
-    xs: {
-      height: 3,
-      width: 3,
-    },
-    sm: {
-      height: 4,
-      width: 4,
-    },
-    md: {
-      height: 6,
-      width: 6,
-    },
-    lg: {
-      height: 8,
-      width: 8,
-    },
-    xl: {
-      height: 12,
-      width: 12,
+  scales: {
+    sizes: {
+      xs: {
+        height: 3,
+        width: 3,
+      },
+      sm: {
+        height: 4,
+        width: 4,
+      },
+      md: {
+        height: 6,
+        width: 6,
+      },
+      lg: {
+        height: 8,
+        width: 8,
+      },
+      xl: {
+        height: 12,
+        width: 12,
+      },
     },
   },
 };

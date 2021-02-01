@@ -14,7 +14,7 @@ export interface HeadingProps extends AllSystemProps, SxProps {
 }
 
 export const Heading = styled.p.withConfig<HeadingProps>({ shouldForwardProp })(
-  getComponentScale('Heading.variants', 'variant'),
+  getComponentScale('Heading', 'variants', 'variant'),
   allSystem,
   sx,
 );

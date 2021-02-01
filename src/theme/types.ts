@@ -1,10 +1,19 @@
-// FIXME was SystemStyleObject
-export type ComponentThemeScale = any;
+import { RequiredTheme } from '@spicy-ui/styled-system';
 
-export interface ComponentThemeConfig {
-  // todo add generic for props
+// eslint-disable-next-line @typescript-eslint/ban-types
+type CSSObject = object; // TODO
+
+export type ComponentThemeScaleFn<P> = (props: P & { theme: RequiredTheme }) => CSSObject;
+
+// FIXME was SystemStyleObject
+export type ComponentThemeScale<P> = CSSObject | ComponentThemeScaleFn<P>;
+
+export type ComponentThemeConfig<Props = Record<string, any>> = {
   propToScaleMap?: Array<[string, string]>;
-  defaultProps?: { [prop: string]: any }; // todo remove
-  baseStyle?: ComponentThemeScale;
-  [scale: string]: ComponentThemeScale | undefined;
-}
+  baseStyle?: ComponentThemeScale<Props>;
+  scales?: {
+    [scale: string]: {
+      [key: string]: ComponentThemeScale<Props> | undefined;
+    };
+  };
+};

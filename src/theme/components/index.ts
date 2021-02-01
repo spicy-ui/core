@@ -8,8 +8,8 @@ import * as Text from './Text';
 
 export const components = {
   ...Avatar,
-  ...Checkbox,
   ...Button,
+  ...Checkbox,
   ...Divider,
   ...Heading,
   ...Spinner,
