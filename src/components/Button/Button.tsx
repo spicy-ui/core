@@ -22,22 +22,34 @@ export type ButtonSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export type ButtonVariants = 'filled' | 'outlined' | 'ghost' | 'link' | 'unstyled';
 
-export interface ButtonProps extends SxProps {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, SxProps {
   children?: React.ReactNode;
   as?: string | React.ComponentType<any>;
+  /** Space between the button icon and label. */
   iconSpacing?: SpaceProps['margin'];
+  /** Icon shown before the button's label. */
   iconBefore?: React.ReactElement;
+  /** Icon shown after the button's label. */
   iconAfter?: React.ReactElement;
+  /** If `true`, the button will add the `data-active` attribute. */
   isActive?: boolean;
+  /** If `true`, the button will be disabled. */
   isDisabled?: boolean;
+  /** If `true`, the button will show a spinner. */
   isLoading?: boolean;
+  /** If `true`, the button will take up the full width of its container. */
   isFullWidth?: boolean;
+  /** The label to be shown beside the spinner when `isLoading` is `true`. */
   loadingText?: string;
-  autoFocus?: boolean;
+  /** Button `type`. */
   type?: 'submit' | 'reset' | 'button';
+  /** Replacement spinner component for when `isLoading` is set to `true` */
   spinner?: React.ReactElement;
+  /** Color of the button. Supports any key in `theme.colors`. */
   color?: string;
+  /** Size of the button. */
   size?: LiteralUnion<ButtonSizes>;
+  /** Variant style of the button. */
   variant?: LiteralUnion<ButtonVariants>;
 }
 

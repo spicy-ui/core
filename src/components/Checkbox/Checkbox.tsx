@@ -7,10 +7,15 @@ import { Text } from '../Text';
 type CheckboxSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'width' | 'height' | 'size'> {
+  /** Checkbox label. */
   label?: string;
+  /** If `true`, the checkbox will be disabled. */
   isDisabled?: boolean;
+  /** If `true`, the checkbox will be marked as invalid. */
   isInvalid?: boolean;
+  /** Color of the checkbox. Supports any key in `theme.colors`. */
   color?: string;
+  /** Size of the checkbox. */
   size?: LiteralUnion<CheckboxSizes>;
 }
 

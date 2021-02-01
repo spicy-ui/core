@@ -6,6 +6,7 @@ import { Box } from '../Box';
 export type DividerOrientation = 'horizontal' | 'vertical';
 
 export interface DividerProps extends SxProps {
+  /** Orientation of the divider. */
   orientation?: LiteralUnion<DividerOrientation>;
 }
 
