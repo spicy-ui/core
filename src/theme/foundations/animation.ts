@@ -39,24 +39,35 @@ export const bounce = keyframes`
   }
 `;
 
-export const keyframeCss = css`
+export const animationKeyframes = css`
   ${spin}
   ${ping}
   ${pulse}
   ${bounce}
 `;
 
-export const animations = {
-  animationNames: {
-    spin: spin.getName(),
-    ping: ping.getName(),
-    pulse: pulse.getName(),
-    bounce: bounce.getName(),
+const name = {
+  spin: spin.getName(),
+  ping: ping.getName(),
+  pulse: pulse.getName(),
+  bounce: bounce.getName(),
+};
+
+const duration = {};
+
+const timingFn = {};
+
+const delay = {};
+
+export const animation = {
+  animation: {
+    spin: `${name.spin} 1s linear infinite`,
+    ping: `${name.ping} 1s cubic-bezier(0, 0, 0.2, 1) infinite`,
+    pulse: `${name.pulse} 2s cubic-bezier(0.4, 0, 0.6, 1) infinite`,
+    bounce: `${name.bounce} 1s infinite`,
   },
-  animations: {
-    spin: `${spin.getName()} 1s linear infinite`,
-    ping: `${ping.getName()} 1s cubic-bezier(0, 0, 0.2, 1) infinite`,
-    pulse: `${pulse.getName()} 2s cubic-bezier(0.4, 0, 0.6, 1) infinite`,
-    bounce: `${bounce.getName()} 1s infinite`,
-  },
+  name,
+  duration,
+  timingFn,
+  delay,
 };

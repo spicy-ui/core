@@ -1,22 +1,22 @@
-import { animations } from './animations';
+import { animation } from './animation';
 import { borders } from './borders';
 import { breakpoints } from './breakpoints';
 import { colors } from './colors';
 import { shadows } from './shadows';
-import { space, sizes } from './sizes';
-import { transitions } from './transitions';
+import { sizes, space } from './sizes';
+import { transition } from './transition';
 import { typography } from './typography';
 import { zIndices } from './zIndices';
 
 export const foundations = {
-  ...animations,
-  breakpoints,
-  space,
-  ...typography,
-  colors,
-  sizes,
+  animation,
   ...borders,
+  breakpoints,
+  colors,
   shadows,
-  transitions,
+  sizes,
+  space,
+  transition,
+  ...typography,
   zIndices,
 };

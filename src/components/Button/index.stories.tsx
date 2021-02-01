@@ -109,13 +109,14 @@ export const Loading: Story<ButtonProps> = () => (
 );
 
 export const CustomLoadingSpinner: Story<ButtonProps> = () => {
-  const { animations } = useTheme();
+  const {
+    animation: {
+      animation: { spin },
+    },
+  } = useTheme();
 
   return (
-    <Button
-      isLoading
-      spinner={<HiOutlineCog size="1.25em" style={{ animation: animations.spin, animationDuration: '3s' }} />}
-    >
+    <Button isLoading spinner={<HiOutlineCog size="1.25em" style={{ animation: spin, animationDuration: '3s' }} />}>
       Settings
     </Button>
   );

@@ -37,7 +37,8 @@ const delay = {
   1000: '1000ms',
 };
 
-export const transitions = {
+export const transition = {
+  transition: {},
   property,
   duration,
   timingFn,

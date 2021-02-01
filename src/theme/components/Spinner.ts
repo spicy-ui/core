@@ -12,7 +12,11 @@ export const Spinner: ComponentThemeConfig<SpinnerProps> = {
     borderBottomColor: trackColor,
     borderLeftColor: trackColor,
     color,
-    animation: ({ animationNames: { spin } }: any) => `${spin} ${speed} linear infinite`,
+    animation: ({
+      animation: {
+        name: { spin },
+      },
+    }: any) => `${spin} ${speed} linear infinite`,
   }),
   scales: {
     sizes: {

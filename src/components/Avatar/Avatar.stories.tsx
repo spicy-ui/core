@@ -59,7 +59,13 @@ export const ChildElements: Story<AvatarProps> = () => (
       size={4}
       bgColor="red.400"
       borderRadius="full"
-      sx={{ animation: ({ animations }: any) => animations.ping }}
+      sx={{
+        animation: ({
+          animation: {
+            animation: { ping },
+          },
+        }: any) => ping,
+      }}
     />
     <Box pos="absolute" bottom={0} right={0} size={4} bgColor="red.500" borderRadius="full" />
   </Avatar>
