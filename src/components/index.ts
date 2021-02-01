@@ -6,6 +6,7 @@ export * from './Divider';
 export * from './Flex';
 export * from './Grid';
 export * from './Heading';
+export * from './Radio';
 export * from './Spinner';
 export * from './Stack';
 export * from './Text';
