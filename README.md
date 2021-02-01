@@ -12,9 +12,13 @@ Install Spicy UI to your React project with `npm i @spicy-ui/core styled-compone
 
 ```js
 import React from 'react';
-import { Button } from '@spciy-ui/core';
+import { Button, ThemeProvider } from '@spciy-ui/core';
 
-export const App = () => <Button>Hey hot stuff 🌶️</Button>;
+export const App = () => (
+  <ThemeProvider>
+    <Button>Hey hot stuff 🌶️</Button>
+  </ThemeProvider>
+);
 ```
 
 See the [documentation](https://spicy-ui.netlify.app/) for components, theming and advanced usage.
