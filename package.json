@@ -39,7 +39,7 @@
     "start:storybook": "start-storybook -p 9000",
     "build": "tsdx build",
     "build:storybook": "build-storybook",
-    "lint": "eslint ./src",
+    "lint": "eslint ./src && tsc --noEmit",
     "test": "tsdx test --passWithNoTests"
   },
   "dependencies": {
