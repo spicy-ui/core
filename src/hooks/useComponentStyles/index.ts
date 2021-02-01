@@ -11,11 +11,10 @@ export function useComponentStyles(componentKey: string, props: any = {}) {
 
   const componentConfig: ComponentThemeConfig | undefined = get(theme, `components.${componentKey}`);
   const propToScaleMap = componentConfig?.propToScaleMap ?? [];
-  const defaultProps = componentConfig?.defaultProps ?? {};
 
   const allComponentProps = React.useMemo<any>(
-    () => deepmerge.all([{ theme }, defaultProps, filterUndefined(omit(props, ['children']))]),
-    [defaultProps, props, theme],
+    () => deepmerge.all([{ theme }, filterUndefined(omit(props, ['children']))]),
+    [props, theme],
   );
 
   const sx = props.sx ?? {};
@@ -29,8 +28,8 @@ export function useComponentStyles(componentKey: string, props: any = {}) {
       const styles = [baseStyles];
 
       propToScaleMap.forEach(([prop, scale]) => {
-        if (allComponentProps[prop]) {
-          const cScale = componentConfig[scale];
+        if (allComponentProps[prop] && componentConfig.scales) {
+          const cScale = componentConfig.scales[scale];
           const cProp = allComponentProps[prop];
           const style = runIfFn(cScale?.[cProp as keyof typeof cScale], allComponentProps);
 
