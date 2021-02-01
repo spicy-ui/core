@@ -43,7 +43,7 @@
     "test": "tsdx test --passWithNoTests"
   },
   "dependencies": {
-    "@spicy-ui/styled-system": "0.0.1-alpha.2",
+    "@spicy-ui/styled-system": "0.0.1-alpha.3",
     "@types/styled-components": "^5.1.7",
     "csstype": "^3.0.6",
     "deepmerge": "^4.2.2",

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useComponentStyles } from '../../hooks';
+import { useComponentStyles } from '../../system';
 import { LiteralUnion } from '../../types';
 import { Box } from '../Box';
 import { Text } from '../Text';

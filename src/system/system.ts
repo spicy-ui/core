@@ -1,4 +1,6 @@
 import {
+  animation,
+  AnimationProps,
   background,
   BackgroundProps,
   border,
@@ -20,38 +22,38 @@ import {
   ShadowProps,
   space,
   SpaceProps,
+  transition,
+  TransitionProps,
   typography,
   TypographyProps,
 } from '@spicy-ui/styled-system';
-import { transform, TransformProps } from './parsers/transform';
-import { transition, TransitionProps } from './parsers/transition';
 
-export type AllSystemProps = SpaceProps &
-  ColorProps &
-  TypographyProps &
-  LayoutProps &
-  FlexboxProps &
-  GridProps &
+export type AllSystemProps = AnimationProps &
   BackgroundProps &
   BorderProps &
+  ColorProps &
+  FlexboxProps &
+  GridProps &
+  LayoutProps &
+  OtherProps &
   PositionProps &
   ShadowProps &
+  SpaceProps &
   TransitionProps &
-  TransformProps &
-  OtherProps;
+  TypographyProps;
 
 export const allSystem = compose(
-  space,
-  color,
-  typography,
-  layout,
-  flexbox,
-  grid,
+  animation,
   background,
   border,
+  color,
+  flexbox,
+  grid,
+  layout,
+  other,
   position,
   shadow,
+  space,
   transition,
-  transform,
-  other,
+  typography,
 );

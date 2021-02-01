@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { HiOutlineUser } from 'react-icons/hi';
-import { useComponentStyles, useImage } from '../../hooks';
-import { SxProps } from '../../system';
+import { useImage } from '../../hooks';
+import { SxProps, useComponentStyles } from '../../system';
 import { LiteralUnion } from '../../types';
 import { Box } from '../Box';
 import { Text } from '../Text';

@@ -1,5 +1,4 @@
-import { ExtendedFlexboxProps } from '@spicy-ui/styled-system';
-import { MarginProps } from '@spicy-ui/styled-system/dist/parsers/space';
+import { ExtendedFlexboxProps, SpaceProps } from '@spicy-ui/styled-system';
 import * as React from 'react';
 import { SxProps } from '../../system';
 import { Box } from '../Box';
@@ -38,7 +37,7 @@ export interface StackProps extends SxProps, ExtendedFlexboxProps {
   /** Stack children. */
   children?: React.ReactNode;
   /** Spacing between each stack element. */
-  spacing?: MarginProps['margin'];
+  spacing?: SpaceProps['margin'];
   /** Set a custom divider element. */
   divider?: React.ReactElement;
   /** Set to `true` if each child of the stack should be wrapped in a `Box` component. */

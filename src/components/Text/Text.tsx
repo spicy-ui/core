@@ -1,6 +1,6 @@
 import { shouldForwardProp } from '@spicy-ui/styled-system';
 import styled from 'styled-components';
-import { allSystem, AllSystemProps, getComponentScale, sx, SxProps } from '../../system';
+import { allSystem, AllSystemProps, getComponentStyles, sxMixin, SxProps } from '../../system';
 import { LiteralUnion } from '../../types';
 
 export type TextVariant =
@@ -27,9 +27,9 @@ export interface TextProps extends AllSystemProps, SxProps {
 }
 
 export const Text = styled.p.withConfig<TextProps>({ shouldForwardProp })(
-  getComponentScale('Text', 'variants', 'variant'),
+  getComponentStyles('Text'),
   allSystem,
-  sx,
+  sxMixin,
 );
 
 Text.defaultProps = {

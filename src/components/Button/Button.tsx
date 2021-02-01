@@ -1,7 +1,6 @@
 import { SpaceProps } from '@spicy-ui/styled-system';
 import * as React from 'react';
-import { useComponentStyles } from '../../hooks';
-import { SxProps } from '../../system';
+import { SxProps, useComponentStyles } from '../../system';
 import { LiteralUnion } from '../../types';
 import { Box } from '../Box';
 import { Spinner } from '../Spinner';

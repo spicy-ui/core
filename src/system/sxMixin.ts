@@ -5,6 +5,6 @@ export interface SxProps {
   sx?: Partial<Record<keyof AllSystemProps & PseudoProps, any>>;
 }
 
-export function sx(p: SxProps): any {
+export function sxMixin(p: SxProps): any {
   return p.sx ? css(p.sx) : {};
 }

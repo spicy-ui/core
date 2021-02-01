@@ -1,3 +1,3 @@
-export * from './sx';
+export * from './componentStyles';
+export * from './sxMixin';
 export * from './system';
-export * from './util';

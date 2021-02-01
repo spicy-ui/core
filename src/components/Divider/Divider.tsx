@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { useComponentStyles } from '../../hooks';
-import { SxProps } from '../../system';
+import { SxProps, useComponentStyles } from '../../system';
 import { LiteralUnion } from '../../types';
 import { Box } from '../Box';
 
