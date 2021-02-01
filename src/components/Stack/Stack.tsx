@@ -47,7 +47,7 @@ export interface StackProps extends SxProps, ExtendedFlexboxProps {
 export const Stack = React.forwardRef<HTMLDivElement, StackProps>((props, ref) => {
   const {
     children,
-    sx: sxProp,
+    sx,
     direction = 'column',
     align,
     justify,
@@ -86,10 +86,10 @@ export const Stack = React.forwardRef<HTMLDivElement, StackProps>((props, ref) =
 
   const validChildren = React.Children.toArray(children).filter((child) => React.isValidElement(child));
 
-  const sx = React.useMemo(() => (!dividerComponent ? { ...stackStyle, ...sxProp } : sxProp), [
+  const styles = React.useMemo(() => (!dividerComponent ? { ...stackStyle, ...sx } : sx), [
     dividerComponent,
     stackStyle,
-    sxProp,
+    sx,
   ]);
 
   return (
@@ -100,7 +100,7 @@ export const Stack = React.forwardRef<HTMLDivElement, StackProps>((props, ref) =
       justifyContent={justify}
       flexDirection={direction}
       flexWrap={wrap}
-      sx={sx}
+      sx={styles}
       {...rest}
     >
       {!shouldWrapChildren && !dividerComponent
