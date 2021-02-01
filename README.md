@@ -1,6 +1,6 @@
 # spicy-ui
 
-🌶️ A themable and extensible React UI library, ready to use out of the box or for you to build atop
+🌶️ A themable and extensible React UI library, ready to use out of the box
 
 [![npm](https://img.shields.io/npm/v/@spicy-ui/core.svg)](https://www.npmjs.com/package/@spicy-ui/core)
 [![Dependencies](https://david-dm.org/spicy-ui/core/status.svg)](https://david-dm.org/spicy-ui/core)
