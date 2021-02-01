@@ -1,4 +1,3 @@
-import { allProps, sfp } from '@spicy-ui/styled-system';
 import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 import { uid } from 'react-uid';
@@ -34,11 +33,6 @@ const checkboxColors = [
 export default {
   title: 'Checkbox',
   component: Checkbox,
-  argTypes: {
-    disabled: {
-      control: { type: 'boolean' },
-    },
-  },
 } as Meta<CheckboxProps>;
 
 export const Simple: Story<CheckboxProps> = (props) => {

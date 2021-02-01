@@ -8,13 +8,14 @@ type CheckboxSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'width' | 'height' | 'size'> {
   label?: string;
+  isDisabled?: boolean;
   isInvalid?: boolean;
   color?: string;
   size?: LiteralUnion<CheckboxSizes>;
 }
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
-  const { id, name, value, label, checked, disabled, isInvalid, color, size, ...rest } = props;
+  const { id, name, value, label, checked, isDisabled, isInvalid, color, size, ...rest } = props;
 
   const outerStyles = useComponentStyles('CheckboxOuter', props);
   const inputStyles = useComponentStyles('CheckboxInput', props);
@@ -31,7 +32,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((props
         value={value}
         defaultChecked={checked}
         data-checked={!checked ? undefined : checked}
-        disabled={disabled}
+        disabled={isDisabled}
         {...rest}
         sx={inputStyles}
       />
