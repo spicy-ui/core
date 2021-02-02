@@ -1,7 +1,7 @@
 import { LinkProps } from '../../components';
 import { ComponentThemeConfig } from '../types';
 
-const getUnderline = (state: 'normal' | 'hover', behaviour: 'default' | 'hover' | 'none') => {
+const getUnderline = (state: 'normal' | 'hover', behaviour: 'default' | 'hover' | 'none' = 'none') => {
   const blocklist = state === 'hover' ? ['none'] : ['none', 'hover'];
   return blocklist.includes(behaviour) ? 'none' : 'underline';
 };
@@ -18,7 +18,6 @@ export const Link: ComponentThemeConfig<LinkProps> = {
     _hover: {
       color: hoverColor ?? 'inherit',
       textDecoration: getUnderline('hover', underlineBehaviour),
-      _disabled: { textDecoration: 'none' },
     },
     _focus: {
       boxShadow: 'outline',
