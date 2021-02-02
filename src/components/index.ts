@@ -12,4 +12,5 @@ export * from './Spinner';
 export * from './Stack';
 export * from './Switch';
 export * from './Text';
+export * from './TextArea';
 export * from './Theme';

@@ -8,6 +8,7 @@ import * as Radio from './Radio';
 import * as Spinner from './Spinner';
 import * as Switch from './Switch';
 import * as Text from './Text';
+import * as TextArea from './TextArea';
 
 export const components = {
   ...Avatar,
@@ -20,4 +21,5 @@ export const components = {
   ...Spinner,
   ...Switch,
   ...Text,
+  ...TextArea,
 };
