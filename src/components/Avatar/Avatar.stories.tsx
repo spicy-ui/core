@@ -1,8 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 import { HiOutlineGlobe, HiUsers } from 'react-icons/hi';
-import { Avatar, AvatarProps, Box, Stack } from '..';
-import { AvatarGroup, AvatarGroupProps } from './AvatarGroup';
+import { Avatar, AvatarGroup, AvatarGroupProps, AvatarProps, Box, Stack } from '..';
 
 export default {
   title: 'Avatar',

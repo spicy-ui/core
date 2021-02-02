@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
-import { Text, Progress, ProgressProps } from '..';
+import { Progress, ProgressProps, Text } from '..';
 
 export default {
   title: 'Progress',
