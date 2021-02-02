@@ -21,7 +21,7 @@ export const Input: ComponentThemeConfig<InputProps> = {
     transitionTimingFunction: 'inOut',
     transitionDuration: '300',
     width: 'full',
-    _placehoder: {
+    _placeholder: {
       color: 'gray.400',
     },
     _focus: {
@@ -31,7 +31,6 @@ export const Input: ComponentThemeConfig<InputProps> = {
     _disabled: {
       opacity: 0.7,
       cursor: 'not-allowed',
-      boxShadow: 'none',
     },
   }),
   scales: {
@@ -84,11 +83,11 @@ export const Input: ComponentThemeConfig<InputProps> = {
         p: 0,
         border: 'none',
         borderBottom: '2px',
-        borderBottomColor: isInvalid ? 'red.500' : 'gray.200',
+        borderBottomColor: isInvalid ? 'red.500' : 'gray.300',
         borderRadius: 'none',
         _hover: {
           borderBottomColor: isInvalid ? undefined : 'gray.400',
-          _disabled: { borderBottomColor: isInvalid ? 'red.500' : 'gray.200' },
+          _disabled: { borderBottomColor: isInvalid ? 'red.500' : 'gray.300' },
         },
         _focus: {
           boxShadow: 'none',

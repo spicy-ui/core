@@ -8,7 +8,7 @@ export const SwitchOuter: ComponentThemeConfig<SwitchProps> = {
     flexDirection: 'row',
     alignItems: 'center',
     opacity: isDisabled ? 0.7 : 1,
-    cursor: 'pointer',
+    cursor: isDisabled ? 'not-allowed' : 'pointer',
     userSelect: 'none',
   }),
 };
