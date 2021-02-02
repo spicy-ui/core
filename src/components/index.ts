@@ -8,6 +8,7 @@ export * from './Grid';
 export * from './Heading';
 export * from './Input';
 export * from './Link';
+export * from './Progress';
 export * from './Radio';
 export * from './Spinner';
 export * from './Stack';
