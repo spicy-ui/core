@@ -12,6 +12,7 @@ import * as Spinner from './Spinner';
 import * as Switch from './Switch';
 import * as Text from './Text';
 import * as TextArea from './TextArea';
+import * as Tooltip from './Tooltip';
 
 export const components = {
   ...Avatar,
@@ -28,4 +29,5 @@ export const components = {
   ...Switch,
   ...Text,
   ...TextArea,
+  ...Tooltip,
 };
