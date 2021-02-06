@@ -20,17 +20,17 @@ const variants: Variants = {
   },
 };
 
-export interface TooltipProps extends Pick<PopperProps, 'placement'> {
+export interface TooltipProps extends Pick<PopperProps, 'placement' | 'offset'> {
   isDisabled?: boolean;
   label: string;
 }
 
 export const Tooltip: React.FC<TooltipProps> = (props) => {
-  const { children, isDisabled, label, placement, ...rest } = props;
+  const { children, isDisabled, label, placement, offset, ...rest } = props;
 
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const { triggerProps, childProps, onOpen, onClose } = usePopper({ isOpen, setIsOpen, placement, offset: [0, 4] });
+  const { triggerProps, childProps, onOpen, onClose } = usePopper({ isOpen, setIsOpen, placement, offset });
 
   const styles = useComponentStyles('Tooltip', props);
 
@@ -47,3 +47,10 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
     </>
   );
 };
+
+Tooltip.defaultProps = {
+  placement: 'bottom-start',
+  offset: [0, 4],
+};
+
+Tooltip.displayName = 'Tooltip';
