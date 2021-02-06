@@ -31,11 +31,12 @@ export const Menu: React.FC<MenuProps> = (props) => {
     sx,
     children,
     trigger,
-    closeOnBlur = false,
-    closeOnEsc = true,
-    closeOnInnerClick = true,
-    closeOnOuterClick = true,
-    placement = 'bottom-start',
+    closeOnBlur,
+    closeOnEsc,
+    closeOnInnerClick,
+    closeOnOuterClick,
+    placement,
+    offset,
     ...rest
   } = props;
 
@@ -51,7 +52,7 @@ export const Menu: React.FC<MenuProps> = (props) => {
     closeOnInnerClick,
     closeOnOuterClick,
     placement,
-    offset: [0, 8],
+    offset,
   });
 
   return (
@@ -65,3 +66,14 @@ export const Menu: React.FC<MenuProps> = (props) => {
     </>
   );
 };
+
+Menu.defaultProps = {
+  closeOnBlur: false,
+  closeOnEsc: true,
+  closeOnInnerClick: true,
+  closeOnOuterClick: true,
+  placement: 'bottom-start',
+  offset: [0, 8],
+};
+
+Menu.displayName = 'Menu';
