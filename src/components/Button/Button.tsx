@@ -18,6 +18,12 @@ const ButtonSpinner: React.FC<ButtonSpinnerProps> = (props) => {
   return <Box sx={styles}>{children}</Box>;
 };
 
+const iconStyles = {
+  '& > *': {
+    display: 'inline-block',
+  },
+};
+
 export type ButtonSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export type ButtonVariants = 'filled' | 'outlined' | 'ghost' | 'link' | 'unstyled';
@@ -88,7 +94,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, r
       {...rest}
     >
       {iconBefore && !isLoading && (
-        <Box as="span" marginRight={iconSpacing}>
+        <Box as="span" marginRight={iconSpacing} sx={iconStyles}>
           {iconBefore}
         </Box>
       )}
@@ -97,15 +103,19 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, r
           {spinner}
         </ButtonSpinner>
       )}
-      {isLoading
-        ? loadingText || (
-            <Box as="span" opacity="0">
-              {children}
-            </Box>
-          )
-        : children}
+      {isLoading ? (
+        loadingText || (
+          <Box as="span" opacity="0">
+            {children}
+          </Box>
+        )
+      ) : (
+        <Box as="span" userSelect="none">
+          {children}
+        </Box>
+      )}
       {iconAfter && !isLoading && (
-        <Box as="span" marginLeft={iconSpacing}>
+        <Box as="span" marginLeft={iconSpacing} sx={iconStyles}>
           {iconAfter}
         </Box>
       )}

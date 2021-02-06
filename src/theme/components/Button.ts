@@ -133,7 +133,7 @@ export const Button: ComponentThemeConfig<ButtonProps> = {
     borderRadius: 'md',
     color: 'inherit',
     fontWeight: 'semibold',
-    lineHeight: '1.2',
+    lineHeight: '1',
     outline: 'none',
     transitionProperty: 'common',
     transitionTimingFunction: 'inOut',
