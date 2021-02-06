@@ -2,6 +2,7 @@ import * as Avatar from './Avatar';
 import * as Button from './Button';
 import * as Checkbox from './Checkbox';
 import * as Divider from './Divider';
+import * as Drawer from './Drawer';
 import * as Heading from './Heading';
 import * as Input from './Input';
 import * as Link from './Link';
@@ -21,6 +22,7 @@ export const components = {
   ...Button,
   ...Checkbox,
   ...Divider,
+  ...Drawer,
   ...Heading,
   ...Input,
   ...Link,
