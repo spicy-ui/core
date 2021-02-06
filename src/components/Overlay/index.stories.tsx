@@ -1,7 +1,6 @@
 import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
-import { Button, Overlay, Text } from '..';
-import { OverlayProps } from './Overlay';
+import { Button, Overlay, OverlayProps, Text } from '..';
 
 export default {
   title: 'Overlay',
