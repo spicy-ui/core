@@ -18,3 +18,4 @@ export * from './Switch';
 export * from './Text';
 export * from './TextArea';
 export * from './Theme';
+export * from './Tooltip';
