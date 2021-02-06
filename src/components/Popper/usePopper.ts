@@ -4,7 +4,17 @@ import { usePopper as useReactPopper } from 'react-popper';
 import { useTheme } from 'styled-components';
 import { useKeyPress } from '../../hooks';
 
+export interface PopperProps {
+  closeOnBlur?: boolean;
+  closeOnEsc?: boolean;
+  closeOnInnerClick?: boolean;
+  closeOnOuterClick?: boolean;
+  placement?: Placement;
+}
+
 export interface UsePopperOptions {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   closeOnBlur?: boolean;
   closeOnEsc?: boolean;
   closeOnInnerClick?: boolean;
@@ -13,7 +23,8 @@ export interface UsePopperOptions {
   offset?: [number, number];
 }
 
-const defaultOptions: Required<UsePopperOptions> = {
+const defaultOptions: Partial<UsePopperOptions> = {
+  isOpen: false,
   closeOnBlur: false,
   closeOnEsc: false,
   closeOnInnerClick: false,
@@ -23,12 +34,10 @@ const defaultOptions: Required<UsePopperOptions> = {
 };
 
 export function usePopper(options: UsePopperOptions) {
-  const { closeOnBlur, closeOnEsc, closeOnInnerClick, closeOnOuterClick, placement, offset } = {
+  const { isOpen, setIsOpen, closeOnBlur, closeOnEsc, closeOnInnerClick, closeOnOuterClick, placement, offset } = {
     ...defaultOptions,
     ...options,
   };
-
-  const [isOpen, setIsOpen] = React.useState(false);
 
   const triggerRef = React.useRef<HTMLDivElement>(null);
   const childRef = React.useRef<HTMLDivElement>(null);
@@ -38,11 +47,11 @@ export function usePopper(options: UsePopperOptions) {
     modifiers: [{ name: 'offset', options: { offset } }],
   });
 
-  const onOpen = React.useCallback(() => setIsOpen(true), []);
+  const onOpen = React.useCallback(() => setIsOpen(true), [setIsOpen]);
 
-  const onClose = React.useCallback(() => setIsOpen(false), []);
+  const onClose = React.useCallback(() => setIsOpen(false), [setIsOpen]);
 
-  const onToggle = React.useCallback(() => setIsOpen((p) => !p), []);
+  const onToggle = React.useCallback(() => setIsOpen((p) => !p), [setIsOpen]);
 
   const onTriggerBlur = React.useCallback(() => {
     if (closeOnBlur) {
@@ -89,7 +98,6 @@ export function usePopper(options: UsePopperOptions) {
   return {
     triggerProps: {
       ref: triggerRef,
-      onClick: onToggle,
       onBlur: onTriggerBlur,
       'data-active': isOpen ? true : undefined,
     },

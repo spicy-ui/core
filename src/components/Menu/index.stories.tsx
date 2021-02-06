@@ -52,6 +52,12 @@ export const Headers: Story<MenuProps> = (props) => (
   </Menu>
 );
 
+export const InternalState: Story<MenuProps> = (props) => (
+  <Menu {...props} trigger={({ isOpen }) => <Button iconAfter={<HiChevronDown />}>{isOpen ? 'Close' : 'Open'}</Button>}>
+    {(p) => <pre>{JSON.stringify(p)}</pre>}
+  </Menu>
+);
+
 export const CustomItems: Story<MenuProps> = (props) => (
   <>
     <Menu {...props} trigger={<Avatar name="Dwight Schrute" />}>

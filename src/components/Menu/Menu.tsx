@@ -1,9 +1,30 @@
+import { motion, Variants } from 'framer-motion';
 import * as React from 'react';
+import styled from 'styled-components';
 import { SxProps, useComponentStyles } from '../../system';
+import { runIfFn } from '../../util';
 import { Box } from '../Box';
-import { Popper, PopperProps } from '../Popper';
+import { PopperProps, usePopper } from '../Popper';
 
-export interface MenuProps extends Omit<PopperProps, 'children'>, SxProps {}
+const Motion = styled(motion.div)({});
+
+const variants: Variants = {
+  hidden: {
+    opacity: 0,
+    pointerEvents: 'none',
+    transition: { duration: 0.3 },
+  },
+  visible: {
+    opacity: 1,
+    pointerEvents: 'auto',
+    transition: { duration: 0.2 },
+  },
+};
+
+export interface MenuProps extends PopperProps, SxProps {
+  trigger: ((props: { isOpen: boolean }) => React.ReactElement) | React.ReactElement;
+  children: ((props: { isOpen: boolean }) => React.ReactElement) | React.ReactNode;
+}
 
 export const Menu: React.FC<MenuProps> = (props) => {
   const {
@@ -15,25 +36,32 @@ export const Menu: React.FC<MenuProps> = (props) => {
     closeOnInnerClick = true,
     closeOnOuterClick = true,
     placement = 'bottom-start',
-    offset = [0, 8],
     ...rest
   } = props;
 
   const styles = useComponentStyles('Menu', props);
 
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const { triggerProps, childProps, onToggle } = usePopper({
+    isOpen,
+    setIsOpen,
+    closeOnBlur,
+    closeOnEsc,
+    closeOnInnerClick,
+    closeOnOuterClick,
+    placement,
+    offset: [0, 8],
+  });
+
   return (
-    <Popper
-      trigger={trigger}
-      closeOnBlur={closeOnBlur}
-      closeOnEsc={closeOnEsc}
-      closeOnInnerClick={closeOnInnerClick}
-      closeOnOuterClick={closeOnOuterClick}
-      placement={placement}
-      offset={offset}
-    >
-      <Box sx={styles} {...rest}>
-        {children}
-      </Box>
-    </Popper>
+    <>
+      {React.cloneElement(runIfFn(trigger, { isOpen }), { ...triggerProps, onClick: onToggle })}
+      <Motion {...childProps} initial="hidden" animate={isOpen ? 'visible' : 'hidden'} variants={variants}>
+        <Box sx={styles} {...rest}>
+          {runIfFn(children, { isOpen })}
+        </Box>
+      </Motion>
+    </>
   );
 };
