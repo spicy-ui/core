@@ -9,3 +9,5 @@ export type ProgressProps =
 export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(({ isCircular = false, ...rest }, ref) =>
   isCircular ? <CircularProgress ref={ref} {...rest} /> : <HorizontalProgress ref={ref} {...rest} />,
 );
+
+Progress.displayName = 'Progress';

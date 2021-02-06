@@ -132,6 +132,4 @@ export const Stack = React.forwardRef<HTMLDivElement, StackProps>((props, ref) =
   );
 });
 
-Stack.defaultProps = {};
-
 Stack.displayName = 'Stack';

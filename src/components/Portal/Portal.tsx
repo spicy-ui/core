@@ -35,3 +35,5 @@ export const Portal: React.FC<PortalProps> = ({ children }) => {
 
   return null;
 };
+
+Portal.displayName = 'Portal';

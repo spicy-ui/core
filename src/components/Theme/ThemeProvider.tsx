@@ -27,6 +27,4 @@ export const ThemeProvider: React.FC<ThemeProps> = ({ children, disableInjection
   );
 };
 
-ThemeProvider.defaultProps = {};
-
 ThemeProvider.displayName = 'ThemeProvider';
