@@ -5,6 +5,7 @@ import * as Divider from './Divider';
 import * as Heading from './Heading';
 import * as Input from './Input';
 import * as Link from './Link';
+import * as Menu from './Menu';
 import * as Progress from './Progress';
 import * as Radio from './Radio';
 import * as Spinner from './Spinner';
@@ -20,6 +21,7 @@ export const components = {
   ...Heading,
   ...Input,
   ...Link,
+  ...Menu,
   ...Progress,
   ...Radio,
   ...Spinner,
