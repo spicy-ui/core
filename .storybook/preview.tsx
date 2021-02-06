@@ -1,9 +1,10 @@
 import React from 'react';
 import { ThemeProvider } from '../src';
+import { Parameters } from '@storybook/react';
 
-export const parameters = {
+export const parameters: Parameters = {
   controls: { expanded: true },
-  layout: 'fullscreen',
+  layout: 'padded',
 };
 
 const withThemeProvider = (Story) => (
