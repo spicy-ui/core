@@ -6,6 +6,7 @@ import * as Heading from './Heading';
 import * as Input from './Input';
 import * as Link from './Link';
 import * as Menu from './Menu';
+import * as Modal from './Modal';
 import * as Overlay from './Overlay';
 import * as Progress from './Progress';
 import * as Radio from './Radio';
@@ -24,6 +25,7 @@ export const components = {
   ...Input,
   ...Link,
   ...Menu,
+  ...Modal,
   ...Overlay,
   ...Progress,
   ...Radio,
