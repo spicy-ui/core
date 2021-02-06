@@ -6,14 +6,7 @@ import * as React from 'react';
 import isEqual from 'react-fast-compare';
 import { useTheme } from 'styled-components';
 import { ComponentThemeConfig } from '../theme/types';
-
-function isFunction(value: any): value is Function {
-  return typeof value === 'function';
-}
-
-function runIfFn<Result, Args>(valueOrFn: Result | ((...fnArgs: Args[]) => Result), ...args: Args[]) {
-  return isFunction(valueOrFn) ? valueOrFn(...args) : valueOrFn;
-}
+import { runIfFn } from '../util';
 
 function getStyles(config?: ComponentThemeConfig, props: any = {}) {
   if (config) {
