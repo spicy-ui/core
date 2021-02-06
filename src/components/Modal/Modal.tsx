@@ -6,7 +6,7 @@ import { LiteralUnion } from '../../types';
 import { Box } from '../Box';
 import { Overlay } from '../Overlay';
 
-export type ModalSizes =
+export type ModalSize =
   | '3xs'
   | '2xs'
   | 'xs'
@@ -24,7 +24,7 @@ export type ModalSizes =
 export interface ModalProps extends SxProps {
   isOpen: boolean;
   onClose?: () => void;
-  size?: LiteralUnion<ModalSizes>;
+  size?: LiteralUnion<ModalSize>;
   closeOnEsc?: boolean;
   closeOnOverlayClick?: boolean;
   disableFocusTrap?: boolean;
@@ -73,6 +73,9 @@ export const Modal: React.FC<ModalProps> = (props) => {
   );
 };
 
-Modal.defaultProps = { size: 'md' };
+Modal.defaultProps = {
+  size: 'md',
+  closeOnOverlayClick: true,
+};
 
 Modal.displayName = 'Modal';
