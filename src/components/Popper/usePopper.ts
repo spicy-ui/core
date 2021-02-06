@@ -10,6 +10,7 @@ export interface PopperProps {
   closeOnInnerClick?: boolean;
   closeOnOuterClick?: boolean;
   placement?: Placement;
+  offset?: [number, number];
 }
 
 export interface UsePopperOptions {
