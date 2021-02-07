@@ -1,3 +1,4 @@
+import * as Alert from './Alert';
 import * as Avatar from './Avatar';
 import * as Button from './Button';
 import * as Checkbox from './Checkbox';
@@ -18,6 +19,7 @@ import * as TextArea from './TextArea';
 import * as Tooltip from './Tooltip';
 
 export const components = {
+  ...Alert,
   ...Avatar,
   ...Button,
   ...Checkbox,
