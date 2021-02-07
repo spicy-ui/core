@@ -96,6 +96,7 @@ const filled: ComponentThemeScaleFn<ButtonProps> = ({ color }) => {
 const link: ComponentThemeScaleFn<ButtonProps> = ({ color }) => ({
   p: 0,
   height: 'auto',
+  minWidth: 0,
   lineHeight: 'normal',
   color: `${color}.500`,
   _hover: {
@@ -109,6 +110,7 @@ const link: ComponentThemeScaleFn<ButtonProps> = ({ color }) => ({
 const unstyled: ComponentThemeScale<ButtonProps> = {
   m: 0,
   p: 0,
+  minWidth: 0,
   display: 'inline',
   height: 'auto',
   lineHeight: 'inherit',
