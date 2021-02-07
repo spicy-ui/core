@@ -11,7 +11,7 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>((
   const { sx, children, icon, isRound, ...rest } = props;
 
   return (
-    <Button ref={ref} sx={{ p: 0, borderRadius: isRound ? 'full' : 'md' }} {...rest}>
+    <Button ref={ref} sx={{ p: 0, borderRadius: isRound ? 'full' : 'md', ...sx }} {...rest}>
       {icon || children}
     </Button>
   );
