@@ -1,13 +1,12 @@
 import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 import { HiOutlineGlobe, HiUsers } from 'react-icons/hi';
-import { Avatar, AvatarGroup, AvatarGroupProps, AvatarProps, Box, Stack } from '..';
+import { Avatar, AvatarProps, Box, Stack } from '..';
 
 export default {
   title: 'Avatar',
   component: Avatar,
-  subcomponents: { AvatarGroup },
-} as Meta<AvatarProps | AvatarGroupProps>;
+} as Meta<AvatarProps>;
 
 export const Simple: Story<AvatarProps> = (props) => <Avatar {...props} />;
 
@@ -71,15 +70,3 @@ export const ChildElements: Story<AvatarProps> = () => (
     <Box pos="absolute" bottom={0} right={0} size={4} bgColor="red.500" borderRadius="full" />
   </Avatar>
 );
-
-export const AvatarGroups: Story<AvatarGroupProps> = (props) => (
-  <AvatarGroup {...props}>
-    <Avatar name="Michael Scott" />
-    <Avatar name="Dwight Schrute" />
-    <Avatar name="Jim Halpert" />
-    <Avatar name="Pam Beesly" />
-    <Avatar name="Ryan Howard" />
-    <Avatar name="Andy Bernard" />
-  </AvatarGroup>
-);
-AvatarGroups.args = { max: 3 };
