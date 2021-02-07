@@ -16,6 +16,7 @@ import * as Spinner from './Spinner';
 import * as Switch from './Switch';
 import * as Text from './Text';
 import * as TextArea from './TextArea';
+import * as Toast from './Toast';
 import * as Tooltip from './Tooltip';
 
 export const components = {
@@ -37,5 +38,6 @@ export const components = {
   ...Switch,
   ...Text,
   ...TextArea,
+  ...Toast,
   ...Tooltip,
 };
