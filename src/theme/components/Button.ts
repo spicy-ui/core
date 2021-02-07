@@ -108,7 +108,6 @@ const link: ComponentThemeScaleFn<ButtonProps> = ({ color }) => ({
 });
 
 const unstyled: ComponentThemeScale<ButtonProps> = {
-  m: 0,
   p: 0,
   minWidth: 0,
   display: 'inline',
