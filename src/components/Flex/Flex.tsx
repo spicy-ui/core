@@ -1,17 +1,14 @@
-import * as React from 'react';
-import { Box, BoxProps } from '../Box';
+import { extendedFlexbox, ExtendedFlexboxProps, shouldForwardProp } from '@spicy-ui/styled-system';
+import styled from 'styled-components';
+import { allSystem, sxMixin } from '../../system';
+import { BoxProps } from '../Box';
 
-export interface FlexProps extends BoxProps {
-  /** Shorthand for styled-system `alignItems` prop. */
-  align?: BoxProps['alignItems'];
-  /** Shorthand for styled-system `flexDirection` prop. */
-  direction?: BoxProps['flexDirection'];
-  /** Shorthand for styled-system `justifyContent` prop. */
-  justify?: BoxProps['justifyContent'];
-  /** Shorthand for styled-system `flexWrap` prop. */
-  wrap?: BoxProps['flexWrap'];
-}
+export interface FlexProps extends BoxProps, ExtendedFlexboxProps {}
 
-export const Flex: React.FC<FlexProps> = ({ align, direction, justify, wrap, ...rest }) => (
-  <Box display="flex" alignItems={align} flexDirection={direction} flexWrap={wrap} justifyContent={justify} {...rest} />
-);
+export const Flex = styled.div.withConfig<FlexProps>({ shouldForwardProp })(allSystem, extendedFlexbox, sxMixin);
+
+Flex.defaultProps = {
+  display: 'flex',
+};
+
+Flex.displayName = 'Flex';

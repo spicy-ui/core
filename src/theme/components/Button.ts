@@ -1,161 +1,199 @@
 import { transparentize } from 'polished';
-import { get } from 'styled-system';
-import { ComponentStyle, ComponentTheme } from '../types';
+import { ButtonProps } from '../../components';
+import { ComponentThemeConfig, ComponentThemeScale, ComponentThemeScaleFn } from '../types';
 
-const ghost: ComponentStyle = ({ color, theme }) => {
+const ghost: ComponentThemeScaleFn<ButtonProps & { color: string }> = ({ color }) => {
   switch (color) {
+    case 'blueGray':
+    case 'coolGray':
     case 'gray':
+    case 'trueGray':
+    case 'warmGray':
       return {
-        color: 'gray.800',
-        ':not(:disabled):hover': {
-          backgroundColor: transparentize(0.5, get(theme.colors, `gray.200`)),
+        color: `${color}.800`,
+        _hover: {
+          backgroundColor: ({ colors }: any) => transparentize(0.5, colors[color][200]),
+          _disabled: { backgroundColor: 'transparent' },
         },
-        ':not(:disabled):active': {
-          backgroundColor: transparentize(0.5, get(theme.colors, `gray.300`)),
+        _active: {
+          backgroundColor: ({ colors }: any) => transparentize(0.5, colors[color][300]),
         },
       };
     case 'blackAlpha':
     case 'whiteAlpha':
       return {
         color: `${color}.800`,
-        ':not(:disabled):hover': {
+        _hover: {
           backgroundColor: `${color}.200`,
+          _disabled: { backgroundColor: 'transparent' },
         },
-        ':not(:disabled):active': {
-          backgroundColor: `${color}.300`,
-        },
+        _active: { backgroundColor: `${color}.300` },
       };
     default:
       return {
         color: `${color}.500`,
-        ':not(:disabled):hover': {
-          backgroundColor: transparentize(0.2, get(theme.colors, `${color}.50`)),
+        _hover: {
+          backgroundColor: ({ colors }: any) => transparentize(0.5, colors[color][100]),
+          _disabled: { backgroundColor: 'transparent' },
         },
-        ':not(:disabled):active': {
-          backgroundColor: transparentize(0.4, get(theme.colors, `${color}.100`)),
+        _active: {
+          backgroundColor: ({ colors }: any) => transparentize(0.5, colors[color][200]),
         },
       };
   }
 };
 
-const outlined: ComponentStyle = (props) => {
-  return {
-    border: '2px',
-    borderColor: props.color === 'gray' ? 'gray.200' : 'currentcolor',
-    ...ghost(props),
-  };
-};
+function isGray(color: string) {
+  return ['blueGray', 'coolGray', 'gray', 'trueGray', 'warmGray'].includes(color);
+}
 
-const filled: ComponentStyle = ({ color }) => {
+const outlined: ComponentThemeScaleFn<ButtonProps & { color: string }> = (props) => ({
+  border: '2px',
+  borderColor: isGray(props.color) ? `${props.color}.200` : 'currentcolor',
+  ...ghost(props),
+});
+
+const filled: ComponentThemeScaleFn<ButtonProps> = ({ color }) => {
   switch (color) {
+    case 'blueGray':
+    case 'coolGray':
     case 'gray':
+    case 'trueGray':
+    case 'warmGray':
       return {
         backgroundColor: `${color}.100`,
         color: 'gray.800',
-        ':not(:disabled):hover': {
+        _hover: {
           backgroundColor: `${color}.200`,
+          _disabled: { backgroundColor: `${color}.100` },
         },
-        ':not(:disabled):active': {
-          backgroundColor: `${color}.300`,
-        },
+        _active: { backgroundColor: `${color}.300` },
       };
     case 'blackAlpha':
     case 'whiteAlpha':
       return {
         backgroundColor: `${color}.200`,
         color: 'white',
-        ':not(:disabled):hover': {
+        _hover: {
           backgroundColor: `${color}.300`,
+          _disabled: { backgroundColor: `${color}.200` },
         },
-        ':not(:disabled):active': {
-          backgroundColor: `${color}.400`,
-        },
+        _active: { backgroundColor: `${color}.400` },
       };
     default:
       return {
         backgroundColor: `${color}.500`,
         color: `white`,
-        ':not(:disabled):hover': {
+        _hover: {
           backgroundColor: `${color}.600`,
+          _disabled: { backgroundColor: `${color}.500` },
         },
-        ':not(:disabled):active': {
-          backgroundColor: `${color}.700`,
-        },
+        _active: { backgroundColor: `${color}.700` },
       };
   }
 };
 
-const link: ComponentStyle = ({ color }) => ({
-  color: `${color}.500`,
-  ':not(:disabled):hover': {
-    textDecoration: 'underline',
-  },
-  ':not(:disabled):active': {
-    color: `${color}.700`,
-  },
-});
-
-const unstyled: ComponentStyle = () => ({
+const link: ComponentThemeScaleFn<ButtonProps> = ({ color }) => ({
   p: 0,
   height: 'auto',
+  minWidth: 0,
+  lineHeight: 'normal',
+  color: `${color}.500`,
+  _hover: {
+    textDecoration: 'underline',
+    _disabled: { textDecoration: 'none' },
+  },
+  _disabled: { textDecoration: 'none' },
+  _active: { color: `${color}.700` },
 });
 
-export const Button: ComponentTheme = {
-  baseStyle: (props) => ({
+const unstyled: ComponentThemeScale<ButtonProps> = {
+  p: 0,
+  minWidth: 0,
+  display: 'inline',
+  height: 'auto',
+  lineHeight: 'inherit',
+  backgroundColor: 'none',
+  color: 'inherit',
+};
+
+export const Button: ComponentThemeConfig<ButtonProps> = {
+  propToScaleMap: [
+    ['size', 'sizes'],
+    ['variant', 'variants'],
+  ],
+  baseStyle: ({ isFullWidth }) => ({
+    width: isFullWidth ? '100%' : 'auto',
+    position: 'relative',
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
     appearance: 'none',
     background: 'none',
     border: 'none',
-    borderRadius: 'sm',
+    borderRadius: 'md',
     color: 'inherit',
-    cursor: 'pointer',
     fontWeight: 'semibold',
-    lineHeight: 1,
+    lineHeight: '1',
     outline: 'none',
-    textAlign: 'center',
-    transitionDuration: get(props.theme, 'transitions.duration.300'),
-    transitionProperty: get(props.theme, 'transitions.property.common'),
-    transitionTimingFunction: get(props.theme, 'transitions.timing.inOut'),
+    transitionProperty: 'common',
+    transitionTimingFunction: 'inOut',
+    transitionDuration: '300',
     userSelect: 'none',
-    ':focus': {
+    verticalAlign: 'middle',
+    whiteSpace: 'nowrap',
+    _focus: {
       boxShadow: 'outline',
       zIndex: 1,
     },
-    ':disabled': {
-      opacity: 0.5,
-      cursor: 'not-allowed',
+    _disabled: {
       boxShadow: 'none',
+      cursor: 'not-allowed',
+      opacity: 0.4,
     },
   }),
-  sizes: {
-    xs: () => ({
-      px: 2,
-      height: 6,
-      fontSize: 'xs',
-    }),
-    sm: () => ({
-      px: 3,
-      height: 8,
-      fontSize: 'sm',
-    }),
-    md: () => ({
-      px: 4,
-      height: 10,
-      fontSize: 'md',
-    }),
-    lg: () => ({
-      px: 6,
-      height: 12,
-      fontSize: 'lg',
-    }),
+  scales: {
+    sizes: {
+      xs: () => ({
+        px: 2,
+        height: 6,
+        minWidth: 6,
+        fontSize: 'xs',
+      }),
+      sm: () => ({
+        px: 3,
+        height: 8,
+        minWidth: 8,
+        fontSize: 'sm',
+      }),
+      md: () => ({
+        px: 4,
+        height: 10,
+        minWidth: 10,
+        fontSize: 'md',
+      }),
+      lg: () => ({
+        px: 6,
+        height: 12,
+        minWidth: 12,
+        fontSize: 'lg',
+      }),
+    },
+    variants: {
+      filled,
+      outlined,
+      ghost,
+      link,
+      unstyled,
+    },
   },
-  variants: {
-    filled,
-    outlined,
-    ghost,
-    link,
-    unstyled,
-  },
+};
+
+export const ButtonSpinner: ComponentThemeConfig = {
+  baseStyle: ({ hasText, spacing }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    position: hasText ? 'relative' : 'absolute',
+    marginInlineEnd: hasText ? spacing : 0,
+  }),
 };

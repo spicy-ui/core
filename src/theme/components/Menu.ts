@@ -1,10 +1,12 @@
+import { get } from '@spicy-ui/styled-system';
 import { transparentize } from 'polished';
-import { get } from 'styled-system';
-import { ComponentTheme } from '../types';
+import { MenuProps } from '../../components';
+import { ComponentThemeConfig } from '../types';
 
-const Menu: ComponentTheme = {
-  baseStyle: () => ({
-    minWidth: '56',
+export const Menu: ComponentThemeConfig<MenuProps> = {
+  baseStyle: ({ isFullWidth }) => ({
+    minWidth: 56,
+    width: isFullWidth ? 'full' : 'auto',
     display: 'flex',
     flexDirection: 'column',
     bg: 'white',
@@ -16,10 +18,31 @@ const Menu: ComponentTheme = {
   }),
 };
 
-const MenuItem: ComponentTheme = {
+export const MenuDivider: ComponentThemeConfig = {
+  baseStyle: () => ({
+    width: 'auto',
+    borderTopWidth: '1px',
+    borderTopStyle: 'solid',
+    opacity: 0.6,
+  }),
+};
+
+export const MenuHeader: ComponentThemeConfig = {
+  baseStyle: () => ({
+    mx: 4,
+    my: 2,
+    flex: '1 1 auto',
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: 'sm',
+    fontWeight: 'semibold',
+  }),
+};
+
+export const MenuItem: ComponentThemeConfig = {
   baseStyle: ({ theme }) => ({
-    px: '4',
-    minHeight: '10',
+    px: 4,
+    minHeight: 10,
     flex: '1 1 auto',
     display: 'flex',
     alignItems: 'center',
@@ -30,42 +53,17 @@ const MenuItem: ComponentTheme = {
     cursor: 'pointer',
     outline: 'none',
     textAlign: 'left',
-    transitionProperty: get(theme, 'transitions.property.common'),
-    transitionDuration: get(theme, 'transitions.duration.300'),
-    transitionTimingFunction: get(theme, 'transitions.timing.inOut'),
-    ':not(:disabled):hover': {
+    transitionProperty: 'common',
+    transitionTimingFunction: 'inOut',
+    transitionDuration: '300',
+    _hover: {
       backgroundColor: transparentize(0.5, get(theme.colors, `gray.100`)),
+      _disabled: {
+        backgroundColor: 'none',
+      },
     },
-    ':not(:disabled):active, &.active': {
+    _active: {
       backgroundColor: transparentize(0.5, get(theme.colors, `gray.200`)),
     },
   }),
-};
-
-const MenuDivider: ComponentTheme = {
-  baseStyle: () => ({
-    width: 'auto',
-    borderTopWidth: '1px',
-    borderTopStyle: 'solid',
-    opacity: 0.6,
-  }),
-};
-
-const MenuHeader: ComponentTheme = {
-  baseStyle: () => ({
-    mx: '4',
-    my: '2',
-    flex: '1 1 auto',
-    display: 'flex',
-    alignItems: 'center',
-    fontSize: 'sm',
-    fontWeight: 'semibold',
-  }),
-};
-
-export const MenuComponents = {
-  Menu,
-  MenuItem,
-  MenuDivider,
-  MenuHeader,
 };

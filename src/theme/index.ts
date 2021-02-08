@@ -5,3 +5,5 @@ export const theme = {
   ...foundations,
   components,
 };
+
+export { ComponentThemeConfig, ComponentThemeScale } from './types';

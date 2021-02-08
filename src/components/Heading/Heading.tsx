@@ -1,36 +1,26 @@
-import { createShouldForwardProp, props } from '@styled-system/should-forward-prop';
+import { shouldForwardProp } from '@spicy-ui/styled-system';
 import styled from 'styled-components';
-import {
-  color,
-  ColorProps,
-  layout,
-  LayoutProps,
-  ResponsiveValue,
-  space,
-  SpaceProps,
-  typography,
-  TypographyProps,
-} from 'styled-system';
-import { baseStyle, variant } from '../../helpers';
+import { allSystem, AllSystemProps, getComponentStyles, sxMixin, SxProps } from '../../system';
+import { LiteralUnion } from '../../types';
 
-export interface HeadingProps extends Omit<ColorProps, 'color'>, LayoutProps, SpaceProps, TypographyProps {
-  /** Color of the text. */
-  color?: ResponsiveValue<string>;
-  /** Variant style of the text. */
-  variant?: string;
+export type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+export interface HeadingProps extends AllSystemProps, SxProps {
+  color?: string;
+  /** Stack children. */
+  children?: React.ReactNode;
+  /** Text variant. */
+  variant?: LiteralUnion<HeadingVariant>;
 }
 
-const shouldForwardProp = createShouldForwardProp([...props, 'variant']);
-
-export const Heading = styled('h2').withConfig<HeadingProps>({ shouldForwardProp })`
-  ${baseStyle('components.Heading')}
-  ${variant('components.Heading')}
-  ${color}
-  ${layout}
-  ${space}
-  ${typography}
-`;
+export const Heading = styled.p.withConfig<HeadingProps>({ shouldForwardProp })(
+  getComponentStyles('Heading'),
+  allSystem,
+  sxMixin,
+);
 
 Heading.defaultProps = {
   variant: 'h2',
 };
+
+Heading.displayName = 'Heading';

@@ -1,14 +1,19 @@
-import { ComponentTheme } from '../types';
+import { OverlayProps } from '../../components';
+import { ComponentThemeConfig } from '../types';
 
-export const Overlay: ComponentTheme = {
+export const Overlay: ComponentThemeConfig<OverlayProps> = {
   baseStyle: () => ({
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',
-    position: 'fixed',
     zIndex: 'overlay',
-    '&::before': {
-      content: '""',
+    _before: {
+      content: `""`,
       display: 'block',
       position: 'fixed',
       top: 0,
@@ -16,8 +21,6 @@ export const Overlay: ComponentTheme = {
       width: '100%',
       height: '100%',
       backgroundColor: 'blackAlpha.400',
-      visibility: 'hidden',
-      opacity: 0,
     },
   }),
 };

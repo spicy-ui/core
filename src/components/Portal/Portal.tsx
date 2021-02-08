@@ -1,7 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-export const Portal: React.FC = ({ children }) => {
+export interface PortalProps {
+  children: React.ReactNode;
+}
+
+export const Portal: React.FC<PortalProps> = ({ children }) => {
   const [ready, setReady] = React.useState(false);
 
   const container = React.useRef<HTMLDivElement>();
@@ -31,3 +35,5 @@ export const Portal: React.FC = ({ children }) => {
 
   return null;
 };
+
+Portal.displayName = 'Portal';

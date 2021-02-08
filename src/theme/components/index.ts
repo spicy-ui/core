@@ -1,41 +1,43 @@
-import { Alert } from './Alert';
-import { Avatar } from './Avatar';
-import { Button } from './Button';
-import { CheckboxComponents } from './Checkbox';
-import { Divider } from './Divider';
-import { Drawer } from './Drawer';
-import { Heading } from './Heading';
-import { Input } from './Input';
-import { Link } from './Link';
-import { MenuComponents } from './Menu';
-import { Modal } from './Modal';
-import { Overlay } from './Overlay';
-import { ProgressComponents } from './Progress';
-import { RadioComponents } from './Radio';
-import { SelectComponents } from './Select';
-import { SwitchComponents } from './Switch';
-import { Text } from './Text';
-import { TextArea } from './TextArea';
-import { ToastComponents } from './Toast';
+import * as Alert from './Alert';
+import * as Avatar from './Avatar';
+import * as Button from './Button';
+import * as Checkbox from './Checkbox';
+import * as Divider from './Divider';
+import * as Drawer from './Drawer';
+import * as Heading from './Heading';
+import * as Input from './Input';
+import * as Link from './Link';
+import * as Menu from './Menu';
+import * as Modal from './Modal';
+import * as Overlay from './Overlay';
+import * as Progress from './Progress';
+import * as Radio from './Radio';
+import * as Spinner from './Spinner';
+import * as Switch from './Switch';
+import * as Text from './Text';
+import * as TextArea from './TextArea';
+import * as Toast from './Toast';
+import * as Tooltip from './Tooltip';
 
 export const components = {
-  Alert,
-  Avatar,
-  Button,
-  ...CheckboxComponents,
-  Divider,
-  Drawer,
-  Heading,
-  Input,
-  Link,
-  ...MenuComponents,
-  Modal,
-  Overlay,
-  ...ProgressComponents,
-  ...RadioComponents,
-  ...SelectComponents,
-  ...SwitchComponents,
-  Text,
-  TextArea,
-  ...ToastComponents,
+  ...Alert,
+  ...Avatar,
+  ...Button,
+  ...Checkbox,
+  ...Divider,
+  ...Drawer,
+  ...Heading,
+  ...Input,
+  ...Link,
+  ...Menu,
+  ...Modal,
+  ...Overlay,
+  ...Progress,
+  ...Radio,
+  ...Spinner,
+  ...Switch,
+  ...Text,
+  ...TextArea,
+  ...Toast,
+  ...Tooltip,
 };

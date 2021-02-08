@@ -1,38 +1,46 @@
-import { createShouldForwardProp, props } from '@styled-system/should-forward-prop';
 import * as React from 'react';
-import styled from 'styled-components';
-import { height, HeightProps, space, SpaceProps, width, WidthProps } from 'styled-system';
-import { baseStyle, size, transition, TransitionProps, transitionProps, variant } from '../../helpers';
+import { SxProps, useComponentStyles } from '../../system';
+import { LiteralUnion } from '../../types';
+import { Box } from '../Box';
+
+type InputSizes = 'xs' | 'sm' | 'md' | 'lg';
+
+type InputVariants = 'outlined' | 'filled' | 'underlined' | 'unstyled';
 
 export interface InputProps
-  extends SpaceProps,
-    WidthProps,
-    HeightProps,
-    TransitionProps,
-    Omit<React.InputHTMLAttributes<HTMLInputElement>, 'width' | 'height'> {
-  /** Indicate whether the input has a valid value or not. */
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'width' | 'height' | 'size'>,
+    SxProps {
+  as?: string | React.ComponentType<any>;
+  /** If `true`, the input will be disabled. */
+  isDisabled?: boolean;
+  /** If `true`, the input will be marked as invalid. */
   isInvalid?: boolean;
+  /** If `true`, the input will be read only. */
+  isReadOnly?: boolean;
+  /** If `true`, the input will be required. */
+  isRequired?: boolean;
   /** Size of the input. */
-  space?: string;
-  /** Variant style of the input. */
-  variant?: string;
+  size?: LiteralUnion<InputSizes>;
+  /** Variant of the input. */
+  variant?: LiteralUnion<InputVariants>;
 }
 
-const shouldForwardProp = createShouldForwardProp([...props, ...transitionProps, 'isInvalid', 'space', 'variant']);
+export const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+  const { children, sx, isDisabled, isInvalid, isReadOnly, isRequired, size, variant, ...rest } = props;
 
-export const Input = styled('input').withConfig<InputProps>({ shouldForwardProp })`
-  ${baseStyle('components.Input')}
-  ${size('components.Input', 'space')}
-  ${variant('components.Input')}
-  ${width}
-  ${height}
-  ${space}
-  ${transition}
-`;
+  const styles = useComponentStyles('Input', props);
+
+  return (
+    <Box as="input" ref={ref} disabled={isDisabled} readOnly={isReadOnly} required={isRequired} sx={styles} {...rest}>
+      {children}
+    </Box>
+  );
+});
 
 Input.defaultProps = {
-  isInvalid: false,
-  space: 'md',
+  size: 'md',
   type: 'text',
   variant: 'outlined',
 };
+
+Input.displayName = 'Input';

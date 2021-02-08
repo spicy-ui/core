@@ -1,23 +1,25 @@
-import { ComponentTheme } from '../types';
+import { CircularProgressProps } from '../../components/Progress/Circular';
+import { HorizontalProgressProps } from '../../components/Progress/Horizontal';
+import { ComponentThemeConfig } from '../types';
 
-const CircularProgress: ComponentTheme = {
-  baseStyle: ({ fontSize }) => ({
+export const ProgressCircular: ComponentThemeConfig<CircularProgressProps> = {
+  baseStyle: ({ size }) => ({
     height: '1em',
     width: '1em',
     position: 'relative',
-    fontSize,
+    fontSize: size,
   }),
 };
 
-const CircularProgressSvg: ComponentTheme = {
+export const ProgressCircularSvg: ComponentThemeConfig<CircularProgressProps> = {
   baseStyle: () => ({}),
 };
 
-const CircularProgressCircle: ComponentTheme = {
+export const ProgressCircularShape: ComponentThemeConfig<CircularProgressProps> = {
   baseStyle: () => ({}),
 };
 
-const CircularProgressInner: ComponentTheme = {
+export const ProgressCircularInner: ComponentThemeConfig<CircularProgressProps> = {
   baseStyle: () => ({
     position: 'absolute',
     top: '50%',
@@ -26,20 +28,28 @@ const CircularProgressInner: ComponentTheme = {
   }),
 };
 
-const HorizontalProgress: ComponentTheme = {
+export const ProgressHorizontal: ComponentThemeConfig<HorizontalProgressProps> = {
   baseStyle: () => ({}),
 };
 
-const HorizontalIndeterminateProgressInner: ComponentTheme = {
-  baseStyle: ({ isCapRound }) => ({
+export const ProgressHorizontalIndeterminateInner: ComponentThemeConfig<HorizontalProgressProps> = {
+  baseStyle: ({ color, isCapRound }) => ({
+    height: 'full',
+    bgColor: color,
     borderRadius: isCapRound ? 'full' : undefined,
+    animationDuration: '1.4s',
+    animationFillMode: 'forwards',
+    animationIterationCount: 'infinite',
+    animationTimingFunction: ({ transition }: any) => transition.timingFn.inOut,
   }),
 };
 
-const HorizontalProgressInner: ComponentTheme = {
-  baseStyle: ({ isCapRound }) => ({
+export const ProgressHorizontalInner: ComponentThemeConfig<HorizontalProgressProps> = {
+  baseStyle: ({ color, isCapRound }) => ({
+    height: 'full',
     display: 'flex',
     alignItems: 'center',
+    bgColor: color,
     borderBottomRightRadius: isCapRound ? 'full' : undefined,
     borderTopRightRadius: isCapRound ? 'full' : undefined,
     justifyContent: 'flex-end',
@@ -47,14 +57,4 @@ const HorizontalProgressInner: ComponentTheme = {
     userSelect: 'none',
     whiteSpace: 'nowrap',
   }),
-};
-
-export const ProgressComponents = {
-  CircularProgress,
-  CircularProgressSvg,
-  CircularProgressCircle,
-  CircularProgressInner,
-  HorizontalProgress,
-  HorizontalIndeterminateProgressInner,
-  HorizontalProgressInner,
 };

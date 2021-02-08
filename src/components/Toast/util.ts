@@ -1,6 +1,6 @@
 /* eslint-disable no-bitwise */
 
-import { ToastPlacement } from './types';
+import { ToastPlacement } from './ToastProvider';
 
 // https://gist.github.com/solenoid/1372386
 export const uuid = () =>
@@ -20,8 +20,8 @@ export function mergeDefined<T = { [key: string]: any }>(...args: { [key: string
   return obj as T;
 }
 
-export const getPlacement = (anchor: ToastPlacement) => {
-  switch (anchor) {
+export const getPlacement = (placement: ToastPlacement) => {
+  switch (placement) {
     case 'top-left':
       return { top: 0, left: 0 };
     case 'top-right':
@@ -31,6 +31,6 @@ export const getPlacement = (anchor: ToastPlacement) => {
     case 'bottom-right':
       return { bottom: 0, right: 0 };
     default:
-      throw new Error(`Unknown anchor '${anchor}'`);
+      return {};
   }
 };

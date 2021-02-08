@@ -1,27 +1,45 @@
-import { ComponentTheme } from '../types';
+import { ToastPlacement, ToastProviderProps } from '../../components';
+import { ComponentThemeConfig } from '../types';
 
-const ToastContainer: ComponentTheme = {
-  baseStyle: () => ({
+const getPlacement = (placement?: ToastPlacement) => {
+  switch (placement) {
+    case 'top-left':
+      return { top: 0, left: 0 };
+    case 'top-right':
+      return { top: 0, right: 0 };
+    case 'bottom-left':
+      return { bottom: 0, left: 0 };
+    case 'bottom-right':
+      return { bottom: 0, right: 0 };
+    default:
+      return {};
+  }
+};
+
+const getChildPlacement = (placement?: ToastPlacement) => {
+  switch (placement) {
+    case 'top-left':
+    case 'top-right':
+      return { mb: 4 };
+    case 'bottom-left':
+    case 'bottom-right':
+      return { mt: 4 };
+    default:
+      return {};
+  }
+};
+
+export const ToastContainer: ComponentThemeConfig<ToastProviderProps> = {
+  baseStyle: ({ placement }) => ({
     m: 4,
-    minWidth: '18rem',
-    maxWidth: '24rem',
-    width: 'full',
+    maxWidth: 80,
+    minWidth: 80,
     position: 'fixed',
+    ...getPlacement(placement),
     zIndex: 'toast',
-  }),
-};
 
-const ToastItem: ComponentTheme = {
-  baseStyle: () => ({
-    mb: 4,
-    width: 'full',
-    position: 'relative',
-    boxShadow: 'xl',
-    opacity: 0,
+    '& > *': {
+      ...getChildPlacement(placement),
+    },
   }),
-};
-
-export const ToastComponents = {
-  ToastContainer,
-  ToastItem,
 };

@@ -1,9 +1,19 @@
-import clsx from 'clsx';
 import { useCombobox, UseComboboxStateChange } from 'downshift';
+import { motion, Variants } from 'framer-motion';
 import * as React from 'react';
-import { FiChevronDown, FiLoader, FiX } from 'react-icons/fi';
-import { Box, Flex, Input, Menu, MenuItem, Stack, Text } from '..';
-import { SelectArrow, SelectClear, SelectLoading } from './styled';
+import { HiChevronDown, HiX } from 'react-icons/hi';
+import styled from 'styled-components';
+import { sxMixin, SxProps, useComponentStyles } from '../../system';
+import { LiteralUnion } from '../../types';
+import { mergeRefs } from '../../util';
+import { Box } from '../Box';
+import { Flex } from '../Flex';
+import { Input } from '../Input';
+import { MenuItem } from '../Menu';
+import { usePopper } from '../Popper';
+import { Spinner } from '../Spinner';
+import { Stack } from '../Stack';
+import { Text } from '../Text';
 
 function defaultItemToString(item: SelectItem | null) {
   return item ? item.label : '';
@@ -17,13 +27,44 @@ function defaultRenderItem(item: SelectItem | null, fallback: string | null = nu
   return item ? <>{item.label}</> : null;
 }
 
-const MenuMessage: React.FC = ({ children }) => (
+const SelectText: React.FC<{ label: React.ReactNode } & SxProps> = ({ label, sx }) => (
   <Flex py={4} align="center" justify="center">
-    <Text as="span" color="gray.600">
-      {children}
+    <Text as="span" sx={sx}>
+      {label}
     </Text>
   </Flex>
 );
+
+const SelectIcon: React.FC<
+  {
+    icon: React.ReactElement;
+    onClick?: (e: React.MouseEvent) => void;
+  } & SxProps
+> = ({ icon, sx, ...rest }) => (
+  <Text as="span" sx={sx} {...rest}>
+    {icon}
+  </Text>
+);
+
+const defaultI18n: Required<SelectI18n> = {
+  loading: 'Loading...',
+  noItems: 'No items',
+};
+
+const Motion = styled(motion.div)(sxMixin);
+
+const variants: Variants = {
+  hidden: {
+    opacity: 0,
+    pointerEvents: 'none',
+    transition: { duration: 0.3 },
+  },
+  visible: {
+    opacity: 1,
+    pointerEvents: 'auto',
+    transition: { duration: 0.2 },
+  },
+};
 
 export interface SelectItem<V = any> {
   value: V;
@@ -32,55 +73,54 @@ export interface SelectItem<V = any> {
 
 export interface SelectI18n {
   loading?: string;
-  noOptions?: string;
+  noItems?: string;
 }
 
-export interface SelectProps<V = any> {
-  disabled?: boolean;
-  inputValue?: string;
+export type SelectSizes = 'xs' | 'sm' | 'md' | 'lg';
+
+export type SelectVariants = 'outlined' | 'filled' | 'underlined' | 'unstyled';
+
+export interface SelectProps {
+  searchValue?: string;
+  onSearchChange?: (search: string) => void;
+  items: SelectItem[];
+  itemToString?: (item: SelectItem | null) => string;
+  renderItem?: (item: SelectItem | null, fallback?: string | null) => React.ReactNode;
+  value: SelectItem | null;
+  onChange: (value: SelectItem | null) => void;
   isClearable?: boolean;
+  isDisabled?: boolean;
   isInvalid?: boolean;
   isLoading?: boolean;
   isSearchable?: boolean;
-  items: SelectItem<V>[];
-  itemToString?: (item: SelectItem<V> | null) => string;
-  onChange: (value: SelectItem<V> | null) => void;
-  onInputChange?: (value: string) => void;
   placeholder?: string;
-  renderItem?: (item: SelectItem<V> | null, fallback?: string | null) => React.ReactNode;
-  space?: string;
-  value: SelectItem<V> | null;
-  variant?: string;
+  size?: LiteralUnion<SelectSizes>;
+  variant?: LiteralUnion<SelectVariants>;
   i18n?: SelectI18n;
 }
 
-const defaultI18n: Required<SelectI18n> = {
-  loading: 'Loading...',
-  noOptions: 'No options',
-};
-
-export function Select<V = any>({
-  disabled,
-  inputValue,
+export const Select: React.FC<SelectProps> = ({
+  searchValue,
+  onSearchChange,
+  items,
+  itemToString = defaultItemToString,
+  renderItem = defaultRenderItem,
+  value,
+  onChange,
   isClearable,
+  isDisabled,
   isInvalid,
   isLoading,
   isSearchable,
-  items,
-  itemToString = defaultItemToString,
-  onChange,
-  onInputChange,
   placeholder,
-  renderItem = defaultRenderItem,
-  space,
-  value,
+  size,
   variant,
   i18n,
-}: SelectProps<V>) {
+}) => {
   const localization = { ...defaultI18n, ...i18n };
 
   const onSelectedItemChange = React.useCallback(
-    (changes: UseComboboxStateChange<SelectItem<V>>) => {
+    (changes: UseComboboxStateChange<SelectItem>) => {
       if (changes.selectedItem) {
         onChange(changes.selectedItem);
       }
@@ -88,13 +128,13 @@ export function Select<V = any>({
     [onChange],
   );
 
-  const onInputValueChange = React.useCallback(
-    (changes: UseComboboxStateChange<SelectItem<V>>) => {
-      if (onInputChange && changes.inputValue !== undefined && changes.inputValue !== null) {
-        onInputChange(changes.inputValue);
+  const onSearchValueChange = React.useCallback(
+    (changes: UseComboboxStateChange<SelectItem>) => {
+      if (onSearchChange && changes.inputValue !== undefined && changes.inputValue !== null) {
+        onSearchChange(changes.inputValue);
       }
     },
-    [onInputChange],
+    [onSearchChange],
   );
 
   const {
@@ -108,13 +148,18 @@ export function Select<V = any>({
     setInputValue,
     highlightedIndex,
     closeMenu,
-  } = useCombobox<SelectItem<V>>({
+  } = useCombobox({
     items,
     selectedItem: value,
     onSelectedItemChange,
     itemToString,
-    inputValue,
-    onInputValueChange,
+    inputValue: searchValue,
+    onInputValueChange: onSearchValueChange,
+  });
+
+  const { triggerProps, childProps } = usePopper({
+    isOpen,
+    offset: [0, 8],
   });
 
   const onClear = React.useCallback(
@@ -132,79 +177,82 @@ export function Select<V = any>({
     [closeMenu, isOpen, onChange, setInputValue],
   );
 
+  const comboboxProps = getComboboxProps();
+  const toggleButtonProps = getToggleButtonProps();
   const inputProps = getInputProps({}, { suppressRefError: true });
+  const menuProps = getMenuProps({}, { suppressRefError: true });
+
+  const menuStyles = useComponentStyles('Menu', { isFullWidth: true, size, variant });
+  const textStyles = useComponentStyles('SelectText', { size, variant });
+  const iconStyles = useComponentStyles('SelectIcon', { size, variant });
 
   return (
-    <Box position="relative" {...getComboboxProps()}>
+    <Box pos="relative" {...comboboxProps}>
       <Input
         as="button"
         type="button"
-        disabled={disabled}
+        isDisabled={isDisabled}
         isInvalid={isInvalid}
-        space={space}
+        size={size}
         variant={variant}
-        {...getToggleButtonProps()}
+        {...triggerProps}
+        {...toggleButtonProps}
+        ref={mergeRefs([triggerProps.ref, toggleButtonProps.ref])}
       >
         <Flex pr={2} flex="1 1 0%">
           {isSearchable ? (
             <Input
-              disabled={disabled}
+              isDisabled={isDisabled}
               placeholder={placeholder}
-              readOnly={!isSearchable}
-              style={{ boxShadow: 'none' }}
               variant="unstyled"
+              sx={{ boxShadow: 'none !important' }}
               {...inputProps}
             />
           ) : (
             renderItem(selectedItem, placeholder)
           )}
         </Flex>
-        <Stack spacing={2} direction="row" flexShrink={0}>
-          {isLoading && (
-            <SelectLoading fontSize={space}>
-              <FiLoader />
-            </SelectLoading>
+        <Stack spacing={2} direction="row" align="center" flexShrink={0}>
+          {isLoading && <Spinner color="gray.400" size={size} />}
+          {!isLoading && isClearable && (selectedItem || searchValue) && (
+            <SelectIcon icon={<HiX />} onClick={onClear} sx={iconStyles} />
           )}
-          {!isLoading && isClearable && (selectedItem || inputValue) && (
-            <SelectClear fontSize={space} onClick={onClear}>
-              <FiX />
-            </SelectClear>
-          )}
-          <SelectArrow fontSize={space}>
-            <FiChevronDown />
-          </SelectArrow>
+          <SelectIcon icon={<HiChevronDown />} sx={iconStyles} />
         </Stack>
       </Input>
-      <Menu
-        mt={2}
-        width="full"
-        maxHeight={48}
-        position="absolute"
-        style={{
-          display: isOpen ? 'flex' : 'none',
-          outline: 'none',
-          overflowY: 'auto',
-        }}
-        zIndex="dropdown"
-        {...getMenuProps()}
+      <Motion
+        initial="hidden"
+        animate={isOpen ? 'visible' : 'hidden'}
+        variants={variants}
+        sx={menuStyles}
+        {...childProps}
+        {...menuProps}
+        ref={mergeRefs([childProps.ref, menuProps.ref])}
       >
-        {isLoading && <MenuMessage>{localization.loading}</MenuMessage>}
-        {!isLoading && items.length === 0 && <MenuMessage>{localization.noOptions}</MenuMessage>}
+        {isLoading && <SelectText label={localization.loading} sx={textStyles} />}
+        {!isLoading && items.length === 0 && <SelectText label={localization.noItems} sx={textStyles} />}
         {!isLoading &&
           items.map((item, index) => (
             <MenuItem
               // eslint-disable-next-line react/no-array-index-key
               key={`select-item-${index}`}
               {...getItemProps({
-                className: clsx({ active: highlightedIndex === index }),
+                'data-active': highlightedIndex === index ? true : undefined,
                 index,
                 item,
-              })}
+              } as any)}
             >
               {renderItem(item)}
             </MenuItem>
           ))}
-      </Menu>
+      </Motion>
     </Box>
   );
-}
+};
+
+Select.defaultProps = {
+  size: 'md',
+  variant: 'outlined',
+};
+
+Select.displayName = 'Select';

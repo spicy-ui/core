@@ -1,21 +1,26 @@
-import shouldForwardProp from '@styled-system/should-forward-prop';
-import styled from 'styled-components';
-import { baseStyle, size, variant } from '../../helpers';
-import { Box, BoxProps } from '../Box';
+import * as React from 'react';
+import { SxProps, useComponentStyles } from '../../system';
+import { Box } from '../Box';
 
-export interface AlertProps extends BoxProps {
-  variant?: string;
-  space?: string;
+export interface AlertProps extends SxProps {
+  children?: React.ReactNode;
+  color?: string;
 }
 
-export const Alert = styled(Box).withConfig<AlertProps>({ shouldForwardProp })`
-  ${baseStyle('components.Alert')}
-  ${variant('components.Alert')}
-  ${size('components.Alert', 'space')}
-`;
+export const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
+  const { sx, children, color, ...rest } = props;
+
+  const styles = useComponentStyles('Alert', props);
+
+  return (
+    <Box ref={ref} sx={styles} {...rest}>
+      {children}
+    </Box>
+  );
+});
 
 Alert.defaultProps = {
-  variant: 'info',
-  space: 'md',
-  borderRadius: 'sm',
+  color: 'gray',
 };
+
+Alert.displayName = 'Alert';

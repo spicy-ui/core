@@ -1,66 +1,71 @@
-import shouldForwardProp from '@styled-system/should-forward-prop';
 import * as React from 'react';
 import styled from 'styled-components';
-import { baseStyle } from '../../helpers';
-import { Box, BoxProps } from '../Box';
-import { CircularProgressProps } from './types';
+import { sxMixin, useComponentStyles } from '../../system';
+import { Box } from '../Box';
 
-const StyledCircularProgress = styled(Box).withConfig<BoxProps & { fontSize?: string }>({ shouldForwardProp })`
-  ${baseStyle('components.CircularProgress')}
-`;
+const Svg = styled.svg(sxMixin);
 
-const CircularProgressSvg = styled(Box).withConfig<BoxProps>({ shouldForwardProp })`
-  ${baseStyle('components.CircularProgressSvg')}
-`;
+const Circle = styled.circle(sxMixin);
 
-const CircularProgressCircle = styled(Box).withConfig<BoxProps>({ shouldForwardProp })`
-  ${baseStyle('components.CircularProgressCircle')}
-`;
+export interface CircularProgressProps {
+  angle?: number;
+  children?: React.ReactNode;
+  color?: string;
+  isCapRound?: boolean;
+  isIndeterminate?: boolean;
+  max?: number;
+  min?: number;
+  size?: string;
+  thickness?: number;
+  trackColor?: string;
+  value?: number;
+}
 
-const StyledCircularProgressInner = styled(Box).withConfig<BoxProps>({ shouldForwardProp })`
-  ${baseStyle('components.CircularProgressInner')}
-`;
+export const CircularProgress = React.forwardRef<HTMLDivElement, CircularProgressProps>((props, ref) => {
+  const {
+    children,
+    angle = 0,
+    color = 'blue.500',
+    isCapRound = false,
+    isIndeterminate = false,
+    max = 100,
+    min = 0,
+    trackColor = 'gray.100',
+    thickness = 1,
+    value = 0,
+    ...rest
+  } = props;
 
-export const CircularProgress: React.FC<CircularProgressProps> = ({
-  angle = 0,
-  children,
-  color = 'blue.500',
-  isCapRound = false,
-  isIndeterminate = false,
-  max = 100,
-  min = 0,
-  size = '48px',
-  trackColor = 'gray.100',
-  thickness = 1,
-  value = 0,
-}) => {
+  const rootStyles = useComponentStyles('ProgressCircular', props);
+  const svgStyles = useComponentStyles('ProgressCircularSvg', props);
+  const shapeStyles = useComponentStyles('ProgressCircularShape', props);
+  const innerStyles = useComponentStyles('ProgressCircularInner', props);
+
   const percent = Math.min(Math.max(((value - min) * 100) / (max - min), min), max) / 100;
 
   return (
-    <StyledCircularProgress role="progressbar" fontSize={size}>
-      <CircularProgressSvg as="svg" viewBox="0 0 100 100">
-        <CircularProgressCircle
-          as="circle"
+    <Box ref={ref} role="progressbar" sx={rootStyles} {...rest}>
+      <Svg viewBox="0 0 100 100" sx={svgStyles}>
+        <Circle
           cx={50}
           cy={50}
           r={42}
-          color={trackColor}
           fill="transparent"
           stroke="currentColor"
           strokeWidth={8 * thickness}
+          sx={{ ...shapeStyles, color: trackColor }}
         />
-        <CircularProgressCircle
-          as="circle"
+        <Circle
           cx={50}
           cy={50}
           r={42}
-          color={color}
           fill="transparent"
           stroke="currentColor"
           strokeWidth={8 * thickness}
           strokeLinecap={isCapRound ? 'round' : undefined}
           strokeDasharray={`${Math.PI * 42 * 2 * percent}, ${Math.PI * 42 * 2}`}
           transform={`rotate(${angle - 90}, 50, 50)`}
+          sx={{ ...shapeStyles, color }}
         >
           {isIndeterminate && (
             <>
@@ -81,9 +86,15 @@ export const CircularProgress: React.FC<CircularProgressProps> = ({
               />
             </>
           )}
-        </CircularProgressCircle>
-      </CircularProgressSvg>
-      {children && <StyledCircularProgressInner>{children}</StyledCircularProgressInner>}
-    </StyledCircularProgress>
+        </Circle>
+      </Svg>
+      {children && <Box sx={innerStyles}>{children}</Box>}
+    </Box>
   );
+});
+
+CircularProgress.defaultProps = {
+  size: '48px',
 };
+
+CircularProgress.displayName = 'CircularProgress';

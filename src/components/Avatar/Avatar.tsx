@@ -1,69 +1,88 @@
-import { createShouldForwardProp, props } from '@styled-system/should-forward-prop';
 import * as React from 'react';
-import styled from 'styled-components';
-import { color, ColorProps } from 'styled-system';
-import { baseStyle, size } from '../../helpers';
+import { HiOutlineUser } from 'react-icons/hi';
+import { useImage } from '../../hooks';
+import { SxProps, useComponentStyles } from '../../system';
+import { LiteralUnion } from '../../types';
 import { Box } from '../Box';
-import { Text, TextProps } from '../Text';
+import { Text } from '../Text';
 
-const Fallback: React.FC = () => (
-  <Box width="full" height="full">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-      <circle cx="12" cy="7" r="4" />
-    </svg>
-  </Box>
-);
-
-const Initials: React.FC<TextProps & { name: string }> = ({ name }) => (
-  <Text as="span" fontSize="inherit" fontFamily="inherit">
-    {name
-      .split(' ')
-      .map((part, i) => (i < 2 ? part.charAt(0) : undefined))
-      .filter((part) => !!part)}
-  </Text>
-);
-
-const Image: React.FC<{ src?: string }> = ({ src }) => <Box as="img" src={src} maxWidth="100%" />;
-
-export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
-
-export interface AvatarProps extends Omit<ColorProps, 'color'> {
-  /** Color of the fallback icon or initials within the avatar. */
-  color?: string;
-  /** Size of the avatar. */
-  size?: AvatarSize;
-  /** Name of the user. */
+interface AvatarImageProps {
+  getInitials: (name: string) => string;
+  icon: React.ReactElement;
   name?: string;
-  /** Url of avatar image. */
   src?: string;
 }
 
-const shouldForwardProp = createShouldForwardProp([...props]);
+const AvatarImage: React.FC<AvatarImageProps> = ({ getInitials, icon, name, src }) => {
+  const { status } = useImage(src);
 
-const AvatarWrapper = styled('div').withConfig<AvatarProps>({ shouldForwardProp })`
-  ${baseStyle('components.Avatar')}
-  ${size('components.Avatar')}
-  ${color}
-`;
+  if (!src || status !== 'loaded') {
+    return name ? (
+      <Text as="span" fontSize="inherit" fontFamily="inherit" lineHeight="inherit">
+        {getInitials(name)}
+      </Text>
+    ) : (
+      <>{icon}</>
+    );
+  }
 
-export const Avatar: React.FC<AvatarProps> = ({ name, src, ...rest }) => (
-  <AvatarWrapper {...rest}>
-    {!name && !src && <Fallback />}
-    {name && !src && <Initials name={name} />}
-    {src && <Image src={src} />}
-  </AvatarWrapper>
-);
+  return <Box as="img" src={src} alt={name} size="full" objectFit="cover" />;
+};
+
+const defaultGetInitials = (name: string) => {
+  const [first, last] = name.split(' ');
+  return first && last ? `${first.charAt(0)}${last.charAt(0)}` : first.charAt(0);
+};
+
+export type AvatarSizes = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+
+export type AvatarVariants = 'circle' | 'rounded' | 'square';
+
+export interface AvatarProps extends SxProps {
+  children?: React.ReactNode;
+  /** Function to overwrite getting avatar initials. */
+  getInitials?: (name: string) => string;
+  /** The avatars fallback icon when the src is not loaded or specified. */
+  icon?: React.ReactElement;
+  /** Name of the person thee avatar represents. */
+  name?: string;
+  /** If `true` the Avatar will show a border around it. */
+  showBorder?: boolean;
+  /** Avatar size. */
+  size?: LiteralUnion<AvatarSizes>;
+  /** Image url of the Avatar. */
+  src?: string;
+  /** Avatar variant. */
+  variant?: LiteralUnion<AvatarVariants>;
+}
+
+export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
+  const {
+    children,
+    sx,
+    getInitials = defaultGetInitials,
+    icon = <HiOutlineUser size="75%" />,
+    name,
+    showBorder,
+    size,
+    src,
+    variant,
+    ...rest
+  } = props;
+
+  const styles = useComponentStyles('Avatar', props);
+
+  return (
+    <Box ref={ref} sx={styles} {...rest}>
+      <AvatarImage getInitials={getInitials} icon={icon} name={name} src={src} />
+      {children}
+    </Box>
+  );
+});
 
 Avatar.defaultProps = {
-  bg: 'gray.100',
   size: 'md',
+  variant: 'circle',
 };
+
+Avatar.displayName = 'Avatar';

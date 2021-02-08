@@ -1,56 +1,44 @@
-import shouldForwardProp from '@styled-system/should-forward-prop';
 import * as React from 'react';
-import styled from 'styled-components';
-import { baseStyle } from '../../helpers';
-import { Box, BoxProps } from '../Box';
-import { IndeterminateHorizontalProgress } from './keyframes';
-import { HorizontalProgressProps } from './types';
+import { useComponentStyles } from '../../system';
+import { Box } from '../Box';
+import { ProgressAnimation, progressKeyframe } from './Animation';
 
-const StyledHorizontalProgress = styled(Box).withConfig<BoxProps>({ shouldForwardProp })`
-  ${baseStyle('components.HorizontalProgress')}
-`;
+export interface HorizontalProgressProps {
+  children?: React.ReactNode;
+  color?: string;
+  isCapRound?: boolean;
+  isIndeterminate?: boolean;
+  max?: number;
+  min?: number;
+  trackColor?: string;
+  value?: number;
+}
 
-const StyledHorizontalIndeterminateProgressInner = styled(Box).withConfig<BoxProps & { isCapRound?: boolean }>({
-  shouldForwardProp,
-})`
-  ${baseStyle('components.HorizontalIndeterminateProgressInner')}
+export const HorizontalProgress = React.forwardRef<HTMLDivElement, HorizontalProgressProps>((props, ref) => {
+  const { children, isIndeterminate = false, max = 100, min = 0, trackColor = 'gray.100', value = 0, ...rest } = props;
 
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  animation-name: ${IndeterminateHorizontalProgress};
-  animation-timing-function: ${(p) => p.theme.transitions.timing.inOut};
-`;
+  const rootStyles = useComponentStyles('ProgressHorizontal', props);
+  const indeterminateInnerStyles = useComponentStyles('ProgressHorizontalIndeterminateInner', props);
+  const innerStyles = useComponentStyles('ProgressHorizontalInner', props);
 
-const StyledHorizontalProgressInner = styled(Box).withConfig<BoxProps & { isCapRound?: boolean }>({
-  shouldForwardProp,
-})`
-  ${baseStyle('components.HorizontalProgressInner')}
-`;
+  return (
+    <Box ref={ref} role="progressbar" bg={trackColor} height={4} sx={rootStyles} {...rest}>
+      {isIndeterminate ? (
+        <>
+          <ProgressAnimation />
+          <Box animationName={progressKeyframe.getName()} sx={indeterminateInnerStyles} />
+        </>
+      ) : (
+        <Box width={`${Math.min(Math.max(((value - min) * 100) / (max - min), min), max)}%`} sx={innerStyles}>
+          {children}
+        </Box>
+      )}
+    </Box>
+  );
+});
 
-export const HorizontalProgress: React.FC<HorizontalProgressProps> = ({
-  children,
-  color = 'blue.500',
-  isCapRound = false,
-  isIndeterminate = false,
-  max = 100,
-  min = 0,
-  trackColor = 'gray.100',
-  value = 0,
-  ...rest
-}) => (
-  <StyledHorizontalProgress role="progressbar" bg={trackColor} height={4} {...rest}>
-    {isIndeterminate ? (
-      <StyledHorizontalIndeterminateProgressInner bg={color} height="full" isCapRound={isCapRound} />
-    ) : (
-      <StyledHorizontalProgressInner
-        bg={color}
-        height="full"
-        isCapRound={isCapRound}
-        width={`${Math.min(Math.max(((value - min) * 100) / (max - min), min), max)}%`}
-      >
-        {children}
-      </StyledHorizontalProgressInner>
-    )}
-  </StyledHorizontalProgress>
-);
+HorizontalProgress.defaultProps = {
+  color: 'blue.500',
+};
+
+HorizontalProgress.displayName = 'HorizontalProgress';

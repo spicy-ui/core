@@ -1,5 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { normalize } from 'styled-normalize';
+import { animationKeyframes } from '../../theme/foundations/animation';
 
 export const injectGlobalStyles = (additionalStyles?: string | ReturnType<typeof css>) => {
   const GlobalStyle = createGlobalStyle`
@@ -111,6 +112,8 @@ export const injectGlobalStyles = (additionalStyles?: string | ReturnType<typeof
       max-width: 100%;
       height: auto;
     }
+
+    /* ${animationKeyframes} */
 
     ${additionalStyles};
   `;

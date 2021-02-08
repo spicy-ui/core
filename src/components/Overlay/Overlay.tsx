@@ -1,76 +1,48 @@
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import { motion, Variants } from 'framer-motion';
 import * as React from 'react';
-import Transition, { TransitionStatus } from 'react-transition-group/Transition';
-import styled, { useTheme } from 'styled-components';
-import { position, PositionProps } from 'styled-system';
-import { baseStyle } from '../../helpers';
+import styled from 'styled-components';
+import { sxMixin, SxProps, useComponentStyles } from '../../system';
 import { Portal } from '../Portal';
-import { OverlayIn, OverlayOut } from './keyframes';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface BackdropProps {}
+const Motion = styled(motion.div)(sxMixin);
 
-const Backdrop = styled('div').withConfig<BackdropProps>({ shouldForwardProp })`
-  ${baseStyle('components.Overlay')}
-  ${position}
-
-  &[data-overlay-state='entering'],
-  &[data-overlay-state='entered'] {
-    &::before {
-      animation-fill-mode: forwards;
-      animation-name: ${OverlayIn};
-      animation-duration: ${(p) => p.theme.transitions.duration['300']};
-    }
-  }
-
-  &[data-overlay-state='exiting'] {
-    &::before {
-      animation-fill-mode: forwards;
-      animation-name: ${OverlayOut};
-      animation-duration: ${(p) => p.theme.transitions.duration['200']};
-    }
-  }
-
-  &[data-overlay-state='entered'] {
-    &::before {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-`;
-
-export interface OverlayProps extends PositionProps {
-  children: (state: TransitionStatus) => React.ReactNode;
-  /** Whether the overlay is open or not. */
+const variants: Variants = {
+  hidden: {
+    opacity: 0,
+    pointerEvents: 'none',
+    transition: { duration: 0.3 },
+  },
+  visible: {
+    opacity: 1,
+    pointerEvents: 'auto',
+    transition: { duration: 0.2 },
+  },
+};
+export interface OverlayProps extends SxProps {
+  children: React.ReactNode;
   isOpen: boolean;
-  /** Callback method to run when the overlay is clicked. */
   onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
-const Overlay: React.FC<OverlayProps> = ({ children, isOpen, onClick, ...other }) => {
-  let enter = 200;
-  let exit = 300;
+export const Overlay: React.FC<OverlayProps> = (props) => {
+  const { sx, children, isOpen, onClick, ...rest } = props;
 
-  const theme = useTheme();
-
-  if (theme?.transitions?.duration) {
-    enter = parseInt(theme?.transitions?.duration[200], 10);
-    exit = parseInt(theme?.transitions?.duration[300], 10);
-  }
+  const style = useComponentStyles('Overlay', props);
 
   return (
     <Portal>
-      <Transition appear in={isOpen} timeout={{ enter, exit }} unmountOnExit>
-        {(state) => (
-          <Backdrop data-overlay-state={state} onClick={onClick} {...other}>
-            {children(state)}
-          </Backdrop>
-        )}
-      </Transition>
+      <Motion
+        initial="hidden"
+        animate={isOpen ? 'visible' : 'hidden'}
+        variants={variants}
+        onClick={onClick}
+        sx={style}
+        {...rest}
+      >
+        {children}
+      </Motion>
     </Portal>
   );
 };
 
 Overlay.displayName = 'Overlay';
-
-export { Overlay };
