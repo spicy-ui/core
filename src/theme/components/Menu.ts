@@ -4,8 +4,9 @@ import { MenuProps } from '../../components';
 import { ComponentThemeConfig } from '../types';
 
 export const Menu: ComponentThemeConfig<MenuProps> = {
-  baseStyle: () => ({
+  baseStyle: ({ isFullWidth }) => ({
     minWidth: 56,
+    width: isFullWidth ? 'full' : 'auto',
     display: 'flex',
     flexDirection: 'column',
     bg: 'white',
