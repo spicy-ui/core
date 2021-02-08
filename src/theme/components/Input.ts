@@ -28,6 +28,10 @@ export const Input: ComponentThemeConfig<InputProps> = {
       boxShadow: 'outline',
       zIndex: 1,
     },
+    _focusWithin: {
+      boxShadow: 'outline',
+      zIndex: 1,
+    },
     _disabled: {
       opacity: 0.7,
       cursor: 'not-allowed',
