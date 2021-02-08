@@ -1,4 +1,10 @@
-import { ModalProps } from '../../components';
+import {
+  ModalBodyProps,
+  ModalCloseButtonProps,
+  ModalFooterProps,
+  ModalHeaderProps,
+  ModalProps,
+} from '../../components';
 import { ComponentThemeConfig } from '../types';
 
 export const Modal: ComponentThemeConfig<ModalProps> = {
@@ -15,7 +21,7 @@ export const Modal: ComponentThemeConfig<ModalProps> = {
     borderRadius: 'sm',
     boxShadow: 'lg',
     overflow: 'auto',
-    transform: 'translate(0, -25%)',
+    transform: 'translate(0, 0)',
   }),
   scales: {
     sizes: {
@@ -60,4 +66,37 @@ export const Modal: ComponentThemeConfig<ModalProps> = {
       }),
     },
   },
+};
+
+export const ModalCloseButton: ComponentThemeConfig<ModalCloseButtonProps> = {
+  baseStyle: () => ({
+    position: 'absolute',
+    top: 2,
+    right: 2,
+  }),
+};
+
+export const ModalHeader: ComponentThemeConfig<ModalHeaderProps> = {
+  baseStyle: () => ({
+    py: 4,
+    px: 4,
+    fontSize: 'lg',
+    fontWeight: 'medium',
+  }),
+};
+
+export const ModalBody: ComponentThemeConfig<ModalBodyProps> = {
+  baseStyle: () => ({
+    py: 2,
+    px: 4,
+  }),
+};
+
+export const ModalFooter: ComponentThemeConfig<ModalFooterProps> = {
+  baseStyle: () => ({
+    py: 4,
+    px: 4,
+    display: 'flex',
+    alignItems: 'center',
+  }),
 };
