@@ -1,12 +1,11 @@
 import { motion, Variants } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components';
-import { SxProps, useComponentStyles } from '../../system';
+import { sxMixin, SxProps, useComponentStyles } from '../../system';
 import { runIfFn } from '../../util';
-import { Box } from '../Box';
 import { PopperProps, usePopper } from '../Popper';
 
-const Motion = styled(motion.div)({});
+const Motion = styled(motion.div)(sxMixin);
 
 const variants: Variants = {
   hidden: {
@@ -24,6 +23,7 @@ const variants: Variants = {
 export interface MenuProps extends PopperProps, SxProps {
   trigger: ((props: { isOpen: boolean }) => React.ReactElement) | React.ReactElement;
   children: ((props: { isOpen: boolean }) => React.ReactElement) | React.ReactNode;
+  isFullWidth?: boolean;
 }
 
 export const Menu: React.FC<MenuProps> = (props) => {
@@ -58,10 +58,15 @@ export const Menu: React.FC<MenuProps> = (props) => {
   return (
     <>
       {React.cloneElement(runIfFn(trigger, { isOpen }), { ...triggerProps, onClick: onToggle })}
-      <Motion {...childProps} initial="hidden" animate={isOpen ? 'visible' : 'hidden'} variants={variants}>
-        <Box sx={styles} {...rest}>
-          {runIfFn(children, { isOpen })}
-        </Box>
+      <Motion
+        {...childProps}
+        initial="hidden"
+        animate={isOpen ? 'visible' : 'hidden'}
+        variants={variants}
+        sx={styles}
+        {...rest}
+      >
+        {runIfFn(children, { isOpen })}
       </Motion>
     </>
   );
