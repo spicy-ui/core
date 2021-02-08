@@ -16,6 +16,21 @@
 
 -->
 
+## 0.1.0-alpha.1 (8 February, 2021)
+
+### Features
+
+- Added AvatarGroup component
+- Added CloseButton component
+- Added IconButton component
+- Added Tooltip component
+- New `sx` prop for overriding component styles, prop has been added to most components
+
+### Changes
+
+- Major rework of most components, interfaces may have changed significantly between versions
+- Moved to using new `@spicy-ui/styled-system` internally
+
 ## 0.0.1-alpha.14 (17 January, 2021)
 
 ### Changes
