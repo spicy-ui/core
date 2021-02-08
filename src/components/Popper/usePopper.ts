@@ -15,7 +15,7 @@ export interface PopperProps {
 
 export interface UsePopperOptions {
   isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   closeOnBlur?: boolean;
   closeOnEsc?: boolean;
   closeOnInnerClick?: boolean;
@@ -48,11 +48,11 @@ export function usePopper(options: UsePopperOptions) {
     modifiers: [{ name: 'offset', options: { offset } }],
   });
 
-  const onOpen = React.useCallback(() => setIsOpen(true), [setIsOpen]);
+  const onOpen = React.useCallback(() => (setIsOpen ? setIsOpen(true) : undefined), [setIsOpen]);
 
-  const onClose = React.useCallback(() => setIsOpen(false), [setIsOpen]);
+  const onClose = React.useCallback(() => (setIsOpen ? setIsOpen(false) : undefined), [setIsOpen]);
 
-  const onToggle = React.useCallback(() => setIsOpen((p) => !p), [setIsOpen]);
+  const onToggle = React.useCallback(() => (setIsOpen ? setIsOpen((p) => !p) : undefined), [setIsOpen]);
 
   const onTriggerBlur = React.useCallback(() => {
     if (closeOnBlur) {
