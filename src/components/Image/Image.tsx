@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useImage } from '../../hooks/useImage';
-import { SxProps } from '../../system';
+import { SxProps, useComponentStyles } from '../../system';
 import { Box } from '../Box';
 
 export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, SxProps {
@@ -9,24 +9,28 @@ export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, S
   src?: string;
 }
 
-export const Image = React.forwardRef<HTMLImageElement, ImageProps>(
-  ({ sx, crossOrigin, fallback, fallbackSrc, src, ...rest }, ref) => {
-    const { status } = useImage(src, crossOrigin);
+export const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
+  const { sx, crossOrigin, fallback, fallbackSrc, src, ...rest } = props;
 
-    const props = {
-      ref,
-      sx,
-      ...rest,
-    };
+  const { status } = useImage(src, crossOrigin);
 
-    if (status !== 'loaded') {
-      if (fallback) {
-        return fallback;
-      }
+  const styles = useComponentStyles('Image', props);
 
-      return <Box {...props} as="img" src={fallbackSrc} />;
+  const shared = {
+    ref,
+    sx: styles,
+    ...rest,
+  };
+
+  if (status !== 'loaded') {
+    if (fallback) {
+      return fallback;
     }
 
-    return <Box {...props} as="img" src={src} />;
-  },
-);
+    return <Box {...shared} as="img" src={fallbackSrc} />;
+  }
+
+  return <Box {...shared} as="img" src={src} />;
+});
+
+Image.displayName = 'Image';

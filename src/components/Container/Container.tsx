@@ -1,20 +1,23 @@
 import * as React from 'react';
+import { useComponentStyles } from '../../system';
 import { Box, BoxProps } from '../Box';
 
 export interface ContainerProps extends BoxProps {
   children?: React.ReactNode;
+  as?: string | React.ComponentType<any>;
   isCentered?: boolean;
 }
 
-export const Container = React.forwardRef<HTMLDivElement, ContainerProps>(({ children, isCentered, ...rest }, ref) => (
-  <Box
-    ref={ref}
-    mx="auto"
-    px={4}
-    w="full"
-    {...(isCentered ? { d: 'flex', flexDirection: 'column', alignItems: 'center' } : {})}
-    {...rest}
-  >
-    {children}
-  </Box>
-));
+export const Container = React.forwardRef<HTMLDivElement, ContainerProps>((props, ref) => {
+  const { sx, as, children, isCentered, ...rest } = props;
+
+  const styles = useComponentStyles('Container', props);
+
+  return (
+    <Box ref={ref} sx={styles} {...rest}>
+      {children}
+    </Box>
+  );
+});
+
+Container.displayName = 'Container';

@@ -2,9 +2,11 @@ import * as Alert from './Alert';
 import * as Avatar from './Avatar';
 import * as Button from './Button';
 import * as Checkbox from './Checkbox';
+import * as Container from './Container';
 import * as Divider from './Divider';
 import * as Drawer from './Drawer';
 import * as Heading from './Heading';
+import * as Image from './Image';
 import * as Input from './Input';
 import * as Link from './Link';
 import * as Menu from './Menu';
@@ -24,9 +26,11 @@ export const components = {
   ...Avatar,
   ...Button,
   ...Checkbox,
+  ...Container,
   ...Divider,
   ...Drawer,
   ...Heading,
+  ...Image,
   ...Input,
   ...Link,
   ...Menu,
