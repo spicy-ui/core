@@ -5,11 +5,10 @@ import { ComponentThemeConfig } from '../types';
 export const Code: ComponentThemeConfig<CodeProps> = {
   propToScaleMap: [['variant', 'variants']],
   baseStyle: () => ({
-    paddingLeft: '0.2em',
-    paddingRight: '0.2em',
+    px: 1,
     display: 'inline-block',
-    fontSize: 'xs',
     borderRadius: 'xs',
+    fontSize: 'xs',
   }),
   scales: {
     variants: {
