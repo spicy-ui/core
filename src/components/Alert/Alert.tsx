@@ -1,10 +1,15 @@
 import * as React from 'react';
 import { SxProps, useComponentStyles } from '../../system';
+import { ColorScales } from '../../theme';
+import { LiteralUnion } from '../../types';
 import { Box } from '../Box';
+
+export type AlertColors = ColorScales;
 
 export interface AlertProps extends SxProps {
   children?: React.ReactNode;
-  color?: string;
+  /** Color of the alert. */
+  color?: LiteralUnion<AlertColors>;
 }
 
 export const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {

@@ -7,6 +7,6 @@ export const Alert: ComponentThemeConfig<AlertProps> = {
     position: 'relative',
     bgColor: `${color}.100`,
     borderRadius: 'md',
-    color: `${color}.900`,
+    color: `${color}.800`,
   }),
 };

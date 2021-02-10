@@ -8,7 +8,11 @@ export default {
   component: Alert,
 } as Meta<AlertProps>;
 
-export const Simple: Story<AlertProps> = (props) => <Alert {...props}>A alert</Alert>;
+export const Simple: Story<AlertProps> = (props) => (
+  <Alert {...props}>
+    <Text>This is a alert</Text>
+  </Alert>
+);
 
 export const Colors: Story<AlertProps> = () => (
   <Stack spacing={4}>
