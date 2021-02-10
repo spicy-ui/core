@@ -18,7 +18,7 @@ export interface BadgeProps extends SxProps {
 }
 
 export const Badge = React.forwardRef<HTMLElement, BadgeProps>((props, ref) => {
-  const { children, sx, as, ...rest } = props;
+  const { children, sx, as, color, variant, ...rest } = props;
 
   const styles = useComponentStyles('Badge', props);
 

@@ -18,7 +18,7 @@ export interface CodeProps extends SxProps {
 }
 
 export const Code = React.forwardRef<HTMLElement, CodeProps>((props, ref) => {
-  const { as, sx, children, ...rest } = props;
+  const { children, sx, as, color, variant, ...rest } = props;
 
   const styles = useComponentStyles('Code', props);
 

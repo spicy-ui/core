@@ -8,7 +8,7 @@ export interface KbdProps extends SxProps {
 }
 
 export const Kbd = React.forwardRef<HTMLElement, KbdProps>((props, ref) => {
-  const { as, sx, children, ...rest } = props;
+  const { children, sx, as, ...rest } = props;
 
   const styles = useComponentStyles('Kbd', props);
 
