@@ -10,6 +10,7 @@ import * as Drawer from './Drawer';
 import * as Heading from './Heading';
 import * as Image from './Image';
 import * as Input from './Input';
+import * as Kbd from './Kbd';
 import * as Link from './Link';
 import * as Menu from './Menu';
 import * as Modal from './Modal';
@@ -36,6 +37,7 @@ export const components = {
   ...Heading,
   ...Image,
   ...Input,
+  ...Kbd,
   ...Link,
   ...Menu,
   ...Modal,
