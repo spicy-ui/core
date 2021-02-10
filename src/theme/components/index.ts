@@ -1,5 +1,6 @@
 import * as Alert from './Alert';
 import * as Avatar from './Avatar';
+import * as Badge from './Badge';
 import * as Button from './Button';
 import * as Checkbox from './Checkbox';
 import * as Container from './Container';
@@ -24,6 +25,7 @@ import * as Tooltip from './Tooltip';
 export const components = {
   ...Alert,
   ...Avatar,
+  ...Badge,
   ...Button,
   ...Checkbox,
   ...Container,

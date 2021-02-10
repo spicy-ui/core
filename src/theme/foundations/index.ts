@@ -20,3 +20,6 @@ export const foundations = {
   ...typography,
   zIndices,
 };
+
+export type AllColors = keyof typeof colors;
+export type ColorScales = keyof Omit<typeof colors, 'transparent' | 'current' | 'black' | 'white'>;

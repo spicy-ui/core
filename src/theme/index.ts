@@ -6,4 +6,5 @@ export const theme = {
   components,
 };
 
+export { AllColors, ColorScales } from './foundations';
 export { ComponentThemeConfig, ComponentThemeScale } from './types';
