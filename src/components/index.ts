@@ -5,6 +5,7 @@ export * from './Box';
 export * from './Button';
 export * from './Checkbox';
 export * from './CloseButton';
+export * from './Code';
 export * from './Container';
 export * from './Divider';
 export * from './Drawer';
