@@ -11,7 +11,7 @@ export interface AvatarGroupProps extends SxProps {
   /** Maximum number of avatars to show. */
   max?: number;
   /** Spacing between avatars. */
-  spacing?: SpaceProps['m'];
+  spacing?: SpaceProps['margin'];
   /** Size of all avatars. */
   size?: AvatarProps['size'];
   /** Variant of all avatars. */
