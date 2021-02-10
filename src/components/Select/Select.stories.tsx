@@ -77,6 +77,7 @@ export const SearchableAsync = (props: any) => {
   return (
     <Select
       {...props}
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       items={data!}
       value={value}
       onChange={setValue}

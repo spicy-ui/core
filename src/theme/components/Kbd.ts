@@ -1,4 +1,3 @@
-import { get } from '@spicy-ui/styled-system';
 import { KbdProps } from '../../components';
 import { ComponentThemeConfig } from '../types';
 
