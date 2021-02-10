@@ -1,3 +1,4 @@
+import { SpaceProps } from '@spicy-ui/styled-system';
 import * as React from 'react';
 import { SxProps, useComponentStyles } from '../../system';
 import { Box } from '../Box';
@@ -9,10 +10,10 @@ export interface AvatarGroupProps extends SxProps {
   borderColor?: string;
   /** Maximum number of avatars to show. */
   max?: number;
+  /** Spacing between avatars. */
+  spacing?: SpaceProps['m'];
   /** Size of all avatars. */
   size?: AvatarProps['size'];
-  /** Spacing between avatars. */
-  spacing?: string;
   /** Variant of all avatars. */
   variant?: AvatarProps['variant'];
 }
@@ -39,16 +40,18 @@ export const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>((p
           +{overflow}
         </Box>
       )}
-      {reversedVisible.map((avatar, index) => {
-        const isFirst = index === 0;
-        return React.cloneElement(avatar, {
-          mr: isFirst ? 0 : spacing,
+      {reversedVisible.map((avatar, index) =>
+        React.cloneElement(avatar, {
+          showBorder: true,
+          sx: {
+            mr: index === 0 ? 0 : spacing,
+            ...(borderColor ? { borderColor } : {}),
+            ...avatar.props.sx,
+          },
           size,
           variant,
-          sx: { ...(borderColor ? { borderColor } : {}), ...avatar.props.sx },
-          showBorder: true,
-        });
-      })}
+        }),
+      )}
     </Box>
   );
 });

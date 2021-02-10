@@ -1,6 +1,7 @@
 import { SpaceProps } from '@spicy-ui/styled-system';
 import * as React from 'react';
 import { SxProps, useComponentStyles } from '../../system';
+import { ColorScales } from '../../theme';
 import { LiteralUnion } from '../../types';
 import { Box } from '../Box';
 import { Spinner } from '../Spinner';
@@ -23,6 +24,8 @@ const iconStyles = {
     display: 'inline-block',
   },
 };
+
+export type ButtonColors = ColorScales;
 
 export type ButtonSizes = 'xs' | 'sm' | 'md' | 'lg';
 
@@ -51,8 +54,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   type?: 'submit' | 'reset' | 'button';
   /** Replacement spinner component for when `isLoading` is set to `true` */
   spinner?: React.ReactElement;
-  /** Color of the button. Supports any key in `theme.colors`. */
-  color?: string;
+  /** Color of the button. */
+  color?: LiteralUnion<ButtonColors>;
   /** Size of the button. */
   size?: LiteralUnion<ButtonSizes>;
   /** Variant style of the button. */

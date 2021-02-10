@@ -44,15 +44,15 @@ export interface AvatarProps extends SxProps {
   getInitials?: (name: string) => string;
   /** The avatars fallback icon when the src is not loaded or specified. */
   icon?: React.ReactElement;
-  /** Name of the person thee avatar represents. */
+  /** Name of the person the avatar represents. */
   name?: string;
   /** If `true` the Avatar will show a border around it. */
   showBorder?: boolean;
-  /** Avatar size. */
-  size?: LiteralUnion<AvatarSizes>;
   /** Image url of the Avatar. */
   src?: string;
-  /** Avatar variant. */
+  /** Size of the avatar. */
+  size?: LiteralUnion<AvatarSizes>;
+  /** Variant of the avatar. */
   variant?: LiteralUnion<AvatarVariants>;
 }
 

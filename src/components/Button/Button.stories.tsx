@@ -3,9 +3,9 @@ import * as React from 'react';
 import { HiOutlineChat, HiOutlineCog } from 'react-icons/hi';
 import { uid } from 'react-uid';
 import { useTheme } from 'styled-components';
-import { Button, ButtonProps, ButtonVariants, Stack } from '..';
+import { Button, ButtonProps, ButtonColors, ButtonVariants, Stack } from '..';
 
-const buttonColors = [
+const buttonColors: ButtonColors[] = [
   'blueGray',
   'coolGray',
   'gray',
@@ -40,7 +40,6 @@ export default {
 } as Meta<ButtonProps>;
 
 export const Simple: Story<ButtonProps> = (props) => <Button {...props}>Button</Button>;
-Simple.args = { color: 'blue' };
 
 export const Colors: Story<ButtonProps> = (props) => (
   <table>
