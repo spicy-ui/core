@@ -35,7 +35,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   children?: React.ReactNode;
   as?: string | React.ComponentType<any>;
   /** Space between the button icon and label. */
-  iconSpacing?: SpaceProps['margin'];
+  iconSpacing?: string;
   /** Icon shown before the button's label. */
   iconBefore?: React.ReactElement;
   /** Icon shown after the button's label. */
@@ -97,7 +97,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, r
       {...rest}
     >
       {iconBefore && !isLoading && (
-        <Box as="span" marginRight={iconSpacing} sx={iconStyles}>
+        <Box as="span" mr={iconSpacing} sx={iconStyles}>
           {iconBefore}
         </Box>
       )}
@@ -118,7 +118,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, r
         </Box>
       )}
       {iconAfter && !isLoading && (
-        <Box as="span" marginLeft={iconSpacing} sx={iconStyles}>
+        <Box as="span" ml={iconSpacing} sx={iconStyles}>
           {iconAfter}
         </Box>
       )}

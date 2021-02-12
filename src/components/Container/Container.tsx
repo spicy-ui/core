@@ -5,6 +5,7 @@ import { Box, BoxProps } from '../Box';
 export interface ContainerProps extends BoxProps {
   children?: React.ReactNode;
   as?: string | React.ComponentType<any>;
+  /** If `true`, container will center its children. */
   isCentered?: boolean;
 }
 

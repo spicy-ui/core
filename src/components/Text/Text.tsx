@@ -20,7 +20,6 @@ export type TextVariant =
 
 export interface TextProps extends AllSystemProps, SxProps {
   color?: string;
-  /** Stack children. */
   children?: React.ReactNode;
   /** Text variant. */
   variant?: LiteralUnion<TextVariant>;

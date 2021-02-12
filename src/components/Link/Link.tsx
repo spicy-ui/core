@@ -2,14 +2,18 @@ import { sfp } from '@spicy-ui/styled-system';
 import * as React from 'react';
 import styled from 'styled-components';
 import { getComponentStyles, sxMixin, SxProps } from '../../system';
+import { ColorScales } from '../../theme';
+import { LiteralUnion } from '../../types';
+
+export type LinkColors = ColorScales;
 
 export type LinkUnderlineBehaviour = 'default' | 'none' | 'hover';
 
 export interface LinkProps extends SxProps, Partial<React.AnchorHTMLAttributes<HTMLAnchorElement>> {
   /** Color of the link. */
-  color?: string;
+  color?: LiteralUnion<LinkColors>;
   /** Hover color of the link. */
-  hoverColor?: string;
+  hoverColor?: LiteralUnion<LinkColors>;
   /** Set to `true` to disable the link. */
   isDisabled?: boolean;
   /** Set to `true` to add external `rel` tags. */

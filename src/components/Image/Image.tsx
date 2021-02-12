@@ -4,8 +4,11 @@ import { SxProps, useComponentStyles } from '../../system';
 import { Box } from '../Box';
 
 export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, SxProps {
+  /** Fallback component for the image. This is shown when the image is loading. */
   fallback?: React.ReactElement;
+  /** Fallback src image. If you intend to use this instead of a component, it's advised to use a data src. */
   fallbackSrc?: string;
+  /** Image src. */
   src?: string;
 }
 
