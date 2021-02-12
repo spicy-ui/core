@@ -16,6 +16,32 @@
 
 -->
 
+## 0.1.0-alpha.2 (12 February, 2021)
+
+### Features
+
+- Added `ModalCloseButton`, `ModalHeader`, `ModalBody` and `ModalFooter` components
+- Added `Container` component
+- Added `Image` component
+- Added `Badge` component
+- Added `Code` component
+- Added `Kbd` component
+- Added `Tag` component
+
+### Changes
+
+- Added color types for `Alert`, `Button`, `Checkbox`
+- Adjusted Alert text color
+- Added export for theme color scales
+- Updated and added additional prop documentation
+- Moved icon button base style into theme
+- The close button's icon can now be overridden
+
+### Bug Fixes
+
+- Fixed modal positioning
+- Fixed typos in types
+
 ## 0.1.0-alpha.1 (8 February, 2021)
 
 ### Features
