@@ -1,6 +1,7 @@
 import { SpaceProps } from '@spicy-ui/styled-system';
 import * as React from 'react';
 import { SxProps, useComponentStyles } from '../../system';
+import { ColorScales } from '../../theme';
 import { LiteralUnion } from '../../types';
 import { Box } from '../Box';
 import { Spinner } from '../Spinner';
@@ -24,6 +25,8 @@ const iconStyles = {
   },
 };
 
+export type ButtonColors = ColorScales;
+
 export type ButtonSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export type ButtonVariants = 'filled' | 'outlined' | 'ghost' | 'link' | 'unstyled';
@@ -32,7 +35,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   children?: React.ReactNode;
   as?: string | React.ComponentType<any>;
   /** Space between the button icon and label. */
-  iconSpacing?: SpaceProps['margin'];
+  iconSpacing?: string;
   /** Icon shown before the button's label. */
   iconBefore?: React.ReactElement;
   /** Icon shown after the button's label. */
@@ -51,8 +54,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   type?: 'submit' | 'reset' | 'button';
   /** Replacement spinner component for when `isLoading` is set to `true` */
   spinner?: React.ReactElement;
-  /** Color of the button. Supports any key in `theme.colors`. */
-  color?: string;
+  /** Color of the button. */
+  color?: LiteralUnion<ButtonColors>;
   /** Size of the button. */
   size?: LiteralUnion<ButtonSizes>;
   /** Variant style of the button. */
@@ -94,7 +97,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, r
       {...rest}
     >
       {iconBefore && !isLoading && (
-        <Box as="span" marginRight={iconSpacing} sx={iconStyles}>
+        <Box as="span" mr={iconSpacing} sx={iconStyles}>
           {iconBefore}
         </Box>
       )}
@@ -115,7 +118,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, r
         </Box>
       )}
       {iconAfter && !isLoading && (
-        <Box as="span" marginLeft={iconSpacing} sx={iconStyles}>
+        <Box as="span" ml={iconSpacing} sx={iconStyles}>
           {iconAfter}
         </Box>
       )}

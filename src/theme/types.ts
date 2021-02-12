@@ -1,4 +1,5 @@
 import { RequiredTheme } from '@spicy-ui/styled-system';
+import { colors } from './foundations/colors';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 type CSSObject = object; // TODO
@@ -17,3 +18,7 @@ export type ComponentThemeConfig<Props = Record<string, any>> = {
     };
   };
 };
+
+// Reusable theme types
+export type AllColorScales = keyof typeof colors;
+export type ColorScales = keyof Omit<typeof colors, 'transparent' | 'current' | 'black' | 'white'>;

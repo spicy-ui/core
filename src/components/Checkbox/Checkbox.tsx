@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { useComponentStyles } from '../../system';
+import { ColorScales } from '../../theme';
 import { LiteralUnion } from '../../types';
 import { Box } from '../Box';
 import { Text } from '../Text';
 
-type CheckboxSizes = 'xs' | 'sm' | 'md' | 'lg';
+export type CheckboxColors = ColorScales;
+
+export type CheckboxSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'width' | 'height' | 'size'> {
   /** Checkbox label. */
@@ -13,8 +16,8 @@ export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputE
   isDisabled?: boolean;
   /** If `true`, the checkbox will be marked as invalid. */
   isInvalid?: boolean;
-  /** Color of the checkbox. Supports any key in `theme.colors`. */
-  color?: string;
+  /** Color of the checkbox. */
+  color?: LiteralUnion<CheckboxColors>;
   /** Size of the checkbox. */
   size?: LiteralUnion<CheckboxSizes>;
 }

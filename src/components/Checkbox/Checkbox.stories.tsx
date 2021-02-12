@@ -1,9 +1,9 @@
 import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Checkbox, CheckboxProps, Stack } from '..';
+import { Checkbox, CheckboxColors, CheckboxProps, Stack } from '..';
 
-const checkboxColors = [
+const checkboxColors: CheckboxColors[] = [
   'blueGray',
   'coolGray',
   'gray',
