@@ -6,7 +6,7 @@ export interface IconButtonProps
   extends Omit<ButtonProps, 'iconSpacing' | 'iconBefore' | 'iconAfter' | 'isFullWidth' | 'loadingText'> {
   /** Icon shown inside the button. */
   icon?: React.ReactElement;
-  /** If `true`, the button will be rounded. */
+  /** If `true`, the icon button will be rounded. */
   isRound?: boolean;
 }
 
