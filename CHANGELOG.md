@@ -30,12 +30,13 @@
 
 ### Changes
 
-- Added color types for `Alert`, `Button`, `Checkbox`
+- Added color types for `Alert`, `Button`, `Checkbox`, `Link`
 - Adjusted Alert text color
 - Added export for theme color scales
 - Updated and added additional prop documentation
 - Moved icon button base style into theme
 - The close button's icon can now be overridden
+- Button line-height changed from `1` to `1.2`
 
 ### Bug Fixes
 
