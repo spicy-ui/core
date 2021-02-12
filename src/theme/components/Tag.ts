@@ -73,4 +73,11 @@ export const TagIconAfter: ComponentThemeConfig<TagLabelProps> = {
   }),
 };
 
-export const TagLabel: ComponentThemeConfig<TagLabelProps> = {};
+export const TagLabel: ComponentThemeConfig<TagLabelProps> = {
+  baseStyle: () => ({
+    lineHeight: 1.2,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+  }),
+};

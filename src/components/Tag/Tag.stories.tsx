@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 import { HiOutlineArchive, HiOutlinePaperAirplane, HiPlus } from 'react-icons/hi';
-import { Stack, Tag, TagAction, TagIconAfter, TagIconBefore, TagLabel, TagProps } from '..';
+import { Box, Stack, Tag, TagAction, TagIconAfter, TagIconBefore, TagLabel, TagProps } from '..';
 
 export default {
   title: 'Tag',
@@ -10,6 +10,14 @@ export default {
 } as Meta<TagProps>;
 
 export const Simple: Story<TagProps> = (props) => <Tag {...props}>Sample Tag</Tag>;
+
+export const TextOverflow: Story<TagProps> = (props) => (
+  <Box w="120px">
+    <Tag {...props}>
+      <TagLabel>This tag will overflow</TagLabel>
+    </Tag>
+  </Box>
+);
 
 export const Sizes: Story<TagProps> = (props) => (
   <Stack spacing={4} direction="row" align="center">
