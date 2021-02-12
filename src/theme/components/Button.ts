@@ -134,7 +134,7 @@ export const Button: ComponentThemeConfig<ButtonProps> = {
     borderRadius: 'md',
     color: 'inherit',
     fontWeight: 'semibold',
-    lineHeight: '1',
+    lineHeight: 1.2,
     outline: 'none',
     transitionProperty: 'common',
     transitionTimingFunction: 'inOut',
