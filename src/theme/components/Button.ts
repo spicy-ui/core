@@ -1,5 +1,5 @@
 import { transparentize } from 'polished';
-import { ButtonProps } from '../../components';
+import { ButtonProps, IconButtonProps } from '../../components';
 import { ComponentThemeConfig, ComponentThemeScale, ComponentThemeScaleFn } from '../types';
 
 const ghost: ComponentThemeScaleFn<ButtonProps & { color: string }> = ({ color }) => {
@@ -195,5 +195,12 @@ export const ButtonSpinner: ComponentThemeConfig = {
     alignItems: 'center',
     position: hasText ? 'relative' : 'absolute',
     marginInlineEnd: hasText ? spacing : 0,
+  }),
+};
+
+export const IconButton: ComponentThemeConfig<IconButtonProps> = {
+  baseStyle: ({ isRound }) => ({
+    p: 0,
+    borderRadius: isRound ? 'full' : 'md',
   }),
 };

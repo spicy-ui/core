@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useComponentStyles } from '../../system';
 import { Button, ButtonProps } from './Button';
 
 export interface IconButtonProps
@@ -12,8 +13,10 @@ export interface IconButtonProps
 export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>((props, ref) => {
   const { children, sx, icon, isRound, ...rest } = props;
 
+  const styles = useComponentStyles('IconButton', props);
+
   return (
-    <Button ref={ref} sx={{ p: 0, borderRadius: isRound ? 'full' : 'md', ...sx }} {...rest}>
+    <Button ref={ref} sx={styles} {...rest}>
       {icon || children}
     </Button>
   );
