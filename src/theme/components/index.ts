@@ -19,6 +19,7 @@ import * as Progress from './Progress';
 import * as Radio from './Radio';
 import * as Spinner from './Spinner';
 import * as Switch from './Switch';
+import * as Tag from './Tag';
 import * as Text from './Text';
 import * as TextArea from './TextArea';
 import * as Toast from './Toast';
@@ -46,6 +47,7 @@ export const components = {
   ...Radio,
   ...Spinner,
   ...Switch,
+  ...Tag,
   ...Text,
   ...TextArea,
   ...Toast,
