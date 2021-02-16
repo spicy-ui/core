@@ -1,6 +1,6 @@
 {
   "name": "@spicy-ui/core",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "description": "A themable and extensible React UI library, ready to use out of the box",
   "keywords": [
     "react",
