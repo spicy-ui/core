@@ -1,12 +1,14 @@
 import { css, keyframes } from 'styled-components';
 
-export const spin = keyframes`
-  from {
-    transform: rotate(0deg);
+export const bounce = keyframes`
+  0%, 100% {
+    transform: translateY(-25%);
+    animationTimingFunction: cubic-bezier(0.8, 0, 1, 1);
   }
 
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: translateY(0);
+    animationTimingFunction: cubic-bezier(0, 0, 0.2, 1);
   }
 `;
 
@@ -27,30 +29,28 @@ export const pulse = keyframes`
   }
 `;
 
-export const bounce = keyframes`
-  0%, 100% {
-    transform: translateY(-25%);
-    animationTimingFunction: cubic-bezier(0.8, 0, 1, 1);
+export const spin = keyframes`
+  from {
+    transform: rotate(0deg);
   }
 
-  50% {
-    transform: translateY(0);
-    animationTimingFunction: cubic-bezier(0, 0, 0.2, 1);
+  to {
+    transform: rotate(360deg);
   }
 `;
 
 export const animationKeyframes = css`
-  ${spin}
+  ${bounce}
   ${ping}
   ${pulse}
-  ${bounce}
+  ${spin}
 `;
 
 const name = {
-  spin: spin.getName(),
+  bounce: bounce.getName(),
   ping: ping.getName(),
   pulse: pulse.getName(),
-  bounce: bounce.getName(),
+  spin: spin.getName(),
 };
 
 const duration = {};
@@ -61,10 +61,10 @@ const delay = {};
 
 export const animation = {
   animation: {
-    spin: `${name.spin} 1s linear infinite`,
+    bounce: `${name.bounce} 1s infinite`,
     ping: `${name.ping} 1s cubic-bezier(0, 0, 0.2, 1) infinite`,
     pulse: `${name.pulse} 2s cubic-bezier(0.4, 0, 0.6, 1) infinite`,
-    bounce: `${name.bounce} 1s infinite`,
+    spin: `${name.spin} 1s linear infinite`,
   },
   name,
   duration,
