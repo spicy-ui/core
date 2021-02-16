@@ -16,6 +16,17 @@
 
 -->
 
+## 0.1.0-alpha.3 (16 February, 2021)
+
+### Features
+
+- Added `Skeleton` component
+
+### Changes
+
+- Switched order of box mixins
+- Added `getComponentStyles` and `useComponentStyles` to exports
+
 ## 0.1.0-alpha.2 (12 February, 2021)
 
 ### Features
