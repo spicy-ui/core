@@ -17,6 +17,7 @@ import * as Modal from './Modal';
 import * as Overlay from './Overlay';
 import * as Progress from './Progress';
 import * as Radio from './Radio';
+import * as Skeleton from './Skeleton';
 import * as Spinner from './Spinner';
 import * as Switch from './Switch';
 import * as Tag from './Tag';
@@ -45,6 +46,7 @@ export const components = {
   ...Overlay,
   ...Progress,
   ...Radio,
+  ...Skeleton,
   ...Spinner,
   ...Switch,
   ...Tag,
