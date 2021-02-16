@@ -6,6 +6,6 @@ export interface BoxProps extends AllSystemProps, SxProps {
   color?: any;
 }
 
-export const Box = styled.div.withConfig<BoxProps>({ shouldForwardProp })(allSystem, sxMixin);
+export const Box = styled.div.withConfig<BoxProps>({ shouldForwardProp })(sxMixin, allSystem);
 
 Box.displayName = 'Box';
