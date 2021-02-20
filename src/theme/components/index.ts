@@ -3,6 +3,7 @@ import * as Avatar from './Avatar';
 import * as Badge from './Badge';
 import * as Button from './Button';
 import * as Checkbox from './Checkbox';
+import * as CloseButton from './CloseButton';
 import * as Code from './Code';
 import * as Container from './Container';
 import * as Divider from './Divider';
@@ -32,6 +33,7 @@ export const components = {
   ...Badge,
   ...Button,
   ...Checkbox,
+  ...CloseButton,
   ...Code,
   ...Container,
   ...Divider,
