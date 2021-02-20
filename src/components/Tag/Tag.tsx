@@ -26,13 +26,13 @@ export interface TagProps extends SxProps {
 }
 
 export const Tag = React.forwardRef<HTMLElement, TagProps>((props, ref) => {
-  const { children, sx, as, isRound, color, size, variant, ...rest } = props;
+  const { children, sx, as, label, isRound, color, size, variant, ...rest } = props;
 
   const styles = useComponentStyles('Tag', props);
 
   return (
     <Box as={as ?? 'span'} ref={ref} sx={styles} {...rest}>
-      {children}
+      {label || children}
     </Box>
   );
 });
