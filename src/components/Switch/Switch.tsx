@@ -1,15 +1,18 @@
 import * as React from 'react';
 import { useComponentStyles } from '../../system';
+import { ColorScales } from '../../theme';
 import { LiteralUnion } from '../../types';
 import { Box } from '../Box';
 
-type SwitchSizes = 'xs' | 'sm' | 'md' | 'lg';
+export type SwitchColors = ColorScales;
+
+export type SwitchSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'width' | 'height' | 'size'> {
   label?: string;
   isDisabled?: boolean;
   isInvalid?: boolean;
-  color?: string;
+  color?: LiteralUnion<SwitchColors>;
   size?: LiteralUnion<SwitchSizes>;
 }
 

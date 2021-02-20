@@ -1,16 +1,24 @@
 import * as React from 'react';
 import { useComponentStyles } from '../../system';
+import { ColorScales } from '../../theme';
 import { LiteralUnion } from '../../types';
 import { Box } from '../Box';
 import { Text } from '../Text';
 
-type RadioSizes = 'xs' | 'sm' | 'md' | 'lg';
+export type RadioColors = ColorScales;
+
+export type RadioSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface RadioProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'width' | 'height' | 'size'> {
+  /** Radio label. */
   label?: string;
+  /** If `true`, the radio will be disabled. */
   isDisabled?: boolean;
+  /** If `true`, the radio will be marked as invalid. */
   isInvalid?: boolean;
-  color?: string;
+  /** Color of the radio. */
+  color?: LiteralUnion<RadioColors>;
+  /** Size of the checkbox. */
   size?: LiteralUnion<RadioSizes>;
 }
 
