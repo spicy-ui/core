@@ -1,9 +1,9 @@
 import { motion, Variants } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components';
+import { PopperProps, usePopper } from '../../hooks';
 import { useComponentStyles } from '../../system';
 import { Box } from '../Box';
-import { PopperProps, usePopper } from '../Popper';
 
 const Motion = styled(motion.div)({});
 

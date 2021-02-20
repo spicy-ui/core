@@ -2,8 +2,8 @@ import { motion, Variants } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components';
 import { sxMixin, SxProps, useComponentStyles } from '../../system';
+import { PopperProps, usePopper } from '../../hooks';
 import { runIfFn } from '../../util';
-import { PopperProps, usePopper } from '../Popper';
 import { Portal } from '../Portal';
 
 const Motion = styled(motion.div)(sxMixin);
