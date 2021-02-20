@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { uid } from 'react-uid';
-import { Avatar, Box, Button, Flex, Menu, MenuDivider, MenuHeader, MenuItem, MenuProps, Text } from '..';
+import { Avatar, Box, Button, Flex, Menu, MenuDivider, MenuHeader, MenuItem, MenuProps, Stack, Text } from '..';
 
 export default {
   title: 'Menu',
@@ -59,7 +59,7 @@ export const InternalState: Story<MenuProps> = (props) => (
 );
 
 export const CustomItems: Story<MenuProps> = (props) => (
-  <>
+  <Stack spacing={8} direction="column">
     <Menu {...props} trigger={<Avatar name="Dwight Schrute" />}>
       <MenuItem>
         <Flex minHeight="16" direction="column" justify="center" flex="1 1 auto">
@@ -90,7 +90,6 @@ export const CustomItems: Story<MenuProps> = (props) => (
         <span>🏃‍♂️</span>
       </MenuItem>
     </Menu>
-    <Box mt="8" />
     <Menu trigger={<Button iconAfter={<HiChevronDown />}>Menu</Button>}>
       {[
         { text: 'Cut', kdb: 'Ctrl + X' },
@@ -107,5 +106,5 @@ export const CustomItems: Story<MenuProps> = (props) => (
         </MenuItem>
       ))}
     </Menu>
-  </>
+  </Stack>
 );
