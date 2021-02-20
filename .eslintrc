@@ -13,11 +13,13 @@
   },
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/naming-convention": "off",
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "import/no-cycle": "off",
     "import/prefer-default-export": "off",
     "jsx-a11y/accessible-emoji": "off",
+    "no-underscore-dangle": "off",
     "react/jsx-props-no-spreading": "off"
   },
   "overrides": [
