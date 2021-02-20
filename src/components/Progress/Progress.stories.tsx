@@ -8,7 +8,9 @@ export default {
 } as Meta<ProgressProps>;
 
 export const Horizontal: Story<ProgressProps> = (props) => <Progress {...props} />;
-Horizontal.args = { value: 43 };
+Horizontal.args = {
+  value: 43,
+};
 
 export const WithHorizontalInner: Story<ProgressProps> = (props) => {
   const { value = 0, min = 0, max = 100 } = props;
@@ -22,7 +24,9 @@ export const WithHorizontalInner: Story<ProgressProps> = (props) => {
     </Progress>
   );
 };
-WithHorizontalInner.args = { value: 43 };
+WithHorizontalInner.args = {
+  value: 43,
+};
 
 export const Circular: Story<ProgressProps> = (props) => <Progress {...props} />;
 Circular.args = {

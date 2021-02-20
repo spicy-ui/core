@@ -9,7 +9,7 @@ export default {
   component: Tag,
 } as Meta<TagProps>;
 
-export const Simple: Story<TagProps> = (props) => <Tag {...props}>Sample Tag</Tag>;
+export const Usage: Story<TagProps> = (props) => <Tag {...props}>Sample Tag</Tag>;
 
 export const TextOverflow: Story<TagProps> = (props) => (
   <Box w="120px">

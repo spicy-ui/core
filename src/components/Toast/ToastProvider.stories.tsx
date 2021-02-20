@@ -40,7 +40,7 @@ const Toast = ({ id, message, props }: ToastComponentProps) => {
   );
 };
 
-export const Simple: Story<ToastProviderProps> = () => {
+export const Usage: Story<ToastProviderProps> = () => {
   return (
     <ToastProvider component={Toast}>
       <Demo />

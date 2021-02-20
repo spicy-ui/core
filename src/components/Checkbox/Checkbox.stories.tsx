@@ -35,12 +35,12 @@ export default {
   component: Checkbox,
 } as Meta<CheckboxProps>;
 
-export const Simple: Story<CheckboxProps> = (props) => {
+export const Usage: Story<CheckboxProps> = (props) => {
   const [isChecked, setIsChecked] = React.useState(false);
 
   return <Checkbox {...props} checked={isChecked} onChange={({ target }) => setIsChecked(Boolean(target.checked))} />;
 };
-Simple.args = {
+Usage.args = {
   label: 'Checkbox',
 };
 

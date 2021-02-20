@@ -7,7 +7,7 @@ export default {
   component: Overlay,
 } as Meta<OverlayProps>;
 
-export const Simple: Story<OverlayProps> = () => {
+export const Usage: Story<OverlayProps> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (

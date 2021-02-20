@@ -7,7 +7,7 @@ export default {
   component: Grid,
 } as Meta<GridProps>;
 
-export const Simple: Story<GridProps> = (props) => (
+export const Usage: Story<GridProps> = (props) => (
   <Grid {...props}>
     <Box p={2} bg="red.50">
       Box 1
@@ -29,7 +29,7 @@ export const Simple: Story<GridProps> = (props) => (
     </Box>
   </Grid>
 );
-Simple.args = {
+Usage.args = {
   gap: 4,
   templateColumns: 'repeat(6, 1fr)',
 };

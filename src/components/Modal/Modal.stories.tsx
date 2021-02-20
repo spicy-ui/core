@@ -12,7 +12,7 @@ export default {
   subcomponents: { ModalHeader, ModalBody, ModalFooter, ModalCloseButton },
 } as Meta<ModalProps>;
 
-export const Simple: Story<ModalProps> = (props) => {
+export const Usage: Story<ModalProps> = (props) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
@@ -35,7 +35,9 @@ export const Simple: Story<ModalProps> = (props) => {
     </>
   );
 };
-Simple.args = { closeOnOverlayClick: true };
+Usage.args = {
+  closeOnOverlayClick: true,
+};
 
 export const AsAlertDialog: Story<ModalProps> = (props) => {
   const [isOpen, setIsOpen] = React.useState(false);

@@ -38,7 +38,7 @@ export default {
   component: Badge,
 } as Meta<BadgeProps>;
 
-export const Simple: Story<BadgeProps> = (props) => <Badge {...props}>Success</Badge>;
+export const Usage: Story<BadgeProps> = (props) => <Badge {...props}>Success</Badge>;
 
 export const Colors: Story<BadgeProps> = (props) => (
   <table>

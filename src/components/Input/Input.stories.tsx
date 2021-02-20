@@ -8,7 +8,7 @@ export default {
   component: Input,
 } as Meta<InputProps>;
 
-export const Simple: Story<InputProps> = (props) => (
+export const Usage: Story<InputProps> = (props) => (
   <Input {...props} onChange={({ target }) => action('onChange')(target.value)} />
 );
 

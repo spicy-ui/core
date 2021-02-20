@@ -39,7 +39,7 @@ export default {
   component: Button,
 } as Meta<ButtonProps>;
 
-export const Simple: Story<ButtonProps> = (props) => <Button {...props}>Button</Button>;
+export const Usage: Story<ButtonProps> = (props) => <Button {...props}>Button</Button>;
 
 export const Colors: Story<ButtonProps> = (props) => (
   <table>

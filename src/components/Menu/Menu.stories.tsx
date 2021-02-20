@@ -8,14 +8,10 @@ import { Avatar, Box, Button, Flex, Menu, MenuDivider, MenuHeader, MenuItem, Men
 export default {
   title: 'Menu',
   component: Menu,
-  subcomponents: {
-    MenuHeader,
-    MenuDivider,
-    MenuItem,
-  },
+  subcomponents: { MenuHeader, MenuDivider, MenuItem },
 } as Meta<MenuProps>;
 
-export const Simple: Story<MenuProps> = (props) => (
+export const Usage: Story<MenuProps> = (props) => (
   <Box h={56}>
     <Menu {...props} trigger={<Button iconAfter={<HiChevronDown />}>Open</Button>}>
       <MenuItem onClick={action('view')}>View</MenuItem>

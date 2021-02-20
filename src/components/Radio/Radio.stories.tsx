@@ -35,12 +35,12 @@ export default {
   component: Radio,
 } as Meta<RadioProps>;
 
-export const Simple: Story<RadioProps> = (props) => {
+export const Usage: Story<RadioProps> = (props) => {
   const [isChecked, setIsChecked] = React.useState(false);
 
   return <Radio {...props} checked={isChecked} onChange={({ target }) => setIsChecked(Boolean(target.checked))} />;
 };
-Simple.args = {
+Usage.args = {
   label: 'Radio',
 };
 

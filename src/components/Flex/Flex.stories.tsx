@@ -7,7 +7,7 @@ export default {
   component: Flex,
 } as Meta<FlexProps>;
 
-export const Simple: Story<FlexProps> = (props) => (
+export const Usage: Story<FlexProps> = (props) => (
   <Flex {...props}>
     <Box flexGrow={1} p={2} bg="red.50">
       Box 1

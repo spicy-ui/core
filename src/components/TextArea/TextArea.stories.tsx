@@ -8,7 +8,7 @@ export default {
   component: TextArea,
 } as Meta<TextAreaProps>;
 
-export const Simple: Story<TextAreaProps> = (props) => (
+export const Usage: Story<TextAreaProps> = (props) => (
   <TextArea {...props} onChange={({ target }) => action('onChange')(target.value)} />
 );
 

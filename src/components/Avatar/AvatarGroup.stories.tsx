@@ -7,7 +7,7 @@ export default {
   component: AvatarGroup,
 } as Meta<AvatarGroupProps>;
 
-export const Simple: Story<AvatarGroupProps> = (props) => (
+export const Usage: Story<AvatarGroupProps> = (props) => (
   <AvatarGroup {...props}>
     <Avatar name="Michael Scott" />
     <Avatar name="Dwight Schrute" />
@@ -17,4 +17,6 @@ export const Simple: Story<AvatarGroupProps> = (props) => (
     <Avatar name="Andy Bernard" />
   </AvatarGroup>
 );
-Simple.args = { max: 3 };
+Usage.args = {
+  max: 3,
+};

@@ -7,7 +7,7 @@ export default {
   component: Divider,
 } as Meta<DividerProps>;
 
-export const Simple: Story<DividerProps> = (props) => <Divider {...props} />;
+export const Usage: Story<DividerProps> = (props) => <Divider {...props} />;
 
 export const Vertical: Story<DividerProps> = () => (
   <Stack direction="row">

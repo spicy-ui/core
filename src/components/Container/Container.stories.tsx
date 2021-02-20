@@ -7,7 +7,7 @@ export default {
   component: Container,
 } as Meta<ContainerProps>;
 
-export const Simple: Story<ContainerProps> = (props) => (
+export const Usage: Story<ContainerProps> = (props) => (
   <Container {...props}>
     <Box w="full" h="full" bg="red.50">
       Container inner

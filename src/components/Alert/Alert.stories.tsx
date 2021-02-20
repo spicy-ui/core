@@ -8,9 +8,9 @@ export default {
   component: Alert,
 } as Meta<AlertProps>;
 
-export const Simple: Story<AlertProps> = (props) => (
+export const Usage: Story<AlertProps> = (props) => (
   <Alert {...props}>
-    <Text>This is a alert</Text>
+    <strong>Hey you!</strong> Are you using Spicy UI yet?
   </Alert>
 );
 

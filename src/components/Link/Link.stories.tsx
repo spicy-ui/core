@@ -7,4 +7,4 @@ export default {
   component: Link,
 } as Meta<LinkProps>;
 
-export const Simple: Story<LinkProps> = (props) => <Link {...props}>🌶️ Spicy UI</Link>;
+export const Usage: Story<LinkProps> = (props) => <Link {...props}>🌶️ Spicy UI</Link>;

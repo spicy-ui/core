@@ -38,7 +38,7 @@ export default {
   component: Code,
 } as Meta<CodeProps>;
 
-export const Simple: Story<CodeProps> = (props) => <Code {...props}>console.log(&apos;hello world!&apos;)</Code>;
+export const Usage: Story<CodeProps> = (props) => <Code {...props}>console.log(&apos;hello world!&apos;)</Code>;
 
 export const Colors: Story<CodeProps> = (props) => (
   <table>

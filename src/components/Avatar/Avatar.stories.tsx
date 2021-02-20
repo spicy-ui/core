@@ -8,7 +8,7 @@ export default {
   component: Avatar,
 } as Meta<AvatarProps>;
 
-export const Simple: Story<AvatarProps> = (props) => <Avatar {...props} />;
+export const Usage: Story<AvatarProps> = (props) => <Avatar {...props} />;
 
 export const Sizes: Story<AvatarProps> = () => (
   <Stack spacing={4} direction="row">
