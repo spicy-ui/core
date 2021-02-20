@@ -12,9 +12,9 @@ export interface HeadingProps extends AsProp, ChildrenProp, AllSystemProps, SxPr
 }
 
 export const Heading = styled.p.withConfig<HeadingProps>({ shouldForwardProp })(
-  getComponentStyles('Heading'),
-  allSystem,
+  componentStylesMixin('Heading'),
   sxMixin,
+  allSystem,
 );
 
 Heading.defaultProps = {

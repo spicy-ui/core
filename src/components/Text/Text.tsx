@@ -25,9 +25,9 @@ export interface TextProps extends AsProp, ChildrenProp, AllSystemProps, SxProp 
 }
 
 export const Text = styled.p.withConfig<TextProps>({ shouldForwardProp })(
-  getComponentStyles('Text'),
-  allSystem,
+  componentStylesMixin('Text'),
   sxMixin,
+  allSystem,
 );
 
 Text.defaultProps = {

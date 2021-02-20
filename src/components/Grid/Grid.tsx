@@ -5,7 +5,7 @@ import { BoxProps } from '../Box';
 
 export interface GridProps extends BoxProps, ExtendedGridProps {}
 
-export const Grid = styled.div.withConfig<GridProps>({ shouldForwardProp })(allSystem, extendedGrid, sxMixin);
+export const Grid = styled.div.withConfig<GridProps>({ shouldForwardProp })(sxMixin, allSystem, extendedGrid);
 
 Grid.defaultProps = {
   display: 'grid',

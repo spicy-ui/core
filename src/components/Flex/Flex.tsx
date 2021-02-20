@@ -5,7 +5,7 @@ import { BoxProps } from '../Box';
 
 export interface FlexProps extends BoxProps, ExtendedFlexboxProps {}
 
-export const Flex = styled.div.withConfig<FlexProps>({ shouldForwardProp })(allSystem, extendedFlexbox, sxMixin);
+export const Flex = styled.div.withConfig<FlexProps>({ shouldForwardProp })(sxMixin, allSystem, extendedFlexbox);
 
 Flex.defaultProps = {
   display: 'flex',
