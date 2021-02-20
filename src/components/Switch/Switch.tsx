@@ -23,10 +23,10 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>((props, re
   return (
     <Box as="label" htmlFor={id} sx={outerStyles}>
       <Box
+        ref={ref}
         as="input"
         type="checkbox"
         role="switch"
-        ref={ref}
         id={id}
         name={name}
         value={value}

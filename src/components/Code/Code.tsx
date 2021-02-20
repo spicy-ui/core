@@ -1,16 +1,14 @@
 import * as React from 'react';
-import { SxProps, useComponentStyles } from '../../system';
+import { SxProp, useComponentStyles } from '../../system';
 import { ColorScales } from '../../theme';
-import { LiteralUnion } from '../../types';
+import { AsProp, ChildrenProp, LiteralUnion } from '../../types';
 import { Box } from '../Box';
 
 export type CodeColors = ColorScales;
 
 export type CodeVariants = 'outline' | 'solid' | 'subtle';
 
-export interface CodeProps extends SxProps {
-  children?: React.ReactNode;
-  as?: string | React.ComponentType<any>;
+export interface CodeProps extends AsProp, ChildrenProp, SxProp {
   /** Color of the code element. */
   color?: LiteralUnion<CodeColors>;
   /** Variant of the code element. */
@@ -18,12 +16,12 @@ export interface CodeProps extends SxProps {
 }
 
 export const Code = React.forwardRef<HTMLElement, CodeProps>((props, ref) => {
-  const { children, sx, as, color, variant, ...rest } = props;
+  const { as, children, sx, color, variant, ...rest } = props;
 
   const styles = useComponentStyles('Code', props);
 
   return (
-    <Box as={as ?? 'code'} ref={ref} sx={styles} {...rest}>
+    <Box ref={ref} as={as ?? 'code'} sx={styles} {...rest}>
       {children}
     </Box>
   );

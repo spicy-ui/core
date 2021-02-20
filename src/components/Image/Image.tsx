@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useImage } from '../../hooks/useImage';
-import { SxProps, useComponentStyles } from '../../system';
+import { SxProp, useComponentStyles } from '../../system';
 import { Box } from '../Box';
 
-export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, SxProps {
+export interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, SxProp {
   /** Fallback component for the image. This is shown when the image is loading. */
   fallback?: React.ReactElement;
   /** Fallback src image. If you intend to use this instead of a component, it's advised to use a data src. */
@@ -19,21 +19,11 @@ export const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref)
 
   const styles = useComponentStyles('Image', props);
 
-  const shared = {
-    ref,
-    sx: styles,
-    ...rest,
-  };
-
   if (status !== 'loaded') {
-    if (fallback) {
-      return fallback;
-    }
-
-    return <Box {...shared} as="img" src={fallbackSrc} />;
+    return fallback || <Box ref={ref} as="img" sx={styles} src={fallbackSrc} {...rest} />;
   }
 
-  return <Box {...shared} as="img" src={src} />;
+  return <Box ref={ref} as="img" sx={styles} src={src} {...rest} />;
 });
 
 Image.displayName = 'Image';

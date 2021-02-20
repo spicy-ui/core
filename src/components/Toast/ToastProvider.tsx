@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components';
 import { useComponentStyles } from '../../system';
+import { ChildrenProp } from '../../types';
 import { Box } from '../Box';
 import { Portal } from '../Portal';
 import { mergeDefined, uuid } from './util';
@@ -100,8 +101,7 @@ const reducer = (state: ToastComponentProps[], { type, toast }: ToastReducerActi
 
 const initialState: ToastComponentProps[] = [];
 
-export interface ToastProviderProps {
-  children: React.ReactNode;
+export interface ToastProviderProps extends ChildrenProp {
   component: (props: ToastComponentProps) => JSX.Element;
   duration?: number;
   maxVisible?: number;
@@ -196,3 +196,5 @@ ToastProvider.defaultProps = {
   persist: false,
   placement: 'bottom-left',
 };
+
+ToastProvider.displayName = 'ToastProvider';

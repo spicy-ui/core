@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { SxProps, useComponentStyles } from '../../system';
+import { SxProp, useComponentStyles } from '../../system';
+import { AsProp, ChildrenProp } from '../../types';
 import { Box } from '../Box';
 
-export interface TagLabelProps extends SxProps {
-  children?: React.ReactNode;
+export interface TagLabelProps extends AsProp, ChildrenProp, SxProp {
   label?: React.ReactNode;
 }
 

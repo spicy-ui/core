@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { SxProps, useComponentStyles } from '../../system';
+import { SxProp, useComponentStyles } from '../../system';
 import { ColorScales } from '../../theme';
-import { LiteralUnion } from '../../types';
+import { AsProp, ChildrenProp, LiteralUnion } from '../../types';
 import { Box } from '../Box';
 
 export type TagColors = ColorScales;
@@ -10,9 +10,7 @@ export type TagSizes = 'sm' | 'md' | 'lg';
 
 export type TagVariants = 'outline' | 'solid' | 'subtle';
 
-export interface TagProps extends SxProps {
-  children?: React.ReactNode;
-  as?: string | React.ComponentType<any>;
+export interface TagProps extends AsProp, ChildrenProp, SxProp {
   /** Label shown within the tag. */
   label?: React.ReactNode;
   /** If `true`, the tag will be rounded. */
@@ -26,12 +24,12 @@ export interface TagProps extends SxProps {
 }
 
 export const Tag = React.forwardRef<HTMLElement, TagProps>((props, ref) => {
-  const { children, sx, as, label, isRound, color, size, variant, ...rest } = props;
+  const { as, children, sx, label, isRound, color, size, variant, ...rest } = props;
 
   const styles = useComponentStyles('Tag', props);
 
   return (
-    <Box as={as ?? 'span'} ref={ref} sx={styles} {...rest}>
+    <Box ref={ref} as={as ?? 'span'} sx={styles} {...rest}>
       {label || children}
     </Box>
   );

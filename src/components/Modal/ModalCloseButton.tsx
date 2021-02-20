@@ -5,7 +5,7 @@ import { CloseButton, CloseButtonProps } from '../CloseButton';
 export interface ModalCloseButtonProps extends CloseButtonProps {}
 
 export const ModalCloseButton: React.FC<ModalCloseButtonProps> = (props) => {
-  const { sx, children, ...rest } = props;
+  const { sx, ...rest } = props;
 
   const styles = useComponentStyles('ModalCloseButton', props);
 

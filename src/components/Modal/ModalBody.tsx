@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { SxProps, useComponentStyles } from '../../system';
+import { SxProp, useComponentStyles } from '../../system';
+import { AsProp, ChildrenProp } from '../../types';
 import { Box } from '../Box';
 
-export interface ModalBodyProps extends SxProps {}
+export interface ModalBodyProps extends AsProp, ChildrenProp, SxProp {}
 
 export const ModalBody: React.FC<ModalBodyProps> = (props) => {
-  const { sx, children, ...rest } = props;
+  const { children, sx, ...rest } = props;
 
   const styles = useComponentStyles('ModalBody', props);
 

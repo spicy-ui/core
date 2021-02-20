@@ -1,7 +1,8 @@
 import { motion, Variants } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components';
-import { sxMixin, SxProps, useComponentStyles } from '../../system';
+import { sxMixin, SxProp, useComponentStyles } from '../../system';
+import { AsProp, ChildrenProp } from '../../types';
 import { Portal } from '../Portal';
 
 const Motion = styled(motion.div)(sxMixin);
@@ -18,14 +19,13 @@ const variants: Variants = {
     transition: { duration: 0.2 },
   },
 };
-export interface OverlayProps extends SxProps {
-  children: React.ReactNode;
+export interface OverlayProps extends AsProp, ChildrenProp, SxProp {
   isOpen: boolean;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
 export const Overlay: React.FC<OverlayProps> = (props) => {
-  const { sx, children, isOpen, onClick, ...rest } = props;
+  const { children, sx, isOpen, onClick, ...rest } = props;
 
   const style = useComponentStyles('Overlay', props);
 

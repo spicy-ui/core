@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { SxProps, useComponentStyles } from '../../system';
-import { LiteralUnion } from '../../types';
+import { SxProp, useComponentStyles } from '../../system';
+import { AsProp, LiteralUnion } from '../../types';
 import { Box } from '../Box';
 
 export type SpinnerSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
-export interface SpinnerProps extends SxProps {
+export interface SpinnerProps extends AsProp, SxProp {
   /** Color of the spinner. */
   color?: string;
   /** Color of the spinner's track. */
@@ -27,11 +27,11 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>((props, re
 });
 
 Spinner.defaultProps = {
-  size: 'md',
   color: 'blue.500',
   trackColor: 'transparent',
   thickness: '2px',
   speed: '0.45s',
+  size: 'md',
 };
 
 Spinner.displayName = 'Spinner';

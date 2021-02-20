@@ -1,9 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { ChildrenProp } from '../../types';
 
-export interface PortalProps {
-  children: React.ReactNode;
-}
+export interface PortalProps extends ChildrenProp {}
 
 export const Portal: React.FC<PortalProps> = ({ children }) => {
   const [ready, setReady] = React.useState(false);

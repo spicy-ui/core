@@ -1,16 +1,14 @@
 import * as React from 'react';
-import { SxProps, useComponentStyles } from '../../system';
+import { SxProp, useComponentStyles } from '../../system';
 import { ColorScales } from '../../theme';
-import { LiteralUnion } from '../../types';
+import { AsProp, ChildrenProp, LiteralUnion } from '../../types';
 import { Box } from '../Box';
 
 export type BadgeColors = ColorScales;
 
 export type BadgeVariants = 'outline' | 'solid' | 'subtle';
 
-export interface BadgeProps extends SxProps {
-  children?: React.ReactNode;
-  as?: string | React.ComponentType<any>;
+export interface BadgeProps extends AsProp, ChildrenProp, SxProp {
   /** Color of the badge. */
   color?: LiteralUnion<BadgeColors>;
   /** Variant of the badge. */
@@ -18,12 +16,12 @@ export interface BadgeProps extends SxProps {
 }
 
 export const Badge = React.forwardRef<HTMLElement, BadgeProps>((props, ref) => {
-  const { children, sx, as, color, variant, ...rest } = props;
+  const { as, children, sx, color, variant, ...rest } = props;
 
   const styles = useComponentStyles('Badge', props);
 
   return (
-    <Box as={as ?? 'span'} ref={ref} sx={styles} {...rest}>
+    <Box ref={ref} as={as ?? 'span'} sx={styles} {...rest}>
       {children}
     </Box>
   );

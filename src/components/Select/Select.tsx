@@ -3,8 +3,8 @@ import { motion, Variants } from 'framer-motion';
 import * as React from 'react';
 import { HiChevronDown, HiX } from 'react-icons/hi';
 import styled from 'styled-components';
-import { sxMixin, SxProps, useComponentStyles } from '../../system';
 import { usePopper } from '../../hooks';
+import { sxMixin, SxProp, useComponentStyles } from '../../system';
 import { LiteralUnion } from '../../types';
 import { mergeRefs } from '../../util';
 import { Box } from '../Box';
@@ -27,7 +27,7 @@ function defaultRenderItem(item: SelectItem | null, fallback: string | null = nu
   return item ? <>{item.label}</> : null;
 }
 
-const SelectText: React.FC<{ label: React.ReactNode } & SxProps> = ({ label, sx }) => (
+const SelectText: React.FC<{ label: React.ReactNode } & SxProp> = ({ label, sx }) => (
   <Flex py={4} align="center" justify="center">
     <Text as="span" sx={sx}>
       {label}
@@ -39,7 +39,7 @@ const SelectIcon: React.FC<
   {
     icon: React.ReactElement;
     onClick?: (e: React.MouseEvent) => void;
-  } & SxProps
+  } & SxProp
 > = ({ icon, sx, ...rest }) => (
   <Text as="span" sx={sx} {...rest}>
     {icon}

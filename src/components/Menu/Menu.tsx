@@ -1,8 +1,9 @@
 import { motion, Variants } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components';
-import { sxMixin, SxProps, useComponentStyles } from '../../system';
 import { PopperProps, usePopper } from '../../hooks';
+import { sxMixin, SxProp, useComponentStyles } from '../../system';
+import { AsProp, ChildrenProp } from '../../types';
 import { runIfFn } from '../../util';
 import { Portal } from '../Portal';
 
@@ -21,7 +22,7 @@ const variants: Variants = {
   },
 };
 
-export interface MenuProps extends PopperProps, SxProps {
+export interface MenuProps extends PopperProps, AsProp, ChildrenProp, SxProp {
   trigger: ((props: { isOpen: boolean }) => React.ReactElement) | React.ReactElement;
   children: ((props: { isOpen: boolean }) => React.ReactElement) | React.ReactNode;
   isFullWidth?: boolean;
@@ -29,8 +30,8 @@ export interface MenuProps extends PopperProps, SxProps {
 
 export const Menu: React.FC<MenuProps> = (props) => {
   const {
-    sx,
     children,
+    sx,
     trigger,
     closeOnBlur,
     closeOnEsc,

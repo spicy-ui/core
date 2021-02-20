@@ -1,19 +1,17 @@
 import * as React from 'react';
-import { SxProps, useComponentStyles } from '../../system';
+import { SxProp, useComponentStyles } from '../../system';
+import { AsProp, ChildrenProp } from '../../types';
 import { Box } from '../Box';
 
-export interface KbdProps extends SxProps {
-  children?: React.ReactNode;
-  as?: string | React.ComponentType<any>;
-}
+export interface KbdProps extends AsProp, ChildrenProp, SxProp {}
 
 export const Kbd = React.forwardRef<HTMLElement, KbdProps>((props, ref) => {
-  const { children, sx, as, ...rest } = props;
+  const { as, children, sx, ...rest } = props;
 
   const styles = useComponentStyles('Kbd', props);
 
   return (
-    <Box as={as ?? 'kbd'} ref={ref} sx={styles} {...rest}>
+    <Box ref={ref} as={as ?? 'kbd'} sx={styles} {...rest}>
       {children}
     </Box>
   );

@@ -3,6 +3,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { PopperProps, usePopper } from '../../hooks';
 import { useComponentStyles } from '../../system';
+import { ChildrenProp } from '../../types';
 import { Box } from '../Box';
 
 const Motion = styled(motion.div)({});
@@ -20,7 +21,7 @@ const variants: Variants = {
   },
 };
 
-export interface TooltipProps extends Pick<PopperProps, 'placement' | 'offset'> {
+export interface TooltipProps extends Pick<PopperProps, 'placement' | 'offset'>, ChildrenProp {
   isDisabled?: boolean;
   label: string;
 }
@@ -49,8 +50,8 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
 };
 
 Tooltip.defaultProps = {
-  placement: 'bottom-start',
   offset: [0, 4],
+  placement: 'bottom-start',
 };
 
 Tooltip.displayName = 'Tooltip';
