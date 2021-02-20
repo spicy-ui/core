@@ -55,7 +55,7 @@ export function useComponentStyles(componentKey: string, props: any = {}) {
 /**
  * Parser for resolving a component's styles.
  */
-export function getComponentStyles(componentKey: string) {
+export function componentStylesMixin(componentKey: string) {
   return (props: any): any => {
     const { children, theme, ...rest } = props;
 

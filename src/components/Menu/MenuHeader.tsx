@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { getComponentStyles, sxMixin, SxProps } from '../../system';
+import { componentStylesMixin, sxMixin, SxProp } from '../../system';
 
-export const MenuHeader = styled.div<SxProps>(getComponentStyles('MenuHeader'), sxMixin);
+export const MenuHeader = styled.div<SxProp>(componentStylesMixin('MenuHeader'), sxMixin);
 
 MenuHeader.displayName = 'MenuHeader';
