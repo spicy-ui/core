@@ -47,6 +47,8 @@ export const Stack = React.forwardRef<HTMLDivElement, StackProps>((props, ref) =
   const {
     children,
     sx,
+    flexDir,
+    flexDirection,
     direction = 'column',
     align,
     justify,
@@ -57,6 +59,8 @@ export const Stack = React.forwardRef<HTMLDivElement, StackProps>((props, ref) =
     ...rest
   } = props;
 
+  const _direction = flexDir || flexDirection || direction;
+
   const stackStyle = React.useMemo(() => {
     const directions = {
       row: { marginLeft: spacing, marginTop: 0 },
@@ -66,9 +70,9 @@ export const Stack = React.forwardRef<HTMLDivElement, StackProps>((props, ref) =
     };
 
     return {
-      '& > * ~ *': responsive(direction, (v: keyof typeof directions) => directions[v]),
+      '& > * ~ *': responsive(_direction, (v: keyof typeof directions) => directions[v]),
     };
-  }, [direction, spacing]);
+  }, [_direction, spacing]);
 
   const dividerStyle = React.useMemo(() => {
     const dividers = {
@@ -79,9 +83,9 @@ export const Stack = React.forwardRef<HTMLDivElement, StackProps>((props, ref) =
     };
 
     return {
-      '&': responsive(direction, (v: keyof typeof dividers) => dividers[v]),
+      '&': responsive(_direction, (v: keyof typeof dividers) => dividers[v]),
     };
-  }, [direction, spacing]);
+  }, [_direction, spacing]);
 
   const validChildren = React.Children.toArray(children).filter((child) => React.isValidElement(child));
 
@@ -97,7 +101,7 @@ export const Stack = React.forwardRef<HTMLDivElement, StackProps>((props, ref) =
       display="flex"
       alignItems={align}
       justifyContent={justify}
-      flexDirection={direction}
+      flexDirection={_direction}
       flexWrap={wrap}
       sx={styles}
       {...rest}
