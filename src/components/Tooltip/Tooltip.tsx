@@ -5,6 +5,7 @@ import { PopperProps, usePopper } from '../../hooks';
 import { useComponentStyles } from '../../system';
 import { ChildrenProp } from '../../types';
 import { Box } from '../Box';
+import { Portal } from '../Portal';
 
 const Motion = styled(motion.div)({});
 
@@ -39,11 +40,13 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
     <>
       {React.cloneElement(<span>{children}</span>, { ...triggerProps, onMouseEnter: onOpen, onMouseLeave: onClose })}
       {!isDisabled && (
-        <Motion {...childProps} initial="hidden" animate={isOpen ? 'visible' : 'hidden'} variants={variants}>
-          <Box sx={styles} {...rest}>
-            {label}
-          </Box>
-        </Motion>
+        <Portal>
+          <Motion {...childProps} initial="hidden" animate={isOpen ? 'visible' : 'hidden'} variants={variants}>
+            <Box sx={styles} {...rest}>
+              {label}
+            </Box>
+          </Motion>
+        </Portal>
       )}
     </>
   );
