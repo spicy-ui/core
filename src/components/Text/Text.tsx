@@ -20,7 +20,7 @@ export type TextVariant =
 
 export interface TextProps extends AsProp, ChildrenProp, AllSystemProps, SxProp {
   color?: string;
-  /** Text variant. */
+  /** Variant of the text. */
   variant?: LiteralUnion<TextVariant>;
 }
 

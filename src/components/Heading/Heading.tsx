@@ -7,7 +7,7 @@ export type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export interface HeadingProps extends AsProp, ChildrenProp, AllSystemProps, SxProp {
   color?: string;
-  /** Text variant. */
+  /** Variant of the heading. */
   variant?: LiteralUnion<HeadingVariant>;
 }
 
