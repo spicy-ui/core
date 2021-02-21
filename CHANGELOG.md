@@ -37,6 +37,8 @@
 - Fixed Tags `label` prop
 - Fixed outline style on open Menus
 - Fixed Stack not using `flexDir` and `flexDirection` ([#40](https://github.com/spicy-ui/core/issues/40))
+- Fixed Avatar images overflowing when a variant is set
+- Fixed Badge line height issues
 
 ## 0.1.0-alpha.3 (16 February, 2021)
 
