@@ -16,6 +16,28 @@
 
 -->
 
+## 0.1.0-alpha.4 (21 February, 2021)
+
+### Features
+
+- Added `Tab` component
+
+### Changes
+
+- Mixins on Flex, Grid, Header and Text have been aligned with the Box's behaviour, style props will overide the `sx` prop
+- `getComponentStyles` renamed to `componentStylesMixin`
+- `SxProps` renamed to `SxProp`
+- Menus and Tooltips are now rendered inside Portals
+- More components now have the `as` prop on their interfaces ([#38](https://github.com/spicy-ui/core/issues/38))
+- Added `color` types to Radio and Switch components
+
+### Bug Fixes
+
+- Fixed Menu in Stack having margin applied ([#39](https://github.com/spicy-ui/core/issues/39))
+- Fixed Tags `label` prop
+- Fixed outline style on open Menus
+- Fixed Stack not using `flexDir` and `flexDirection` ([#40](https://github.com/spicy-ui/core/issues/40))
+
 ## 0.1.0-alpha.3 (16 February, 2021)
 
 ### Features
