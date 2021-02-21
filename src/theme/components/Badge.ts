@@ -10,6 +10,7 @@ export const Badge: ComponentThemeConfig<BadgeProps> = {
     borderRadius: 'xs',
     fontSize: 'xs',
     fontWeight: 'bold',
+    lineHeight: 1.5,
     textTransform: 'uppercase',
     verticalAlign: 'middle',
     whiteSpace: 'nowrap',

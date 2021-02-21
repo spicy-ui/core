@@ -1,8 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Badge, BadgeProps, BadgeVariants } from '..';
-import { BadgeColors } from './Badge';
+import { Badge, BadgeColors, BadgeProps, BadgeVariants, Flex, Avatar, Box, Text } from '..';
 
 const badgeColors: BadgeColors[] = [
   'blueGray',
@@ -69,4 +68,28 @@ export const Colors: Story<BadgeProps> = (props) => (
       ))}
     </tbody>
   </table>
+);
+
+export const Composition: Story<BadgeProps> = (props) => (
+  <Flex>
+    <Avatar src="https://upload.wikimedia.org/wikipedia/en/d/dc/MichaelScott.png" />
+    <Box ml="3">
+      <Text fontWeight="bold">
+        Michael Scott
+        <Badge color="purple" sx={{ ml: 1 }}>
+          New
+        </Badge>
+      </Text>
+      <Text fontSize="sm">Regional Manager</Text>
+    </Box>
+  </Flex>
+);
+
+export const FontSize: Story<BadgeProps> = (props) => (
+  <Text fontSize="xl" fontWeight="bold">
+    Michael Scott
+    <Badge color="purple" sx={{ ml: 1, fontSize: '0.8em' }}>
+      New
+    </Badge>
+  </Text>
 );
