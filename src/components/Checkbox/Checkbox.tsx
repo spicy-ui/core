@@ -32,17 +32,17 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>((props
   return (
     <Box as="label" htmlFor={id} sx={outerStyles}>
       <Box
+        ref={ref}
         as="input"
         type="checkbox"
-        ref={ref}
         id={id}
         name={name}
         value={value}
         defaultChecked={checked}
         data-checked={!checked ? undefined : checked}
         disabled={isDisabled}
-        {...rest}
         sx={inputStyles}
+        {...rest}
       />
       {label && (
         <Text as="div" fontSize="inherit" lineHeight="inherit" sx={labelStyles}>

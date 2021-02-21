@@ -7,8 +7,8 @@ export default {
   component: Image,
 } as Meta<ImageProps>;
 
-export const Simple: Story<ImageProps> = (props) => <Image {...props} />;
-Simple.args = {
+export const Usage: Story<ImageProps> = (props) => <Image {...props} />;
+Usage.args = {
   src: 'https://source.unsplash.com/random/256x256?mountain',
   alt: 'Random unsplash image',
 };

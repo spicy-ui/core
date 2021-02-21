@@ -10,7 +10,7 @@ export default {
   component: Heading,
 } as Meta<HeadingProps>;
 
-export const Simple: Story<HeadingProps> = (props) => (
+export const Usage: Story<HeadingProps> = (props) => (
   <Heading {...props}>The quick brown fox jumped over the lazy dog.</Heading>
 );
 

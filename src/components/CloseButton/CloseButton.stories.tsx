@@ -7,4 +7,4 @@ export default {
   component: CloseButton,
 } as Meta<CloseButtonProps>;
 
-export const Simple: Story<CloseButtonProps> = (props) => <CloseButton {...props} />;
+export const Usage: Story<CloseButtonProps> = (props) => <CloseButton {...props} />;

@@ -1,18 +1,30 @@
 import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Stack, Text, TextProps } from '..';
+import { Stack, Text, TextVariant, TextProps } from '..';
 
-const textVariants = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl', '8xl', '9xl'];
+const textVariants: TextVariant[] = [
+  'xs',
+  'sm',
+  'md',
+  'lg',
+  'xl',
+  '2xl',
+  '3xl',
+  '4xl',
+  '5xl',
+  '6xl',
+  '7xl',
+  '8xl',
+  '9xl',
+];
 
 export default {
   title: 'Text',
   component: Text,
 } as Meta<TextProps>;
 
-export const Simple: Story<TextProps> = (props) => (
-  <Text {...props}>The quick brown fox jumped over the lazy dog.</Text>
-);
+export const Usage: Story<TextProps> = (props) => <Text {...props}>The quick brown fox jumped over the lazy dog.</Text>;
 
 export const Variants: Story<TextProps> = () => (
   <Stack spacing={4}>

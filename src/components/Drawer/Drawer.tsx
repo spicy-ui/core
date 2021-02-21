@@ -1,8 +1,8 @@
 import * as React from 'react';
 import FocusLock from 'react-focus-lock';
 import { useKeyPress } from '../../hooks';
-import { SxProps, useComponentStyles } from '../../system';
-import { LiteralUnion } from '../../types';
+import { SxProp, useComponentStyles } from '../../system';
+import { AsProp, ChildrenProp, LiteralUnion } from '../../types';
 import { Box } from '../Box';
 import { Overlay } from '../Overlay';
 
@@ -43,7 +43,7 @@ const getAnchor = (anchor?: DrawerAnchor) => {
   }
 };
 
-export interface DrawerProps extends SxProps {
+export interface DrawerProps extends AsProp, ChildrenProp, SxProp {
   isOpen: boolean;
   onClose?: () => void;
   anchor?: DrawerAnchor;
@@ -55,8 +55,8 @@ export interface DrawerProps extends SxProps {
 
 export const Drawer: React.FC<DrawerProps> = (props) => {
   const {
-    sx,
     children,
+    sx,
     isOpen,
     onClose,
     anchor,

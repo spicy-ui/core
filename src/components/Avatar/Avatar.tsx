@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { HiOutlineUser } from 'react-icons/hi';
 import { useImage } from '../../hooks';
-import { SxProps, useComponentStyles } from '../../system';
-import { LiteralUnion } from '../../types';
+import { SxProp, useComponentStyles } from '../../system';
+import { ChildrenProp, LiteralUnion } from '../../types';
 import { Box } from '../Box';
 import { Text } from '../Text';
 
@@ -38,8 +38,7 @@ export type AvatarSizes = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 export type AvatarVariants = 'circle' | 'rounded' | 'square';
 
-export interface AvatarProps extends SxProps {
-  children?: React.ReactNode;
+export interface AvatarProps extends ChildrenProp, SxProp {
   /** Function to overwrite getting avatar initials. */
   getInitials?: (name: string) => string;
   /** The avatars fallback icon when the src is not loaded or specified. */

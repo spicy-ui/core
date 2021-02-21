@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useComponentStyles } from '../../system';
+import { AsProp, ChildrenProp } from '../../types';
 import { Box } from '../Box';
-import { ProgressAnimation, progressKeyframe } from './Animation';
+import { ProgressAnimation, progressKeyframe } from './styled';
 
-export interface HorizontalProgressProps {
-  children?: React.ReactNode;
+export interface HorizontalProgressProps extends AsProp, ChildrenProp {
   color?: string;
   isCapRound?: boolean;
   isIndeterminate?: boolean;

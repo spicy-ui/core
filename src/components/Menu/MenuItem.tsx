@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { getComponentStyles, sxMixin, SxProps } from '../../system';
+import { componentStylesMixin, sxMixin, SxProp } from '../../system';
 
-export const MenuItem = styled.div<SxProps>(getComponentStyles('MenuItem'), sxMixin);
+export const MenuItem = styled.div<SxProp>(componentStylesMixin('MenuItem'), sxMixin);
 
 MenuItem.displayName = 'MenuItem';

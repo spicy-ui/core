@@ -7,8 +7,12 @@ export default {
   component: Tooltip,
 } as Meta<TooltipProps>;
 
-export const Simple: Story<TooltipProps> = (props) => <Tooltip {...props}>Hover me</Tooltip>;
-Simple.args = { label: "Hello, I'm a tooltip!" };
+export const Usage: Story<TooltipProps> = (props) => <Tooltip {...props}>Hover me</Tooltip>;
+Usage.args = {
+  label: "Hello, I'm a tooltip!",
+};
 
 export const Disabled: Story<TooltipProps> = (props) => <Tooltip {...props}>No tooltips here</Tooltip>;
-Disabled.args = { isDisabled: true };
+Disabled.args = {
+  isDisabled: true,
+};

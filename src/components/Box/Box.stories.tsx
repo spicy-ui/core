@@ -7,4 +7,4 @@ export default {
   component: Box,
 } as Meta<BoxProps>;
 
-export const Simple: Story<BoxProps> = (props) => <Box {...props}>A Box 📦</Box>;
+export const Usage: Story<BoxProps> = (props) => <Box {...props}>A Box 📦</Box>;

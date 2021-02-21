@@ -74,12 +74,21 @@ export const Avatar: ComponentThemeConfig<AvatarProps> = {
     variants: {
       circle: {
         borderRadius: 'full',
+        '& img': {
+          borderRadius: 'full',
+        },
       },
       rounded: ({ size }) => ({
         borderRadius: size,
+        '& img': {
+          borderRadius: size,
+        },
       }),
       square: {
         borderRadius: 0,
+        '& img': {
+          borderRadius: 0,
+        },
       },
     },
   },

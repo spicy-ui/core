@@ -1,8 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Badge, BadgeProps, BadgeVariants } from '..';
-import { BadgeColors } from './Badge';
+import { Avatar, Badge, BadgeColors, BadgeProps, BadgeVariants, Box, Flex, Text } from '..';
 
 const badgeColors: BadgeColors[] = [
   'blueGray',
@@ -38,7 +37,7 @@ export default {
   component: Badge,
 } as Meta<BadgeProps>;
 
-export const Simple: Story<BadgeProps> = (props) => <Badge {...props}>Success</Badge>;
+export const Usage: Story<BadgeProps> = (props) => <Badge {...props}>Success</Badge>;
 
 export const Colors: Story<BadgeProps> = (props) => (
   <table>
@@ -69,4 +68,28 @@ export const Colors: Story<BadgeProps> = (props) => (
       ))}
     </tbody>
   </table>
+);
+
+export const Composition: Story<BadgeProps> = () => (
+  <Flex>
+    <Avatar src="https://upload.wikimedia.org/wikipedia/en/d/dc/MichaelScott.png" />
+    <Box ml="3">
+      <Text fontWeight="bold">
+        Michael Scott
+        <Badge color="purple" sx={{ ml: 1 }}>
+          New
+        </Badge>
+      </Text>
+      <Text fontSize="sm">Regional Manager</Text>
+    </Box>
+  </Flex>
+);
+
+export const FontSize: Story<BadgeProps> = () => (
+  <Text fontSize="xl" fontWeight="bold">
+    Michael Scott
+    <Badge color="purple" sx={{ ml: 1, fontSize: '0.8em' }}>
+      New
+    </Badge>
+  </Text>
 );

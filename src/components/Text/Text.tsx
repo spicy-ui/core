@@ -1,7 +1,7 @@
 import { shouldForwardProp } from '@spicy-ui/styled-system';
 import styled from 'styled-components';
-import { allSystem, AllSystemProps, getComponentStyles, sxMixin, SxProps } from '../../system';
-import { LiteralUnion } from '../../types';
+import { allSystem, AllSystemProps, componentStylesMixin, sxMixin, SxProp } from '../../system';
+import { AsProp, ChildrenProp, LiteralUnion } from '../../types';
 
 export type TextVariant =
   | 'xs'
@@ -18,17 +18,16 @@ export type TextVariant =
   | '8xl'
   | '9xl';
 
-export interface TextProps extends AllSystemProps, SxProps {
+export interface TextProps extends AsProp, ChildrenProp, AllSystemProps, SxProp {
   color?: string;
-  children?: React.ReactNode;
-  /** Text variant. */
+  /** Variant of the text. */
   variant?: LiteralUnion<TextVariant>;
 }
 
 export const Text = styled.p.withConfig<TextProps>({ shouldForwardProp })(
-  getComponentStyles('Text'),
-  allSystem,
+  componentStylesMixin('Text'),
   sxMixin,
+  allSystem,
 );
 
 Text.defaultProps = {

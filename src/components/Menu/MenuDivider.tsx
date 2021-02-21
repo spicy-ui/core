@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { getComponentStyles, sxMixin, SxProps } from '../../system';
+import { componentStylesMixin, sxMixin, SxProp } from '../../system';
 
-export const MenuDivider = styled.div<SxProps>(getComponentStyles('MenuDivider'), sxMixin);
+export const MenuDivider = styled.div<SxProp>(componentStylesMixin('MenuDivider'), sxMixin);
 
 MenuDivider.displayName = 'MenuDivider';

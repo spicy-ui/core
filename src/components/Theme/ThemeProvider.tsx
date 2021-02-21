@@ -7,10 +7,7 @@ import { injectGlobalStyles } from './injectGlobalStyles';
 const { GlobalStyle } = injectGlobalStyles();
 
 export interface ThemeProps {
-  /**
-   * If you want to extend the global styles set to `true` and inject them
-   * manually via `injectGlobalStyles`.
-   */
+  /* If you want to extend the global styles set to `true` and inject them manually via `injectGlobalStyles`. */
   disableInjection?: boolean;
   /** Custom theme to be merged with the default theme. */
   theme?: any;

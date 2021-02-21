@@ -7,4 +7,4 @@ export default {
   component: Spinner,
 } as Meta<SpinnerProps>;
 
-export const Simple: Story<SpinnerProps> = (props) => <Spinner {...props} />;
+export const Usage: Story<SpinnerProps> = (props) => <Spinner {...props} />;

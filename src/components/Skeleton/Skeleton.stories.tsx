@@ -7,7 +7,7 @@ export default {
   component: Skeleton,
 } as Meta<SkeletonProps>;
 
-export const Simple: Story<SkeletonProps> = (props) => <Skeleton {...props} />;
+export const Usage: Story<SkeletonProps> = (props) => <Skeleton {...props} />;
 
 export const Variants: Story<SkeletonProps> = () => (
   <>

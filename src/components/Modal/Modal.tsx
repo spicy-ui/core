@@ -1,8 +1,8 @@
 import * as React from 'react';
 import FocusLock from 'react-focus-lock';
 import { useKeyPress } from '../../hooks';
-import { SxProps, useComponentStyles } from '../../system';
-import { LiteralUnion } from '../../types';
+import { SxProp, useComponentStyles } from '../../system';
+import { AsProp, ChildrenProp, LiteralUnion } from '../../types';
 import { Box } from '../Box';
 import { Overlay } from '../Overlay';
 
@@ -21,7 +21,7 @@ export type ModalSize =
   | '6xl'
   | 'full';
 
-export interface ModalProps extends SxProps {
+export interface ModalProps extends AsProp, ChildrenProp, SxProp {
   isOpen: boolean;
   onClose?: () => void;
   size?: LiteralUnion<ModalSize>;
@@ -31,7 +31,7 @@ export interface ModalProps extends SxProps {
 }
 
 export const Modal: React.FC<ModalProps> = (props) => {
-  const { sx, children, size, isOpen, closeOnEsc, closeOnOverlayClick, disableFocusTrap, onClose, ...rest } = props;
+  const { children, sx, isOpen, onClose, size, closeOnEsc, closeOnOverlayClick, disableFocusTrap, ...rest } = props;
 
   useKeyPress('Escape', () => {
     if (isOpen && closeOnEsc && onClose) {
@@ -74,8 +74,8 @@ export const Modal: React.FC<ModalProps> = (props) => {
 };
 
 Modal.defaultProps = {
-  size: 'md',
   closeOnOverlayClick: true,
+  size: 'md',
 };
 
 Modal.displayName = 'Modal';

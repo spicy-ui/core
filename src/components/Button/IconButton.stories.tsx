@@ -8,7 +8,7 @@ export default {
   component: IconButton,
 } as Meta<IconButtonProps>;
 
-export const Simple: Story<IconButtonProps> = (props) => <IconButton {...props} icon={<HiSearch />} />;
+export const Usage: Story<IconButtonProps> = (props) => <IconButton {...props} icon={<HiSearch />} />;
 
 export const Colors: Story<IconButtonProps> = () => <IconButton color="blue" icon={<HiSearch />} />;
 

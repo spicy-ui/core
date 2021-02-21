@@ -7,7 +7,7 @@ export default {
   component: Stack,
 } as Meta<StackProps>;
 
-export const Simple: Story<StackProps> = (props) => (
+export const Usage: Story<StackProps> = (props) => (
   <Stack {...props}>
     <Box p="2" bg="red.50">
       Box 1
@@ -20,7 +20,9 @@ export const Simple: Story<StackProps> = (props) => (
     </Box>
   </Stack>
 );
-Simple.args = { spacing: 4 };
+Usage.args = {
+  spacing: 4,
+};
 
 export const Responsive: Story<StackProps> = () => (
   <Stack direction={['column', 'row']} spacing={4}>

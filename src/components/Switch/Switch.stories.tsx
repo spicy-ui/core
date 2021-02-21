@@ -35,7 +35,7 @@ export default {
   component: Switch,
 } as Meta<SwitchProps>;
 
-export const Simple: Story<SwitchProps> = (props) => {
+export const Usage: Story<SwitchProps> = (props) => {
   const [isChecked, setIsChecked] = React.useState(false);
 
   return <Switch {...props} checked={isChecked} onChange={({ target }) => setIsChecked(Boolean(target.checked))} />;

@@ -1,15 +1,18 @@
 import * as React from 'react';
 import { useComponentStyles } from '../../system';
+import { ColorScales } from '../../theme';
 import { LiteralUnion } from '../../types';
 import { Box } from '../Box';
 
-type SwitchSizes = 'xs' | 'sm' | 'md' | 'lg';
+export type SwitchColors = ColorScales;
+
+export type SwitchSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface SwitchProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'width' | 'height' | 'size'> {
   label?: string;
   isDisabled?: boolean;
   isInvalid?: boolean;
-  color?: string;
+  color?: LiteralUnion<SwitchColors>;
   size?: LiteralUnion<SwitchSizes>;
 }
 
@@ -23,10 +26,10 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>((props, re
   return (
     <Box as="label" htmlFor={id} sx={outerStyles}>
       <Box
+        ref={ref}
         as="input"
         type="checkbox"
         role="switch"
-        ref={ref}
         id={id}
         name={name}
         value={value}

@@ -7,7 +7,7 @@ export default {
   component: Drawer,
 } as Meta<DrawerProps>;
 
-export const Simple: Story<DrawerProps> = (props) => {
+export const Usage: Story<DrawerProps> = (props) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (

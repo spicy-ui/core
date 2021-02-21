@@ -1,15 +1,19 @@
 import { sfp } from '@spicy-ui/styled-system';
 import * as React from 'react';
 import styled from 'styled-components';
-import { getComponentStyles, sxMixin, SxProps } from '../../system';
+import { componentStylesMixin, sxMixin, SxProp } from '../../system';
 import { ColorScales } from '../../theme';
-import { LiteralUnion } from '../../types';
+import { AsProp, ChildrenProp, LiteralUnion } from '../../types';
 
 export type LinkColors = ColorScales;
 
 export type LinkUnderlineBehaviour = 'default' | 'none' | 'hover';
 
-export interface LinkProps extends SxProps, Partial<React.AnchorHTMLAttributes<HTMLAnchorElement>> {
+export interface LinkProps
+  extends Partial<React.AnchorHTMLAttributes<HTMLAnchorElement>>,
+    AsProp,
+    ChildrenProp,
+    SxProp {
   /** Color of the link. */
   color?: LiteralUnion<LinkColors>;
   /** Hover color of the link. */
@@ -42,7 +46,7 @@ export const Link = styled.a
   }))
   .withConfig<LinkProps>({
     shouldForwardProp: sfp(['color', 'hoverColor', 'isDisabled', 'isExternal', 'underlineBehaviour']),
-  })(getComponentStyles('Link'), sxMixin);
+  })(componentStylesMixin('Link'), sxMixin);
 
 Link.defaultProps = {
   underlineBehaviour: 'hover',

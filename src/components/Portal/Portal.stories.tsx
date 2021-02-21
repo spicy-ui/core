@@ -8,7 +8,7 @@ export default {
   component: Portal,
 } as Meta<PortalProps>;
 
-export const Simple: Story<PortalProps> = () => (
+export const Usage: Story<PortalProps> = () => (
   <Portal>
     <Box position="absolute" bottom={0} right={0} padding="2" color="white" backgroundColor="blue.500">
       I&apos;m a box inside a portal!

@@ -3,6 +3,7 @@ import * as Avatar from './Avatar';
 import * as Badge from './Badge';
 import * as Button from './Button';
 import * as Checkbox from './Checkbox';
+import * as CloseButton from './CloseButton';
 import * as Code from './Code';
 import * as Container from './Container';
 import * as Divider from './Divider';
@@ -20,6 +21,7 @@ import * as Radio from './Radio';
 import * as Skeleton from './Skeleton';
 import * as Spinner from './Spinner';
 import * as Switch from './Switch';
+import * as Tabs from './Tabs';
 import * as Tag from './Tag';
 import * as Text from './Text';
 import * as TextArea from './TextArea';
@@ -32,6 +34,7 @@ export const components = {
   ...Badge,
   ...Button,
   ...Checkbox,
+  ...CloseButton,
   ...Code,
   ...Container,
   ...Divider,
@@ -49,6 +52,7 @@ export const components = {
   ...Skeleton,
   ...Spinner,
   ...Switch,
+  ...Tabs,
   ...Tag,
   ...Text,
   ...TextArea,

@@ -1,8 +1,8 @@
 import { SpaceProps } from '@spicy-ui/styled-system';
 import * as React from 'react';
-import { SxProps, useComponentStyles } from '../../system';
+import { SxProp, useComponentStyles } from '../../system';
 import { ColorScales } from '../../theme';
-import { LiteralUnion } from '../../types';
+import { AsProp, ChildrenProp, LiteralUnion } from '../../types';
 import { Box } from '../Box';
 import { Spinner } from '../Spinner';
 
@@ -31,9 +31,7 @@ export type ButtonSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export type ButtonVariants = 'filled' | 'outlined' | 'ghost' | 'link' | 'unstyled';
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, SxProps {
-  children?: React.ReactNode;
-  as?: string | React.ComponentType<any>;
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, AsProp, ChildrenProp, SxProp {
   /** Space between the button icon and label. */
   iconSpacing?: string;
   /** Icon shown before the button's label. */
@@ -64,9 +62,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
+    as,
     children,
     sx,
-    as,
     iconSpacing,
     iconBefore,
     iconAfter,

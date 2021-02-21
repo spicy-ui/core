@@ -25,7 +25,7 @@ export default {
   component: Select,
 } as Meta<SelectProps>;
 
-export const Simple: Story<SelectProps> = (props) => {
+export const Usage: Story<SelectProps> = (props) => {
   const [value, setValue] = React.useState<SelectItem<string> | null>(null);
 
   return <Select {...props} items={options} value={value} onChange={setValue} />;

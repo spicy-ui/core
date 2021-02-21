@@ -1,9 +1,11 @@
 import { motion, Variants } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components';
-import { sxMixin, SxProps, useComponentStyles } from '../../system';
+import { PopperProps, usePopper } from '../../hooks';
+import { sxMixin, SxProp, useComponentStyles } from '../../system';
+import { AsProp, ChildrenProp } from '../../types';
 import { runIfFn } from '../../util';
-import { PopperProps, usePopper } from '../Popper';
+import { Portal } from '../Portal';
 
 const Motion = styled(motion.div)(sxMixin);
 
@@ -20,7 +22,7 @@ const variants: Variants = {
   },
 };
 
-export interface MenuProps extends PopperProps, SxProps {
+export interface MenuProps extends PopperProps, AsProp, ChildrenProp, SxProp {
   trigger: ((props: { isOpen: boolean }) => React.ReactElement) | React.ReactElement;
   children: ((props: { isOpen: boolean }) => React.ReactElement) | React.ReactNode;
   isFullWidth?: boolean;
@@ -28,8 +30,8 @@ export interface MenuProps extends PopperProps, SxProps {
 
 export const Menu: React.FC<MenuProps> = (props) => {
   const {
-    sx,
     children,
+    sx,
     trigger,
     closeOnBlur,
     closeOnEsc,
@@ -57,17 +59,24 @@ export const Menu: React.FC<MenuProps> = (props) => {
 
   return (
     <>
-      {React.cloneElement(runIfFn(trigger, { isOpen }), { ...triggerProps, onClick: onToggle })}
-      <Motion
-        {...childProps}
-        initial="hidden"
-        animate={isOpen ? 'visible' : 'hidden'}
-        variants={variants}
-        sx={styles}
-        {...rest}
-      >
-        {runIfFn(children, { isOpen })}
-      </Motion>
+      {React.cloneElement(runIfFn(trigger, { isOpen }), {
+        ...triggerProps,
+        onClick: onToggle,
+        onKeyDown: ({ key }: React.KeyboardEvent<HTMLDivElement>) => (key === 'Enter' ? onToggle : undefined),
+      })}
+      <Portal>
+        <Motion
+          {...childProps}
+          initial="hidden"
+          tabIndex={isOpen ? 0 : -1}
+          animate={isOpen ? 'visible' : 'hidden'}
+          variants={variants}
+          sx={styles}
+          {...rest}
+        >
+          {runIfFn(children, { isOpen })}
+        </Motion>
+      </Portal>
     </>
   );
 };
