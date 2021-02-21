@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 import { Link, matchPath, MemoryRouter, Redirect, Route, useLocation } from 'react-router-dom';
 import { uid } from 'react-uid';
-import { Stack, Tab, Tabs, TabsProps } from '..';
+import { Badge, Stack, Tab, Tabs, TabsProps } from '..';
 
 export default {
   title: 'Tabs',
@@ -75,7 +75,6 @@ export const Disabled: Story<TabsProps> = (props) => {
 
 const RouteAwareTabs: React.FC<TabsProps> = (props) => {
   const { pathname } = useLocation();
-
   const isSelected = React.useCallback((path: string) => !!matchPath(pathname, { path }), [pathname]);
 
   return (
@@ -85,6 +84,7 @@ const RouteAwareTabs: React.FC<TabsProps> = (props) => {
       </Tab>
       <Tab as={Link} to="/sales" isSelected={isSelected('/sales')}>
         Sales
+        <Badge sx={{ ml: 1.5 }}>6</Badge>
       </Tab>
       <Tab as={Link} to="/settings" isSelected={isSelected('/settings')}>
         Settings
