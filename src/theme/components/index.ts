@@ -21,6 +21,7 @@ import * as Radio from './Radio';
 import * as Skeleton from './Skeleton';
 import * as Spinner from './Spinner';
 import * as Switch from './Switch';
+import * as Tabs from './Tabs';
 import * as Tag from './Tag';
 import * as Text from './Text';
 import * as TextArea from './TextArea';
@@ -51,6 +52,7 @@ export const components = {
   ...Skeleton,
   ...Spinner,
   ...Switch,
+  ...Tabs,
   ...Tag,
   ...Text,
   ...TextArea,
