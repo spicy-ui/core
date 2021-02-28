@@ -11,7 +11,7 @@ export interface HeadingProps extends AsProp, ChildrenProp, AllSystemProps, SxPr
   variant?: LiteralUnion<HeadingVariant>;
 }
 
-export const Heading = styled.p.withConfig<HeadingProps>({ shouldForwardProp })(
+export const Heading = styled.h2.withConfig<HeadingProps>({ shouldForwardProp })(
   componentStylesMixin('Heading'),
   sxMixin,
   allSystem,
