@@ -13,7 +13,7 @@ const variants: Variants = {
   hidden: {
     opacity: 0,
     pointerEvents: 'none',
-    transition: { duration: 0.3 },
+    transition: { duration: 0.2 },
   },
   visible: {
     opacity: 1,
