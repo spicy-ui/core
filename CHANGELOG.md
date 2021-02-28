@@ -31,7 +31,7 @@
 - Removed `isOpen`, `onOpen`, `onClose` and `onToggle` from `usePopper` return
 - Implemented `useDisclosure` hook to Menu component
 - Implemented `useDisclosure` hook to Tooltip component
-- Adjusted Menu transistion time
+- Adjusted Menu transition time
 
 ### Bug Fixes
 
