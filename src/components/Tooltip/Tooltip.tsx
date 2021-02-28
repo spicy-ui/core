@@ -1,7 +1,7 @@
 import { motion, Variants } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components';
-import { PopperProps, usePopper } from '../../hooks';
+import { PopperProps, useDisclosure, usePopper } from '../../hooks';
 import { useComponentStyles } from '../../system';
 import { ChildrenProp } from '../../types';
 import { Box } from '../Box';
@@ -30,15 +30,19 @@ export interface TooltipProps extends Pick<PopperProps, 'placement' | 'offset'>,
 export const Tooltip: React.FC<TooltipProps> = (props) => {
   const { children, isDisabled, label, placement, offset, ...rest } = props;
 
-  const [isOpen, setIsOpen] = React.useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { triggerProps, childProps, onOpen, onClose } = usePopper({ isOpen, setIsOpen, placement, offset });
+  const { triggerProps, childProps } = usePopper({ isOpen, placement, offset });
 
   const styles = useComponentStyles('Tooltip', props);
 
   return (
     <>
-      {React.cloneElement(<span>{children}</span>, { ...triggerProps, onMouseEnter: onOpen, onMouseLeave: onClose })}
+      {React.cloneElement(<span>{children}</span>, {
+        ...triggerProps,
+        onMouseEnter: onOpen,
+        onMouseLeave: onClose,
+      })}
       {!isDisabled && (
         <Portal>
           <Motion {...childProps} initial="hidden" animate={isOpen ? 'visible' : 'hidden'} variants={variants}>

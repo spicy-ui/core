@@ -1,7 +1,7 @@
 import { motion, Variants } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components';
-import { PopperProps, usePopper } from '../../hooks';
+import { PopperProps, useDisclosure, usePopper } from '../../hooks';
 import { sxMixin, SxProp, useComponentStyles } from '../../system';
 import { AsProp, ChildrenProp } from '../../types';
 import { runIfFn } from '../../util';
@@ -44,11 +44,11 @@ export const Menu: React.FC<MenuProps> = (props) => {
 
   const styles = useComponentStyles('Menu', props);
 
-  const [isOpen, setIsOpen] = React.useState(false);
+  const { isOpen, onClose, onToggle } = useDisclosure();
 
-  const { triggerProps, childProps, onToggle } = usePopper({
+  const { triggerProps, childProps } = usePopper({
     isOpen,
-    setIsOpen,
+    onClose,
     closeOnBlur,
     closeOnEsc,
     closeOnInnerClick,
