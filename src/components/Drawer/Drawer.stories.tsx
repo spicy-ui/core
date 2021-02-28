@@ -1,6 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 import { Box, Button, Drawer, DrawerProps } from '..';
+import { useDisclosure } from '../../hooks';
 
 export default {
   title: 'Drawer',
@@ -8,15 +9,15 @@ export default {
 } as Meta<DrawerProps>;
 
 export const Usage: Story<DrawerProps> = (props) => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const { isOpen, onClose, onOpen } = useDisclosure();
 
   return (
     <>
-      <Button onClick={() => setIsOpen(true)}>Open</Button>
+      <Button onClick={onOpen}>Open</Button>
 
-      <Drawer {...props} isOpen={isOpen} onClose={() => setIsOpen(false)}>
+      <Drawer {...props} isOpen={isOpen} onClose={onClose}>
         <Box>
-          <Button onClick={() => setIsOpen(false)}>Close</Button>
+          <Button onClick={onClose}>Close</Button>
           <Box height="2000px" />
         </Box>
       </Drawer>
