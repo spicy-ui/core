@@ -16,6 +16,27 @@
 
 -->
 
+## 0.1.0-alpha.5 (28 February, 2021)
+
+### Features
+
+- Added `useDisclosure` hook
+
+### Changes
+
+- Added `autoFocus` prop to Select component ([#44](https://github.com/spicy-ui/core/issues/44))
+- Made some child elements within the Select component unselectable
+- Removed `setIsOpen` prop from `usePopper`
+- Added `onClose` prop to `usePopper`
+- Removed `isOpen`, `onOpen`, `onClose` and `onToggle` from `usePopper` return
+- Implemented `useDisclosure` hook to Menu component
+- Implemented `useDisclosure` hook to Tooltip component
+- Adjusted Menu transistion time
+
+### Bug Fixes
+
+- Fixed Heading component (was `p`, should have been `h2`)
+
 ## 0.1.0-alpha.4 (21 February, 2021)
 
 ### Features
