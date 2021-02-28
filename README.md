@@ -12,7 +12,7 @@ Install Spicy UI to your React project with `npm i @spicy-ui/core styled-compone
 
 ```js
 import React from 'react';
-import { Button, ThemeProvider } from '@spciy-ui/core';
+import { Button, ThemeProvider } from '@spicy-ui/core';
 
 export const App = () => (
   <ThemeProvider>
