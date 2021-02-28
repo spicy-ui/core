@@ -21,15 +21,23 @@ function defaultItemToString(item: SelectItem | null) {
 
 function defaultRenderItem(item: SelectItem | null, fallback: string | null = null) {
   if (!item && fallback) {
-    return <Text color="gray.400">{fallback}</Text>;
+    return (
+      <Text as="span" color="gray.400" userSelect="none">
+        {fallback}
+      </Text>
+    );
   }
 
-  return item ? <>{item.label}</> : null;
+  return item ? (
+    <Text as="span" userSelect="none">
+      {item.label}
+    </Text>
+  ) : null;
 }
 
 const SelectText: React.FC<{ label: React.ReactNode } & SxProp> = ({ label, sx }) => (
   <Flex py={4} align="center" justify="center">
-    <Text as="span" sx={sx}>
+    <Text as="span" userSelect="none" sx={sx}>
       {label}
     </Text>
   </Flex>
