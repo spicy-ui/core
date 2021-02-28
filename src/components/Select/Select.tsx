@@ -93,6 +93,7 @@ export interface SelectProps {
   isInvalid?: boolean;
   isLoading?: boolean;
   isSearchable?: boolean;
+  autoFocus?: boolean;
   placeholder?: string;
   size?: LiteralUnion<SelectSizes>;
   variant?: LiteralUnion<SelectVariants>;
@@ -112,6 +113,7 @@ export const Select: React.FC<SelectProps> = ({
   isInvalid,
   isLoading,
   isSearchable,
+  autoFocus,
   placeholder,
   size,
   variant,
@@ -195,6 +197,7 @@ export const Select: React.FC<SelectProps> = ({
         isInvalid={isInvalid}
         size={size}
         variant={variant}
+        autoFocus={autoFocus}
         {...triggerProps}
         {...toggleButtonProps}
         ref={mergeRefs([triggerProps.ref, toggleButtonProps.ref])}
