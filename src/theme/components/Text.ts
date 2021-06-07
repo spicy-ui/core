@@ -57,6 +57,10 @@ export const Text: ComponentThemeConfig<TextProps> = {
         fontSize: '9xl',
         lineHeight: 'none',
       }),
+      inherit: () => ({
+        fontSize: 'inherit',
+        lineHeight: 'inherit',
+      }),
     },
   },
 };

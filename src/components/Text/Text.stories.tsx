@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Stack, Text, TextVariant, TextProps } from '..';
+import { Stack, Text, TextProps, TextVariant } from '..';
 
 const textVariants: TextVariant[] = [
   'xs',
@@ -17,6 +17,7 @@ const textVariants: TextVariant[] = [
   '7xl',
   '8xl',
   '9xl',
+  'inherit',
 ];
 
 export default {

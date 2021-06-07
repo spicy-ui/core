@@ -16,7 +16,8 @@ export type TextVariant =
   | '6xl'
   | '7xl'
   | '8xl'
-  | '9xl';
+  | '9xl'
+  | 'inherit';
 
 export interface TextProps extends AsProp, ChildrenProp, AllSystemProps, SxProp {
   color?: string;
