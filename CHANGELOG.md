@@ -16,6 +16,17 @@
 
 -->
 
+## 0.1.0-alpha.6 (7 June, 2021)
+
+### Changes
+
+- Added `inherit` variant to Text and Heading
+- Exposed internal menu state functions ([#47](https://github.com/spicy-ui/core/issues/47))
+
+### Bug Fixes
+
+- Fixed missing `noscroll` class ([#46](https://github.com/spicy-ui/core/issues/46))
+
 ## 0.1.0-alpha.5 (28 February, 2021)
 
 ### Features
