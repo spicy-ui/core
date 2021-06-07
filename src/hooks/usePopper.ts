@@ -2,7 +2,7 @@ import { Placement } from '@popperjs/core';
 import * as React from 'react';
 import { usePopper as useReactPopper } from 'react-popper';
 import { useTheme } from 'styled-components';
-import { useKeyPress } from '.';
+import { useKeyPress } from './useKeyPress';
 
 export interface PopperProps {
   closeOnBlur?: boolean;
