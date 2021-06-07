@@ -50,7 +50,7 @@ export const Headers: Story<MenuProps> = (props) => (
 
 export const InternalState: Story<MenuProps> = (props) => (
   <Menu {...props} trigger={({ isOpen }) => <Button iconAfter={<HiChevronDown />}>{isOpen ? 'Close' : 'Open'}</Button>}>
-    {(p) => <pre>{JSON.stringify(p)}</pre>}
+    {({ isOpen }) => <pre>{JSON.stringify({ isOpen })}</pre>}
   </Menu>
 );
 

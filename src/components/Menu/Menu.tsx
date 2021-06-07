@@ -23,8 +23,8 @@ const variants: Variants = {
 };
 
 export interface MenuProps extends PopperProps, AsProp, ChildrenProp, SxProp {
-  trigger: ((props: { isOpen: boolean }) => React.ReactElement) | React.ReactElement;
-  children: ((props: { isOpen: boolean }) => React.ReactElement) | React.ReactNode;
+  trigger: ((props: { isOpen: boolean; onToggle: () => void }) => React.ReactElement) | React.ReactElement;
+  children: ((props: { isOpen: boolean; onClose: () => void }) => React.ReactElement) | React.ReactNode;
   isFullWidth?: boolean;
 }
 
@@ -59,7 +59,7 @@ export const Menu: React.FC<MenuProps> = (props) => {
 
   return (
     <>
-      {React.cloneElement(runIfFn(trigger, { isOpen }), {
+      {React.cloneElement(runIfFn(trigger, { isOpen, onToggle }), {
         ...triggerProps,
         onClick: onToggle,
         onKeyDown: ({ key }: React.KeyboardEvent<HTMLDivElement>) => (key === 'Enter' ? onToggle : undefined),
@@ -74,7 +74,7 @@ export const Menu: React.FC<MenuProps> = (props) => {
           sx={styles}
           {...rest}
         >
-          {runIfFn(children, { isOpen })}
+          {runIfFn(children, { isOpen, onClose })}
         </Motion>
       </Portal>
     </>
