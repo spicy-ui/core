@@ -1,7 +1,7 @@
 import { motion, Variants } from 'framer-motion';
 import * as React from 'react';
 import styled from 'styled-components';
-import { PopperProps, useDisclosure, usePopper } from '../../hooks';
+import { PopperProps, useDisclosure, UseDisclosureReturn, usePopper } from '../../hooks';
 import { sxMixin, SxProp, useComponentStyles } from '../../system';
 import { AsProp, ChildrenProp } from '../../types';
 import { runIfFn } from '../../util';
@@ -23,8 +23,8 @@ const variants: Variants = {
 };
 
 export interface MenuProps extends PopperProps, AsProp, ChildrenProp, SxProp {
-  trigger: ((props: { isOpen: boolean; onToggle: () => void }) => React.ReactElement) | React.ReactElement;
-  children: ((props: { isOpen: boolean; onClose: () => void }) => React.ReactElement) | React.ReactNode;
+  trigger: ((props: UseDisclosureReturn) => React.ReactElement) | React.ReactElement;
+  children: ((props: UseDisclosureReturn) => React.ReactElement) | React.ReactNode;
   isFullWidth?: boolean;
 }
 
@@ -44,7 +44,7 @@ export const Menu: React.FC<MenuProps> = (props) => {
 
   const styles = useComponentStyles('Menu', props);
 
-  const { isOpen, onClose, onToggle } = useDisclosure();
+  const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
 
   const { triggerProps, childProps } = usePopper({
     isOpen,
@@ -59,7 +59,7 @@ export const Menu: React.FC<MenuProps> = (props) => {
 
   return (
     <>
-      {React.cloneElement(runIfFn(trigger, { isOpen, onToggle }), {
+      {React.cloneElement(runIfFn(trigger, { isOpen, onOpen, onClose, onToggle }), {
         ...triggerProps,
         onClick: onToggle,
         onKeyDown: ({ key }: React.KeyboardEvent<HTMLDivElement>) => (key === 'Enter' ? onToggle : undefined),
@@ -74,7 +74,7 @@ export const Menu: React.FC<MenuProps> = (props) => {
           sx={styles}
           {...rest}
         >
-          {runIfFn(children, { isOpen, onClose })}
+          {runIfFn(children, { isOpen, onOpen, onClose, onToggle })}
         </Motion>
       </Portal>
     </>

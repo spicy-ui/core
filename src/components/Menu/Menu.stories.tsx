@@ -22,6 +22,17 @@ export const Usage: Story<MenuProps> = (props) => (
   </Box>
 );
 
+export const OpenOnHover: Story<MenuProps> = (props) => (
+  <Box h={56}>
+    <Menu {...props} isOpenOnHover trigger={<Button iconAfter={<HiChevronDown />}>Open</Button>}>
+      <MenuItem onClick={action('view')}>View</MenuItem>
+      <MenuItem onClick={action('share')}>Share</MenuItem>
+      <MenuItem onClick={action('download')}>Download</MenuItem>
+      <MenuItem onClick={action('delete')}>Delete</MenuItem>
+    </Menu>
+  </Box>
+);
+
 export const Dividers: Story<MenuProps> = (props) => (
   <Menu {...props} trigger={<Button iconAfter={<HiChevronDown />}>Actions</Button>}>
     <MenuItem onClick={action('cut')}>Cut</MenuItem>
