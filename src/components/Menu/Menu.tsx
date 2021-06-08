@@ -89,6 +89,7 @@ Menu.defaultProps = {
   closeOnEsc: true,
   closeOnInnerClick: true,
   closeOnOuterClick: true,
+  openOnHover: false,
   placement: 'bottom-start',
   offset: [0, 8],
 };
