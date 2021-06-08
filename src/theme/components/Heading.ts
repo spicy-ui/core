@@ -29,6 +29,10 @@ export const Heading: ComponentThemeConfig<HeadingProps> = {
         fontSize: '5xl',
         lineHeight: '3.5rem',
       }),
+      inherit: () => ({
+        fontSize: 'inherit',
+        lineHeight: 'inherit',
+      }),
     },
   },
 };

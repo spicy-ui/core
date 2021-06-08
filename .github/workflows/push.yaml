@@ -9,7 +9,7 @@ jobs:
     if: github.event_name == 'push'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
 
       - name: Install dependencies
         run: npm ci
@@ -23,7 +23,7 @@ jobs:
     if: github.event_name == 'push'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
 
       - name: Install dependencies
         run: npm ci
@@ -39,7 +39,7 @@ jobs:
     if: github.event_name == 'push'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
 
       - name: Install dependencies
         run: npm ci
@@ -53,7 +53,7 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     steps:
       - name: Checkout repository
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
 
       - name: Install dependencies
         run: npm ci

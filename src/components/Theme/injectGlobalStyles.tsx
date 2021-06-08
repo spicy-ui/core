@@ -115,6 +115,10 @@ export const injectGlobalStyles = (additionalStyles?: string | ReturnType<typeof
 
     /* ${animationKeyframes} */
 
+    .noscroll {
+      overflow: hidden;
+    }
+
     ${additionalStyles};
   `;
 

@@ -16,6 +16,19 @@
 
 -->
 
+## 0.1.0-alpha.6 (8 June, 2021)
+
+### Changes
+
+- Added `HTMLAttributes` props interface to components
+- Added `inherit` variant to Text and Heading
+- Added `openOnHover` prop to Menu component
+- Exposed internal Menu disclosure state functions ([#47](https://github.com/spicy-ui/core/issues/47))
+
+### Bug Fixes
+
+- Fixed missing `noscroll` class ([#46](https://github.com/spicy-ui/core/issues/46))
+
 ## 0.1.0-alpha.5 (28 February, 2021)
 
 ### Features

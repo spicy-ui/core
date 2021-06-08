@@ -1,9 +1,9 @@
 import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
 import { uid } from 'react-uid';
-import { Stack, Heading, HeadingProps } from '..';
+import { Heading, HeadingProps, Stack } from '..';
 
-const headingVariants = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+const headingVariants = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'inherit'];
 
 export default {
   title: 'Heading',

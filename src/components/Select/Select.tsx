@@ -5,7 +5,7 @@ import { HiChevronDown, HiX } from 'react-icons/hi';
 import styled from 'styled-components';
 import { usePopper } from '../../hooks';
 import { sxMixin, SxProp, useComponentStyles } from '../../system';
-import { LiteralUnion } from '../../types';
+import { HTMLAttributes, LiteralUnion } from '../../types';
 import { mergeRefs } from '../../util';
 import { Box } from '../Box';
 import { Flex } from '../Flex';
@@ -88,7 +88,7 @@ export type SelectSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export type SelectVariants = 'outlined' | 'filled' | 'underlined' | 'unstyled';
 
-export interface SelectProps {
+export interface SelectProps extends Omit<HTMLAttributes, 'onChange' | 'value'> {
   searchValue?: string;
   onSearchChange?: (search: string) => void;
   items: SelectItem[];

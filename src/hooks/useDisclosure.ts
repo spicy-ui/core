@@ -6,7 +6,14 @@ export interface UseDisclosureProps {
   onClose?: () => void;
 }
 
-export function useDisclosure(props: UseDisclosureProps = {}) {
+export interface UseDisclosureReturn {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+  onToggle: () => void;
+}
+
+export function useDisclosure(props: UseDisclosureProps = {}): UseDisclosureReturn {
   const { defaultIsOpen, onOpen: onOpenProp, onClose: onCloseProp } = props;
 
   const [isOpen, setIsOpen] = React.useState(defaultIsOpen || false);

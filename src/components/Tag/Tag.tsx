@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SxProp, useComponentStyles } from '../../system';
 import { ColorScales } from '../../theme';
-import { AsProp, ChildrenProp, LiteralUnion } from '../../types';
+import { AsProp, ChildrenProp, HTMLAttributes, LiteralUnion } from '../../types';
 import { Box } from '../Box';
 
 export type TagColors = ColorScales;
@@ -10,7 +10,7 @@ export type TagSizes = 'sm' | 'md' | 'lg';
 
 export type TagVariants = 'outline' | 'solid' | 'subtle';
 
-export interface TagProps extends AsProp, ChildrenProp, SxProp {
+export interface TagProps extends Omit<HTMLAttributes, 'label'>, AsProp, ChildrenProp, SxProp {
   /** Label shown within the tag. */
   label?: React.ReactNode;
   /** If `true`, the tag will be rounded. */

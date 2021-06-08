@@ -22,6 +22,17 @@ export const Usage: Story<MenuProps> = (props) => (
   </Box>
 );
 
+export const OpenOnHover: Story<MenuProps> = (props) => (
+  <Box h={56}>
+    <Menu {...props} openOnHover trigger={<Button iconAfter={<HiChevronDown />}>Open</Button>}>
+      <MenuItem onClick={action('view')}>View</MenuItem>
+      <MenuItem onClick={action('share')}>Share</MenuItem>
+      <MenuItem onClick={action('download')}>Download</MenuItem>
+      <MenuItem onClick={action('delete')}>Delete</MenuItem>
+    </Menu>
+  </Box>
+);
+
 export const Dividers: Story<MenuProps> = (props) => (
   <Menu {...props} trigger={<Button iconAfter={<HiChevronDown />}>Actions</Button>}>
     <MenuItem onClick={action('cut')}>Cut</MenuItem>
@@ -50,7 +61,7 @@ export const Headers: Story<MenuProps> = (props) => (
 
 export const InternalState: Story<MenuProps> = (props) => (
   <Menu {...props} trigger={({ isOpen }) => <Button iconAfter={<HiChevronDown />}>{isOpen ? 'Close' : 'Open'}</Button>}>
-    {(p) => <pre>{JSON.stringify(p)}</pre>}
+    {({ isOpen }) => <pre>{JSON.stringify({ isOpen })}</pre>}
   </Menu>
 );
 

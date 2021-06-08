@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { SxProp, useComponentStyles } from '../../system';
-import { ChildrenProp } from '../../types';
+import { ChildrenProp, HTMLAttributes } from '../../types';
 import { Box } from '../Box';
 
-export interface TagIconProps extends ChildrenProp, SxProp {
+export interface TagIconProps extends HTMLAttributes, ChildrenProp, SxProp {
   icon?: React.ReactNode;
 }
 

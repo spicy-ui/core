@@ -2,9 +2,9 @@ import { sfp } from '@spicy-ui/styled-system';
 import * as React from 'react';
 import styled from 'styled-components';
 import { componentStylesMixin, sxMixin, SxProp } from '../../system';
-import { AsProp, ChildrenProp } from '../../types';
+import { AsProp, ChildrenProp, HTMLAttributes } from '../../types';
 
-export interface TabProps extends AsProp, ChildrenProp, SxProp {
+export interface TabProps extends HTMLAttributes, AsProp, ChildrenProp, SxProp {
   isDisabled?: boolean;
   isSelected?: boolean;
 }

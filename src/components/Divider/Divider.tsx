@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { SxProp, useComponentStyles } from '../../system';
-import { AsProp, LiteralUnion } from '../../types';
+import { AsProp, HTMLAttributes, LiteralUnion } from '../../types';
 import { Box } from '../Box';
 
 export type DividerOrientation = 'horizontal' | 'vertical';
 
-export interface DividerProps extends AsProp, SxProp {
+export interface DividerProps extends HTMLAttributes, AsProp, SxProp {
   /** Orientation of the divider. */
   orientation?: LiteralUnion<DividerOrientation>;
 }

@@ -1,14 +1,14 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { sxMixin, useComponentStyles } from '../../system';
-import { AsProp, ChildrenProp } from '../../types';
+import { AsProp, ChildrenProp, HTMLAttributes } from '../../types';
 import { Box } from '../Box';
 
 const Svg = styled.svg(sxMixin);
 
 const Circle = styled.circle(sxMixin);
 
-export interface CircularProgressProps extends AsProp, ChildrenProp {
+export interface CircularProgressProps extends HTMLAttributes, AsProp, ChildrenProp {
   angle?: number;
   color?: string;
   isCapRound?: boolean;

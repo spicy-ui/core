@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { SxProp, useComponentStyles } from '../../system';
 import { ColorScales } from '../../theme';
-import { AsProp, ChildrenProp, LiteralUnion } from '../../types';
+import { AsProp, ChildrenProp, HTMLAttributes, LiteralUnion } from '../../types';
 import { Box } from '../Box';
 
 export type CodeColors = ColorScales;
 
 export type CodeVariants = 'outline' | 'solid' | 'subtle';
 
-export interface CodeProps extends AsProp, ChildrenProp, SxProp {
+export interface CodeProps extends HTMLAttributes, AsProp, ChildrenProp, SxProp {
   /** Color of the code element. */
   color?: LiteralUnion<CodeColors>;
   /** Variant of the code element. */
