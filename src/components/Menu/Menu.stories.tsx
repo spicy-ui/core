@@ -24,7 +24,7 @@ export const Usage: Story<MenuProps> = (props) => (
 
 export const OpenOnHover: Story<MenuProps> = (props) => (
   <Box h={56}>
-    <Menu {...props} isOpenOnHover trigger={<Button iconAfter={<HiChevronDown />}>Open</Button>}>
+    <Menu {...props} openOnHover trigger={<Button iconAfter={<HiChevronDown />}>Open</Button>}>
       <MenuItem onClick={action('view')}>View</MenuItem>
       <MenuItem onClick={action('share')}>Share</MenuItem>
       <MenuItem onClick={action('download')}>Download</MenuItem>
