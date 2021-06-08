@@ -26,7 +26,7 @@ export interface MenuProps extends PopperProps, AsProp, ChildrenProp, SxProp {
   trigger: ((props: UseDisclosureReturn) => React.ReactElement) | React.ReactElement;
   children: ((props: UseDisclosureReturn) => React.ReactElement) | React.ReactNode;
   isFullWidth?: boolean;
-  isOpenOnHover?: boolean;
+  openOnHover?: boolean;
 }
 
 export const Menu: React.FC<MenuProps> = (props) => {
@@ -38,7 +38,7 @@ export const Menu: React.FC<MenuProps> = (props) => {
     closeOnEsc,
     closeOnInnerClick,
     closeOnOuterClick,
-    isOpenOnHover,
+    openOnHover,
     placement,
     offset,
     ...rest
@@ -63,9 +63,9 @@ export const Menu: React.FC<MenuProps> = (props) => {
     <>
       {React.cloneElement(runIfFn(trigger, { isOpen, onOpen, onClose, onToggle }), {
         ...triggerProps,
-        onClick: isOpenOnHover ? undefined : onToggle,
+        onClick: openOnHover ? undefined : onToggle,
         onKeyDown: ({ key }: React.KeyboardEvent<HTMLDivElement>) => (key === 'Enter' ? onToggle : undefined),
-        onMouseEnter: isOpenOnHover ? onOpen : undefined,
+        onMouseEnter: openOnHover ? onOpen : undefined,
       })}
       <Portal>
         <Motion
