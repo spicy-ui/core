@@ -1,7 +1,7 @@
 import { ExtendedFlexboxProps, SpaceProps } from '@spicy-ui/styled-system';
 import * as React from 'react';
 import { SxProp } from '../../system';
-import { AsProp, ChildrenProp } from '../../types';
+import { AsProp, ChildrenProp, HTMLAttributes } from '../../types';
 import { Box } from '../Box';
 
 function responsive(prop: any, mapper: (val: any) => any) {
@@ -34,7 +34,7 @@ function responsive(prop: any, mapper: (val: any) => any) {
   return null;
 }
 
-export interface StackProps extends ExtendedFlexboxProps, AsProp, ChildrenProp, SxProp {
+export interface StackProps extends Omit<HTMLAttributes, 'wrap'>, ExtendedFlexboxProps, AsProp, ChildrenProp, SxProp {
   /** Spacing between each stack element. */
   spacing?: SpaceProps['margin'];
   /** Set a custom divider element. */

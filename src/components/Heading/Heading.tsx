@@ -1,11 +1,11 @@
 import { shouldForwardProp } from '@spicy-ui/styled-system';
 import styled from 'styled-components';
 import { allSystem, AllSystemProps, componentStylesMixin, sxMixin, SxProp } from '../../system';
-import { AsProp, ChildrenProp, LiteralUnion } from '../../types';
+import { AsProp, ChildrenProp, HTMLAttributes, LiteralUnion } from '../../types';
 
 export type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'inherit';
 
-export interface HeadingProps extends AsProp, ChildrenProp, AllSystemProps, SxProp {
+export interface HeadingProps extends HTMLAttributes, AsProp, ChildrenProp, AllSystemProps, SxProp {
   color?: string;
   /** Variant of the heading. */
   variant?: LiteralUnion<HeadingVariant>;

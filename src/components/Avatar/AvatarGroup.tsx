@@ -1,11 +1,11 @@
 import { SpaceProps } from '@spicy-ui/styled-system';
 import * as React from 'react';
 import { SxProp, useComponentStyles } from '../../system';
-import { AsProp, ChildrenProp } from '../../types';
+import { AsProp, ChildrenProp, HTMLAttributes } from '../../types';
 import { Box } from '../Box';
 import { AvatarProps } from './Avatar';
 
-export interface AvatarGroupProps extends AsProp, ChildrenProp, SxProp {
+export interface AvatarGroupProps extends HTMLAttributes, AsProp, ChildrenProp, SxProp {
   /** Border color of all avatars. */
   borderColor?: string;
   /** Maximum number of avatars to show. */

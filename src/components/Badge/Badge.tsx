@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { SxProp, useComponentStyles } from '../../system';
 import { ColorScales } from '../../theme';
-import { AsProp, ChildrenProp, LiteralUnion } from '../../types';
+import { AsProp, ChildrenProp, HTMLAttributes, LiteralUnion } from '../../types';
 import { Box } from '../Box';
 
 export type BadgeColors = ColorScales;
 
 export type BadgeVariants = 'outline' | 'solid' | 'subtle';
 
-export interface BadgeProps extends AsProp, ChildrenProp, SxProp {
+export interface BadgeProps extends HTMLAttributes, AsProp, ChildrenProp, SxProp {
   /** Color of the badge. */
   color?: LiteralUnion<BadgeColors>;
   /** Variant of the badge. */

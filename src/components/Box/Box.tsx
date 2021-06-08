@@ -1,9 +1,9 @@
 import { shouldForwardProp } from '@spicy-ui/styled-system';
 import styled from 'styled-components';
 import { allSystem, AllSystemProps, sxMixin, SxProp } from '../../system';
-import { AsProp, ChildrenProp } from '../../types';
+import { AsProp, ChildrenProp, HTMLAttributes } from '../../types';
 
-export interface BoxProps extends AsProp, ChildrenProp, AllSystemProps, SxProp {
+export interface BoxProps extends HTMLAttributes, AsProp, ChildrenProp, AllSystemProps, SxProp {
   color?: any;
 }
 

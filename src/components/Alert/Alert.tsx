@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { SxProp, useComponentStyles } from '../../system';
 import { ColorScales } from '../../theme';
-import { ChildrenProp, LiteralUnion } from '../../types';
+import { ChildrenProp, HTMLAttributes, LiteralUnion } from '../../types';
 import { Box } from '../Box';
 
 export type AlertColors = ColorScales;
 
-export interface AlertProps extends ChildrenProp, SxProp {
+export interface AlertProps extends HTMLAttributes, ChildrenProp, SxProp {
   /** Color of the alert. */
   color?: LiteralUnion<AlertColors>;
 }

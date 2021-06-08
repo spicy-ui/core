@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { SxProp, useComponentStyles } from '../../system';
 import { ColorScales } from '../../theme';
-import { AsProp, ChildrenProp, LiteralUnion } from '../../types';
+import { AsProp, ChildrenProp, HTMLAttributes, LiteralUnion } from '../../types';
 import { Box } from '../Box';
 
 export type TabColors = ColorScales;
 
 export type TabVariants = 'line' | 'enclosed' | 'pill';
 
-export interface TabsProps extends AsProp, ChildrenProp, SxProp {
+export interface TabsProps extends HTMLAttributes, AsProp, ChildrenProp, SxProp {
   color?: LiteralUnion<TabColors>;
   variant?: LiteralUnion<TabVariants>;
 }

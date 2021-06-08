@@ -1,7 +1,7 @@
 import { shouldForwardProp } from '@spicy-ui/styled-system';
 import styled from 'styled-components';
 import { allSystem, AllSystemProps, componentStylesMixin, sxMixin, SxProp } from '../../system';
-import { AsProp, ChildrenProp, LiteralUnion } from '../../types';
+import { AsProp, ChildrenProp, HTMLAttributes, LiteralUnion } from '../../types';
 
 export type TextVariant =
   | 'xs'
@@ -19,7 +19,7 @@ export type TextVariant =
   | '9xl'
   | 'inherit';
 
-export interface TextProps extends AsProp, ChildrenProp, AllSystemProps, SxProp {
+export interface TextProps extends HTMLAttributes, AsProp, ChildrenProp, AllSystemProps, SxProp {
   color?: string;
   /** Variant of the text. */
   variant?: LiteralUnion<TextVariant>;
