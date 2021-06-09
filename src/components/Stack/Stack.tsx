@@ -34,7 +34,7 @@ function responsive(prop: any, mapper: (val: any) => any) {
   return null;
 }
 
-export interface StackProps extends Omit<HTMLAttributes, 'wrap'>, ExtendedFlexboxProps, AsProp, ChildrenProp, SxProp {
+export interface StackProps extends HTMLAttributes, ExtendedFlexboxProps, AsProp, ChildrenProp, SxProp {
   /** Spacing between each stack element. */
   spacing?: SpaceProps['margin'];
   /** Set a custom divider element. */

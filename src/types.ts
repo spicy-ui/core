@@ -8,5 +8,4 @@ export interface ChildrenProp {
   children?: React.ReactNode;
 }
 
-export interface HTMLAttributes<T = HTMLElement>
-  extends Omit<React.AllHTMLAttributes<T>, 'as' | 'height' | 'width' | 'size'> {}
+export interface HTMLAttributes<T = HTMLElement> extends React.HTMLAttributes<T> {}

@@ -88,7 +88,7 @@ export type SelectSizes = 'xs' | 'sm' | 'md' | 'lg';
 
 export type SelectVariants = 'outlined' | 'filled' | 'underlined' | 'unstyled';
 
-export interface SelectProps extends Omit<HTMLAttributes, 'onChange' | 'value'> {
+export interface SelectProps extends Omit<HTMLAttributes, 'onChange'> {
   searchValue?: string;
   onSearchChange?: (search: string) => void;
   items: SelectItem[];

@@ -10,7 +10,7 @@ export type TagSizes = 'sm' | 'md' | 'lg';
 
 export type TagVariants = 'outline' | 'solid' | 'subtle';
 
-export interface TagProps extends Omit<HTMLAttributes, 'label'>, AsProp, ChildrenProp, SxProp {
+export interface TagProps extends HTMLAttributes, AsProp, ChildrenProp, SxProp {
   /** Label shown within the tag. */
   label?: React.ReactNode;
   /** If `true`, the tag will be rounded. */

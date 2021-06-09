@@ -16,6 +16,12 @@
 
 -->
 
+## 0.1.0-alpha.7 (9 June, 2021)
+
+### Changes
+
+- Changed `HTMLAttributes` prop interface to extend `React.HTMLAttributes` instead of `React.AllHTMLAttributes`
+
 ## 0.1.0-alpha.6 (8 June, 2021)
 
 ### Changes
