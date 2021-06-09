@@ -3,7 +3,7 @@ import { SxProp, useComponentStyles } from '../../system';
 import { AsProp, ChildrenProp, HTMLAttributes } from '../../types';
 import { Box } from '../Box';
 
-export interface TagLabelProps extends Omit<HTMLAttributes, 'label'>, AsProp, ChildrenProp, SxProp {
+export interface TagLabelProps extends HTMLAttributes, AsProp, ChildrenProp, SxProp {
   label?: React.ReactNode;
 }
 
