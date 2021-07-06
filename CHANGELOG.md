@@ -16,6 +16,13 @@
 
 -->
 
+## 0.1.0-alpha.8 (6 July, 2021)
+
+### Bug Fixes
+
+- Fixed Tab appearance on iOS when rendered as anchors/links
+- Fixed Input appearance on iOS
+
 ## 0.1.0-alpha.7 (9 June, 2021)
 
 ### Changes
