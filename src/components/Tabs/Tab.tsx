@@ -5,7 +5,7 @@ import { componentStylesMixin, sxMixin, SxProp } from '../../system';
 import { AsProp, ChildrenProp, HTMLAttributes } from '../../types';
 
 /** Don't pass the 'type' prop when the tab is not a button component. */
-const tabSfp = (prop: string, fn: any, target: any): boolean => {
+const tabSfp = (prop: string, _fn: any, target: any): boolean => {
   if (target === 'button') {
     return sfp(['isDisabled', 'isSelected'])(prop);
   }

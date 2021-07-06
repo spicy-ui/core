@@ -89,11 +89,10 @@ export const Stack = React.forwardRef<HTMLDivElement, StackProps>((props, ref) =
 
   const validChildren = React.Children.toArray(children).filter((child) => React.isValidElement(child));
 
-  const styles = React.useMemo(() => (!dividerComponent ? { ...stackStyle, ...sx } : sx), [
-    dividerComponent,
-    stackStyle,
-    sx,
-  ]);
+  const styles = React.useMemo(
+    () => (!dividerComponent ? { ...stackStyle, ...sx } : sx),
+    [dividerComponent, stackStyle, sx],
+  );
 
   return (
     <Box
