@@ -8,6 +8,7 @@ export const Input: ComponentThemeConfig<InputProps> = {
   ],
   baseStyle: () => ({
     display: 'flex',
+    appearance: 'none',
     alignItems: 'center',
     background: 'none',
     borderWidth: '0',
