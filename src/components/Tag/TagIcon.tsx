@@ -11,7 +11,7 @@ const TagIcon = React.forwardRef<HTMLSpanElement, TagIconProps>((props, ref) => 
   const { children, icon, ...rest } = props;
 
   return (
-    <Box ref={ref} as="span" {...rest}>
+    <Box ref={ref as any} as="span" {...rest}>
       {icon || children}
     </Box>
   );

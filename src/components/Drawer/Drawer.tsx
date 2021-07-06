@@ -54,18 +54,8 @@ export interface DrawerProps extends AsProp, ChildrenProp, SxProp {
 }
 
 export const Drawer: React.FC<DrawerProps> = (props) => {
-  const {
-    children,
-    sx,
-    isOpen,
-    onClose,
-    anchor,
-    closeOnEsc,
-    closeOnOverlayClick,
-    disableFocusTrap,
-    size,
-    ...rest
-  } = props;
+  const { children, sx, isOpen, onClose, anchor, closeOnEsc, closeOnOverlayClick, disableFocusTrap, size, ...rest } =
+    props;
 
   useKeyPress('Escape', () => {
     if (isOpen && !closeOnEsc && onClose) {
