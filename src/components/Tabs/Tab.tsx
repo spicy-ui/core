@@ -4,6 +4,15 @@ import styled from 'styled-components';
 import { componentStylesMixin, sxMixin, SxProp } from '../../system';
 import { AsProp, ChildrenProp, HTMLAttributes } from '../../types';
 
+/** Don't pass the 'type' prop when the tab is not a button component. */
+const tabSfp = (prop: string, fn: any, target: any): boolean => {
+  if (target === 'button') {
+    return sfp(['isDisabled', 'isSelected'])(prop);
+  }
+
+  return sfp(['type', 'isDisabled', 'isSelected'])(prop);
+};
+
 export interface TabProps extends HTMLAttributes, AsProp, ChildrenProp, SxProp {
   isDisabled?: boolean;
   isSelected?: boolean;
@@ -29,7 +38,7 @@ export const Tab = styled.button
     tabIndex: isDisabled ? -1 : undefined,
   }))
   .withConfig<TabProps>({
-    shouldForwardProp: sfp(['isDisabled', 'isSelected']),
+    shouldForwardProp: tabSfp as any,
   })(componentStylesMixin('Tab'), sxMixin);
 
 Tab.defaultProps = {
