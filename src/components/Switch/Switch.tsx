@@ -24,7 +24,7 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>((props, re
   const toggleStyles = useComponentStyles('SwitchToggle', props);
 
   return (
-    <Box as="label" htmlFor={id} sx={outerStyles}>
+    <Box as="label" htmlFor={isDisabled ? undefined : id} sx={outerStyles}>
       <Box
         ref={ref}
         as="input"
