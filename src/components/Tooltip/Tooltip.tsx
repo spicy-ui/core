@@ -46,7 +46,7 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
       {!isDisabled && (
         <Portal>
           <Motion {...childProps} initial="hidden" animate={isOpen ? 'visible' : 'hidden'} variants={variants}>
-            <Box display={isOpen ? 'block' : 'none'} sx={styles} {...rest}>
+            <Box sx={styles} {...rest}>
               {label}
             </Box>
           </Motion>
