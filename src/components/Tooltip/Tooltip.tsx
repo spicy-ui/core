@@ -58,7 +58,7 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
 
 Tooltip.defaultProps = {
   offset: [0, 4],
-  placement: 'bottom-start',
+  placement: 'bottom',
 };
 
 Tooltip.displayName = 'Tooltip';
