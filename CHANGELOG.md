@@ -16,6 +16,16 @@
 
 -->
 
+## 0.1.0-alpha.9 (14 August, 2021)
+
+### Changes
+
+- Changed default tooltip placement to `bottom`
+
+### Bug Fixes
+
+- Fixed disabled Switch still being clickable
+
 ## 0.1.0-alpha.8 (6 July, 2021)
 
 ### Bug Fixes
